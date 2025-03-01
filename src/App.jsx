@@ -4,7 +4,7 @@ import './styles/style.scss'
 function App() {
 
   return (
-    <div className="app">
+    <div>
       <div>hello world</div>
     </div>
   )
