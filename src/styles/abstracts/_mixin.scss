@@ -1,3 +1,5 @@
+// responsive
+
 @mixin mq($size) {
     @if $size ==phone-sm {
         @media only screen and (max-width: 380px) {
@@ -48,4 +50,35 @@
             @content;
         }
     }
+}
+
+// flex
+
+@mixin flex($jc: flex-start, $ai: stretch, $fd: row, $gp: 0) {
+    display: flex;
+
+    @if $jc !=null {
+        justify-content: $jc;
+    }
+
+    @if $ai !=null {
+        align-items: $ai;
+    }
+
+    @if $fd !=null {
+        flex-direction: $fd;
+    }
+
+    @if $gp !=null {
+        gap: $gp;
+    }
+}
+
+// image
+
+@mixin img() {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
 }

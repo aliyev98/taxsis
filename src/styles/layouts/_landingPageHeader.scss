@@ -1,0 +1,65 @@
+@use '../abstracts/mixin' as *;
+
+.landing-header {
+    @include flex(space-between, center, null, 20px);
+    padding: 20px 40px 20px 24px;
+    background-color: #fcfcfc;
+
+    &__logo {
+
+        @include flex(null,center,null,10px);
+
+        &-text {
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: -0.48px;
+            color: #111315;
+        }
+    }
+
+    &__navbar {
+        @include flex(space-between, null, null, 40px);
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.15px;
+        }
+    }
+
+    &__actions {
+        @include flex(space-between, null, null, 16px);
+
+        a {
+            text-decoration: none;
+        }
+
+        &-link {
+            padding: 12px 20px;
+            color: black;
+            border-radius: 12px;
+            border: 2px solid #efefef;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        &-button {
+            @include flex(null, center, null, null);
+            background-color: #272B30;
+            padding: 12px 20px;
+            border-radius: 12px;
+            color: #fcfcfc;
+
+        }
+    }
+
+
+}

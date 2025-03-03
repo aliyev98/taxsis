@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/public/LandingPage";
 import './styles/style.scss'
 
 
@@ -5,7 +7,9 @@ function App() {
 
   return (
     <div>
-      <div>hello world</div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
     </div>
   )
 }
