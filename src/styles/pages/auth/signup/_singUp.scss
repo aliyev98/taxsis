@@ -1,0 +1,18 @@
+@use '../../../abstracts/mixin' as *;
+
+
+.signup-container {
+    @include flex(null, null, null, null);
+    overflow-x: hidden ;
+
+    .signup-image {
+        display: inline-block;
+    }
+
+    .signup-form{
+        @include flex(null,center,column,null);
+        width: 100%;
+    }
+
+
+}

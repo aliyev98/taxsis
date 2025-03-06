@@ -1,5 +1,17 @@
 @use './base/reset' as *;
 @use './abstracts/mixin' as *;
 @use './abstracts/variables' as *;
+@use './pages/public/landingPage';
 @use './layouts/landingPageHeader';
-@use './pages/landingPage';
+@use './pages/auth/signup/singUp';
+@use './components/auth/signup/accountType';
+@use './components/auth/signup/individualRegistrationType';
+@use './components/auth/signup/registerWithID';
+@use './components/auth/signup/idFinish';
+@use './components/auth/signup/registerWithSignature';
+@use './components/auth/signup/enterCode';
+@use './components/auth/login/individualLogin';
+
+
+
+

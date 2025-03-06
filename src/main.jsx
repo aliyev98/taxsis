@@ -4,6 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store.js";
 import { HelmetProvider } from "react-helmet-async";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 
 
