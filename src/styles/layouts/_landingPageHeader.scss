@@ -1,66 +1,64 @@
 @use '../abstracts/mixin' as *;
 
 .landing-page-header-container {
-
-    @include flex(space-between, center, null, 20px);
-    padding: 20px 40px 20px 24px;
+    padding: 20px 24px;
     background-color: #fcfcfc;
+    cursor: pointer;
     width: 100%;
 
     .header-logo {
-
-        @include flex(null, center, null, 10px);
+        gap: 12px;
+        text-decoration: none;
 
         .logo-text {
+            color: #111315;
             font-size: 24px;
             font-style: normal;
             font-weight: 600;
             line-height: 32px;
             letter-spacing: -0.48px;
-            color: #111315;
         }
+
     }
 
     .header-navbar {
-        @include flex(space-between, null, null, 40px);
+        gap: 40px;
 
-        .navbar-link {
-            text-decoration: none;
-            color: black;
+        a {
+            color: #000;
             font-size: 15px;
             font-style: normal;
             font-weight: 600;
             line-height: 24px;
             letter-spacing: -0.15px;
+            text-decoration: none;
         }
     }
 
     .header-actions {
-        @include flex(space-between, null, null, 16px);
+        gap: 12px;
 
         a {
-            text-decoration: none;
-        }
-
-        .actions-link {
             padding: 12px 20px;
-            color: black;
-            border-radius: 12px;
-            border: 2px solid #efefef;
+            text-decoration: none;
             font-size: 15px;
+            border-radius: 12px;
             font-style: normal;
             font-weight: 700;
             line-height: 24px;
+            letter-spacing: -0.15px;
         }
 
-        .actions-button {
-            @include flex(null, center, null, null);
-            background-color: #272B30;
-            padding: 12px 20px;
-            border-radius: 12px;
-            color: #fcfcfc;
+        .login-link {
+            border: 2px solid #EFEFEF;
+            background: #FCFCFC;
+            color: #1A1D1F;
+
+        }
+
+        .signup-link {
+            background: #272B30;
+            color: #FCFCFC;
         }
     }
-
-
 }

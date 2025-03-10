@@ -1,0 +1,19 @@
+.login-container {
+    overflow-x: hidden ;
+
+    .login-image {
+        width: 600px !important;
+        margin-bottom: auto;
+
+        img{
+            object-fit: contain;
+            width: 100%;
+            height: 100%
+        }
+    }
+
+    .login-form{
+        width: 100%;
+    }
+
+}

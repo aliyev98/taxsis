@@ -4,14 +4,23 @@
 @use './pages/public/landingPage';
 @use './layouts/landingPageHeader';
 @use './pages/auth/signup/singUp';
-@use './components/auth/signup/accountType';
-@use './components/auth/signup/individualRegistrationType';
-@use './components/auth/signup/registerWithID';
-@use './components/auth/signup/idFinish';
-@use './components/auth/signup/registerWithSignature';
-@use './components/auth/signup/enterCode';
-@use './components/auth/login/individualLogin';
-
+@use './pages/auth/login/login';
+@use './components/auth/general/accountType';
+@use './components/auth/signup/individual/individualRegistrationType';
+@use './components/auth/signup/individual/registerWithID';
+@use './components/auth/general/finish';
+@use './components/auth/signup/individual/registerWithSignature';
+@use './components/auth/signup/individual/enterCodeSignUp';
+@use './components/auth/login/individual/individualLogin';
+@use './components/auth/login/individual/enterCodeIndividualLogin';
+@use './components/auth/signup/corporate/corporateRegistrationType';
+@use './components/auth/signup/corporate/registerWithAsan';
+@use './components/auth/signup/corporate/chooseCompany';
+@use './components/auth/signup/corporate/companyRegister';
+@use './components/auth/login/corporate/corporateLogin';
+@use './pages/social/feed';
+@use './layouts/feedHeader';
+@use './components/social/feed/feedLeftSide';
 
 
 

@@ -1,0 +1,146 @@
+@use '../../../../abstracts/mixin' as *;
+
+.asan-register-container {
+    gap: 20px;
+
+    @include mq(big-desktop-down){
+        width: 35% !important;
+    }
+
+    .corporate-icon {
+        padding: 12px;
+        border-radius: 50%;
+        background-color: #CABDFF;
+        width: fit-content;
+    }
+
+    .asan-register-type {
+        color: #1A1D1F;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+        letter-spacing: -1.44px;
+    }
+
+    .asan-register-info {
+        color: #1A1D1F;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+    }
+
+    .asan-register-form {
+        // display: none;
+
+        .phone-input {
+            border-radius: 12px;
+            border: 2px solid #9A9FA5;
+            background: #FFF;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+
+            label {
+                color: #111315;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 12px;
+                letter-spacing: -0.12px;
+            }
+
+            input {
+                color: #1A1D1F;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.15px;
+                border: none;
+                outline: none;
+            }
+        }
+
+        .id-input {
+            border-radius: 12px;
+            border: 1px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-02, #F4F4F4);
+            padding: 16px;
+            margin-bottom: 40px;
+
+            input {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                color: #6F767E;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.15px;
+            }
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            width: 100%;
+        }
+
+        .active {
+            background-color: #2A85FF;
+        }
+
+        .deactive {
+            background: rgba(42, 133, 255, 0.50);
+        }
+
+    }
+
+    .code-accept {
+        gap: 24px;
+
+        .info {
+            color: #2A85FF;
+            text-align: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.15px;
+        }
+
+        .timer {
+            color: #2A85FF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 40px;
+            letter-spacing: -0.96px;
+        }
+
+        .code {
+            color: #1A1D1F;
+            text-align: center;
+            background-color: #a8caf7;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: -0.4px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: none;
+        }
+    }
+
+
+
+
+}

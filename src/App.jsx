@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/public/LandingPage";
 import './styles/style.scss'
 import SingUp from "./pages/auth/SingUp";
-import Test from "./components/auth/login/Test";
+import Login from "./pages/auth/Login";
+import Feed from "./pages/social/Feed";
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signUp" element={<SingUp />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/feed" element={<Feed />} />
       </Routes>
     </div>
   )

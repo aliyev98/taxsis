@@ -1,0 +1,77 @@
+.feed-left-side {
+    padding: 32px 24px;
+
+    .linked-accounts {
+        gap: 12px;
+
+        .title {
+            color: #6F767E;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 12px;
+        }
+    }
+
+    .accounts-dropdown {
+
+        .dropdown-toggle {
+
+            &::after {
+                display: none !important;
+            }
+
+            .selected-account {
+                gap: 12px;
+
+                .account-name {
+                    color: #1A1D1F;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    letter-spacing: -0.15px;
+                    flex-grow: 1;
+                }
+
+                .custom-icon {
+                    padding: 4px;
+                    border-radius: 40px;
+                    background: var(--Neutral-03, #EFEFEF);
+                }
+            }
+        }
+
+        .dropdown-menu {
+
+            .title {
+                color: #6F767E;
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 12px;
+            }
+
+            .accounts {
+                padding: 16px 20px 24px 20px;
+
+
+                .account {
+                    gap: 12px;
+
+                    .account-name {
+                        color: #1A1D1F;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 24px;
+                        letter-spacing: -0.15px;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+}

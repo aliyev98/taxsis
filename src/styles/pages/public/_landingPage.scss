@@ -1,15 +1,16 @@
 @use '../../abstracts/mixin' as *;
 
+
 .landing-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #B5E4CA;
+    background: #B5E4CA;
+    min-height: 1000px;
+    max-height: 100vh;
+    overflow-y: hidden;
 
     .landing-page-heading {
-
-        @include flex(center, null, column, 24px);
         margin-top: 80px;
+        gap: 24px;
+        width: 100%;
 
         .heading-title {
             color: #1A1D1F;
@@ -18,7 +19,10 @@
             font-style: normal;
             font-weight: 700;
             line-height: 64px;
-            align-self: stretch;
+
+            @include mq(big-desktop-up) {
+                font-size: 40px;
+            }
         }
 
         .heading-text {
@@ -29,20 +33,21 @@
             font-weight: 400;
             line-height: 20px;
             letter-spacing: 0.14px;
+
+            @include mq(big-desktop-up) {
+                font-size: 12px;
+            }
         }
+
     }
 
     .video-links {
-        @include flex(center, center, null, 16px);
         margin-top: 39px;
-
+        gap: 16px;
 
         .video-link {
-            @include flex(center, center, null, 8px);
+            gap: 8px;
             padding: 12px 20px;
-            background-color: #fcfcfc;
-            border-radius: 12px;
-            border: 2px solid #efefef;
             text-decoration: none;
             color: #1A1D1F;
             font-size: 15px;
@@ -50,105 +55,102 @@
             font-weight: 700;
             line-height: 24px;
             letter-spacing: -0.15px;
+            border-radius: 12px;
+            border: 2px solid #EFEFEF;
+            background: #FCFCFC;
         }
     }
 
     .landing-page-images {
-        margin-top: 31px;
         width: 60%;
+        margin-top: 31px;
         position: relative;
-        display: none;
+        height: 1283px;
+        display: flex;
+        justify-content: center;
 
 
         .image1 {
-            width: 90%;
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%);
-            z-index: 1;
+            z-index: 3;
+            top: 40px;
 
             img {
-                border-radius: 16px;
+                object-fit: cover;
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                opacity: 0.15
+                border-radius: 16px;
             }
         }
 
         .image2 {
-            width: 95%;
             position: absolute;
             top: 20px;
-            left: 50%;
-            transform: translate(-50%);
             z-index: 2;
+            width: 95%;
+            opacity: 0.4;
 
             img {
-                border-radius: 16px;
+                object-fit: cover;
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                opacity: 0.4;
+                border-radius: 16px;
             }
         }
 
         .image3 {
-            width: 100%;
             position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translate(-50%);
-            z-index: 3;
+            z-index: 1;
+            width: 90%;
+            opacity: 0.15;
 
             img {
-                border-radius: 16px;
+                object-fit: cover;
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                border-radius: 16px;
             }
         }
 
         .image4 {
-            width: 15%;
+            width: 193px;
+            width: 193px;
+            height: auto;
             position: absolute;
-            top: - 10%;
-            left: -12%;
+            top: -70px;
+            left: -170px;
+            opacity: 0.3;
 
             img {
-                border-radius: 16px;
+                object-fit: cover;
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                opacity: 0.3;
+                border-radius: 16px;
             }
         }
 
-        .landing-individual {
-            @include flex(null, center, null, 12px);
-            z-index: 4;
-            background-color: #fff;
-            height: fit-content;
-            padding: 12px 16px;
-            border-radius: 12px;
+        .individual-image {
+            z-index: 999;
             position: absolute;
+            right: -200px;
             top: 160px;
-            right: -160px;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            gap: 12px;
+            width: 244px;
 
-            .individual-icon {
-                @include flex(center, center, null, null);
+            .icon {
                 padding: 12px;
-                background-color: #B5E4CA;
                 border-radius: 50%;
+                background: #B5E4CA;
             }
 
             .individual-content {
-                @include flex(center, null, column, null);
+                gap: 4px;
 
                 .content-title {
                     color: #1A1D1F;
-
                     font-size: 15px;
                     font-style: normal;
                     font-weight: 700;
@@ -158,7 +160,6 @@
 
                 .content-info {
                     color: #9A9FA5;
-
                     font-size: 12px;
                     font-style: normal;
                     font-weight: 500;
@@ -168,31 +169,28 @@
             }
         }
 
-        .landing-corporate {
-            @include flex(null, center, null, 12px);
-            z-index: 1;
-            background-color: #fff;
-            height: fit-content;
-            padding: 12px 16px;
-            border-radius: 12px;
+        .corporate-image {
+            z-index: 999;
             position: absolute;
-            right: -200px;
-            top: 320px;
-            z-index: 4;
+            right: -225px;
+            top: 290px;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            gap: 12px;
+            width: 235px;
 
-            .corporate-icon {
-                @include flex(center, center, null, null);
+            .icon {
                 padding: 12px;
-                background-color: #CABDFF;
                 border-radius: 50%;
+                background: #CABDFF;
             }
 
             .corporate-content {
-                @include flex(null, null, column, null);
+                gap: 4px;
 
                 .content-title {
                     color: #1A1D1F;
-
                     font-size: 15px;
                     font-style: normal;
                     font-weight: 700;
@@ -202,7 +200,6 @@
 
                 .content-info {
                     color: #9A9FA5;
-
                     font-size: 12px;
                     font-style: normal;
                     font-weight: 500;
@@ -212,6 +209,9 @@
             }
         }
 
+
     }
+
+
 
 }

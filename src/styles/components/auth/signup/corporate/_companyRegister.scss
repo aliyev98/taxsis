@@ -1,0 +1,259 @@
+@use '../../../../abstracts/mixin' as *;
+
+.company-register-container {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+
+    @include mq(big-desktop-down) {
+        width: 35% !important;
+    }
+
+    .account-type {
+        color: #1A1D1F;
+        background-color: #CABDFF;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        width: fit-content;
+        padding: 4px 12px;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.48px;
+    }
+
+    .title {
+        color: #1A1D1F;
+        margin-bottom: 32px;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+        letter-spacing: -1.44px;
+    }
+
+    .info {
+        color: #1A1D1F;
+        margin-bottom: 24px;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+    }
+
+    .company-register-form {
+        gap: 20px;
+
+        .input-element {
+            border-radius: 12px;
+            border: 1px solid #EFEFEF;
+            background: #F4F4F4;
+            padding: 8px 16px;
+            gap: 4px;
+
+
+            label {
+                color: #6F767E;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 12px;
+                letter-spacing: -0.12px;
+            }
+
+
+            input {
+                background: #F4F4F4;
+                outline: none;
+                border: none;
+                color: #6F767E;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.15px;
+                width: 100%;
+            }
+        }
+
+        .email-input {
+
+            input {
+                color: #1A1D1F;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.15px;
+            }
+
+        }
+
+        .select-element {
+
+            .custom-select {
+                flex-grow: 1;
+                gap: 5px;
+
+                select {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    border: none;
+                    background-color: transparent;
+                    color: #1A1D1F;
+                    padding: 0 !important;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    letter-spacing: -0.15px;
+                    border: none !important;
+                    outline: none !important;
+                }
+            }
+
+
+        }
+    }
+
+    .authorize-input {
+        gap: 8px;
+
+        .input-header {
+
+            label {
+                color: #1A1D1F;
+
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 16px;
+                letter-spacing: -0.12px;
+            }
+
+            .remove-authority {
+                border: none;
+                background-color: transparent;
+                color: #FF6A55;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 12px;
+                letter-spacing: -0.12px;
+            }
+        }
+
+        .input-div {
+            gap: 20px;
+
+
+            .input {
+                border: 1px solid #EFEFEF;
+                background: #F4F4F4;
+                padding: 16px;
+                border-radius: 12px;
+                width: 100%;
+
+                input {
+                    border: none;
+                    outline: none;
+                    width: 100%;
+                    background-color: transparent;
+                    color: #6F767E;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    letter-spacing: -0.15px;
+                }
+            }
+
+            .select {
+                border: 1px solid #EFEFEF;
+                background: #F4F4F4;
+                padding: 16px;
+                border-radius: 12px;
+                width: 100%;
+
+                select {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    border: none;
+                    outline: none;
+                    width: 100%;
+                    background-color: transparent;
+                    color: #6F767E;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    letter-spacing: -0.15px;
+
+                    background-image: url("./assets/arrow-down.svg");
+                    background-repeat: no-repeat;
+                    background-position: right 0px center;
+                    background-size: 24px;
+                }
+            }
+        }
+    }
+
+    .add-btn {
+        gap: 8px;
+
+        button {
+            border: none;
+            outline: none;
+            background-color: transparent;
+        }
+
+        span {
+            color: #1A1D1F;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.14px;
+        }
+    }
+
+
+    .btn {
+        padding: 12px 20px;
+        border-radius: 12px;
+        border: none;
+        margin-top: 40px;
+        background-color: #2A85FF;
+    }
+
+    .active {
+        background-color: #2A85FF;
+    }
+
+    .deactive {
+        background: rgba(42, 133, 255, 0.50);
+    }
+
+    .warning {
+        margin-top: 40px;
+        color: #1A1D1F;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: -0.12px;
+        width: 100%;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+
+
+
+}

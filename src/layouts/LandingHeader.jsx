@@ -3,14 +3,14 @@ import React from 'react'
 const LandingHeader = () => {
     return (
 
-        <header className="landing-page-header-container">
+        <header className="landing-page-header-container d-flex justify-content-between align-items-center">
 
-            <div className="header-logo">
+            <a href='/' className="header-logo d-flex align-items-center">
                 <img src="/assets/logo.svg" alt="" className="logo-image" />
                 <span className="logo-text">TAXSIS</span>
-            </div>
+            </a>
 
-            <nav className="header-navbar">
+            <nav className="header-navbar d-flex justify-content-between align-items-center">
                 <a href="/corporate" className="navbar-link">Korporativlər üçün</a>
                 <a href="/individuals" className="navbar-link">Fərdlər üçün</a>
                 <a href="" className="navbar-link">Təriflər</a>
@@ -18,10 +18,11 @@ const LandingHeader = () => {
                 <a href="/contact" className="navbar-link">Əlaqə</a>
             </nav>
 
-            <div className="header-actions">
-                <a href="/login" className="actions-link">Daxil ol</a>
-                <a href="/signUp" className="actions-button">Qeydiyyatdan keç</a>
+            <div className="header-actions d-flex align-items-center justify-content-between">
+                <a href="/login" className="login-link">Daxil ol</a>
+                <a href="/signUp" className="signup-link">Qeydiyyatdan keç</a>
             </div>
+
 
         </header>
 

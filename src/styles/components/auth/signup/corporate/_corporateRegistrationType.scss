@@ -1,0 +1,74 @@
+.corporate-registration-container {
+    gap: 32px;
+
+    .corporate-icon {
+        padding: 12px;
+        border-radius: 50%;
+        background-color: #CABDFF;
+        width: fit-content;
+    }
+
+    .corporate-registration-title {
+        color: #1A1D1F;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 48px;
+        letter-spacing: -1.44px;
+    }
+
+    .corporate-registration-info {
+        color: #1A1D1F;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+    }
+
+    .corporate-registration-form {
+        width: 100%;
+        gap: 16px;
+
+        span {
+            color: #9A9FA5;
+
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.14px;
+        }
+
+        button {
+            width: 100%;
+            gap: 20px;
+            border: 1px solid #efefef;
+            border-radius: 12px;
+            background-color: #f4f4f4;
+            padding: 14px 20px;
+
+            .corporate-registration-image {
+                width: 52px;
+                height: 46px;
+
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            span {
+                color: #1A1D1F;
+
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.14px;
+            }
+        }
+    }
+}
