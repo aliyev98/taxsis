@@ -6,8 +6,18 @@ const LandingHeader = () => {
         <header className="landing-page-header-container d-flex justify-content-between align-items-center">
 
             <a href='/' className="header-logo d-flex align-items-center">
-                <img src="/assets/logo.svg" alt="" className="logo-image" />
+                <div className='logo-img'>
+                    <img src="/assets/logo.svg" alt="" className="logo-image" />
+
+                    <div className="lines">
+                        <div className="line1"></div>
+                        <div className="line2"></div>
+                        <div className="line3"></div>
+                    </div>
+                </div>
                 <span className="logo-text">TAXSIS</span>
+
+
             </a>
 
             <nav className="header-navbar d-flex justify-content-between align-items-center">

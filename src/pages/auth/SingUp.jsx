@@ -23,18 +23,23 @@ const SingUp = () => {
         <div className='signup-container d-flex f-column align-items-center justify-content-center'>
 
             <div className="signup-image">
+
                 <img src="./assets/image 1.jpg" alt="" />
 
                 <div className="logo d-flex align-items-center">
 
                     <div className="logo-img">
+
                         <img src="./assets/white-logo.svg" alt="" />
+
                         <div className="lines">
                             <div className="line1"></div>
                             <div className="line2"></div>
                             <div className="line3"></div>
                         </div>
+
                     </div>
+                    
                     <span className='logo-text'>TAXSIS</span>
 
                 </div>

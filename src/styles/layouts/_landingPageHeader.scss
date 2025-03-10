@@ -10,6 +10,41 @@
         gap: 12px;
         text-decoration: none;
 
+        .logo-img {
+            position: relative;
+            .lines {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+
+                .line1 {
+                    width: 4px;
+                    height: 8px;
+                    border-radius: 12px;
+                    background: var(--Primary-02, #fff);
+                }
+
+                .line2 {
+                    width: 4px;
+                    height: 12px;
+                    border-radius: 12px;
+                    background: var(--Primary-02, #fff);
+                }
+
+                .line3 {
+                    width: 4px;
+                    height: 8px;
+                    border-radius: 12px;
+                    background: var(--Primary-02, #fff);
+                }
+            }
+        }
+
         .logo-text {
             color: #111315;
             font-size: 24px;
@@ -18,6 +53,9 @@
             line-height: 32px;
             letter-spacing: -0.48px;
         }
+
+
+
 
     }
 
