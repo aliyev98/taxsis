@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from "react-router-dom";
 
-const LeftSide = () => {
+const SideBar = () => {
+  const navigate = useNavigate();
 
   const modules = [
     { id: 1, name: "Vergi modulu", img: "./assets/tax-modul-icon.svg", color: "#B5E4CA" },
@@ -10,7 +12,6 @@ const LeftSide = () => {
   ];
 
   const socialMenu = [
-
     { id: 1, name: 'Dostlar', img: './assets/friends-icon.svg' },
     { id: 2, name: 'Qruplar', img: './assets/groups-icon.svg' },
     { id: 3, name: 'Səhifələr', img: './assets/pages-icon.svg' },
@@ -19,162 +20,50 @@ const LeftSide = () => {
     { id: 6, name: 'Tədbirlər', img: './assets/ticket-icon.svg' },
     { id: 7, name: 'Kurslar', img: './assets/book-icon.svg' },
     { id: 8, name: 'Marketplace', img: './assets/dollar-icon.svg' },
+  ];
 
-  ]
-
+  const handleModuleClick = (module, index) => {
+    if (index === 0) {
+      navigate("/panel");
+    } else {
+      console.log(`Tıklanan modül: ${module.name}`);
+    }
+  };
 
   return (
     <div className='sidebar-container col-2'>
-
-      <div className="linked-accounts d-flex flex-column">
-
-        <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
-
-        <div className="dropdown custom-dropdown">
-
-          <button className="dropdown-toggle selected-account d-flex justify-content-between align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-            <div className="left-side d-flex align-items-center">
-              <div className="account-img">
-                <img src="./assets/account-img1.png" alt="" />
-              </div>
-
-              <div className="account-name">
-                <span>ACCFIN Group</span>
-              </div>
-            </div>
-
-            <div className="dropdown-icon">
-              <img src="./assets/dropdown-icon.svg" alt="" />
-            </div>
-
-          </button>
-
-          <ul className="dropdown-menu accounts dropdown-menu-end">
-
-            <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
-
-            <li>
-
-              <button className='account d-flex justify-content-between align-items-center'>
-
-                <div className="left-side d-flex align-items-center">
-
-                  <div className="account-img">
-                    <img src="./assets/account-img1.png" alt="" />
-                  </div>
-
-                  <div className="account-name">
-                    <span>ACCFIN Group</span>
-                  </div>
-
-                </div>
-
-              </button>
-
-            </li>
-
-            <li>
-
-              <button className='account d-flex justify-content-between align-items-center'>
-
-                <div className="left-side d-flex align-items-center">
-
-                  <div className="account-img">
-                    <img src="./assets/account-img1.png" alt="" />
-                  </div>
-
-                  <div className="account-name">
-                    <span>ACFA MMC</span>
-                  </div>
-
-                </div>
-
-              </button>
-
-            </li>
-
-            <li>
-
-              <button className='account d-flex justify-content-between align-items-center'>
-
-                <div className="left-side d-flex align-items-center">
-
-                  <div className="account-img">
-                    <img src="./assets/account-img1.png" alt="" />
-                  </div>
-
-                  <div className="account-name">
-                    <span>Innova Co</span>
-                  </div>
-
-                </div>
-
-              </button>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-        <button className="add-account d-flex align-items-center">
-
-          <div className="icon">
-            <img src="./assets/post-add-icon.svg" alt="" />
-          </div>
-
-          <span>Hesab əlavə et</span>
-        </button>
-
-      </div>
-
-      <div className="line"></div>
-
+      {/* ... linked-accounts bölümü vs ... */}
 
       <div className="modules d-flex flex-column">
-
         <div className="title">VERGİ MODULU</div>
-
-        {
-          modules.map((module) => (
-            <button key={module.id} className='modul d-flex align-items-center'>
-
-              <div className="icon" style={{ backgroundColor: module.color }}>
-                <img src={module.img} alt="icon" />
-              </div>
-
-              <span>{module.name}</span>
-
-            </button>
-          ))
-        }
-
+        {modules.map((module, index) => (
+          <button
+            key={module.id}
+            className="modul d-flex align-items-center"
+            onClick={() => handleModuleClick(module, index)}
+          >
+            <div className="icon" style={{ backgroundColor: module.color }}>
+              <img src={module.img} alt="icon" />
+            </div>
+            <span>{module.name}</span>
+          </button>
+        ))}
       </div>
 
       <div className="line"></div>
 
       <div className="social-menu d-flex flex-column">
-
-        {
-          socialMenu.map((item) => (
-            <button key={item.id} className='menu-item d-flex align-items-center'>
-
-              <div className="icon">
-                <img src={item.img} alt="" />
-              </div>
-
-              <span>{item.name}</span>
-
-            </button>
-
-          ))
-        }
-
+        {socialMenu.map(item => (
+          <button key={item.id} className="menu-item d-flex align-items-center">
+            <div className="icon">
+              <img src={item.img} alt="" />
+            </div>
+            <span>{item.name}</span>
+          </button>
+        ))}
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default LeftSide
+export default SideBar;
