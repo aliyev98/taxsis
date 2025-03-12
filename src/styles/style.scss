@@ -18,9 +18,20 @@
 @use './components/auth/signup/corporate/chooseCompany';
 @use './components/auth/signup/corporate/companyRegister';
 @use './components/auth/login/corporate/corporateLogin';
-@use './pages/social/feed';
+@use './pages/social/feed.scss';
 @use './layouts/feedHeader';
-@use './components/social/feed/feedLeftSide';
+@use './components/social/feed/sideBar';
+@use './components/social/feed/createPost';
+@use './components/social/feed/posts';
+@use './test';
+@use './components/social/feed/post';
+@use './components/social/feed/messages';
+@use './pages/social/panel';
+@use './layouts/panelHeader';
+@use './components/social/panel/panelSideBar';
+@use './components/social/panel/database';
+@use './components//social/panel/dataBaseTable'
+
 
 
 

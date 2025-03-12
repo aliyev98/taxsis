@@ -1,18 +1,31 @@
 import React from 'react'
 import FeedHeader from '../../layouts/FeedHeader'
-import FeedLeftSide from '../../components/social/feed/FeedLeftSide'
+import SideBar from '../../components/social/feed/SideBar'
+import Posts from '../../components/social/feed/Posts'
+import Messages from '../../components/social/feed/Messages'
 
 const Feed = () => {
+
     return (
         <div className='feed-container'>
 
-            <div className="header">
-                <FeedHeader />
-            </div>
+            <FeedHeader />
 
             <div className="feed-body d-flex">
-                <FeedLeftSide />
+
+                <SideBar />
+
+                <div className="content-container d-flex justify-content-around p-0 d-row">
+
+                    <Posts />
+
+                    <Messages />
+
+
+                </div>
+
             </div>
+
         </div>
     )
 }

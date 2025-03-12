@@ -6,6 +6,9 @@ import store from "./redux/store/store";
 import { HelmetProvider } from "react-helmet-async";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'devextreme/dist/css/dx.light.css'; 
+import 'devextreme/dist/css/dx.common.css';
+
 import React from 'react';
 
 

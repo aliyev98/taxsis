@@ -1,0 +1,114 @@
+.messages-container {
+    margin-top: 32px;
+
+
+    .add {
+        position: relative;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+        }
+
+        .add-title {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            color: #FFF;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: -0.36px;
+        }
+
+    }
+
+    .messages {
+        margin-top: 30px;
+        border-radius: 16px;
+        background: #FFF;
+        padding: 12px;
+        gap: 12px;
+
+        .messages-header {
+            padding: 12px;
+
+            span {
+                color: #1A1D1F;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 32px;
+                letter-spacing: -0.4px;
+            }
+
+            .dots-img {
+                padding: 4px;
+                border-radius: 40px;
+                background: var(--Neutral-03, #EFEFEF);
+            }
+        }
+
+        .friends {
+
+            .friend {
+                padding: 12px;
+
+                .friend-infos {
+                    gap: 12px;
+
+                    .profile-img {
+                        overflow: hidden;
+
+                        img {
+                            border-radius: 50%;
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .name {
+                        color: #1A1D1F;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 24px;
+                        letter-spacing: -0.15px;
+                    }
+                }
+
+                .status {
+                    gap: 12px;
+
+                    .time {
+                        color: #9A9FA5;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 16px;
+                        letter-spacing: -0.13px;
+                    }
+
+                    .dot {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+
+                    .online{
+                        background-color: #9A9FA5;
+                    }
+
+                    .offline{
+                        background-color: #2A85FF;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.comments-container {
+    padding: 10px;
+  }
+  
+  .comment {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .replies {
+    margin-left: 30px; /* Yanıtları ana yorumdan biraz kaydır */
+    position: relative;
+  }
+  
+  .reply {
+    position: relative;
+    padding-left: 20px; /* Çizginin yanıtın solunda kalması için */
+  }
+  
+  .reply-line {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    height: 100%;
+    width: 2px;
+    background-color: #ccc; /* Çizginin rengi */
+  }
+  
+  .reply-line::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -8px;
+    width: 12px;
+    height: 2px;
+    background-color: #ccc; /* Yanıtın ana yoruma bağlandığı yatay çizgi */
+  }
+  
