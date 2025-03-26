@@ -13,7 +13,7 @@ const Panel = () => {
 
                 <DatabaseHeader />
 
-                <Database/>
+                <Database />
 
             </div>
 

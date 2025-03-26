@@ -1,205 +1,207 @@
-.database-table {
-    background-color: white;
-    border-radius: 16px !important;
+// .database-table {
+//     background-color: white;
+//     border-radius: 16px !important;
 
-    .table-header {
-        padding: 24px;
+//     .table-header {
+//         padding: 24px;
 
-        .title {
-            gap: 16px;
+//         .title {
+//             gap: 16px;
 
-            .color {
-                width: 16px;
-                height: 32px;
-                border-radius: 4px;
-                background: var(--Secondary-03, #B1E5FC);
-            }
+//             color: var(--Neutral-07, #1A1D1F);
+//             font-size: 20px;
+//             font-style: normal;
+//             font-weight: 600;
+//             line-height: 32px;
+//             letter-spacing: -0.4px;
 
-            span {
-                color: var(--Neutral-07, #1A1D1F);
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 32px;
-                letter-spacing: -0.4px;
-            }
-        }
+//             .color {
+//                 width: 16px;
+//                 height: 32px;
+//                 border-radius: 4px;
+//                 background: var(--Secondary-03, #B1E5FC);
+//             }
 
-        .header-actions {
-            gap: 8px;
-            width: 30%;
-            justify-content: flex-end;
+//             span {}
+//         }
 
-            .dropdown {
-                width: 100%;
+//         .header-actions {
+//             gap: 8px;
+//             width: 30%;
+//             justify-content: flex-end;
 
-                .dropdown-toggle::after {
-                    content: none !important;
-                  }
+//             .dropdown {
+//                 width: 100%;
 
-                .dropdown-menu {
-                    padding: 16px;
-                    margin-top: 30px !important;
-                    border-radius: 16px;
-                    border: none !important;
+//                 .dropdown-toggle::after {
+//                     content: none !important;
+//                 }
 
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: -10px; // Menü üstüne hizalamak için
-                        right: 20px; // Menünün sağ kenarından ne kadar içeride olacağını ayarla
-                        width: 0;
-                        height: 0;
-                        border-left: 8px solid transparent;
-                        border-right: 8px solid transparent;
-                        border-bottom: 8px solid #fff; // Okun rengi menü rengiyle aynı olsun
-                        /* Eğer menü arka planı #fff değilse, menü rengini ver */
-                    }
+//                 .dropdown-menu {
+//                     padding: 16px;
+//                     margin-top: 30px !important;
+//                     border-radius: 16px;
+//                     border: none !important;
 
-                    .dropdown-title {
-                        color: var(--Neutral-07, #1A1D1F);
-                        font-size: 15px;
-                        font-style: normal;
-                        font-weight: 600;
-                        line-height: 24px;
-                        letter-spacing: -0.15px;
-                        margin-bottom: 16px;
-                    }
+//                     &::before {
+//                         content: "";
+//                         position: absolute;
+//                         top: -10px; // Menü üstüne hizalamak için
+//                         right: 20px; // Menünün sağ kenarından ne kadar içeride olacağını ayarla
+//                         width: 0;
+//                         height: 0;
+//                         border-left: 8px solid transparent;
+//                         border-right: 8px solid transparent;
+//                         border-bottom: 8px solid #fff; // Okun rengi menü rengiyle aynı olsun
+//                         /* Eğer menü arka planı #fff değilse, menü rengini ver */
+//                     }
 
-                    .items {
-                        gap: 8px;
+//                     .dropdown-title {
+//                         color: var(--Neutral-07, #1A1D1F);
+//                         font-size: 15px;
+//                         font-style: normal;
+//                         font-weight: 600;
+//                         line-height: 24px;
+//                         letter-spacing: -0.15px;
+//                         margin-bottom: 16px;
+//                     }
 
-                        .item {
-                            gap: 8px;
+//                     .items {
+//                         gap: 8px;
 
-                            .input-div {
-                                border-radius: 6px !important;
-                                display: inline-flex;
-                                /* Veya flex */
-                                align-items: center;
-                                white-space: nowrap;
+//                         .item {
+//                             gap: 8px;
+
+//                             .input-div {
+//                                 border-radius: 6px !important;
+//                                 display: inline-flex;
+//                                 /* Veya flex */
+//                                 align-items: center;
+//                                 white-space: nowrap;
 
 
-                                input {
-                                    width: 90%;
-                                    height: 90%;
-                                    background: var(--Primary-01, #2A85FF);
-                                    border-radius: 6px;
-                                    width: 24px;
-                                    /* Sadece input’u sabit boyut yap */
-                                    height: 24px;
-                                }
+//                                 input {
+//                                     width: 90%;
+//                                     height: 90%;
+//                                     background: var(--Primary-01, #2A85FF);
+//                                     border-radius: 6px;
+//                                     width: 24px;
+//                                     /* Sadece input’u sabit boyut yap */
+//                                     height: 24px;
+//                                 }
 
-                                span {
-                                    color: var(--Neutral-07, #1A1D1F);
-                                    font-size: 14px;
-                                    font-style: normal;
-                                    font-weight: 600;
-                                    line-height: 24px;
-                                    letter-spacing: -0.14px;
-                                    white-space: nowrap;
-                                }
-                            }
+//                                 span {
+//                                     color: var(--Neutral-07, #1A1D1F);
+//                                     font-size: 14px;
+//                                     font-style: normal;
+//                                     font-weight: 600;
+//                                     line-height: 24px;
+//                                     letter-spacing: -0.14px;
+//                                     white-space: nowrap;
+//                                 }
+//                             }
 
-                        }
-                    }
+//                         }
+//                     }
 
-                }
-            }
+//                 }
+//             }
 
-            .columns {
-                gap: 8px;
-                padding: 8px 16px;
-                color: var(--Neutral-04, #6F767E);
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.14px;
-                border-radius: 8px;
-                border: 2px solid var(--Neutral-03, #EFEFEF);
-            }
+//             .columns {
+//                 gap: 8px;
+//                 padding: 8px 16px;
+//                 color: var(--Neutral-04, #6F767E);
+//                 font-size: 14px;
+//                 font-style: normal;
+//                 font-weight: 600;
+//                 line-height: 24px;
+//                 letter-spacing: -0.14px;
+//                 border-radius: 8px;
+//                 border: 2px solid var(--Neutral-03, #EFEFEF);
+//             }
 
-            .export {
-                padding: 8px 16px;
-                gap: 8px;
-                border-radius: 8px;
-                border: 2px solid var(--Neutral-03, #EFEFEF);
-                background: var(--Neutral-01, #FCFCFC);
-                color: var(--Neutral-07, #1A1D1F);
-                font-size: 13px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 24px;
-                letter-spacing: -0.13px;
-            }
-        }
-    }
+//             .export {
+//                 padding: 8px 16px;
+//                 gap: 8px;
+//                 border-radius: 8px;
+//                 border: 2px solid var(--Neutral-03, #EFEFEF);
+//                 background: var(--Neutral-01, #FCFCFC);
+//                 color: var(--Neutral-07, #1A1D1F);
+//                 font-size: 13px;
+//                 font-style: normal;
+//                 font-weight: 700;
+//                 line-height: 24px;
+//                 letter-spacing: -0.13px;
+//             }
+//         }
+//     }
 
-    .table-body {
-        padding: 20px;
+//     .table-body {
+//         padding: 20px;
 
-        .custom-table {
+//         .custom-table {
 
-            .thead {
-                background-color: green !important;
+//             .thead {
+//                 background-color: green !important;
 
-                tr {
-                    padding: 12px 24px !important;
+//                 tr {
+//                     padding: 12px 24px !important;
 
-                    th {
+//                     th {
 
-                        span {
-                            padding: 2px 8px;
-                            border-radius: 4px;
-                            background: var(--Neutral-04, #6F767E);
-                            color: var(--Neutral-00, #FFF);
-                            font-family: Inter;
-                            font-size: 13px;
-                            font-style: normal;
-                            font-weight: 500;
-                            line-height: 16px;
-                            letter-spacing: -0.13px;
-                        }
+//                         span {
+//                             padding: 2px 8px;
+//                             border-radius: 4px;
+//                             background: var(--Neutral-04, #6F767E);
+//                             color: var(--Neutral-00, #FFF);
+//                             font-family: Inter;
+//                             font-size: 13px;
+//                             font-style: normal;
+//                             font-weight: 500;
+//                             line-height: 16px;
+//                             letter-spacing: -0.13px;
+//                         }
 
-                        div {
-                            gap: 8px;
+//                         div {
+//                             gap: 8px;
 
-                            span {
-                                padding: 2px 8px;
-                                border-radius: 4px;
-                                background: var(--Neutral-04, #6F767E);
-                                color: var(--Neutral-00, #FFF);
-                                font-family: Inter;
-                                font-size: 13px;
-                                font-style: normal;
-                                font-weight: 500;
-                                line-height: 16px;
-                                letter-spacing: -0.13px;
-                            }
-                        }
+//                             span {
+//                                 padding: 2px 8px;
+//                                 border-radius: 4px;
+//                                 background: var(--Neutral-04, #6F767E);
+//                                 color: var(--Neutral-00, #FFF);
+//                                 font-family: Inter;
+//                                 font-size: 13px;
+//                                 font-style: normal;
+//                                 font-weight: 500;
+//                                 line-height: 16px;
+//                                 letter-spacing: -0.13px;
+//                             }
+//                         }
 
-                    }
-                }
-            }
+//                     }
+//                 }
+//             }
 
-            tbody {
+//             tbody {
 
-                tr {
-                    padding: 20px !important;
+//                 tr {
+//                     padding: 20px !important;
 
-                    th {}
+//                     th {}
 
-                    td {
-                        span {
-                            border-radius: 6px;
-                            background: var(--Secondary-04, #B5E4CA);
-                            padding: 2px 8px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+//                     td {
+//                         padding: 12px 24px !important;
 
-}
+//                         span {
+//                             border-radius: 6px;
+//                             background: var(--Secondary-04, #B5E4CA);
+//                             padding: 2px 8px;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+// }

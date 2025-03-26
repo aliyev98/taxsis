@@ -24,7 +24,7 @@ const SideBar = () => {
 
   const handleModuleClick = (module, index) => {
     if (index === 0) {
-      navigate("/panel");
+      navigate("/taxModule");
     } else {
       console.log(`Tıklanan modül: ${module.name}`);
     }

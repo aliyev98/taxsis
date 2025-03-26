@@ -1,293 +1,187 @@
-import React from 'react'
+// import React, { useState } from "react";
 
-const DataBaseTable = () => {
+// export default function DataBaseTable() {
+//   // 1) Sütun tanımları (her sütunun id, label, sıralama ve filtre durumu)
+//   const [columns, setColumns] = useState([
+//     { id: "no", label: "No", sortDirection: null, filterText: "" },
+//     { id: "voen", label: "VÖEN", sortDirection: null, filterText: "" },
+//     { id: "name", label: "Adı", sortDirection: null, filterText: "" },
+//     { id: "type", label: "Tipi", sortDirection: null, filterText: "" },
+//     { id: "status", label: "Vəziyyəti", sortDirection: null, filterText: "" },
+//     { id: "date", label: "Qaimə tarixi", sortDirection: null, filterText: "" },
+//   ]);
 
-  const clmns = [
-    { id: 1, content: 'No' },
-    { id: 2, content: 'VÖEN' },
-    { id: 3, content: 'Adı' },
-    { id: 4, content: 'Tipi' },
-    { id: 5, content: 'Vəziyyəti' },
-    { id: 6, content: 'Qaimə tarixi' },
-    { id: 7, content: 'Qaimə seriyası' },
-    { id: 8, content: 'Qaimə nömrəsi' },
-    { id: 9, content: 'Əsas qeyd' },
-    { id: 10, content: 'Əsas qeyd' },
-    { id: 11, content: 'Malın ƏDV - siz ümumi dəyəri' },
-    { id: 12, content: 'Malın ƏDV məbləği' },
-    { id: 14, content: 'ƏDV - yə cəlb edilən' },
-    { id: 15, content: 'ƏDV - yə cəlb edilməyən' },
-    { id: 16, content: 'ƏDV - dən azad olan' },
-    { id: 17, content: 'ƏDV - yə “0” dərəcə ilə cəlb edilən' },
-    { id: 18, content: 'Yol vergisi' },
-    { id: 19, content: 'Aksiz məbləği' },
-    { id: 20, content: 'Qaimə / Akt növləri' },
-    { id: 21, content: 'Növ' },
-    { id: 22, content: 'Təsnifat' },
-  ]
+//   // 2) Asıl tablo verisi (satırlar)
+//   const [tableData, setTableData] = useState([
+//     { no: 1, voen: "1406129621", name: "A", type: "Cari", status: "Təstiqləndi", date: "01.12.2024" },
+//     { no: 2, voen: "1406129621", name: "B", type: "Cari", status: "Təstiqləndi", date: "01.12.2024" },
+//     { no: 3, voen: "1406129621", name: "ATS FOOD MMC", type: "Cari", status: "Təstiqləndi", date: "01.12.2024" },
+//     { no: 4, voen: "1406129621", name: "ATS FOOD MMC", type: "Cari", status: "Təstiqləndi", date: "02.12.2024" },
+//     { no: 5, voen: "987654321",  name: "W",    type: "Cari", status: "Gözləyir",   date: "05.12.2024" },
+//   ]);
 
+//   // 3) Hangi sütun dropdown'ının açık olduğunu izlemek için
+//   const [openDropdownCol, setOpenDropdownCol] = useState(null);
 
-  return (
-    <div className='database-table'>
+//   // 4) Tek sütun sıralaması için hangi sütun sort'a sahip?
+//   // (Opsiyonel, eğer birden çok sütun aynı anda sort etmek istersen her col'da saklarsın, ama basitlik için tek kolonda)
+//   // Burada her kolonda sortDirection saklıyoruz. "asc" | "desc" | null
 
-      <div className="table-header d-flex justify-content-between">
+//   // 5) Sütun dropdown'ını açma/kapama
+//   const handleColumnMenuToggle = (colId) => {
+//     // Aynı sütuna tıklarsak kapat, farklıysa yeni aç
+//     setOpenDropdownCol(openDropdownCol === colId ? null : colId);
+//   };
 
-        <div className="title d-flex align-items-center">
-          <div className='color'></div>
-          <span>Alış qaimələri</span>
-        </div>
+//   // 6) Kullanıcı A->Z veya Z->A'yi seçtiğinde
+//   const handleSort = (colId, direction) => {
+//     // columns'u güncelle
+//     setColumns(prev => prev.map(c => {
+//       if (c.id === colId) {
+//         return { ...c, sortDirection: direction };
+//       } else {
+//         // tek kolonda sort'u etkin tutmak için diğer kolonların sortDirection'ını sıfırlayalım
+//         return { ...c, sortDirection: null };
+//       }
+//     }));
 
-        <div className="header-actions d-flex align-items-center">
+//     // menüyü kapat
+//     setOpenDropdownCol(null);
+//   };
 
-          <div className="dropdown dropdown-menu-end d-flex justify-content-end">
-            <button className="columns d-flex dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-              <span>Sütunlar</span>
-              <img src="./assets/layout-icon.svg" alt="" />
-            </button>
+//   // 7) Filtre metni girildiğinde
+//   const handleFilterChange = (colId, value) => {
+//     setColumns(prev => prev.map(c => c.id === colId ? { ...c, filterText: value } : c));
+//   };
 
-            <div className="dropdown-menu">
-              <div className="dropdown-title">Sütunları seçin</div>
+//   // 8) Filtre ve sıralamayı uygulayan fonksiyon
+//   const getProcessedData = () => {
+//     let processed = [...tableData];
 
-              <div className='items d-flex flex-column'>
+//     // a) Filtre uygulama (tüm kolonların filterText'ini uygula)
+//     columns.forEach(col => {
+//       if (col.filterText) {
+//         processed = processed.filter(row => {
+//           // satırdaki kolId değerini string'e çevirip, filtreText var mı diye bak
+//           const cellValue = String(row[col.id] ?? "").toLowerCase();
+//           const search = col.filterText.toLowerCase();
+//           return cellValue.includes(search);
+//         });
+//       }
+//     });
 
-                {
-                  clmns.map((clmn) => (
-                    <div key={clmn.id} className='item d-flex align-items-center'>
-                      <div className="input-div">
-                        <input type="checkbox" name="" id="" />
-                      </div>
-                      <span>{clmn.content}</span>
-                    </div>
-                  ))
-                }
+//     // b) Sıralama (tek kolon)
+//     const activeSortCol = columns.find(c => c.sortDirection !== null);
+//     if (activeSortCol) {
+//       processed.sort((a, b) => {
+//         const valA = String(a[activeSortCol.id] ?? "").toLowerCase();
+//         const valB = String(b[activeSortCol.id] ?? "").toLowerCase();
 
-              </div>
+//         if (valA < valB) return activeSortCol.sortDirection === "asc" ? -1 : 1;
+//         if (valA > valB) return activeSortCol.sortDirection === "asc" ? 1 : -1;
+//         return 0;
+//       });
+//     }
 
-            </div>
-          </div>
+//     return processed;
+//   };
 
-          <button className='export'>Export</button>
+//   const processedData = getProcessedData();
 
-        </div>
+//   return (
+//     <div className="database-table">
+//       {/* Üst kısım */}
+//       <div className="table-header d-flex justify-content-between">
+//         <div className="title d-flex align-items-center">
+//           <div className='color'></div>
+//           <span>Alış qaimələri</span>
+//         </div>
 
-      </div>
+//         <div className="header-actions d-flex align-items-center">
+//           {/* Diğer butonlar (Export vs.) */}
+//           <button className='export'>Export</button>
+//         </div>
+//       </div>
 
-      <div className="table-body">
+//       {/* Tablo */}
+//       <div className="table-body">
+//         <table className="table table-striped custom-table">
+//           <thead className="thead">
+//             <tr>
+//               {columns.map(col => (
+//                 <th key={col.id} scope="col" style={{ position: 'relative' }}>
+//                   {/* Kolon adı */}
+//                   <div
+//                     className='d-flex align-items-center'
+//                     style={{ cursor: 'pointer' }}
+//                     onClick={() => handleColumnMenuToggle(col.id)}
+//                   >
+//                     <span>{col.label}</span>
+//                     {/* basit sort indicator */}
+//                     {col.sortDirection === "asc" ? " 🔼" : col.sortDirection === "desc" ? " 🔽" : null}
+//                   </div>
 
-        <table class="table bg-danger table-striped custom-table">
+//                   {/* Eğer bu sütunun dropdown'ı açıksa */}
+//                   {openDropdownCol === col.id && (
+//                     <div
+//                       className="dropdown-menu"
+//                       style={{
+//                         display: 'block',
+//                         position: 'absolute',
+//                         top: '100%',
+//                         left: 0,
+//                         backgroundColor: '#fff',
+//                         border: '1px solid #ccc',
+//                         padding: '8px',
+//                         zIndex: 999,
+//                         width: '180px'
+//                       }}
+//                     >
+//                       {/* Filtre inputu */}
+//                       <div style={{ marginBottom: '8px' }}>
+//                         <label style={{ fontSize: '14px' }}>Axtarış:</label>
+//                         <input
+//                           type="text"
+//                           value={col.filterText}
+//                           onChange={e => handleFilterChange(col.id, e.target.value)}
+//                           style={{ width: '100%', marginTop: '4px' }}
+//                         />
+//                       </div>
 
-          <thead className='thead'>
-            <tr>
-              <th scope="col"><span>NO</span></th>
-              <th scope="col">
-                <div className='d-flex align-items-center'>
-                  <span>Voen</span>
-                  <img src="./assets/huni-icon.svg" alt="" />
-                </div>
-              </th>
-              <th scope="col">
-                <div className='d-flex align-items-center'>
-                  <span>Adı</span>
-                  <img src="./assets/huni-icon.svg" alt="" />
-                </div>
-              </th>
-              <th scope="col">
-                <div className='d-flex align-items-center'>
-                  <span>Tipi</span>
-                  <img src="./assets/huni-icon.svg" alt="" />
-                </div>
-              </th>
-              <th scope="col">
-                <div className='d-flex align-items-center'>
-                  <span>Vəziyyəti</span>
-                  <img src="./assets/huni-icon.svg" alt="" />
-                </div>
-              </th>
-              <th scope="col">
-                <div className='d-flex align-items-center'>
-                  <span>Qaimə tarixi</span>
-                  <img src="./assets/huni-icon.svg" alt="" />
-                </div>
-              </th>
-            </tr>
-          </thead>
+//                       {/* Sıralama butonları */}
+//                       <button
+//                         style={{ width: '100%', marginBottom: '4px' }}
+//                         onClick={() => handleSort(col.id, 'asc')}
+//                       >
+//                         A → Z
+//                       </button>
+                      
+//                       <button
+//                         style={{ width: '100%' }}
+//                         onClick={() => handleSort(col.id, 'desc')}
+//                       >
+//                         Z → A
+//                       </button>
+//                     </div>
+//                   )}
+//                 </th>
+//               ))}
+//             </tr>
+//           </thead>
 
-          <tbody>
-
-            <tr>
-              <th scope="row">1</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">1</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">2</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">3</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">4</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">5</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">6</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">7</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">8</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">9</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">10</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">11</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">12</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">13</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">14</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">15</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">16</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-            <tr>
-              <th scope="row">17</th>
-              <td>1406129621</td>
-              <td>“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ</td>
-              <td>Cari</td>
-              <td><span>Təstiqləndi</span></td>
-              <td>01.12.2024</td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-
-      </div>
-
-
-
-
-    </div>
-  )
-}
-
-export default DataBaseTable
+//           <tbody>
+//             {processedData.map((row, idx) => (
+//               <tr key={idx}>
+//                 {columns.map(col => (
+//                   <td key={col.id}>
+//                     {row[col.id]}
+//                   </td>
+//                 ))}
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// }

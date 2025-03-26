@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DatabaseHeader = () => {
+const TaxModuleHeader = () => {
     return (
         <div className='panel-header-container d-flex justify-content-between align-items-center'>
 
@@ -35,4 +35,4 @@ const DatabaseHeader = () => {
     )
 }
 
-export default DatabaseHeader
+export default TaxModuleHeader
