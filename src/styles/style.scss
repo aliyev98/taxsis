@@ -18,7 +18,7 @@
 @use './components/auth/signup/corporate/chooseCompany';
 @use './components/auth/signup/corporate/companyRegister';
 @use './components/auth/login/corporate/corporateLogin';
-@use './pages/social/feed.scss';
+@use './pages/social/feed';
 @use './layouts/feedHeader';
 @use './sidebars/feedSideBar';
 @use './components/social/feed/createPost';

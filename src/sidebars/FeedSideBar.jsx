@@ -32,6 +32,39 @@ const SideBar = () => {
 
   return (
     <div className='sidebar-container col-2'>
+
+      {/* <div className="accounts-dropdown dropdown">
+        <button
+          className="dropdown-toggle d-flex align-items-center justify-content-between"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <div className="selected-account d-flex align-items-center">
+            <div className="account-img">
+              <img src={selectedAccount.img} alt={selectedAccount.name} />
+            </div>
+            <span className="account-name">{selectedAccount.name}</span>
+          </div>
+        </button>
+
+        <ul className="dropdown-menu">
+          {accounts.map((account) => (
+            <li key={account.id}>
+              <button
+                className="dropdown-item d-flex align-items-center"
+                onClick={() => handleSelect(account)}
+              >
+                <div className="account-img">
+                  <img src={account.img} alt={account.name} />
+                </div>
+                <span className="account-name">{account.name}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div> */}
+
+
       {/* ... linked-accounts bölümü vs ... */}
 
       <div className="modules d-flex flex-column">
