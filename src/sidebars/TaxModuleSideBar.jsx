@@ -23,7 +23,7 @@ const TaxModuleSideBar = () => {
       'Xarici qalıqlar': 'external_balances',
       'Qeyri rezidentlər': 'non_residents',
       'Hesabatlar': 'reports',
-      'Üzləşmə aktları': 'settlement_acts',
+      'Üzləşmə aktları': 'confrontation_acts',
       'Qaimələr üzrə hesabat': 'invoice_report',
       'Pulun hərəkəti hesabatı': 'cash_flow',
       'Alış-satış hesabatı': 'sales_report',

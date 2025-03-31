@@ -18,3 +18,19 @@
     }
   }
 }
+
+
+.calendar-input input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.calendar-input {
+  cursor: pointer;
+}
+
+.calendar-popup {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
+}

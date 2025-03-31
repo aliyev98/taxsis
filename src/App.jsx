@@ -6,6 +6,7 @@ import Login from "./pages/auth/Login";
 import Feed from "./pages/social/Feed";
 import TaxModule from "./pages/modules/TaxModule";
 import Module from "./Module";
+import DateRangePicker from "./DateRangePicker";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/taxModule" element={<TaxModule />} />
         <Route path="/module" element={<Module />} />
+        <Route path="/calendar" element={<DateRangePicker />} />
       </Routes>
     </div>
   )

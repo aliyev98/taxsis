@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { purchaseData, actsData, replacedData, initialsData, advanceData, depositsData, onlineCashData, physicalColumns } from '../../constants/TableDatas';
+import { purchaseData, actsData, replacedData, initialsData, advanceData, depositsData, onlineCashData, physicalData, confrontationActsData } from '../../constants/TableDatas';
 import { data } from 'react-router-dom';
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   advanced: { data: advanceData },
   deposits: {data: depositsData},
   online: {data: onlineCashData},
-  physical: {data: physicalColumns},
+  physical: {data: physicalData},
+  confrontation: {data: confrontationActsData},
 };
 
 const tableDataSlice = createSlice({

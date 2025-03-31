@@ -484,3 +484,93 @@ export const physicalCashColumns = [
         },
     },
 ];
+
+export const confrontationActsColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    {
+        id: "date",
+        accessorKey: "date",
+        header: "Tarix",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "opr_type", accessorKey: "opr_type", header: "Əməliyyat növü",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "doc_num", accessorKey: "doc_num", header: "Sənəd nömrəsi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "debet_main", accessorKey: "debet_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "debet_vat", accessorKey: "debet_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "debet_total", accessorKey: "debet_total", header: "CƏmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "credit_main", accessorKey: "credit_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "credit_vat", accessorKey: "credit_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "credit_total", accessorKey: "credit_total", header: "CƏmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_main", accessorKey: "residue_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_total", accessorKey: "residue_total", header: "Cəmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+];

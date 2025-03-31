@@ -31,7 +31,11 @@
 @use './sidebars/taxModuleSideBar';
 @use './layouts/taxModuleContentHeader';
 @use './components/tables/taxModuleTable';
-@use './modals/addRowModal';
+@use './modals/modals';
+@use './layouts/reportsHeader';
+@use './layouts/reportsFooter';
+
+
 
 
 

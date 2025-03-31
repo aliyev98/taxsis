@@ -3,8 +3,7 @@
     border-radius: 12px;
     cursor: pointer;
     overflow: hidden;
-
-
+    min-height: 100vh;
 
     .table-header {
         padding: 24px;
@@ -26,7 +25,17 @@
         }
 
         .right-side {
-            gap: 16px;
+
+            .buttons {
+                display: flex;
+                gap: 8px;
+
+            }
+
+            .save {
+                background-color: #2A85FF;
+                color: #FCFCFC;
+            }
 
             button {
                 background-color: transparent;
@@ -42,6 +51,12 @@
             }
 
             .export {
+                font-size: 13px;
+                font-weight: 700;
+                color: #1A1D1F;
+            }
+
+            .custom-btn {
                 font-size: 13px;
                 font-weight: 700;
                 color: #1A1D1F;
@@ -106,8 +121,37 @@
         scrollbar-width: none !important;
         scroll-behavior: smooth;
         min-height: 300px;
+
         .custom-table {
             width: 100%;
+
+            .group-header {
+
+                .group-title {
+                    border-right: 1px solid #6F767E;
+                    padding: 0 20px !important;
+
+                    &:last-child {
+                        border-right: none !important;
+                    }
+
+                    &:first-child {
+
+                        div {
+                            padding: 8px 8px 8px 58px !important;
+                        }
+                    }
+
+                    div {
+                        background-color: #B5E4CA;
+                        padding: 8px 8px 8px 12px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        border-radius: 4px;
+                    }
+                }
+            }
+
 
             thead {
 
@@ -225,8 +269,59 @@
         }
     }
 
+    .empty-message {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translate(-50%);
+        padding-top: 48px;
+        gap: 20px;
 
+        .icon {
+            background-color: #B5E4CA;
+            padding: 40px;
+            border-radius: 50%;
+            font-size: 48px;
+            width: fit-content;
+        }
 
+        .message {
+
+            span {
+                text-align: center;
+            }
+
+            span:first-child {
+                font-size: 32px;
+                font-weight: 600;
+                color: #1A1D1F;
+                margin-bottom: 8px;
+            }
+
+            span:nth-child(2) {
+                color: #33383F;
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+
+            span:nth-child(3) {
+                font-size: 15px;
+                font-weight: 600;
+                color: #6F767E;
+            }
+
+        }
+
+        .filter {
+            padding: 12px 20px;
+            border-radius: 12px;
+            background-color: #2A85FF;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
 
     .approved {
         background-color: #B5E4CA;

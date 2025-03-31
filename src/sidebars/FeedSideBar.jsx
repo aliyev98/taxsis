@@ -31,41 +31,113 @@ const SideBar = () => {
   };
 
   return (
+
     <div className='sidebar-container col-2'>
 
-      {/* <div className="accounts-dropdown dropdown">
-        <button
-          className="dropdown-toggle d-flex align-items-center justify-content-between"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <div className="selected-account d-flex align-items-center">
-            <div className="account-img">
-              <img src={selectedAccount.img} alt={selectedAccount.name} />
+      <div className="linked-accounts d-flex flex-column">
+
+        <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
+
+        <div className="dropdown custom-dropdown">
+
+          <button className="dropdown-toggle selected-account d-flex justify-content-between align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            <div className="left-side d-flex align-items-center">
+              <div className="account-img">
+                <img src="./assets/account-img1.png" alt="" />
+              </div>
+
+              <div className="account-name">
+                <span>ACCFIN Group</span>
+              </div>
             </div>
-            <span className="account-name">{selectedAccount.name}</span>
+
+            <div className="dropdown-icon">
+              <img src="./assets/dropdown-icon.svg" alt="" />
+            </div>
+
+          </button>
+
+          <ul className="dropdown-menu accounts dropdown-menu-end">
+
+            <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
+
+            <li>
+
+              <button className='account d-flex justify-content-between align-items-center'>
+
+                <div className="left-side d-flex align-items-center">
+
+                  <div className="account-img">
+                    <img src="./assets/account-img1.png" alt="" />
+                  </div>
+
+                  <div className="account-name">
+                    <span>ACCFIN Group</span>
+                  </div>
+
+                </div>
+
+              </button>
+
+            </li>
+
+            <li>
+
+              <button className='account d-flex justify-content-between align-items-center'>
+
+                <div className="left-side d-flex align-items-center">
+
+                  <div className="account-img">
+                    <img src="./assets/account-img1.png" alt="" />
+                  </div>
+
+                  <div className="account-name">
+                    <span>ACFA MMC</span>
+                  </div>
+
+                </div>
+
+              </button>
+
+            </li>
+
+            <li>
+
+              <button className='account d-flex justify-content-between align-items-center'>
+
+                <div className="left-side d-flex align-items-center">
+
+                  <div className="account-img">
+                    <img src="./assets/account-img1.png" alt="" />
+                  </div>
+
+                  <div className="account-name">
+                    <span>Innova Co</span>
+                  </div>
+
+                </div>
+
+              </button>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+        <button className="add-account d-flex align-items-center">
+
+          <div className="icon">
+            <img src="./assets/post-add-icon.svg" alt="" />
           </div>
+
+          <span>Hesab əlavə et</span>
         </button>
 
-        <ul className="dropdown-menu">
-          {accounts.map((account) => (
-            <li key={account.id}>
-              <button
-                className="dropdown-item d-flex align-items-center"
-                onClick={() => handleSelect(account)}
-              >
-                <div className="account-img">
-                  <img src={account.img} alt={account.name} />
-                </div>
-                <span className="account-name">{account.name}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+      </div>
 
-
-      {/* ... linked-accounts bölümü vs ... */}
+      <div className="line"></div>
 
       <div className="modules d-flex flex-column">
         <div className="title">VERGİ MODULU</div>

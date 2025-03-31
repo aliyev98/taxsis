@@ -62,7 +62,7 @@ const AddRowModal = ({ show, onClose, title, columns }) => {
             </div>
 
             <div className="modal-footer">
-              <button onClick={onClose} type="button" className="btn btn-primary btn-add">
+              <button onClick={onClose} type="button" className="btn btn-primary">
                 Əlavə et
               </button>
             </div>

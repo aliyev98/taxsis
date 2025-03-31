@@ -30,11 +30,12 @@ const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns }) => {
         <div className="title">{title}</div>
 
         <div className="header-actions d-flex align-items-center gap-2 position-relative">
-          {headerBtns.map((btn) =>
+
+          {headerBtns?.map((btn) =>
             btn.className === "add" ? (
               <div key={btn.id} className="position-relative">
                 <button
-                  className={btn.className}
+                  className={`d-flex align-items-center ${btn.className}`}
                   onClick={() => setShowDropdown(!showDropdown)}
                 >
                   {btn.content}
@@ -51,10 +52,10 @@ const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns }) => {
                         key={item.id}
                         className="dropdown-item"
                         onClick={() => {
-                          dispatch(setNavbarSelection(item.id)); // ✅ Navbar'ı güncelle
-                          setSelectedNavForModal(item.content); // ✅ Modal başlığı için
+                          dispatch(setNavbarSelection(item.id));
+                          setSelectedNavForModal(item.content);
                           setShowDropdown(false);
-                          setShowModal(true); // ✅ Modal aç
+                          setShowModal(true);
                         }}
                       >
                         {item.content}
@@ -64,11 +65,20 @@ const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns }) => {
                 )}
               </div>
             ) : (
-              <button key={btn.id} className={btn.className}>
+              <button key={btn.id} className={`d-flex align-items-center ${btn.className}`}>
+                {btn.className === "filter" && (
+                  <img
+                    src="./assets/huni-icon.svg"
+                    alt="filter icon"
+                    style={{ width: 16, height: 16, marginRight: 6 }}
+                  />
+                )}
                 {btn.content}
               </button>
             )
           )}
+
+
         </div>
       </div>
 

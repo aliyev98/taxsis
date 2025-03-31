@@ -1,0 +1,60 @@
+.reports-header {
+    margin-bottom: 12px;
+    padding: 24px;
+    gap: 20px;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #1A1D1F;
+
+    }
+
+    textarea {
+        border: none;
+        outline: none;
+        resize: none;
+        background-color: transparent;
+        font-size: 15px;
+        font-weight: 500;
+        color: #1A1D1F;
+    }
+
+    .date {
+        font-size: 24px;
+        font-weight: 600;
+        width: 100%;
+    }
+
+    div {
+        .location {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .period {
+            gap: 15px;
+
+            span {
+                color: #1A1D1F;
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            input {
+                width: 19ch !important;
+                font-weight: 500;
+                font-size: 15px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .calendar-popup {
+        position: absolute;
+        top: 200px;
+        z-index: 999;
+    }
+
+}
