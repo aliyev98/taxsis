@@ -8,6 +8,8 @@ import Deposits from '../../components/modules/tax/Deposits';
 import CashOperations from '../../components/modules/tax/CashOperations';
 import Reports from '../../components/modules/tax/Reports';
 import ConfrontationActs from '../../components/modules/tax/ConfrontationActs';
+import InvoiceReports from '../../components/modules/tax/InvoiceReports';
+import CashFlowStatement from '../../components/modules/tax/CashFlowSatatement';
 
 
 const TaxModule = () => {
@@ -34,6 +36,10 @@ const TaxModule = () => {
                 {sidebarSelection === "reports" && <Reports />}
 
                 {sidebarSelection === "confrontation_acts" && <ConfrontationActs />}
+
+                {sidebarSelection === "invoice_reports" && <InvoiceReports />}
+
+                {sidebarSelection === "cash_flow" && <CashFlowStatement />}
 
 
             </div>

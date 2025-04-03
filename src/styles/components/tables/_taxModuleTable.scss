@@ -116,6 +116,27 @@
         }
     }
 
+    .infos {
+        padding: 0px 24px 20px 24px;
+        gap: 40px;
+
+        .info {
+            gap: 8px;
+            span:first-child {
+                color: #6F767E;
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            span:nth-child(2){
+                color: #1A1D1F;
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+        }
+    }
+
     .table-div {
         overflow-x: auto;
         scrollbar-width: none !important;
@@ -337,5 +358,13 @@
         width: fit-content;
         color: #EFEFEF;
     }
+
+    .group-header-row {
+        background-color: #B1E5FC !important;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
 
 }

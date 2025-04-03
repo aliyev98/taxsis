@@ -26,7 +26,15 @@ const ConfrontationActs = () => {
 
     const headerBtns = [
         { id: 1, content: "Filterlə", className: "filter", icon: "./assets/huni-icon.svg" },
+
     ];
+
+    const colSpans = [
+        {id: 1, content: "KONTRAGENT", col: 4},
+        {id: 2, content: "DEBET", col: 3},
+        {id: 3, content: "KREDİT", col: 3},
+        {id: 4, content: "Qalıq", col: 3},
+    ]
 
     const navBtns = [
         { id: "creditor", content: "Kreditor" },
@@ -76,10 +84,10 @@ const ConfrontationActs = () => {
         <div className="invoices-container content">
 
             <TaxModuleContentHeader title="Üzləşmə aktları" navBtns={navBtns} headerBtns={headerBtns} />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} reportsHeader={reportsHeader} isEditing={isEditing} setIsEditing={setIsEditing}
+            <TaxModuleTable columns={columns} data={data} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} isEditing={isEditing} setIsEditing={setIsEditing}
                 customHeaderButtons={
                     <>
-                        <button onClick={()=> setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
+                        <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
                         <button className="btn custom-btn">Çap et</button>
                         <button className="btn custom-btn">Göndər</button>
                     </>

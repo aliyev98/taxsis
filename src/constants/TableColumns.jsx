@@ -525,7 +525,7 @@ export const confrontationActsColumns = [
         },
     },
     {
-        id: "debet_total", accessorKey: "debet_total", header: "CƏmi",
+        id: "debet_total", accessorKey: "debet_total", header: "Cəmi",
         filterOptions: {
             type: "search",
             search: true,
@@ -546,7 +546,7 @@ export const confrontationActsColumns = [
         },
     },
     {
-        id: "credit_total", accessorKey: "credit_total", header: "CƏmi",
+        id: "credit_total", accessorKey: "credit_total", header: "Cəmi",
         filterOptions: {
             type: "search",
             search: true,
@@ -568,6 +568,235 @@ export const confrontationActsColumns = [
     },
     {
         id: "residue_total", accessorKey: "residue_total", header: "Cəmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+];
+
+export const onPurchasesColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    {
+        id: "date",
+        accessorKey: "date",
+        header: "Qaimə tarixi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "ivoice_num", accessorKey: "ivoice_num", header: "Qaimə nömrəsi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    //////
+    {
+        id: "invoice_main", accessorKey: "invoice_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "invoice_vat", accessorKey: "invoice_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "invoice_total", accessorKey: "invoice_total", header: "Cəmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "closed_main", accessorKey: "closed_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "closed_vat", accessorKey: "closed_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "closed_total", accessorKey: "closed_total", header: "Cəmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_main", accessorKey: "residue_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "residue_total", accessorKey: "residue_total", header: "Cəmi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+];
+
+export const cashFlowColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    {
+        id: "name",
+        accessorKey: "name",
+        header: "Adı",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "vat", accessorKey: "vat", header: "VÖEN",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "bank_main", accessorKey: "bank_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "bank_vat", accessorKey: "bank_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "bank_final", accessorKey: "bank_final", header: "Yekun",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "vat_main", accessorKey: "vat_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "vat_vat", accessorKey: "vat_vat", header: "Ədv",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "vat_final", accessorKey: "vat_final", header: "Yekun",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "safe_main", accessorKey: "safe_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "safe_vat", accessorKey: "safe_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "safe_final", accessorKey: "safe_final", header: "Yekun",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "total_main", accessorKey: "total_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "total_vat", accessorKey: "total_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "total_final", accessorKey: "total_final", header: "Yekun",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "should_main", accessorKey: "should_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "should_vat", accessorKey: "should_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "should_final", accessorKey: "should_final", header: "Yekun",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    }, {
+        id: "distinction_main", accessorKey: "distinction_main", header: "Əsas",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "distinction_vat", accessorKey: "distinction_vat", header: "ƏDV",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "distinction_final", accessorKey: "distinction_final", header: "Yekun",
         filterOptions: {
             type: "search",
             search: true,

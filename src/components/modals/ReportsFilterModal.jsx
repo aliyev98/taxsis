@@ -15,10 +15,8 @@ const ReportsFilterModal = ({ onClose }) => {
         let value = e.target.value;
 
         if (selectedValue === "name") {
-            // Sadece harfler (A-Z, a-z, boşluk ve Türk/Azərbaycan xarakterləri dahil)
             value = value.replace(/[^A-Za-zƏəĞğİıÖöŞşÜüÇç\s]/g, "");
         } else if (selectedValue === "vat") {
-            // Sadece rakamlar
             value = value.replace(/\D/g, "");
         }
 

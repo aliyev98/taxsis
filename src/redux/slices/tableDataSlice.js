@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { purchaseData, actsData, replacedData, initialsData, advanceData, depositsData, onlineCashData, physicalData, confrontationActsData } from '../../constants/TableDatas';
+import { purchaseData, actsData, replacedData, initialsData, advanceData, depositsData, onlineCashData, physicalData, confrontationActsData, onPurchaseData, cashFlowsData } from '../../constants/TableDatas';
 import { data } from 'react-router-dom';
 
 const initialState = {
@@ -12,6 +12,8 @@ const initialState = {
   online: {data: onlineCashData},
   physical: {data: physicalData},
   confrontation: {data: confrontationActsData},
+  onPurchase: {data: onPurchaseData},
+  cashFlows: {data: cashFlowsData}
 };
 
 const tableDataSlice = createSlice({

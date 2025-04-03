@@ -1,49 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // 🔁 path’i kendi yapına göre güncelle
+
+const labelToPageKeyMap = {
+  'Qaimələr': 'invoices',
+  'Əvəzləşmə reyestri': 'substitution_register',
+  'Deopzit çıxarışları': 'deposits',
+  'Bank çıxarışları': 'bank_statements',
+  'Kassa əməliyyatları': 'cash_ops',
+  'Gömrük sənədləri': 'customs',
+  'Şirkət bazası': 'company_base',
+  'Vergi hesabatları': 'tax_reports',
+  'İlkin qalıqlar': 'initial_balances',
+  'Daxili qalıqlar': 'internal_balances',
+  'Xarici qalıqlar': 'external_balances',
+  'Qeyri rezidentlər': 'non_residents',
+  'Hesabatlar': 'reports',
+  'Üzləşmə aktları': 'confrontation_acts',
+  'Qaimələr üzrə hesabat': 'invoice_reports',
+  'Pulun hərəkəti hesabatı': 'cash_flow',
+  'Alış-satış hesabatı': 'sales_report',
+  'Gəlir və xərc hesabatı': 'profit_loss',
+  'Borclar cədvəli': 'debt_table',
+  'Vergi uçotu': 'tax_accounting',
+  'Əvəzləşmə': 'substitution',
+  'ƏDV bildirişi': 'vat_statement',
+  'Müqayisəli təhlil': 'comparison_analysis',
+  'Analizlər': 'analyses',
+  'Parametrlər': 'parameters',
+  'Bank hesabı': 'bank_account',
+  'Xərc maddəsi': 'expense_item',
+  'Aktiv maddəsi': 'asset_item',
+  'Gəlir maddəsi': 'income_item',
+};
+
+const accordionMap = {
+  database: [
+    'Qaimələr', 'Əvəzləşmə reyestri', 'Deopzit çıxarışları', 'Bank çıxarışları',
+    'Kassa əməliyyatları', 'Gömrük sənədləri', 'Şirkət bazası',
+    'Vergi hesabatları', 'İlkin qalıqlar', 'Daxili qalıqlar', 'Xarici qalıqlar', 'Qeyri rezidentlər'
+  ],
+  reports: [
+    'Üzləşmə aktları', 'Qaimələr üzrə hesabat', 'Pulun hərəkəti hesabatı',
+    'Alış-satış hesabatı', 'Gəlir və xərc hesabatı', 'Borclar cədvəli'
+  ],
+  accounting: ['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'],
+  analyses: ['Analizlər'],
+  params: ['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'],
+};
+
+const getAccordionIdForLabel = (label) => {
+  for (const [id, items] of Object.entries(accordionMap)) {
+    if (items.includes(label)) return id;
+  }
+  return null;
+};
 
 const TaxModuleSideBar = () => {
   const dispatch = useDispatch();
   const [activeButton, setActiveButton] = useState('Qaimələr');
 
+  useEffect(() => {
+    const stored = localStorage.getItem('taxModuleSidebarSelection');
+    if (stored) {
+      setActiveButton(stored);
+      const selectedKey = labelToPageKeyMap[stored];
+      if (selectedKey) dispatch(setSidebarSelection(selectedKey));
+
+      const accordionId = getAccordionIdForLabel(stored);
+      if (accordionId) {
+        const element = document.getElementById(accordionId);
+        if (element && !element.classList.contains('show')) {
+          setTimeout(() => {
+            const collapse = new window.bootstrap.Collapse(element, { toggle: true });
+            collapse.show();
+          }, 0);
+        }
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem('taxModuleSidebarSelection', activeButton);
+  }, [activeButton]);
+
   const handleButtonClick = (label) => {
     setActiveButton(label);
-
-    const labelToPageKeyMap = {
-      'Qaimələr': 'invoices',
-      'Əvəzləşmə reyestri': 'substitution_register',
-      'Deopzit çıxarışları': 'deposits',
-      'Bank çıxarışları': 'bank_statements',
-      'Kassa əməliyyatları': 'cash_ops',
-      'Gömrük sənədləri': 'customs',
-      'Şirkət bazası': 'company_base',
-      'Vergi hesabatları': 'tax_reports',
-      'İlkin qalıqlar': 'initial_balances',
-      'Daxili qalıqlar': 'internal_balances',
-      'Xarici qalıqlar': 'external_balances',
-      'Qeyri rezidentlər': 'non_residents',
-      'Hesabatlar': 'reports',
-      'Üzləşmə aktları': 'confrontation_acts',
-      'Qaimələr üzrə hesabat': 'invoice_report',
-      'Pulun hərəkəti hesabatı': 'cash_flow',
-      'Alış-satış hesabatı': 'sales_report',
-      'Gəlir və xərc hesabatı': 'profit_loss',
-      'Borclar cədvəli': 'debt_table',
-      'Vergi uçotu': 'tax_accounting',
-      'Əvəzləşmə': 'substitution',
-      'ƏDV bildirişi': 'vat_statement',
-      'Müqayisəli təhlil': 'comparison_analysis',
-      'Analizlər': 'analyses',
-      'Parametrlər': 'parameters',
-      'Bank hesabı': 'bank_account',
-      'Xərc maddəsi': 'expense_item',
-      'Aktiv maddəsi': 'asset_item',
-      'Gəlir maddəsi': 'income_item',
-    };
+    localStorage.setItem('taxModuleSidebarSelection', label);
 
     const selectedKey = labelToPageKeyMap[label];
-    if (selectedKey) {
-      dispatch(setSidebarSelection(selectedKey));
+    if (selectedKey) dispatch(setSidebarSelection(selectedKey));
+
+    const accordionId = getAccordionIdForLabel(label);
+    if (accordionId) {
+      const element = document.getElementById(accordionId);
+      if (element && !element.classList.contains('show')) {
+        const collapse = new window.bootstrap.Collapse(element, { toggle: true });
+        collapse.show();
+      }
     }
   };
 
@@ -51,11 +105,13 @@ const TaxModuleSideBar = () => {
     <div className="tax-module-sidebar d-flex flex-column">
       <div className="accordion" id="accordionPanelsStayOpenExample">
         {/* Logo alanı */}
-        <div className="sidebar-header d-flex align-items-center"
+        <div
+          className="sidebar-header d-flex align-items-center"
           data-bs-toggle="collapse"
           data-bs-target="#general"
           aria-expanded="true"
-          aria-controls="general">
+          aria-controls="general"
+        >
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
               <img src="./assets/logo.svg" alt="" />

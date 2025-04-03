@@ -4,12 +4,13 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import ReportsFilterModal from "../modals/ReportsFilterModal";
 import ReportsHeader from "../../layouts/ReportsHeader";
 import ReportsFooter from "../../layouts/ReportsFooter";
+import { info } from "sass";
 
-export default function TaxModuleTable({ columns, data, title, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible }) {
+export default function TaxModuleTable({ columns, data, title, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible, colSpans, infos, infosHeader }) {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [columnVisibility, setColumnVisibility] = useState(
     columns.reduce((acc, col) => {
@@ -200,6 +201,23 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
         </div>
       )}
 
+      {infosHeader === true &&
+
+        (
+          <div className="infos d-flex">
+
+            {infos?.map((info) => (
+              <div className="info d-flex" key={info.id}>
+                <span>{info.title}</span>
+                <span>{info.content}</span>
+              </div>
+            ))}
+
+          </div>
+        )
+      }
+
+
       {reportsHeader && (
         <ReportsHeader isEditing={isEditing} />
       )}
@@ -207,18 +225,16 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
 
       <div className="table-div">
         <table className="tables custom-table">
+
           <thead>
-            {/* ✅ Grup Başlıkları her zaman gösterilir */}
             {showGroupedHeader && (
               <tr className="group-header">
-                <th colSpan={4} className="group-title"><div>KONTRAGENT</div></th>
-                <th colSpan={3} className="group-title"><div>DEBET</div></th>
-                <th colSpan={3} className="group-title"><div>KREDİT</div></th>
-                <th colSpan={3} className="group-title"><div>QALIQ</div></th>
+                {colSpans?.map((span) => (
+                  <th key={span.id} colSpan={span.col} className="group-title"><div>{span.content}</div></th>
+                ))}
               </tr>
             )}
 
-            {/* ✅ Normal Başlıklar her zaman gösterilir */}
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
                 {hg.headers.map((header) => {
@@ -282,15 +298,38 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
 
           <tbody>
             {finalData.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))
+              finalData.map((row, rowIndex) => {
+                // Grup başlık satırı
+                if (row.isGroupHeader) {
+                  const colCount = table.getAllLeafColumns().length;
+                  const remainingCols = colCount - 2;
+
+                  return (
+                    <tr key={`group-${rowIndex}`} className="group-header-row">
+                      <td colSpan={2}>
+                        <strong>{row.groupName}</strong>
+                      </td>
+                      {Array.from({ length: remainingCols }).map((_, i) => (
+                        <td key={`empty-${i}`} />
+                      ))}
+                    </tr>
+                  );
+                }
+
+                // Normal veri satırı
+                const tableRow = table.getRowModel().rows.find((r) => r.original === row);
+                if (!tableRow) return null;
+
+                return (
+                  <tr key={tableRow.id}>
+                    {tableRow.getVisibleCells().map((cell) => (
+                      <td key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })
             ) : emptyMessageVisible ? (
               <tr>
                 <td colSpan={table.getAllLeafColumns().length}>
@@ -304,12 +343,16 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
                         düyməsinə klik edib uyğun parametrləri seçin
                       </span>
                     </div>
-                    <button onClick={() => setShowFilterModal(true)} className="btn btn-primary filter">Hesabatları filterlə</button>
+                    <button onClick={() => setShowFilterModal(true)} className="btn btn-primary filter">
+                      Hesabatları filterlə
+                    </button>
                   </div>
                 </td>
               </tr>
             ) : null}
           </tbody>
+
+
         </table>
       </div>
 

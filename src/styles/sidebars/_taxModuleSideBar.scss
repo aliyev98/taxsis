@@ -143,6 +143,10 @@
             background-color: #EFEFEF !important;
             position: relative;
             border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700 !important;
+            color: #1A1D1F !important;
+            box-shadow: 0px .5px #6F767E !important; 
 
             &::after {
                 content: '';
