@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { cashFlowColumns, onPurchasesColumns } from "../../../constants/TableColumns";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const CashFlowStatement = () => {
 
@@ -92,10 +93,18 @@ const CashFlowStatement = () => {
 
         <div className="invoices-container content">
 
-            <TaxModuleContentHeader title="Üzləşmə aktları" navBtns={navBtns} headerBtns={headerBtns} columns={columns} />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
-                showGroupedHeader={showGroupedHeader} colSpans={colSpans} infos = {infos} infosHeader = {infosHeader}
+            <TaxModuleHeader
+                title="Pulun hərəkəti hesabatı"
+                headerBtns={headerBtns}
+                columns={columns}
+                navBtns={navBtns}
             />
+
+            <div className="table">
+                <TaxModuleTable columns={columns} navBtns={navBtns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
+                    showGroupedHeader={showGroupedHeader} colSpans={colSpans} infos={infos} infosHeader={infosHeader} />
+            </div>
+
 
         </div>
 

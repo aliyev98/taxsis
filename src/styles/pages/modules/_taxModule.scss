@@ -1,20 +1,42 @@
 .module-container {
-    min-height: 100vh;
     overflow: hidden !important;
     scrollbar-width: none !important;
 
-
     .content-wrapper {
         width: 80%;
-        gap: 12px;
         background-color: #efefef;
 
-
         .content {
-            padding: 0 40px 40px 40px;
-            gap: 16px;
             display: flex;
             flex-direction: column;
+            gap: 24px;
+
+            .table {
+                padding: 0 40px;
+                background-color: #efefef;
+                border-radius: 20px !important;
+            }
         }
     }
 }
+
+
+// .module-container {
+//     min-height: 100vh;
+//     overflow: hidden !important;
+//     scrollbar-width: none !important;
+
+
+//     .content-wrapper {
+//         width: 80%;
+//         gap: 12px;
+//         background-color: #efefef;
+
+
+//         .content {
+//             gap: 16px;
+//             display: flex;
+//             flex-direction: column;
+//         }
+//     }
+// }

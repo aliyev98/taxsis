@@ -1,0 +1,74 @@
+.table-header {
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 12px 6px;
+
+    .left-side {
+        gap: 16px;
+
+        .nav-links {
+            gap: 8px;
+
+            button {
+                padding: 8px 16px;
+                font-size: 13px;
+                font-weight: 700;
+                border: 2px solid #EFEFEF;
+                background-color: #FCFCFC;
+                border-radius: 8px;
+            }
+
+            .active {
+                background-color: #272B30;
+                color: #FCFCFC;
+            }
+
+        }
+
+    }
+
+    .right-side {
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+
+        }
+
+        .save {
+            background-color: #2A85FF;
+            color: #FCFCFC;
+        }
+
+        button {
+            background-color: transparent;
+            padding: 8px 16px;
+            gap: 8px;
+            color: #6F767E;
+            font-size: 14px;
+            font-weight: 600;
+            border: 3px solid #EFEFEF;
+            border-radius: 8px;
+
+
+        }
+
+        .export {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1A1D1F;
+        }
+
+        .custom-btn {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1A1D1F;
+        }
+
+        .btn-columns {
+            position: relative;
+
+        }
+    }
+
+}

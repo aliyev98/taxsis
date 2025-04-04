@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
-import TaxModuleTable from "../../../components/tables/TaxModuleTable";
+import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { depositsColumns } from "../../../constants/TableColumns";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const Invoices = () => {
 
@@ -12,7 +13,7 @@ const Invoices = () => {
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
 
     useEffect(() => {
-        if (sidebarSelection === "deposits") {
+        if (sidebarSelection === "deposits_extracts") {
             dispatch(setNavbarSelection(""));
         }
     }, [sidebarSelection, dispatch]);
@@ -30,7 +31,7 @@ const Invoices = () => {
     ];
 
     const navBtns = [
-        ];
+    ];
 
 
     // switch (navbarSelection) {
@@ -46,14 +47,21 @@ const Invoices = () => {
     // }
 
     return (
-        <div className="invoices-container content">
-            <TaxModuleContentHeader
+        <div className="content">
+
+            <TaxModuleHeader
                 title="Çıxarışlar"
-                navBtns={navBtns}
                 headerBtns={headerBtns}
                 columns={columns}
+                navBtns={navBtns}
             />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} />
+
+
+            <div className="table">
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} />
+            </div>
+
+
         </div>
     );
 };

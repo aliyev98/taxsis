@@ -34,6 +34,12 @@
 @use './modals/modals';
 @use './layouts/reportsHeader';
 @use './layouts/reportsFooter';
+@use './layouts/tableHeader';
+@use './components/dropdowns/columnFilterDropdown';
+@use './components/dropdowns/columnVisibilityDropdown';
+@use './components/modals/addRowModal';
+
+
 
 
 

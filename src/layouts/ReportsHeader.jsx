@@ -52,52 +52,61 @@ const ReportsHeader = ({ isEditing }) => {
     };
 
     return (
-        <div className="reports-header d-flex flex-column position-relative">
-            <input
-                type="text"
-                className="date"
-                value={reportHeaderValues.dateText}
-                onChange={(e) => handleReportHeaderChange("dateText", e.target.value)}
-                readOnly={!isEditing}
-            />
+        <div className="reports-header d-flex flex-column justify-content-center">
 
-            <div className='d-flex align-items-center justify-content-between'>
+            <div className="a  d-flex flex-column position-relative">
 
                 <input
                     type="text"
-                    className="location"
-                    value={reportHeaderValues.location}
-                    onChange={(e) => handleReportHeaderChange("location", e.target.value)}
+                    className="date"
+                    value={reportHeaderValues.dateText}
+                    onChange={(e) => handleReportHeaderChange("dateText", e.target.value)}
                     readOnly={!isEditing}
                 />
 
-                <div className="period d-flex align-items-center position-relative">
-                    <span>ÜZLƏŞMƏ DÖVRÜ:</span>
+                <div className='d-flex align-items-center justify-content-between'>
+
                     <input
                         type="text"
-                        value={reportHeaderValues.period}
-                        onClick={() => isEditing && setShowCalendar(!showCalendar)}
-                        readOnly
+                        className="location"
+                        value={reportHeaderValues.location}
+                        onChange={(e) => handleReportHeaderChange("location", e.target.value)}
+                        readOnly={!isEditing}
                     />
-                    {showCalendar && (
-                        <div className="calendar-popup" ref={calendarRef}>
-                            <DateRange
-                                editableDateInputs={true}
-                                onChange={handleCalendarChange}
-                                moveRangeOnFirstSelection={false}
-                                ranges={range}
-                            />
-                        </div>
-                    )}
+
+                    <div className="period d-flex align-items-center position-relative">
+                        <span>ÜZLƏŞMƏ DÖVRÜ:</span>
+                        <input
+                            type="text"
+                            value={reportHeaderValues.period}
+                            onClick={() => isEditing && setShowCalendar(!showCalendar)}
+                            readOnly
+                        />
+                        {showCalendar && (
+                            <div className="calendar-popup" ref={calendarRef}>
+                                <DateRange
+                                    editableDateInputs={true}
+                                    onChange={handleCalendarChange}
+                                    moveRangeOnFirstSelection={false}
+                                    ranges={range}
+                                />
+                            </div>
+                        )}
+                    </div>
+
                 </div>
+
+                <textarea
+                    value={reportHeaderValues.description}
+                    onChange={(e) => handleReportHeaderChange("description", e.target.value)}
+                    readOnly={!isEditing}
+                />
 
             </div>
 
-            <textarea
-                value={reportHeaderValues.description}
-                onChange={(e) => handleReportHeaderChange("description", e.target.value)}
-                readOnly={!isEditing}
-            />
+            <div className='header-colspan text-center'>
+                <span>"GÜVƏN LUX" MMC məlumatlarına əsasən, AZN</span>
+            </div>
         </div>
     );
 };

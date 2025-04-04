@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { confrontationActsColumns } from "../../../constants/TableColumns";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const ConfrontationActs = () => {
 
@@ -25,15 +26,15 @@ const ConfrontationActs = () => {
     }, [sidebarSelection, dispatch]);
 
     const headerBtns = [
-        { id: 1, content: "Filterlə", className: "filter", icon: "./assets/huni-icon.svg" },
+        { id: 1, content: "Filterlə", className: "filter", icon: "./assets/filter-light-icon.svg" },
 
     ];
 
     const colSpans = [
-        {id: 1, content: "KONTRAGENT", col: 4},
-        {id: 2, content: "DEBET", col: 3},
-        {id: 3, content: "KREDİT", col: 3},
-        {id: 4, content: "Qalıq", col: 3},
+        { id: 1, content: "KONTRAGENT", col: 4 },
+        { id: 2, content: "DEBET", col: 3 },
+        { id: 3, content: "KREDİT", col: 3 },
+        { id: 4, content: "Qalıq", col: 3 },
     ]
 
     const navBtns = [
@@ -83,17 +84,27 @@ const ConfrontationActs = () => {
 
         <div className="invoices-container content">
 
-            <TaxModuleContentHeader title="Üzləşmə aktları" navBtns={navBtns} headerBtns={headerBtns} />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} isEditing={isEditing} setIsEditing={setIsEditing}
-                customHeaderButtons={
-                    <>
-                        <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
-                        <button className="btn custom-btn">Çap et</button>
-                        <button className="btn custom-btn">Göndər</button>
-                    </>
-                }
-                showGroupedHeader={showGroupedHeader}
+
+            <TaxModuleHeader
+                title="Üzləşmə aktları"
+                headerBtns={headerBtns}
+                columns={columns}
+                navBtns={navBtns}
             />
+
+            <div className="table">
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} isEditing={isEditing} setIsEditing={setIsEditing}
+                    customHeaderButtons={
+                        <>
+                            <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
+                            <button className="btn custom-btn">Çap et</button>
+                            <button className="btn custom-btn">Göndər</button>
+                        </>
+                    }
+                    showGroupedHeader={showGroupedHeader}
+                />
+            </div>
+
 
         </div>
 

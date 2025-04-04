@@ -1,54 +1,64 @@
 .reports-header {
     margin-bottom: 12px;
-    padding: 24px;
-    gap: 20px;
+    padding: 20px;
+    padding-bottom: 0;
+    padding-top: 10px;
+    background-color: #fff;
 
-    input {
-        border: none;
-        outline: none;
-        background-color: transparent;
-        color: #1A1D1F;
+    .a {
+        gap: 20px;
+        padding-bottom: 24px;
 
+
+        input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #1A1D1F;
+
+        }
+
+        div {
+            .location {
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            .period {
+                gap: 15px;
+
+                span {
+                    color: #1A1D1F;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+
+                input {
+                    width: 19ch !important;
+                    font-weight: 500;
+                    font-size: 15px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        textarea {
+            border: none;
+            outline: none;
+            resize: none;
+            background-color: transparent;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1A1D1F;
+            width: 100%;
+        }
     }
 
-    textarea {
-        border: none;
-        outline: none;
-        resize: none;
-        background-color: transparent;
-        font-size: 15px;
-        font-weight: 500;
-        color: #1A1D1F;
-    }
 
     .date {
         font-size: 24px;
         font-weight: 600;
         width: 100%;
-    }
-
-    div {
-        .location {
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .period {
-            gap: 15px;
-
-            span {
-                color: #1A1D1F;
-                font-size: 15px;
-                font-weight: 500;
-            }
-
-            input {
-                width: 19ch !important;
-                font-weight: 500;
-                font-size: 15px;
-                cursor: pointer;
-            }
-        }
     }
 
     .calendar-popup {
@@ -57,4 +67,17 @@
         z-index: 999;
     }
 
+    .header-colspan {
+        background-color: red;
+        border-radius: 4px;
+        background: var(--Secondary-02, #CABDFF);
+
+
+        span {
+            color: #000;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+        }
+    }
 }

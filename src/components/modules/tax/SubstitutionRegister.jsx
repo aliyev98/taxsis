@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { advanceColumns, initialsColumns, replacedColumns } from "../../../constants/TableColumns";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const SubstitutionRegister = () => {
 
@@ -71,9 +72,19 @@ const SubstitutionRegister = () => {
     }
 
     return (
-        <div className="invoices-container content">
-            <TaxModuleContentHeader title="Əvəzləşmə Reyestri" navBtns={navBtns} headerBtns={headerBtns} columns={columns} />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} />
+        <div className="content">
+
+            <TaxModuleHeader
+                title="Əvəzləşmə reyestri"
+                headerBtns={headerBtns}
+                columns={columns}
+                navBtns={navBtns}
+            />
+
+            <div className="table">
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} />
+            </div>
+
 
         </div>
     );

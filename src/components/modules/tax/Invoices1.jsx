@@ -6,7 +6,7 @@ import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { purchaseColumns, actsColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
-const Invoices = () => {
+const Invoices1 = () => {
 
     const dispatch = useDispatch();
 
@@ -27,7 +27,6 @@ const Invoices = () => {
     const headerBtns = [
         { id: 1, content: "Şablonu yüklə", className: "download" },
         { id: 2, content: "İmport et", className: "import" },
-        { id: 3, content: "Əlavə et", className: "add" }
     ];
 
     const navBtns = [
@@ -73,26 +72,21 @@ const Invoices = () => {
     }
 
     return (
-        <div className="invoices-container content">
+        <div className="content">
 
-            {/* <TaxModuleContentHeader
+            <TaxModuleHeader
                 title="Qaimələr"
-                navBtns={navBtns}
                 headerBtns={headerBtns}
                 columns={columns}
-            /> */}
-
-            <TaxModuleHeader
             />
 
+            <div className="table">
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} />
+            </div>
 
-            <TaxModuleHeader
-                navBtns={navBtns}
-                columns={columns} />
 
-            <TaxModuleTable columns={columns} data={data} navBtns={navBtns} />
         </div>
-    );
-};
+    )
+}
 
-export default Invoices;
+export default Invoices1

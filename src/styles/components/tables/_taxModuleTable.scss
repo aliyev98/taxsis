@@ -1,120 +1,10 @@
 .table-container {
     background-color: #FCFCFC;
-    border-radius: 12px;
     cursor: pointer;
     overflow: hidden;
     min-height: 100vh;
+    border-radius: 8px;
 
-    .table-header {
-        padding: 24px;
-
-        .left-side {
-            gap: 16px;
-
-            .color {
-                width: 16px;
-                height: 32px;
-                background-color: #B1E5FC;
-            }
-
-            .title {
-                font-size: 20px;
-                font-weight: 600;
-                color: #1A1D1F;
-            }
-        }
-
-        .right-side {
-
-            .buttons {
-                display: flex;
-                gap: 8px;
-
-            }
-
-            .save {
-                background-color: #2A85FF;
-                color: #FCFCFC;
-            }
-
-            button {
-                background-color: transparent;
-                padding: 8px 16px;
-                gap: 8px;
-                color: #6F767E;
-                font-size: 14px;
-                font-weight: 600;
-                border: 3px solid #EFEFEF;
-                border-radius: 8px;
-
-
-            }
-
-            .export {
-                font-size: 13px;
-                font-weight: 700;
-                color: #1A1D1F;
-            }
-
-            .custom-btn {
-                font-size: 13px;
-                font-weight: 700;
-                color: #1A1D1F;
-            }
-
-            .btn-columns {
-                position: relative;
-
-            }
-
-            .column-dropdown-menu {
-                top: 60px;
-                padding: 16px !important;
-                gap: 8px;
-                background-color: white;
-                border-radius: 16px;
-                min-width: 200px;
-                right: 90px;
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    width: 0;
-                    height: 0;
-                    border-left: 10px solid transparent;
-                    border-right: 10px solid transparent;
-                    border-bottom: 10px solid white;
-                    right: 30px;
-                    top: -10px;
-                }
-
-                .dropdown-title {
-                    color: #1A1D1F;
-                    font-size: 16px;
-                    font-weight: 600;
-                    margin-bottom: 8px;
-                }
-
-                .column-inputs {
-
-                    label {
-                        font-size: 14px;
-                        font-weight: 600;
-                        display: flex;
-                        align-items: center;
-
-                        input {
-                            width: 24px;
-                            height: 24px;
-                            margin-right: 8px;
-                        }
-                    }
-
-                }
-            }
-        }
-    }
 
     .infos {
         padding: 0px 24px 20px 24px;
@@ -122,13 +12,14 @@
 
         .info {
             gap: 8px;
+
             span:first-child {
                 color: #6F767E;
                 font-size: 15px;
                 font-weight: 500;
             }
 
-            span:nth-child(2){
+            span:nth-child(2) {
                 color: #1A1D1F;
                 font-size: 15px;
                 font-weight: 600;
@@ -173,7 +64,6 @@
                 }
             }
 
-
             thead {
 
                 tr {
@@ -213,77 +103,6 @@
                         padding: 16px 24px !important;
                         font-weight: 600;
                         font-size: 14px;
-                    }
-                }
-            }
-
-            .filter-dropdown {
-                padding: 24px !important;
-                width: fit-content;
-                border-radius: 16px;
-                border: none;
-                box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.2);
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    width: 0;
-                    height: 0;
-                    border-left: 10px solid transparent;
-                    border-right: 10px solid transparent;
-                    border-bottom: 10px solid white;
-                    left: 30px;
-                    top: -9px;
-                }
-
-                .dropdown-title {
-                    font-size: 15px;
-                    font-weight: 600;
-                    margin-bottom: 12px;
-                    color: #1A1D1F;
-                }
-
-                label {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                }
-
-                img {
-                    width: 24px;
-                    height: 24px;
-                }
-
-                .search-input {
-                    gap: 12px;
-                    background-color: #f4f4f4;
-                    padding: 8px !important;
-                    border-radius: 12px;
-                    margin-bottom: 20px !important;
-
-                    input {
-                        border: none;
-                        outline: none;
-                        background-color: #f4f4f4;
-                        font-size: 15px;
-                        color: #9A9FA5;
-                        font-weight: 600;
-                    }
-                }
-
-                .checkbox-div {
-                    margin-bottom: 8px;
-
-                    input {
-                        margin-right: 8px;
-                        width: 24px;
-                        height: 24px;
-                    }
-
-                    label {
-                        gap: 8px;
-                        font-size: 14px;
-                        font-weight: 600;
                     }
                 }
             }
@@ -365,6 +184,5 @@
         font-size: 15px;
         text-transform: uppercase;
     }
-
 
 }

@@ -3,6 +3,7 @@ import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const SubstitutionRegister = () => {
 
@@ -47,8 +48,19 @@ const SubstitutionRegister = () => {
 
     return (
         <div className="invoices-container content">
-            <TaxModuleContentHeader title="Hesabatlar" navBtns={navBtns} />
-            <TaxModuleTable columns={[]} data={[]} title={tableTitle} emptyMessageVisible={true}  />
+
+
+
+            <TaxModuleHeader
+                title="Hesabatlar"
+                headerBtns={headerBtns}
+                columns={[]}
+                navBtns={navBtns}
+            />
+
+            <div className="table">
+                <TaxModuleTable columns={[]} data={[]} navBtns={navBtns} title={tableTitle} emptyMessageVisible={true} />
+            </div>
 
         </div>
     );

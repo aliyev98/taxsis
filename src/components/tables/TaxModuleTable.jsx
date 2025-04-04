@@ -4,13 +4,17 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import ReportsFilterModal from "../modals/ReportsFilterModal";
 import ReportsHeader from "../../layouts/ReportsHeader";
 import ReportsFooter from "../../layouts/ReportsFooter";
-import { info } from "sass";
+import { useDispatch } from "react-redux";
+import { setNavbarSelection } from "../../redux/slices/taxModuleSlice";
+import ColumnFilterDropdown from "../dropdwons/ColumnFilterDropdown";
+import ColumnVisibilityDropdown from "../dropdwons/ColumnVisibilityDropdown";
+import TableHeader from "../../layouts/TableHeader";
 
-export default function TaxModuleTable({ columns, data, title, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible, colSpans, infos, infosHeader }) {
+
+export default function TaxModuleTable({ columns, data, title, navBtns, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible, colSpans, infos, infosHeader }) {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [columnVisibility, setColumnVisibility] = useState(
     columns.reduce((acc, col) => {
@@ -127,79 +131,30 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
   };
 
   return (
+
     <div className="position-relative table-container">
 
+
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
       {finalData.length > 0 && (
-        <div className="table-header d-flex align-items-center justify-content-between">
 
-          <div className="left-side d-flex align-items-center">
-            <div className="color"></div>
-            <div className="title">{title}</div>
-          </div>
-
-          <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-
-            <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-              {isEditing ? (
-                <button className="btn btn-primary save"
-                  onClick={() => {
-                    setIsEditing(!isEditing)
-                  }}
-                >
-                  Dəyişiklikləri yadda saxla
-                </button>
-              ) : (
-                <div className="buttons d-flex align-items-center">
-                  <button
-                    className="btn-columns d-flex align-items-center"
-                    onClick={() => setShowColumnMenu((p) => !p)}
-                  >
-                    <span>Sütunlar</span>
-                    <img src="./assets/layout-icon.svg" alt="" />
-                  </button>
-
-                  {customHeaderButtons && customHeaderButtons}
-
-                  <button className="export">Export</button>
-
-                  {showColumnMenu && (
-                    <div
-                      className="column-dropdown-menu dropend show d-flex flex-column"
-                      style={{
-                        display: "block",
-                        position: "absolute",
-                        zIndex: 999,
-                      }}
-                    >
-                      <div className="dropdown-title">Sütunları seçin</div>
-
-                      {table.getAllLeafColumns().map((col) => {
-                        const colDef = columns.find((c) => c.accessorKey === col.id);
-                        const labelText = colDef?.header || col.id;
-
-                        return (
-                          <div className="column-inputs d-flex flex-column" key={col.id}>
-                            <label className="dropdown-item">
-                              <input
-                                type="checkbox"
-                                checked={col.getIsVisible?.() ?? true}
-                                onChange={col.getToggleVisibilityHandler()}
-                              />
-                              {labelText}
-                            </label>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-          </div>
-
-        </div>
+        <TableHeader
+          ColumnVisibilityDropdown={ColumnVisibilityDropdown}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          columnDropdownRef={columnDropdownRef}
+          setShowColumnMenu={setShowColumnMenu}
+          showColumnMenu={showColumnMenu}
+          customHeaderButtons={customHeaderButtons}
+          ColumnVisibilityDropdow={ColumnVisibilityDropdown}
+          table={table}
+          columns={columns}
+          navBtns={navBtns}
+        />
       )}
+
+
 
       {infosHeader === true &&
 
@@ -247,47 +202,10 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
                       </div>
 
                       {openDropdown === colKey && filterOpts && (
-                        <div ref={filterDropdownRef} className="dropdown-menu filter-dropdown show" style={{
-                          display: "block",
-                          position: "absolute",
-                          top: "100%",
-                          left: 0,
-                          zIndex: 1000,
-                        }} onClick={(e) => e.stopPropagation()}>
-                          <div className="dropdown-title">
-                            {columns.find((c) => c.accessorKey === colKey)?.header || colKey}
-                          </div>
-
-                          {filterOpts.search && (
-                            <div className="search-input d-flex align-items-center">
-                              <img src="./assets/search-icon.svg" alt="" />
-                              <input
-                                type="text"
-                                placeholder="Axtar..."
-                                value={filters[colKey]?.search || ""}
-                                onChange={(e) => handleSearchChange(colKey, e.target.value)}
-                              />
-                            </div>
-                          )}
-
-                          {filterOpts.options?.map((option) => (
-                            <div className="checkbox-div d-flex" key={option}>
-                              <input
-                                type="checkbox"
-                                className="form-check-input"
-                                id={`${colKey}-${option}`}
-                                checked={filters[colKey]?.options?.includes(option) || false}
-                                onChange={() => handleCheckboxChange(colKey, option)}
-                              />
-                              <label className="form-check-label d-flex align-items-center" htmlFor={`${colKey}-${option}`}>
-                                {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
-                                  <img src="./assets/alphabet-filter.png" alt="" style={{ width: 14, height: 14, marginRight: 6 }} />
-                                )}
-                                {option}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
+                        <ColumnFilterDropdown colKey={colKey} filterOpts={filterOpts} filters={filters} handleSearchChange={handleSearchChange}
+                          handleCheckboxChange={handleCheckboxChange}
+                          filterDropdownRef={filterDropdownRef}
+                        />
                       )}
                     </th>
                   );
@@ -299,7 +217,6 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
           <tbody>
             {finalData.length > 0 ? (
               finalData.map((row, rowIndex) => {
-                // Grup başlık satırı
                 if (row.isGroupHeader) {
                   const colCount = table.getAllLeafColumns().length;
                   const remainingCols = colCount - 2;
@@ -333,6 +250,7 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
             ) : emptyMessageVisible ? (
               <tr>
                 <td colSpan={table.getAllLeafColumns().length}>
+
                   <div className="empty-message d-flex flex-column align-items-center py-5">
                     <div className="icon"><span>🧮</span></div>
                     <div className="message d-flex flex-column align-items-center">
@@ -347,6 +265,7 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
                       Hesabatları filterlə
                     </button>
                   </div>
+                  
                 </td>
               </tr>
             ) : null}
@@ -356,12 +275,10 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
         </table>
       </div>
 
-
       {showFilterModal && <ReportsFilterModal onClose={() => setShowFilterModal(false)} />}
 
       {reportsHeader && (
         <ReportsFooter />
-
       )}
 
 

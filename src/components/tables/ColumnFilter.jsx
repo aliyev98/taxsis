@@ -4,7 +4,6 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import ReportsFilterModal from "../modals/ReportsFilterModal";
 import ReportsHeader from "../../layouts/ReportsHeader";
 import ReportsFooter from "../../layouts/ReportsFooter";

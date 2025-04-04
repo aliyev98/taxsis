@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
 import AddRowModal from "../components/modals/AddRowModal"; // ✅ Modal import
 
-const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns }) => {
+const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns, }) => {
   const dispatch = useDispatch();
   const activeNav = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
@@ -24,7 +24,7 @@ const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns }) => {
   }, []);
 
   return (
-    <div className="content-header d-flex flex-column position-relative">
+    <div className="content-header bg-danger d-flex flex-column position-relative">
       {/* 📌 HEADER */}
       <div className="header d-flex justify-content-between align-items-center">
         <div className="title">{title}</div>

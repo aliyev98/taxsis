@@ -64,7 +64,7 @@ const ReportsFilterModal = ({ onClose }) => {
     }, [showCalendar]);
 
     return (
-        <div className="modal show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+        <div className="modal show overflow-hidden d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
 
             <div className="modal-dialog w-50" role="document">
 

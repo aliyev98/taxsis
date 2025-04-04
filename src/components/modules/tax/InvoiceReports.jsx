@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { confrontationActsColumns, onPurchasesColumns } from "../../../constants/TableColumns";
+import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const ConfrontationActs = () => {
 
@@ -82,10 +83,20 @@ const ConfrontationActs = () => {
 
         <div className="invoices-container content">
 
-            <TaxModuleContentHeader title="Üzləşmə aktları" navBtns={navBtns} headerBtns={headerBtns} columns={columns} />
-            <TaxModuleTable columns={columns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
-                showGroupedHeader={showGroupedHeader} colSpans={colSpans}
+
+            <TaxModuleHeader
+                title="Qaimələr üzrə hesabat"
+                headerBtns={headerBtns}
+                columns={columns}
+                navBtns={navBtns}
             />
+
+            <div className="table">
+                <TaxModuleTable columns={columns} navBtns={navBtns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
+                    showGroupedHeader={showGroupedHeader} colSpans={colSpans} />
+            </div>
+
+
 
         </div>
 

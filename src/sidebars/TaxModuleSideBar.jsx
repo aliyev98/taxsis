@@ -1,117 +1,64 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // 🔁 path’i kendi yapına göre güncelle
-
-const labelToPageKeyMap = {
-  'Qaimələr': 'invoices',
-  'Əvəzləşmə reyestri': 'substitution_register',
-  'Deopzit çıxarışları': 'deposits',
-  'Bank çıxarışları': 'bank_statements',
-  'Kassa əməliyyatları': 'cash_ops',
-  'Gömrük sənədləri': 'customs',
-  'Şirkət bazası': 'company_base',
-  'Vergi hesabatları': 'tax_reports',
-  'İlkin qalıqlar': 'initial_balances',
-  'Daxili qalıqlar': 'internal_balances',
-  'Xarici qalıqlar': 'external_balances',
-  'Qeyri rezidentlər': 'non_residents',
-  'Hesabatlar': 'reports',
-  'Üzləşmə aktları': 'confrontation_acts',
-  'Qaimələr üzrə hesabat': 'invoice_reports',
-  'Pulun hərəkəti hesabatı': 'cash_flow',
-  'Alış-satış hesabatı': 'sales_report',
-  'Gəlir və xərc hesabatı': 'profit_loss',
-  'Borclar cədvəli': 'debt_table',
-  'Vergi uçotu': 'tax_accounting',
-  'Əvəzləşmə': 'substitution',
-  'ƏDV bildirişi': 'vat_statement',
-  'Müqayisəli təhlil': 'comparison_analysis',
-  'Analizlər': 'analyses',
-  'Parametrlər': 'parameters',
-  'Bank hesabı': 'bank_account',
-  'Xərc maddəsi': 'expense_item',
-  'Aktiv maddəsi': 'asset_item',
-  'Gəlir maddəsi': 'income_item',
-};
-
-const accordionMap = {
-  database: [
-    'Qaimələr', 'Əvəzləşmə reyestri', 'Deopzit çıxarışları', 'Bank çıxarışları',
-    'Kassa əməliyyatları', 'Gömrük sənədləri', 'Şirkət bazası',
-    'Vergi hesabatları', 'İlkin qalıqlar', 'Daxili qalıqlar', 'Xarici qalıqlar', 'Qeyri rezidentlər'
-  ],
-  reports: [
-    'Üzləşmə aktları', 'Qaimələr üzrə hesabat', 'Pulun hərəkəti hesabatı',
-    'Alış-satış hesabatı', 'Gəlir və xərc hesabatı', 'Borclar cədvəli'
-  ],
-  accounting: ['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'],
-  analyses: ['Analizlər'],
-  params: ['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'],
-};
-
-const getAccordionIdForLabel = (label) => {
-  for (const [id, items] of Object.entries(accordionMap)) {
-    if (items.includes(label)) return id;
-  }
-  return null;
-};
+import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // sidebar selection redux
 
 const TaxModuleSideBar = () => {
   const dispatch = useDispatch();
-  const [activeButton, setActiveButton] = useState('Qaimələr');
 
-  useEffect(() => {
-    const stored = localStorage.getItem('taxModuleSidebarSelection');
-    if (stored) {
-      setActiveButton(stored);
-      const selectedKey = labelToPageKeyMap[stored];
-      if (selectedKey) dispatch(setSidebarSelection(selectedKey));
-
-      const accordionId = getAccordionIdForLabel(stored);
-      if (accordionId) {
-        const element = document.getElementById(accordionId);
-        if (element && !element.classList.contains('show')) {
-          setTimeout(() => {
-            const collapse = new window.bootstrap.Collapse(element, { toggle: true });
-            collapse.show();
-          }, 0);
-        }
-      }
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem('taxModuleSidebarSelection', activeButton);
-  }, [activeButton]);
+  const [activeButton, setActiveButton] = useState('invoices');
 
   const handleButtonClick = (label) => {
+
     setActiveButton(label);
-    localStorage.setItem('taxModuleSidebarSelection', label);
+
+    const labelToPageKeyMap = {
+      'Qaimələr': 'invoices',
+      'Əvəzləşmə reyestri': 'substitution_register',
+      'Depozit çıxarışları': 'deposits_extracts',
+      'Bank çıxarışları': 'bank_extracts',
+      'Kassa əməliyyatları': 'cash_opr',
+      'Gömrük sənədləri': 'custom_doc',
+      'Şirkət bazası': 'company_base',
+      'Vergi hesabatları': 'tax_reports',
+      'İlkin qalıqlar': 'initial_residue',
+      'Daxili qalıqlar': 'internal_residue',
+      'Xarici qalıqlar': 'external_residue',
+      'Qeyri rezidentlər': 'non_residents',
+      'Hesabatlar': 'reports',
+      'Üzləşmə aktları': 'confrontation_acts',
+      'Qaimələr üzrə hesabat': 'invoice_reports',
+      'Pulun hərəkəti hesabatı': 'cash_flow',
+      'Alış-satış hesabatı': 'sales_reports',
+      'Gəlir və xərc hesabatı': 'income_reports',
+      'Borclar cədvəli': 'debts',
+      'Vergi uçotu': 'tax_accounting',
+      'Əvəzləşmə': 'substitution',
+      'ƏDV bildirişi': 'vat_notice',
+      'Müqayisəli təhlil': 'comparative_analysis',
+      'Analizlər': 'analyses',
+      'Parametrlər': 'parameters',
+      'Bank hesabı': 'bank_account',
+      'Xərc maddəsi': 'expense_item',
+      'Aktiv maddəsi': 'active_item',
+      'Gəlir maddəsi': 'income_item',
+    };
 
     const selectedKey = labelToPageKeyMap[label];
-    if (selectedKey) dispatch(setSidebarSelection(selectedKey));
-
-    const accordionId = getAccordionIdForLabel(label);
-    if (accordionId) {
-      const element = document.getElementById(accordionId);
-      if (element && !element.classList.contains('show')) {
-        const collapse = new window.bootstrap.Collapse(element, { toggle: true });
-        collapse.show();
-      }
+    if (selectedKey) {
+      dispatch(setSidebarSelection(selectedKey));
     }
   };
 
   return (
     <div className="tax-module-sidebar d-flex flex-column">
+
       <div className="accordion" id="accordionPanelsStayOpenExample">
-        {/* Logo alanı */}
-        <div
-          className="sidebar-header d-flex align-items-center"
+
+        <div className="sidebar-header d-flex align-items-center"
           data-bs-toggle="collapse"
           data-bs-target="#general"
           aria-expanded="true"
-          aria-controls="general"
-        >
+          aria-controls="general">
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
               <img src="./assets/logo.svg" alt="" />
@@ -144,11 +91,12 @@ const TaxModuleSideBar = () => {
           </button>
 
           <div id="database" className="accordion-collapse collapse">
+            
             <div className="menu">
               {[
                 'Qaimələr',
                 'Əvəzləşmə reyestri',
-                'Deopzit çıxarışları',
+                'Depozit çıxarışları',
                 'Bank çıxarışları',
                 'Kassa əməliyyatları',
                 'Gömrük sənədləri',
@@ -183,6 +131,7 @@ const TaxModuleSideBar = () => {
                   İlkin qalıqlar
                 </button>
               </div>
+
             </div>
 
             <div id="remains" className="accordion-collapse collapse submenu">

@@ -1,0 +1,78 @@
+.table-container {
+
+    .table-div {
+        .custom-table {
+            .filter-dropdown {
+                padding: 24px !important;
+                width: fit-content;
+                border-radius: 16px;
+                border: none;
+                box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.2);
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-bottom: 10px solid white;
+                    left: 30px;
+                    top: -9px;
+                }
+
+                .dropdown-title {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                    color: #1A1D1F;
+                }
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .search-input {
+                    gap: 12px;
+                    background-color: #f4f4f4;
+                    padding: 8px !important;
+                    border-radius: 12px;
+                    margin-bottom: 20px !important;
+
+                    input {
+                        border: none;
+                        outline: none;
+                        background-color: #f4f4f4;
+                        font-size: 15px;
+                        color: #9A9FA5;
+                        font-weight: 600;
+                    }
+                }
+
+                .checkbox-div {
+                    margin-bottom: 8px;
+
+                    input {
+                        margin-right: 8px;
+                        width: 24px;
+                        height: 24px;
+                    }
+
+                    label {
+                        gap: 8px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 import TaxModuleSideBar from '../../sidebars/TaxModuleSideBar'
 import TaxModuleHeader from '../../layouts/TaxModuleHeader';
-import Invoices from '../../components/modules/tax/Invoices'
+import Invoices1 from '../../components/modules/tax/Invoices1'
 import { useSelector } from "react-redux";
 import SubstitutionRegister from '../../components/modules/tax/SubstitutionRegister';
-import Deposits from '../../components/modules/tax/Deposits';
+import DepositExtracts from '../../components/modules/tax/DepositExtracts';
 import CashOperations from '../../components/modules/tax/CashOperations';
 import Reports from '../../components/modules/tax/Reports';
 import ConfrontationActs from '../../components/modules/tax/ConfrontationActs';
@@ -21,17 +21,17 @@ const TaxModule = () => {
 
             <TaxModuleSideBar />
 
+
             <div className="content-wrapper d-flex flex-column">
 
-                <TaxModuleHeader />
 
-                {sidebarSelection === "invoices" && <Invoices />}
+                {sidebarSelection === "invoices" && <Invoices1 />}
 
                 {sidebarSelection === 'substitution_register' && <SubstitutionRegister />}
 
-                {sidebarSelection === "deposits" && <Deposits />}
+                {sidebarSelection === "deposits_extracts" && <DepositExtracts />}
 
-                {sidebarSelection === "cash_ops" && <CashOperations />}
+                {sidebarSelection === "cash_opr" && <CashOperations />}
 
                 {sidebarSelection === "reports" && <Reports />}
 
@@ -40,7 +40,6 @@ const TaxModule = () => {
                 {sidebarSelection === "invoice_reports" && <InvoiceReports />}
 
                 {sidebarSelection === "cash_flow" && <CashFlowStatement />}
-
 
             </div>
 

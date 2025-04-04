@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    sidebarSelection: "invoices", // 📌 **Başlangıç Sidebar Seçimi**
+    sidebarSelection: "deposits", // 📌 **Başlangıç Sidebar Seçimi**
     navbarSelection: "purchase",  // 📌 **Başlangıç Navbar Seçimi**
 };
 
