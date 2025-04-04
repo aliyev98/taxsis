@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // sidebar selection redux
+import { setSidebarSelection } from '../redux/slices/taxModuleSlice';
 
 const TaxModuleSideBar = () => {
   const dispatch = useDispatch();
 
-  const [activeButton, setActiveButton] = useState('invoices');
+  // ✅ 1) İlk dəyər localStorage-dan oxunur
+  const [activeButton, setActiveButton] = useState(() => {
+    return localStorage.getItem("activeButton") || "Qaimələr";
+  });
+
+  // ✅ 2) Hər dəfə dəyişdikdə localStorage-a yaz
+  useEffect(() => {
+    localStorage.setItem("activeButton", activeButton);
+  }, [activeButton]);
 
   const handleButtonClick = (label) => {
-
     setActiveButton(label);
 
     const labelToPageKeyMap = {
+      // ... map ...
       'Qaimələr': 'invoices',
       'Əvəzləşmə reyestri': 'substitution_register',
       'Depozit çıxarışları': 'deposits_extracts',
@@ -41,6 +49,7 @@ const TaxModuleSideBar = () => {
       'Xərc maddəsi': 'expense_item',
       'Aktiv maddəsi': 'active_item',
       'Gəlir maddəsi': 'income_item',
+      'Məlumat bazası': 'invoices',
     };
 
     const selectedKey = labelToPageKeyMap[label];
@@ -49,16 +58,26 @@ const TaxModuleSideBar = () => {
     }
   };
 
+  // Bu listdə "Məlumat bazası" da olacaqsa açıq saxlamalı olacaqsan
+  const databaseItems = [
+    'Məlumat bazası',
+    'Qaimələr',
+    'Əvəzləşmə reyestri',
+    // ... və s.
+  ];
+  const isDatabaseOpen = databaseItems.includes(activeButton);
+
   return (
     <div className="tax-module-sidebar d-flex flex-column">
-
       <div className="accordion" id="accordionPanelsStayOpenExample">
 
-        <div className="sidebar-header d-flex align-items-center"
+        <div
+          className="sidebar-header d-flex align-items-center"
           data-bs-toggle="collapse"
           data-bs-target="#general"
           aria-expanded="true"
-          aria-controls="general">
+          aria-controls="general"
+        >
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
               <img src="./assets/logo.svg" alt="" />
@@ -76,13 +95,12 @@ const TaxModuleSideBar = () => {
         </div>
 
         <div id="general" className="accordion-collapse collapse show">
-          {/* Məlumat bazası */}
           <button
-            className={`accordion-button collapsed ${activeButton === 'Məlumat bazası' ? 'active' : ''}`}
+            className={`accordion-button ${isDatabaseOpen ? '' : 'collapsed'} ${isDatabaseOpen ? 'active' : ''}`}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#database"
-            aria-expanded="false"
+            aria-expanded={isDatabaseOpen ? 'true' : 'false'}
             aria-controls="database"
             onClick={() => handleButtonClick('Məlumat bazası')}
           >
@@ -90,8 +108,10 @@ const TaxModuleSideBar = () => {
             <span>Məlumat bazası</span>
           </button>
 
-          <div id="database" className="accordion-collapse collapse">
-            
+          <div
+            id="database"
+            className={`accordion-collapse collapse ${isDatabaseOpen ? 'show' : ''}`}
+          >
             <div className="menu">
               {[
                 'Qaimələr',
@@ -101,7 +121,7 @@ const TaxModuleSideBar = () => {
                 'Kassa əməliyyatları',
                 'Gömrük sənədləri',
                 'Şirkət bazası',
-                'Vergi hesabatları'
+                'Vergi hesabatları',
               ].map((item, i) => (
                 <div key={i}>
                   <img src="./assets/tree-icon.svg" alt="" />
@@ -114,7 +134,6 @@ const TaxModuleSideBar = () => {
                 </div>
               ))}
 
-              {/* İlkin qalıqlar */}
               <div
                 className="accordion-butto collapsed"
                 type="button"
@@ -131,7 +150,6 @@ const TaxModuleSideBar = () => {
                   İlkin qalıqlar
                 </button>
               </div>
-
             </div>
 
             <div id="remains" className="accordion-collapse collapse submenu">
@@ -186,7 +204,7 @@ const TaxModuleSideBar = () => {
                 'Pulun hərəkəti hesabatı',
                 'Alış-satış hesabatı',
                 'Gəlir və xərc hesabatı',
-                'Borclar cədvəli'
+                'Borclar cədvəli',
               ].map((item, i) => (
                 <div key={i}>
                   <img src="./assets/tree-icon.svg" alt="" />
@@ -265,12 +283,7 @@ const TaxModuleSideBar = () => {
 
           <div id="params" className="accordion-collapse collapse">
             <div className="menu">
-              {[
-                'Bank hesabı',
-                'Xərc maddəsi',
-                'Aktiv maddəsi',
-                'Gəlir maddəsi'
-              ].map((item, i) => (
+              {['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'].map((item, i) => (
                 <div key={i}>
                   <img src="./assets/tree-icon.svg" alt="" />
                   <button
@@ -283,6 +296,7 @@ const TaxModuleSideBar = () => {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>

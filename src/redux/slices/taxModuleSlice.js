@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    sidebarSelection: "deposits", // 📌 **Başlangıç Sidebar Seçimi**
-    navbarSelection: "purchase",  // 📌 **Başlangıç Navbar Seçimi**
+    sidebarSelection: localStorage.getItem("sidebarSelection") || "invoices",
+    navbarSelection: localStorage.getItem("navbarSelection") || "purchase",
 };
 
 const selectionSlice = createSlice({
@@ -12,6 +12,7 @@ const selectionSlice = createSlice({
         // 📌 **Sidebar Seçimini Günceller**
         setSidebarSelection: (state, action) => {
             state.sidebarSelection = action.payload;
+            localStorage.setItem("sidebarSelection", action.payload);
         },
         // 📌 **Navbar Seçimini Günceller**
         setNavbarSelection: (state, action) => {

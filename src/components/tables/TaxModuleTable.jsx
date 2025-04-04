@@ -202,7 +202,7 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
                       </div>
 
                       {openDropdown === colKey && filterOpts && (
-                        <ColumnFilterDropdown colKey={colKey} filterOpts={filterOpts} filters={filters} handleSearchChange={handleSearchChange}
+                        <ColumnFilterDropdown colKey={colKey} columns={columns} filterOpts={filterOpts} filters={filters} handleSearchChange={handleSearchChange}
                           handleCheckboxChange={handleCheckboxChange}
                           filterDropdownRef={filterDropdownRef}
                         />
@@ -265,14 +265,20 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
                       Hesabatları filterlə
                     </button>
                   </div>
-                  
+
                 </td>
               </tr>
             ) : null}
+
           </tbody>
 
 
         </table>
+
+        {/* <div className="total">
+          jdjdjddj
+        </div> */}
+
       </div>
 
       {showFilterModal && <ReportsFilterModal onClose={() => setShowFilterModal(false)} />}
@@ -280,6 +286,8 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
       {reportsHeader && (
         <ReportsFooter />
       )}
+
+
 
 
     </div >

@@ -30,9 +30,11 @@
 
     .table-div {
         overflow-x: auto;
+        overflow-y: auto;
         scrollbar-width: none !important;
         scroll-behavior: smooth;
-        min-height: 300px;
+        height: 90vh;
+        position: relative;
 
         .custom-table {
             width: 100%;
@@ -65,7 +67,7 @@
             }
 
             thead {
-
+                
                 tr {
 
                     th {
@@ -91,6 +93,7 @@
             }
 
             tbody {
+                position: relative;
 
                 tr {
                     white-space: nowrap;
@@ -183,6 +186,13 @@
         font-weight: 700;
         font-size: 15px;
         text-transform: uppercase;
+    }
+
+    .total{
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background-color: green;
     }
 
 }

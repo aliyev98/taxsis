@@ -7,8 +7,14 @@ import {
 import ReportsFilterModal from "../modals/ReportsFilterModal";
 import ReportsHeader from "../../layouts/ReportsHeader";
 import ReportsFooter from "../../layouts/ReportsFooter";
+import { useDispatch } from "react-redux";
+import { setNavbarSelection } from "../../redux/slices/taxModuleSlice";
+import ColumnFilterDropdown from "../dropdwons/ColumnFilterDropdown";
+import ColumnVisibilityDropdown from "../dropdwons/ColumnVisibilityDropdown";
+import TableHeader from "../../layouts/TableHeader";
 
-export default function TaxModuleTable({ columns, data, title, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible }) {
+
+export default function TaxModuleTable({ columns, data, title, navBtns, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible, colSpans, infos, infosHeader }) {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [columnVisibility, setColumnVisibility] = useState(
     columns.reduce((acc, col) => {
@@ -125,79 +131,47 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
   };
 
   return (
+
     <div className="position-relative table-container">
 
+
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
       {finalData.length > 0 && (
-        <div className="table-header d-flex align-items-center justify-content-between">
 
-          <div className="left-side d-flex align-items-center">
-            <div className="color"></div>
-            <div className="title">{title}</div>
-          </div>
-
-          <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-
-            <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-              {isEditing ? (
-                <button className="btn btn-primary save"
-                  onClick={() => {
-                    setIsEditing(!isEditing)
-                  }}
-                >
-                  Dəyişiklikləri yadda saxla
-                </button>
-              ) : (
-                <div className="buttons d-flex align-items-center">
-                  <button
-                    className="btn-columns d-flex align-items-center"
-                    onClick={() => setShowColumnMenu((p) => !p)}
-                  >
-                    <span>Sütunlar</span>
-                    <img src="./assets/layout-icon.svg" alt="" />
-                  </button>
-
-                  {customHeaderButtons && customHeaderButtons}
-
-                  <button className="export">Export</button>
-
-                  {showColumnMenu && (
-                    <div
-                      className="column-dropdown-menu dropend show d-flex flex-column"
-                      style={{
-                        display: "block",
-                        position: "absolute",
-                        zIndex: 999,
-                      }}
-                    >
-                      <div className="dropdown-title">Sütunları seçin</div>
-
-                      {table.getAllLeafColumns().map((col) => {
-                        const colDef = columns.find((c) => c.accessorKey === col.id);
-                        const labelText = colDef?.header || col.id;
-
-                        return (
-                          <div className="column-inputs d-flex flex-column" key={col.id}>
-                            <label className="dropdown-item">
-                              <input
-                                type="checkbox"
-                                checked={col.getIsVisible?.() ?? true}
-                                onChange={col.getToggleVisibilityHandler()}
-                              />
-                              {labelText}
-                            </label>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-          </div>
-
-        </div>
+        <TableHeader
+          ColumnVisibilityDropdown={ColumnVisibilityDropdown}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          columnDropdownRef={columnDropdownRef}
+          setShowColumnMenu={setShowColumnMenu}
+          showColumnMenu={showColumnMenu}
+          customHeaderButtons={customHeaderButtons}
+          ColumnVisibilityDropdow={ColumnVisibilityDropdown}
+          table={table}
+          columns={columns}
+          navBtns={navBtns}
+        />
       )}
+
+
+
+      {infosHeader === true &&
+
+        (
+          <div className="infos d-flex">
+
+            {infos?.map((info) => (
+              <div className="info d-flex" key={info.id}>
+                <span>{info.title}</span>
+                <span>{info.content}</span>
+              </div>
+            ))}
+
+          </div>
+        )
+      }
+
 
       {reportsHeader && (
         <ReportsHeader isEditing={isEditing} />
@@ -206,13 +180,13 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
 
       <div className="table-div">
         <table className="tables custom-table">
+
           <thead>
             {showGroupedHeader && (
               <tr className="group-header">
-                <th colSpan={4} className="group-title"><div>KONTRAGENT</div></th>
-                <th colSpan={3} className="group-title"><div>DEBET</div></th>
-                <th colSpan={3} className="group-title"><div>KREDİT</div></th>
-                <th colSpan={3} className="group-title"><div>QALIQ</div></th>
+                {colSpans?.map((span) => (
+                  <th key={span.id} colSpan={span.col} className="group-title"><div>{span.content}</div></th>
+                ))}
               </tr>
             )}
 
@@ -228,47 +202,10 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
                       </div>
 
                       {openDropdown === colKey && filterOpts && (
-                        <div ref={filterDropdownRef} className="dropdown-menu filter-dropdown show" style={{
-                          display: "block",
-                          position: "absolute",
-                          top: "100%",
-                          left: 0,
-                          zIndex: 1000,
-                        }} onClick={(e) => e.stopPropagation()}>
-                          <div className="dropdown-title">
-                            {columns.find((c) => c.accessorKey === colKey)?.header || colKey}
-                          </div>
-
-                          {filterOpts.search && (
-                            <div className="search-input d-flex align-items-center">
-                              <img src="./assets/search-icon.svg" alt="" />
-                              <input
-                                type="text"
-                                placeholder="Axtar..."
-                                value={filters[colKey]?.search || ""}
-                                onChange={(e) => handleSearchChange(colKey, e.target.value)}
-                              />
-                            </div>
-                          )}
-
-                          {filterOpts.options?.map((option) => (
-                            <div className="checkbox-div d-flex" key={option}>
-                              <input
-                                type="checkbox"
-                                className="form-check-input"
-                                id={`${colKey}-${option}`}
-                                checked={filters[colKey]?.options?.includes(option) || false}
-                                onChange={() => handleCheckboxChange(colKey, option)}
-                              />
-                              <label className="form-check-label d-flex align-items-center" htmlFor={`${colKey}-${option}`}>
-                                {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
-                                  <img src="./assets/alphabet-filter.png" alt="" style={{ width: 14, height: 14, marginRight: 6 }} />
-                                )}
-                                {option}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
+                        <ColumnFilterDropdown colKey={colKey} filterOpts={filterOpts} filters={filters} handleSearchChange={handleSearchChange}
+                          handleCheckboxChange={handleCheckboxChange}
+                          filterDropdownRef={filterDropdownRef}
+                        />
                       )}
                     </th>
                   );
@@ -279,18 +216,41 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
 
           <tbody>
             {finalData.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))
+              finalData.map((row, rowIndex) => {
+                if (row.isGroupHeader) {
+                  const colCount = table.getAllLeafColumns().length;
+                  const remainingCols = colCount - 2;
+
+                  return (
+                    <tr key={`group-${rowIndex}`} className="group-header-row">
+                      <td colSpan={2}>
+                        <strong>{row.groupName}</strong>
+                      </td>
+                      {Array.from({ length: remainingCols }).map((_, i) => (
+                        <td key={`empty-${i}`} />
+                      ))}
+                    </tr>
+                  );
+                }
+
+                // Normal veri satırı
+                const tableRow = table.getRowModel().rows.find((r) => r.original === row);
+                if (!tableRow) return null;
+
+                return (
+                  <tr key={tableRow.id}>
+                    {tableRow.getVisibleCells().map((cell) => (
+                      <td key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })
             ) : emptyMessageVisible ? (
               <tr>
                 <td colSpan={table.getAllLeafColumns().length}>
+
                   <div className="empty-message d-flex flex-column align-items-center py-5">
                     <div className="icon"><span>🧮</span></div>
                     <div className="message d-flex flex-column align-items-center">
@@ -301,21 +261,24 @@ export default function TaxModuleTable({ columns, data, title, reportsHeader, cu
                         düyməsinə klik edib uyğun parametrləri seçin
                       </span>
                     </div>
-                    <button onClick={() => setShowFilterModal(true)} className="btn btn-primary filter">Hesabatları filterlə</button>
+                    <button onClick={() => setShowFilterModal(true)} className="btn btn-primary filter">
+                      Hesabatları filterlə
+                    </button>
                   </div>
+                  
                 </td>
               </tr>
             ) : null}
           </tbody>
+
+
         </table>
       </div>
-
 
       {showFilterModal && <ReportsFilterModal onClose={() => setShowFilterModal(false)} />}
 
       {reportsHeader && (
         <ReportsFooter />
-
       )}
 
 
