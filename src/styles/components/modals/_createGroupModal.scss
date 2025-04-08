@@ -1,0 +1,91 @@
+.create-group-modal {
+
+    .modal-content {
+        gap: 20 !important;
+        padding: 48px 24px !important;
+
+        .modal-header {
+            padding: 0 !important;
+
+            span:first-child {
+                color: var(--Neutral-07, #1A1D1F);
+                text-align: center;
+                font-size: 32px;
+                font-weight: 600;
+            }
+
+            span:nth-child(2) {
+                color: var(--Neutral-05, #33383F);
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .modal-body {
+
+            .form {
+                gap: 20px;
+
+                .input-group {
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 12px;
+                    background: var(--Neutral-02, #F4F4F4);
+
+                    input {
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+
+                        color: var(--Neutral-07, #1A1D1F);
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+
+                    label {
+                        color: var(--Neutral-08, #111315);
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                }
+
+                .name-input {
+                    padding: 8px 16px;
+
+                }
+
+                .category {
+                    padding: 16px;
+
+                    select {
+                        outline: none;
+                        border: none;
+                        background-color: transparent;
+
+                        color: var(--Neutral-04, #6F767E);
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                }
+
+                .description {
+                    padding: 16px;
+                }
+            }
+
+
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: #efefef;
+            padding: 8px;
+            border-radius: 50%;
+        }
+    }
+
+
+}

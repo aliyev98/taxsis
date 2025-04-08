@@ -1,0 +1,35 @@
+.groups-page-container {
+
+    .social-wrapper {
+
+        .content {
+            background: #F2F2F7;
+            flex: 1;
+            padding: 40px 0 40px 0;
+
+            .groups-container {
+                gap: 32px;
+                width: 85%;
+                padding: 24px;
+                border-radius: 16px;
+                background: var(--Neutral-01, #FCFCFC);
+                box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+
+                .groups {
+                    border-radius: 16px;
+                    background: var(--Neutral-01, #FCFCFC);
+                    box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+                    z-index: 1;
+                    // overflow-x: visible !important;
+                    // overflow-y: scroll;
+                    // scrollbar-width: none;
+                    gap: 20px;
+
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px;
+                }
+            }
+        }
+    }
+}

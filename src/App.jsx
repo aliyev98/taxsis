@@ -3,11 +3,13 @@ import LandingPage from "./pages/public/LandingPage";
 import './styles/style.scss'
 import SingUp from "./pages/auth/SingUp";
 import Login from "./pages/auth/Login";
-import Feed from "./pages/social/Feed";
 import TaxModule from "./pages/modules/TaxModule";
 import Module from "./Module";
-import DateRangePicker from "./DateRangePicker";
 import Invoices from "./components/modules/tax/Invoices";
+import MainPage from "./pages/social/MainPage";
+import Groups from "./pages/social/Groups";
+import Friends from "./pages/social/Friends";
+import GroupFeed from "./pages/social/GroupFeed";
 
 
 function App() {
@@ -18,11 +20,14 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signUp" element={<SingUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/feed" element={<Feed />} />
+        <Route path="/feed" element={<MainPage />} />
         <Route path="/taxModule" element={<TaxModule />} />
         <Route path="/module" element={<Module />} />
-        <Route path="/calendar" element={<DateRangePicker />} />
         <Route path="/invoices" element={<Invoices />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/friends" element={<Friends />} />
+        {/* <Route path="/groupFeed" element={<GroupFeed />} /> */}
+        <Route path="/groups/:id" element={<GroupFeed />} />
       </Routes>
     </div>
   )

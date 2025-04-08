@@ -69,13 +69,13 @@ const RegisterWithID = () => {
 
           {fincode.length > 0 && fincode.length < 7 && (
             <div className="input-icon">
-              <img src="./assets/spinner-icon.svg" alt="Loading" />
+              <img src="/assets/spinner-icon.svg" alt="Loading" />
             </div>
           )}
 
           {fincode.length === 7 && (
             <div className="input-icon">
-              <img src="./assets/check.svg" alt="Success" />
+              <img src="/assets/check.svg" alt="Success" />
             </div>
           )}
         </div>

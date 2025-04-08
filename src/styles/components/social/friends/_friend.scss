@@ -1,0 +1,63 @@
+.friend-list {
+
+    .friends {
+        overflow-y: scroll;
+        scrollbar-width: none;
+
+        .friend {
+            gap: 12px;
+            padding: 12px;
+
+            .profile-img {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+
+                }
+            }
+
+            .username {
+                flex: 1;
+
+                color: var(--Neutral-07, #1A1D1F);
+                font-size: 15px;
+                font-weight: 700;
+            }
+
+            .buttons {
+
+                .btn {
+                    padding: 12px 20px;
+                    font-size: 15px;
+                    font-weight: 700;
+                    border-radius: 12px;
+                }
+
+
+                .btn-follow {
+                    border: none;
+                    color: var(--Neutral-01, #FCFCFC);
+                }
+
+                .btn-unfollow {
+                    color: var(--Neutral-07, #1A1D1F);
+                    border: 2px solid var(--Neutral-03, #EFEFEF);
+                    background: var(--Neutral-01, #FCFCFC);
+
+                }
+
+            }
+        }
+
+
+
+
+    }
+}

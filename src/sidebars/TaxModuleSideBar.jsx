@@ -80,7 +80,7 @@ const TaxModuleSideBar = () => {
         >
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
-              <img src="./assets/logo.svg" alt="" />
+              <img src="/assets/logo.svg" alt="" />
               <div className="lines">
                 <div className="line1"></div>
                 <div className="line2"></div>
@@ -90,7 +90,7 @@ const TaxModuleSideBar = () => {
             <span className="logo-text">TAXSIS</span>
           </div>
           <div className="icon">
-            <img src="./assets/arrow-down.svg" alt="" />
+            <img src="/assets/arrow-down.svg" alt="" />
           </div>
         </div>
 
@@ -104,7 +104,7 @@ const TaxModuleSideBar = () => {
             aria-controls="database"
             onClick={() => handleButtonClick('Məlumat bazası')}
           >
-            <img src="./assets/database-icon.svg" alt="" />
+            <img src="/assets/database-icon.svg" alt="" />
             <span>Məlumat bazası</span>
           </button>
 
@@ -124,7 +124,7 @@ const TaxModuleSideBar = () => {
                 'Vergi hesabatları',
               ].map((item, i) => (
                 <div key={i}>
-                  <img src="./assets/tree-icon.svg" alt="" />
+                  <img src="/assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -142,7 +142,7 @@ const TaxModuleSideBar = () => {
                 aria-expanded="false"
                 aria-controls="remains"
               >
-                <img src="./assets/tree-icon.svg" alt="" />
+                <img src="/assets/tree-icon.svg" alt="" />
                 <button
                   className={activeButton === 'İlkin qalıqlar' ? 'active' : ''}
                   onClick={() => handleButtonClick('İlkin qalıqlar')}
@@ -156,7 +156,7 @@ const TaxModuleSideBar = () => {
               <div className="menu">
                 {['Daxili qalıqlar', 'Xarici qalıqlar'].map((sub, i) => (
                   <div key={i}>
-                    <img src="./assets/tree-icon.svg" alt="" />
+                    <img src="/assets/tree-icon.svg" alt="" />
                     <button
                       className={activeButton === sub ? 'active' : ''}
                       onClick={() => handleButtonClick(sub)}
@@ -171,7 +171,7 @@ const TaxModuleSideBar = () => {
             {/* Qeyri rezidentlər */}
             <div className="menu">
               <div>
-                <img src="./assets/tree-icon.svg" alt="" />
+                <img src="/assets/tree-icon.svg" alt="" />
                 <button
                   className={activeButton === 'Qeyri rezidentlər' ? 'active' : ''}
                   onClick={() => handleButtonClick('Qeyri rezidentlər')}
@@ -192,7 +192,7 @@ const TaxModuleSideBar = () => {
             aria-controls="reports"
             onClick={() => handleButtonClick('Hesabatlar')}
           >
-            <img src="./assets/document-icon.svg" alt="" />
+            <img src="/assets/document-icon.svg" alt="" />
             <span>Hesabatlar</span>
           </button>
 
@@ -207,7 +207,7 @@ const TaxModuleSideBar = () => {
                 'Borclar cədvəli',
               ].map((item, i) => (
                 <div key={i}>
-                  <img src="./assets/tree-icon.svg" alt="" />
+                  <img src="/assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -229,7 +229,7 @@ const TaxModuleSideBar = () => {
             aria-controls="accounting"
             onClick={() => handleButtonClick('Vergi uçotu')}
           >
-            <img src="./assets/percent-icon.svg" alt="" />
+            <img src="/assets/percent-icon.svg" alt="" />
             <span>Vergi uçotu</span>
           </button>
 
@@ -237,7 +237,7 @@ const TaxModuleSideBar = () => {
             <div className="menu">
               {['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'].map((item, i) => (
                 <div key={i}>
-                  <img src="./assets/tree-icon.svg" alt="" />
+                  <img src="/assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -259,7 +259,7 @@ const TaxModuleSideBar = () => {
             aria-controls="analyses"
             onClick={() => handleButtonClick('Analizlər')}
           >
-            <img src="./assets/bar-icon.svg" alt="" />
+            <img src="/assets/bar-icon.svg" alt="" />
             <span>Analizlər</span>
           </button>
 
@@ -277,7 +277,7 @@ const TaxModuleSideBar = () => {
             aria-controls="params"
             onClick={() => handleButtonClick('Parametrlər')}
           >
-            <img src="./assets/settings-icon.svg" alt="" />
+            <img src="/assets/settings-icon.svg" alt="" />
             <span>Parametrlər</span>
           </button>
 
@@ -285,7 +285,7 @@ const TaxModuleSideBar = () => {
             <div className="menu">
               {['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'].map((item, i) => (
                 <div key={i}>
-                  <img src="./assets/tree-icon.svg" alt="" />
+                  <img src="/assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}

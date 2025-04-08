@@ -73,7 +73,7 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
                             <button key={btn.id} className={`d-flex align-items-center ${btn.className}`}>
                                 {btn.className === "filter" && (
                                     <img
-                                        src="./assets/filter-light-icon.svg"
+                                        src="/assets/filter-light-icon.svg"
                                         alt="filter icon"
                                         style={{ width: 16, height: 16, marginRight: 6 }}
                                     />
@@ -91,7 +91,7 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
             <div className="topbar d-flex justify-content-between">
                 <div className="search-input d-flex align-items-lg-center">
                     <div className="search-icon">
-                        <img src="./assets/search-icon.svg" alt="" />
+                        <img src="/assets/search-icon.svg" alt="" />
                     </div>
                     <input type="text" placeholder='Axtar' />
                 </div>
@@ -99,17 +99,17 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
                 <div className='header-nav d-flex align-items-center'>
 
                     <button className="messages">
-                        <img src="./assets/messages-icon.svg" alt="" />
+                        <img src="/assets/messages-icon.svg" alt="" />
                         <div className="red-dot"></div>
                     </button>
 
                     <button className="notifications">
-                        <img src="./assets/notification-icon.svg" alt="" />
+                        <img src="/assets/notification-icon.svg" alt="" />
                         <div className="red-dot"></div>
                     </button>
 
                     <div className="profile-picture pointer">
-                        <img src="./assets/profile-picture.png" alt="" />
+                        <img src="/assets/profile-picture.png" alt="" />
                     </div>
 
                 </div>

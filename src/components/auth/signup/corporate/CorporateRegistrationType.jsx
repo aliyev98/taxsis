@@ -14,7 +14,7 @@ const CorporateRegistrationType = () => {
         <div className='corporate-registration-container d-flex flex-column col-md-8 col-lg-7 col-xl-6 col-xxl-5 col-11'>
 
             <div className="corporate-icon">
-                <img src="./assets/corporateProfile-icon.svg" alt="ico" />
+                <img src="/assets/corporateProfile-icon.svg" alt="ico" />
             </div>
 
             <div className="corporate-registration-title">Korporativ hesab</div>
@@ -26,7 +26,7 @@ const CorporateRegistrationType = () => {
                 <button onClick={handleContinue} className="asan-signature d-flex align-items-center">
 
                     <div className="asan-signature-image">
-                        <img src="./assets/asan-icon.png" alt="icon" />
+                        <img src="/assets/asan-icon.png" alt="icon" />
                     </div>
 
                     <span className="asan-signature-info">

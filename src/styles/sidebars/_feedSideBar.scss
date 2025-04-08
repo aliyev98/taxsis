@@ -1,6 +1,7 @@
 .sidebar-container {
     padding: 32px 24px;
     background-color: #fcfcfc;
+    min-width: fit-content !important;
 
     .line {
         background: var(--Neutral-02, #F4F4F4);
@@ -185,7 +186,7 @@
             }
         }
 
-        .active{
+        .active {
             color: black;
         }
 
@@ -200,6 +201,17 @@
             padding: 12px;
             gap: 12px;
 
+            &.active {
+                border-radius: 12px;
+                background: var(--Neutral-03, #EFEFEF);
+                box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+
+                span {
+                    color: var(--Neutral-07, #1A1D1F);
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
 
             span {
                 color: #33383F;
@@ -209,7 +221,11 @@
                 line-height: 24px;
                 letter-spacing: -0.15px;
             }
+
+
         }
+
+
     }
 
 

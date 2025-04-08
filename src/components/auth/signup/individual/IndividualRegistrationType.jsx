@@ -15,7 +15,7 @@ const IndividualRegistration = () => {
         <div className='individual-registration-container d-flex flex-column col-md-8 col-lg-7 col-xl-6 col-xxl-5 col-11'>
 
             <div className="individual-icon">
-                <img src="./assets/individualProfile-icon.svg" alt="ico" />
+                <img src="/assets/individualProfile-icon.svg" alt="ico" />
             </div>
 
             <div className="individual-registration-title">Fərdi hesab</div>
@@ -27,7 +27,7 @@ const IndividualRegistration = () => {
                 <button onClick={() => handleSelection("id")} className="idendification-number d-flex align-items-center">
 
                     <div className="idendification-number-image">
-                        <img src="./assets/identification-icon.png" alt="icon" />
+                        <img src="/assets/identification-icon.png" alt="icon" />
                     </div>
 
                     <span className="idendification-number-info">
@@ -45,7 +45,7 @@ const IndividualRegistration = () => {
                 <button onClick={() => handleSelection("sima")} className="digital-signature d-flex align-items-center">
 
                     <div className="digital-signature-image d-flex align-items-center justify-content-center">
-                        <img src="./assets/sima-icon.png" alt="icon" />
+                        <img src="/assets/sima-icon.png" alt="icon" />
                     </div>
 
                     <span className="digital-signature-info">

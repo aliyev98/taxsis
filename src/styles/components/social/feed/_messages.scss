@@ -1,9 +1,7 @@
 .messages-container {
-    margin-top: 32px;
-
-
-    .add {
-        position: relative;
+    margin-top: 40px !important;
+    width: 20%;
+    .advertising {
 
         img {
             object-fit: cover;
@@ -12,18 +10,18 @@
             border-radius: 16px;
         }
 
-        .add-title {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            color: #FFF;
-            text-align: center;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 32px;
-            letter-spacing: -0.36px;
-        }
+        // .title {
+        //     position: absolute;
+        //     bottom: 30px;
+        //     width: 100%;
+        //     color: #FFF;
+        //     text-align: center;
+        //     font-size: 18px;
+        //     font-style: normal;
+        //     font-weight: 600;
+        //     line-height: 32px;
+        //     letter-spacing: -0.36px;
+        // }
 
     }
 

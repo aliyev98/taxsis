@@ -68,7 +68,7 @@ const TaxModuleContentHeader = ({ navBtns, title, headerBtns, columns, }) => {
               <button key={btn.id} className={`d-flex align-items-center ${btn.className}`}>
                 {btn.className === "filter" && (
                   <img
-                    src="./assets/huni-icon.svg"
+                    src="/assets/huni-icon.svg"
                     alt="filter icon"
                     style={{ width: 16, height: 16, marginRight: 6 }}
                   />

@@ -69,7 +69,7 @@ const TableHeader = ({
                             onClick={() => setShowColumnMenu((p) => !p)}
                         >
                             <span>Sütunlar</span>
-                            <img src="./assets/layout-icon.svg" alt="" />
+                            <img src="/assets/layout-icon.svg" alt="" />
                         </button>
 
                         {customHeaderButtons && customHeaderButtons}
@@ -118,7 +118,7 @@ export default TableHeader;
 //             onClick={() => setShowColumnMenu((p) => !p)}
 //           >
 //             <span>Sütunlar</span>
-//             <img src="./assets/layout-icon.svg" alt="" />
+//             <img src="/assets/layout-icon.svg" alt="" />
 //           </button>
 
 //           {customHeaderButtons && customHeaderButtons}

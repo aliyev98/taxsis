@@ -1,7 +1,15 @@
 .create-post-container {
     border-radius: 12px;
     border: 2px solid rgba(154, 159, 165, 0.25);
-    gap: 16px;
+    position: relative;
+    cursor: pointer;
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: red;
+    }
 
     .header {
         padding: 12px;
@@ -21,6 +29,20 @@
             }
         }
 
+        textarea {
+            color: #6F767E;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: -0.36px;
+            border: none;
+            outline: none;
+            width: 100%;
+            background-color: transparent;
+            resize: none;
+        }
+
         span {
             color: #6F767E;
             font-size: 18px;
@@ -32,10 +54,14 @@
     }
 
     .tools-container {
-        padding: 12px 12px 12px 64px;
+        width: 90%;
+        align-self: flex-end;
+        padding: 12px;
+
 
         .tools {
             gap: 24px;
+            width: 100%;
 
             .tool-btn {
                 border: none;
@@ -48,5 +74,7 @@
             border: none;
         }
     }
+
+
 
 }

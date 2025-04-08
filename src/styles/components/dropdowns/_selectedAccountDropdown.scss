@@ -1,0 +1,32 @@
+.select-account-dropdown {
+
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    .btn {
+        border: none;
+        display: flex;
+        gap: 8px;
+        padding: 0 !important;
+    }
+
+    .user-infos {
+        justify-content: flex-start !important;
+
+        span:first-child {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 15px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        span:nth-child(2) {
+            color: var(--Neutral-04, #6F767E);
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+        }
+    }
+
+}

@@ -18,11 +18,10 @@
 @use './components/auth/signup/corporate/chooseCompany';
 @use './components/auth/signup/corporate/companyRegister';
 @use './components/auth/login/corporate/corporateLogin';
-@use './pages/social/feed';
 @use './layouts/feedHeader';
 @use './sidebars/feedSideBar';
 @use './components/social/feed/createPost';
-@use './components/social/feed/posts';
+@use './components/social/feed/feed';
 @use './test';
 @use './components/social/feed/post';
 @use './components/social/feed/messages';
@@ -31,20 +30,26 @@
 @use './sidebars/taxModuleSideBar';
 @use './layouts/taxModuleContentHeader';
 @use './components/tables/taxModuleTable';
-@use './modals/modals';
+@use './components/modals/modals';
 @use './layouts/reportsHeader';
 @use './layouts/reportsFooter';
 @use './layouts/tableHeader';
 @use './components/dropdowns/columnFilterDropdown';
 @use './components/dropdowns/columnVisibilityDropdown';
 @use './components/modals/addRowModal';
-
-
-
-
-
-
-
+@use './pages/social/mainPage';
+@use './components/modals/createPostModal';
+@use './components//dropdowns/selectedAccountDropdown';
+@use './components/dropdowns/profileDropdown';
+@use './pages/social/friends';
+@use './components/social/friends/friend';
+@use './components/social/friends/firendsNavbar';
+@use './pages/social/groups';
+@use './components/social/groups/groupsHeader';
+@use './components/social/groups/group';
+@use './components/dropdowns/groupDropdown';
+@use './pages/social/groupFeed';
+@use './components/modals/createGroupModal';
 
 
 

@@ -22,12 +22,12 @@ const LandingPage = () => {
             <div className="video-links d-flex align-items-center justify-content-center">
 
                 <a href="#" className="video-link d-flex align-items-center">
-                    <img src="./assets/video-icon.svg" alt="" />
+                    <img src="/assets/video-icon.svg" alt="" />
                     <span>Təlimat videolar</span>
                 </a>
 
                 <a href="#" className="video-link d-flex align-items-center">
-                    <img src="./assets/photo-icon.svg" alt="" />
+                    <img src="/assets/photo-icon.svg" alt="" />
                     <span>Referans videolar</span>
                 </a>
 
@@ -36,25 +36,25 @@ const LandingPage = () => {
             <div className="landing-page-images d-flex justify-content-center">
 
                 <div className="image1">
-                    <img src="./assets/landingPagePhoto.png" alt="" />
+                    <img src="/assets/landingPagePhoto.png" alt="" />
                 </div>
 
                 <div className="image2">
-                    <img src="./assets/landingPagePhoto.png" alt="" />
+                    <img src="/assets/landingPagePhoto.png" alt="" />
                 </div>
 
                 <div className="image3">
-                    <img src="./assets/landingPagePhoto.png" alt="png" />
+                    <img src="/assets/landingPagePhoto.png" alt="png" />
                 </div>
 
                 <div className="image4">
-                    <img src="./assets/landingPageSidePhoto.png" alt="png" />
+                    <img src="/assets/landingPageSidePhoto.png" alt="png" />
                 </div>
 
                 <div className="individual-image d-flex align-items-center">
 
                     <div className="icon">
-                        <img src="./assets/individualProfile-icon.svg" alt="png" />
+                        <img src="/assets/individualProfile-icon.svg" alt="png" />
                     </div>
 
                     <div className="individual-content d-flex flex-column justify-content-center">
@@ -67,7 +67,7 @@ const LandingPage = () => {
                 <div className="corporate-image d-flex align-items-center">
 
                     <div className="icon">
-                        <img src="./assets/corporateProfile-icon.svg" alt="png" />
+                        <img src="/assets/corporateProfile-icon.svg" alt="png" />
                     </div>
 
                     <div className="corporate-content d-flex flex-column justify-content-center">

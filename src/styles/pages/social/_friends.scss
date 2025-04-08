@@ -1,0 +1,28 @@
+.friends-container {
+    background: #F2F2F7;
+
+    .social-wrapper {
+
+        .content {
+            flex: 1;
+            height: 100vh;
+
+            .friend-list {
+                width: 80%;
+                height: 90%;
+                padding: 24px;
+                border-radius: 16px;
+                background: var(--Neutral-01, #FCFCFC);
+                box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+
+                .title {
+                    color: var(--Neutral-07, #1A1D1F);
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-bottom: 16px;
+
+                }
+            }
+        }
+    }
+}

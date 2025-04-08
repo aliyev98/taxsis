@@ -16,7 +16,7 @@ const ChooseCompany = () => {
         <div className='choose-company-container d-flex flex-column col-md-8 col-lg-7 col-xl-6 col-xxl-5 col-11'>
 
             <div className="corporate-icon">
-                <img src="./assets/corporateProfile-icon.svg" alt="ico" />
+                <img src="/assets/corporateProfile-icon.svg" alt="ico" />
             </div>
 
             <div className="register-type">Korporativ hesab</div>
@@ -30,7 +30,7 @@ const ChooseCompany = () => {
                     <div className="d-flex align-items-center justify-content-center left-side">
 
                         <div className="company-icon">
-                            <img src="./assets/company-icon.svg" alt="icon" />
+                            <img src="/assets/company-icon.svg" alt="icon" />
                         </div>
 
                         <div className="company-content">
@@ -52,7 +52,7 @@ const ChooseCompany = () => {
                     <div className="d-flex align-items-center justify-content-center left-side">
 
                         <div className="company-icon">
-                            <img src="./assets/company-icon.svg" alt="icon" />
+                            <img src="/assets/company-icon.svg" alt="icon" />
                         </div>
 
                         <div className="company-content">
@@ -74,7 +74,7 @@ const ChooseCompany = () => {
                     <div className="d-flex align-items-center justify-content-center left-side">
 
                         <div className="company-icon">
-                            <img src="./assets/company-icon.svg" alt="icon" />
+                            <img src="/assets/company-icon.svg" alt="icon" />
                         </div>
 
                         <div className="company-content">

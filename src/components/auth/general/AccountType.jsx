@@ -34,7 +34,7 @@ const AccountType = () => {
         >
           <div className="d-flex align-items-center justify-content-center left-side">
             <div className="individual-icon">
-              <img src="./assets/individualProfile-icon.svg" alt="icon" />
+              <img src="/assets/individualProfile-icon.svg" alt="icon" />
             </div>
             <div className="individual-content d-flex flex-column">
               <span className="content-title">Fərdi hesab</span>
@@ -61,7 +61,7 @@ const AccountType = () => {
         >
           <div className="d-flex align-items-center justify-content-center left-side">
             <div className="corporate-icon">
-              <img src="./assets/corporateProfile-icon.svg" alt="icon" />
+              <img src="/assets/corporateProfile-icon.svg" alt="icon" />
             </div>
             <div className="corporate-content d-flex flex-column">
               <span className="content-title">Korporativ hesab</span>

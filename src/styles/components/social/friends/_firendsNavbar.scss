@@ -1,0 +1,19 @@
+.friends-navbar {
+    gap: 24px;
+    padding: 8px;
+    margin-bottom: 12px;
+
+    button {
+        background-color: transparent;
+        border: none;
+        padding: 8px 0 8px 0;
+
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .active {
+        border-bottom: 1px solid #6F767E;
+    }
+}

@@ -1,0 +1,97 @@
+.posts-container {
+
+    .modal-content {
+        padding: 24px 16px;
+        gap: 16px !important;
+
+        .header {
+            gap: 16px;
+
+            .profile-picture {
+                width: 48px;
+                height: 48px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        textarea {
+            background-color: transparent;
+            border: none;
+            resize: none;
+            outline: none;
+            scrollbar-width: none;
+            color: var(--Neutral-04, #6F767E);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .post-img {
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .btn-trash {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                padding: 8px;
+                border: none;
+                border-radius: 50%;
+                background: var(--Neutral-03, #EFEFEF);
+                display: flex;
+                justify-self: center;
+                align-items: center;
+            }
+        }
+
+        .tools-container {
+            width: 90%;
+            align-self: flex-end;
+            padding: 12px;
+
+
+            .tools {
+                gap: 24px;
+                width: 100%;
+
+                .tool-btn {
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+
+            .btn {
+                background-color: rgba(42, 133, 255, 0.50);
+                border: none;
+            }
+
+            .active {
+                background: var(--Primary-01, #2A85FF);
+            }
+        }
+
+        .custom-btn-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px;
+            border-radius: 50%;
+            background-color: #efefef;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+}

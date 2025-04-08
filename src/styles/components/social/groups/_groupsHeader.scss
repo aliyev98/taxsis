@@ -1,0 +1,22 @@
+.groups-header {
+
+    .title {
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .create-group {
+        padding: 8px 16px;
+        gap: 8px;
+        border-radius: 8px;
+        border: 2px solid var(--Neutral-03, #EFEFEF);
+        background: var(--Neutral-01, #FCFCFC);
+
+        span {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 13px;
+            font-weight: 700;
+        }
+    }
+}

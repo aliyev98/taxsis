@@ -24,13 +24,13 @@ const SingUp = () => {
 
             <div className="signup-image">
 
-                <img src="./assets/image 1.jpg" alt="" />
+                <img src="/assets/image 1.jpg" alt="" />
 
                 <div className="logo d-flex align-items-center">
 
                     <div className="logo-img">
 
-                        <img src="./assets/white-logo.svg" alt="" />
+                        <img src="/assets/white-logo.svg" alt="" />
 
                         <div className="lines">
                             <div className="line1"></div>

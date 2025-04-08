@@ -62,7 +62,7 @@ const CompanyRegister = () => {
                         </select>
                     </div>
                     <div className="select-icon">
-                        <img src="./assets/arrow-down.svg" alt="" />
+                        <img src="/assets/arrow-down.svg" alt="" />
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@ const CompanyRegister = () => {
 
                 {/* Buton, inputların en altında kalmalı */}
                 <div className="add-btn d-flex align-items-center">
-                    <button onClick={handleAddInput}><img src="./assets/add-icon.svg" alt="" /></button>
+                    <button onClick={handleAddInput}><img src="/assets/add-icon.svg" alt="" /></button>
                     <span>Fərdi hesaba səlahiyyət ver</span>
                 </div>
             </div>

@@ -3,49 +3,49 @@ import React from 'react'
 const Post = () => {
 
     const actions = [
-        { id: 1, img: "./assets/like-icon.svg", content: 'Bəyən' },
-        { id: 2, img: "./assets/comment-icon.svg", content: 'Bəyən' },
-        { id: 3, img: "./assets/share-icon.svg", content: 'Bəyən' },
+        { id: 1, img: "/assets/like-icon.svg", content: 'Bəyən' },
+        { id: 2, img: "/assets/comment-icon.svg", content: 'Bəyən' },
+        { id: 3, img: "/assets/share-icon.svg", content: 'Bəyən' },
     ]
 
     const posts = [
         {
             id: 1,
-            img: './assets/post-img.jpg',
+            img: '/assets/post-img.jpg',
             text: "2024-cü ilin vergi bəyannaməsi və hesabatın verilməsi ilə bağlı hansı şirkətləri və ya şəxsləri məsləhət görürsünüz?",
             user: {
                 name: 'Ulvin Omarov',
                 username: '@ulvin.omarov',
-                avatar: './assets/profile-picture.jpg',
+                avatar: '/assets/profile-picture.jpg',
             },
             comments:
             {
-                id: 1,
+                id: 2,
                 user: {
                     name: 'Elman Vəli',
-                    img: './assets/profile-picture2.jpg',
+                    img: '/assets/profile-picture2.jpg',
                     text: 'Salam @vagifaliyev, yoxlayıb sizə tezliklə geri gönüş edəcəm'
                 }
             }
         },
         {
-            id: 2,
-            img: './assets/post-img2.jpg',
+            id: 3,
+            img: '/assets/post-img2.jpg',
             text: "2024-cü ilin vergi bəyannaməsi və hesabatın verilməsi ilə bağlı hansı şirkətləri və ya şəxsləri məsləhət görürsünüz?",
             user: {
                 name: 'Füruzə Səfərli',
                 username: '@firuza',
-                avatar: './assets/profile-picture2.jpg',
+                avatar: '/assets/profile-picture2.jpg',
             },
         },
         {
-            id: 3,
-            img: './assets/post-img2.jpg',
+            id: 4,
+            img: '/assets/post-img2.jpg',
             text: "Paketi alıb Adobe xd-ə yükləyirsiniz, bəzi ekranlarda bəzi mətn və başlıqlar sönülüdür, bu, xd proqramının ən son versiyası ilə uyğunluq problemidir.",
             user: {
                 name: 'Təranə Abbasova',
                 username: '@terane',
-                avatar: './assets/profile-picture3.jpg',
+                avatar: '/assets/profile-picture3.jpg',
             },
         }
     ]

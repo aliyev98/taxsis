@@ -4,7 +4,7 @@ const sidebarData = [/* yukarıdaki JSON verisi buraya gelecek */];
 
 const TreeItem = ({ title }) => (
   <div className="tree-item d-flex align-items-center">
-    <img src="./assets/tree-icon.svg" alt="" />
+    <img src="/assets/tree-icon.svg" alt="" />
     <button>{title}</button>
   </div>
 );
@@ -40,7 +40,7 @@ const AccordionSection = ({ id, icon, title, children }) => (
                 aria-expanded="false"
                 aria-controls={`${id}-child-${i}`}
               >
-                <img src="./assets/tree-icon.svg" alt="" />
+                <img src="/assets/tree-icon.svg" alt="" />
                 <span>{item.title}</span>
               </button>
 
@@ -73,7 +73,7 @@ const TaxModuleSideBar = () => {
         >
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
-              <img src="./assets/logo.svg" alt="" />
+              <img src="/assets/logo.svg" alt="" />
               <div className="lines">
                 <div className="line1"></div>
                 <div className="line2"></div>
@@ -83,7 +83,7 @@ const TaxModuleSideBar = () => {
             <span className="logo-text">TAXSIS</span>
           </div>
           <div className="icon">
-            <img src="./assets/arrow-down.svg" alt="" />
+            <img src="/assets/arrow-down.svg" alt="" />
           </div>
         </div>
 

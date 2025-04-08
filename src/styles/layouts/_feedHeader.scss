@@ -88,6 +88,7 @@
             border: none;
             background-color: transparent;
             position: relative;
+            padding: 12px;
 
 
             .red-dot {
@@ -95,8 +96,8 @@
                 border: 2px solid #FCFCFC;
                 background: #FF6A55;
                 position: absolute;
-                right: 0;
-                top: 0;
+                right: 12px;
+                top: 12px;
                 width: 10px;
                 height: 10px;
             }

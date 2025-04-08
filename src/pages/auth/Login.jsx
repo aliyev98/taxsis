@@ -18,12 +18,12 @@ const Login = () => {
         <div className='login-container d-flex f-column align-items-center justify-content-center'>
 
             <div className="login-image">
-                <img src="./assets/image 1.jpg" alt="" />
+                <img src="/assets/image 1.jpg" alt="" />
 
                 <div className="logo d-flex align-items-center">
 
                     <div className="logo-img">
-                        <img src="./assets/white-logo.svg" alt="" />
+                        <img src="/assets/white-logo.svg" alt="" />
                         <div className="lines">
                             <div className="line1"></div>
                             <div className="line2"></div>

@@ -88,7 +88,7 @@ const ReportsFilterModal = ({ onClose }) => {
                                 </select>
                             </div>
                             <div className="icon">
-                                <img src="./assets/arrow-down.svg" alt="" />
+                                <img src="/assets/arrow-down.svg" alt="" />
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@ const ReportsFilterModal = ({ onClose }) => {
                                 </select>
                             </div>
                             <div className="icon">
-                                <img src="./assets/arrow-down.svg" alt="" />
+                                <img src="/assets/arrow-down.svg" alt="" />
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@ const ReportsFilterModal = ({ onClose }) => {
                                     <input type="text" value={formatRange()} readOnly />
                                 </div>
                                 <div className="icon">
-                                    <img src="./assets/calendar-icon.svg" alt="calendar" />
+                                    <img src="/assets/calendar-icon.svg" alt="calendar" />
                                 </div>
                             </div>
 

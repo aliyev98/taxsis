@@ -33,7 +33,7 @@ const ColumnFilterDropdown = ({
 
       {filterOpts.search && (
         <div className="search-input d-flex align-items-center">
-          <img src="./assets/search-icon.svg" alt="search" />
+          <img src="/assets/search-icon.svg" alt="search" />
           <input
             type="text"
             placeholder="Axtar..."
@@ -58,7 +58,7 @@ const ColumnFilterDropdown = ({
           >
             {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
               <img
-                src="./assets/alphabet-filter.png"
+                src="/assets/alphabet-filter.png"
                 alt=""
                 style={{ width: 14, height: 14, marginRight: 6 }}
               />

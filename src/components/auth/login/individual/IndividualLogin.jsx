@@ -31,7 +31,7 @@ const IndividualLogin = () => {
                     <label htmlFor="phone">Telefon nömrəsi</label>
                     <div className="input-group d-flex">
                         <div className="phone-input">
-                            <img src="./assets/phone-icon.svg" alt="Phone Icon" />
+                            <img src="/assets/phone-icon.svg" alt="Phone Icon" />
                         </div>
                         <input
                             type="text"
@@ -46,7 +46,7 @@ const IndividualLogin = () => {
                 {/* Eğer numara 10 karakterden büyükse ikon göster */}
                 {isPhoneValid && (
                     <div className="check-icon">
-                        <img className="icon" src="./assets/check.svg" alt="Check Icon" />
+                        <img className="icon" src="/assets/check.svg" alt="Check Icon" />
                     </div>
                 )}
             </div>

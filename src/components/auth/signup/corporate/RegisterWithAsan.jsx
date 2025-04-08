@@ -34,7 +34,7 @@ const RegisterWithAsan = () => {
     return (
         <div className="asan-register-container d-flex flex-column col-md-8 col-lg-7 col-xl-5 col-xxl-5 col-11">
             <div className="corporate-icon">
-                <img src="./assets/corporateProfile-icon.svg" alt="ico" />
+                <img src="/assets/corporateProfile-icon.svg" alt="ico" />
             </div>
 
             <div className="asan-register-type">Korporativ hesab</div>

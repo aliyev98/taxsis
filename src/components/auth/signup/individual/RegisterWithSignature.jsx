@@ -20,7 +20,7 @@ const RegisterWithSignature = () => {
             <div className="signature-register-info">SİMA İmza ilə qeydiyyat</div>
 
             <div className="qr-code">
-                <img src="./assets/qr2.png" alt="" />
+                <img src="/assets/qr2.png" alt="" />
             </div>
 
             <div onClick={handleContinue} className="btn btn-primary">QR kod scan edildi</div>

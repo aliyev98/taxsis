@@ -1,0 +1,48 @@
+.group {
+    gap: 16px;
+    padding: 0;
+    cursor: pointer;
+
+    &-img {
+        width: 130px;
+        height: 107px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+    }
+
+    &-infos {
+        gap: 8px;
+        flex: 1;
+
+        span {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .btn-join {
+            padding: 4px 24px;
+            border-radius: 6px;
+            border: 1px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-00, #FFF);
+            color: var(--Primary-01, #2A85FF);
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            width: fit-content;
+        }
+    }
+
+    .btn-more{
+        position: relative;
+        border-radius: 50%;
+        padding: 4px;
+        border: none;
+        background-color: #EFEFEF;
+    }
+}

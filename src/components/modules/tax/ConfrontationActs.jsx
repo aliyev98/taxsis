@@ -26,7 +26,7 @@ const ConfrontationActs = () => {
     }, [sidebarSelection, dispatch]);
 
     const headerBtns = [
-        { id: 1, content: "Filterlə", className: "filter", icon: "./assets/filter-light-icon.svg" },
+        { id: 1, content: "Filterlə", className: "filter", icon: "/assets/filter-light-icon.svg" },
 
     ];
 
