@@ -5,6 +5,7 @@ import stepReducer from "../slices/stepSlice";
 import taxModuleSelectionReducer from "../slices/taxModuleSlice";
 import tableDataReducer from '../slices/tableDataSlice';
 import postReducer from '../slices/postSlice';
+import vacancyReducer from '../slices/vacancySlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     taxModuleSelection: taxModuleSelectionReducer,
     tableData: tableDataReducer,
     post: postReducer,
+    vacancy: vacancyReducer,
   },
 });
 

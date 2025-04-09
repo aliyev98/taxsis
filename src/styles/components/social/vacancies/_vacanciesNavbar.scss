@@ -1,0 +1,21 @@
+.vacancies-navbar {
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: var(--Neutral-04, #6F767E);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .active {
+        border-radius: 8px;
+        background: var(--Neutral-03, #EFEFEF);
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 15px;
+        font-weight: 600;
+    }
+}

@@ -10,6 +10,7 @@ import MainPage from "./pages/social/MainPage";
 import Groups from "./pages/social/Groups";
 import Friends from "./pages/social/Friends";
 import GroupFeed from "./pages/social/GroupFeed";
+import VacanciesPage from "./pages/social/VacanciesPage";
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
         <Route path="/invoices" element={<Invoices />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="/friends" element={<Friends />} />
-        {/* <Route path="/groupFeed" element={<GroupFeed />} /> */}
         <Route path="/groups/:id" element={<GroupFeed />} />
+        <Route path="/vacancies" element={<VacanciesPage />} />
       </Routes>
     </div>
   )

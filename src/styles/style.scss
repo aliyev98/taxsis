@@ -50,7 +50,12 @@
 @use './components/dropdowns/groupDropdown';
 @use './pages/social/groupFeed';
 @use './components/modals/createGroupModal';
-
-
-
+@use './pages/social/vacanciesPage';
+@use './components/social/vacancies/vacanciesHeader';
+@use './components/social/vacancies/vacanciesNavbar';
+@use './components/social/vacancies/vacancyList';
+@use './components/social/vacancies/vacancyCart';
+@use './components/social/vacancies/vacancies';
+@use './components/social/vacancies/vacancyDetails';
+@use './components/social/vacancies/vacancyApply';
 

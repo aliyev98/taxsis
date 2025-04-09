@@ -20,11 +20,7 @@
                     background: var(--Neutral-01, #FCFCFC);
                     box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
                     z-index: 1;
-                    // overflow-x: visible !important;
-                    // overflow-y: scroll;
-                    // scrollbar-width: none;
                     gap: 20px;
-
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
                     gap: 24px;

@@ -1,0 +1,98 @@
+.vacancy-apply {
+    gap: 48px;
+    height: 60%;
+
+    .header {
+        gap: 16px;
+        width: 100%;
+
+        .btn-back {
+            background-color: transparent;
+            border: none;
+        }
+
+        span {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .apply-form {
+        width: 100%;
+        gap: 20px;
+        align-items: center;
+        flex: 1;
+
+        input {
+            border-radius: 12px;
+            border: 1px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-02, #F4F4F4);
+            padding: 16px;
+            width: 60%;
+            color: var(--Neutral-04, #6F767E);
+            font-size: 15px;
+            font-weight: 600;
+            outline: none;
+            border: none;
+        }
+
+        .file-input {
+            gap: 12px;
+            flex: 1;
+            width: 60%;
+
+            .input-title {
+                gap: 4px;
+                color: var(--Neutral-05, #33383F);
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+
+            .drag-drop-zone {
+                width: 100%;
+                padding: 12px;
+                text-align: center;
+                color: var(--Neutral-04, #6F767E);
+                font-weight: 500;
+                cursor: pointer;
+                border-radius: 12px;
+                background: var(--Neutral-02, #F4F4F4);
+                height: 200px;
+
+                &.active {
+                    background-color: #f9f9f9;
+                    border-color: var(--Primary-04, #8E59FF);
+                }
+
+                .input-info {
+                    gap: 8px;
+                    padding: 12px 20px;
+                    border-radius: 12px;
+                    border: 2px solid var(--Neutral-03, #EFEFEF);
+                    background: var(--Neutral-01, #FCFCFC);
+                    box-shadow: 0px 12px 13px -6px rgba(0, 0, 0, 0.04);
+                    width: fit-content;
+
+                    span {
+                        color: var(--Neutral-07, #1A1D1F);
+                        font-size: 15px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .btn-send {
+        width: 60%;
+        padding: 12px 20px;
+
+        color: var(--Neutral-01, #FCFCFC);
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+}

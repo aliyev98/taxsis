@@ -1,0 +1,96 @@
+.vacancies-header {
+    gap: 24px;
+
+    .header {
+
+        .title {
+            flex: 1;
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .btn-filter {
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 2px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-01, #FCFCFC);
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 13px;
+            font-weight: 700;
+
+            img {
+                width: 24px !important;
+                height: 24px !important;
+            }
+        }
+
+    }
+
+    .filter-form {
+        padding: 20px;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(3, 1fr);
+
+        border-radius: 12px;
+        border: 1px solid var(--Neutral-02, #F4F4F4);
+        background: var(--Neutral-00, #FFF);
+
+        .input-div {
+            position: relative;
+            border-radius: 12px;
+            border: 1px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-02, #F4F4F4);
+
+            select {
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                padding: 16px;
+                appearance: none;
+
+                color: var(--Neutral-04, #6F767E);
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                background-color: transparent;
+                width: 100%;
+                padding: 16px;
+
+                color: var(--Neutral-04, #6F767E);
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+
+        .input-div.custom-select::after {
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-image: url('/assets/arrow-down.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        .btn-search {
+            padding: 8px 16px;
+
+            color: var(--Neutral-01, #FCFCFC);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+    }
+}

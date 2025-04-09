@@ -1,0 +1,69 @@
+.vacancy-cart {
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--Neutral-03, #EFEFEF);
+    background: var(--Neutral-00, #FFF);
+    cursor: pointer;
+
+    .vacancy-img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 68px;
+        height: 68px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .vacancy-infos {
+        flex: 1;
+
+        .name {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .company {
+            color: var(--Neutral-04, #6F767E);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .infos-footer {
+            margin-top: 8px;
+            gap: 8px;
+
+            .line {
+                width: 1px;
+                height: 12px;
+                background: var(--Neutral-03, #EFEFEF);
+            }
+
+            .location-container {
+                gap: 4px;
+
+                img {
+                    width: 16px !important;
+                    height: 16px !important;
+                }
+
+                .city {
+                    color: var(--Neutral-05, #33383F);
+                    font-size: 12px;
+                    font-weight: 500;
+                }
+            }
+
+            .deadline {
+                color: var(--Neutral-05, #33383F);
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+    }
+}

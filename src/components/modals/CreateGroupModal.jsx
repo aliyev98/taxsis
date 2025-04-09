@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CreateGroupModal = ({ show, onClose }) => {
+
+  const [imagePreview, setImagePreview] = useState(null);
+  const fileInputRef = useRef(null);
+
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
@@ -25,7 +29,7 @@ const CreateGroupModal = ({ show, onClose }) => {
       <div
         className="modal-dialog modal-md modal-dialog-centered"
         role="document"
-        onClick={(e) => e.stopPropagation()} // modal içi tıklama kapanmasın
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-content">
 
@@ -55,17 +59,49 @@ const CreateGroupModal = ({ show, onClose }) => {
                 <input type="text" placeholder='Qısa izahı' />
               </div>
 
+              <div className="upload-img d-flex flex-column">
+                <label className="upload-label d-flex align-items-center">
+                  <span>Qapaq şəkli</span>
+                  <img src="/assets/info-icon.svg" alt="" />
+                </label>
+
+                {imagePreview ? (
+                  <div className="img-preview">
+                    <img src={imagePreview} alt="preview" />
+                  </div>
+                ) : (
+                  <button
+                    className="btn upload-btn"
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    Şəkil yüklə
+                  </button>
+                )}
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  ref={fileInputRef}
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      const previewURL = URL.createObjectURL(file);
+                      setImagePreview(previewURL);
+                    }
+                  }}
+                />
+              </div>
+
             </div>
 
           </div>
 
-          {/* Footer */}
-          <div className="modal-footer border-0">
-            <button className="btn btn-secondary" onClick={onClose}>Bağla</button>
-            <button className="btn btn-primary">Yarat</button>
+          <div className="modal-footer">
+            <button className="btn btn-primary">Yadda saxla</button>
           </div>
 
-          <button className="btn-close"></button>
+          <button className="btn-close" onClick={onClose}></button>
 
         </div>
       </div>
