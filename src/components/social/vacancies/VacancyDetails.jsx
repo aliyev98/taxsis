@@ -26,7 +26,7 @@ Komanda ilə işləmə bacarığı.`;
     return (
         <div className='vacancy-details-container d-flex flex-column'>
             <div className="vacancy-header d-flex align-items-center">
-                <button className='btn-back' onClick={() => dispatch(setVacancyNavigate('list'))}>
+                <button className='btn-back' onClick={() => dispatch(setVacancyNavigate('vacanciesList'))}>
                     <img src="/assets/arrow-left.svg" alt="back" />
                 </button>
 

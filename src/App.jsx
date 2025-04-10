@@ -11,6 +11,10 @@ import Groups from "./pages/social/Groups";
 import Friends from "./pages/social/Friends";
 import GroupFeed from "./pages/social/GroupFeed";
 import VacanciesPage from "./pages/social/VacanciesPage";
+import EventsPage from "./pages/social/EventsPage";
+import TendersPage from "./pages/social/TendersPage";
+import CustomCalculator from "./pages/social/CustomCalculator";
+import CurrencyPage from './pages/social/CurrencyPage'
 
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
         <Route path="/friends" element={<Friends />} />
         <Route path="/groups/:id" element={<GroupFeed />} />
         <Route path="/vacancies" element={<VacanciesPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/tenders" element={<TendersPage />} />
+        <Route path="/calculator" element={<CustomCalculator />} />
+        <Route path="/currency" element={<CurrencyPage />} />
       </Routes>
     </div>
   )

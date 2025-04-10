@@ -1,0 +1,55 @@
+.activity-dropdown {
+    background-color: #fff;
+    padding: 16px;
+    gap: 8px;
+    min-width: 300px;
+    top: 60px;
+    right: 190px;
+    border-radius: 16px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -22px; // dropdown'ın üstünden çıkacak şekilde
+        right: 32px; // buton hizasında ayarla
+        border-width: 12px;
+        border-style: solid;
+        border-color: transparent transparent #fff transparent;
+    }
+
+    .menu {
+        gap: 12px;
+
+        .selections {
+            gap: 8px !important;
+
+            label {
+                gap: 8px;
+
+                input {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                span {
+                    color: var(--Neutral-07, #1A1D1F);
+
+                    /* Body 2 (Semibold) */
+                    font-family: Inter;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    /* 171.429% */
+                    letter-spacing: -0.14px;
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+}

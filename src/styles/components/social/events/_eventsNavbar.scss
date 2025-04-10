@@ -1,0 +1,44 @@
+.events-navbar {
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: var(--Neutral-04, #6F767E);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .active {
+        border-radius: 8px;
+        background: var(--Neutral-03, #EFEFEF);
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .select-div {
+        border-radius: 8px;
+        border: 2px solid var(--Neutral-03, #EFEFEF);
+
+        select {
+            padding: 8px 16px;
+            border: none;
+            outline: none;
+
+            color: var(--Neutral-04, #6F767E);
+
+            /* Base 2 */
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            /* 171.429% */
+            letter-spacing: -0.14px;
+        }
+    }
+
+}

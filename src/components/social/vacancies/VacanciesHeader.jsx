@@ -82,6 +82,8 @@ const VacanciesHeader = () => {
             </select>
           </div>
 
+
+
           <div className="input-div">
             <input type="text" placeholder='Açar sözlər' />
           </div>

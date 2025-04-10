@@ -6,6 +6,7 @@ import taxModuleSelectionReducer from "../slices/taxModuleSlice";
 import tableDataReducer from '../slices/tableDataSlice';
 import postReducer from '../slices/postSlice';
 import vacancyReducer from '../slices/vacancySlice';
+import tenderReducer from '../slices/tenderSlice';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     tableData: tableDataReducer,
     post: postReducer,
     vacancy: vacancyReducer,
+    tender: tenderReducer,
   },
 });
 

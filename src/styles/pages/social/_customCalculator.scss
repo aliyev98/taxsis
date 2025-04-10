@@ -1,0 +1,233 @@
+.calculator-page-container {
+
+    .social-wrapper {
+
+        .content {
+            background: #F2F2F7;
+            flex: 1;
+            padding: 40px 0 40px 0;
+
+            .calculator-container {
+                gap: 32px;
+                width: 85%;
+                padding: 24px;
+                border-radius: 16px;
+                background: var(--Neutral-01, #FCFCFC);
+                box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+
+                .calculator {
+                    gap: 32px;
+
+                    .title {
+                        color: var(--Neutral-07, #1A1D1F);
+
+                        /* Title 1 (Semibold) */
+                        font-family: Inter;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 32px;
+                        /* 160% */
+                        letter-spacing: -0.4px;
+                    }
+
+                    .infos-and-results {
+                        gap: 40px;
+
+                        .goods-infos {
+                            gap: 32px;
+                            flex: 1;
+
+                            .infos-title {
+                                color: var(--Neutral-07, #1A1D1F);
+
+                                /* Title 1 (Semibold) */
+                                font-family: Inter;
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: 32px;
+                                /* 160% */
+                                letter-spacing: -0.4px;
+                            }
+
+                            .inputs {
+                                gap: 20px;
+
+                                .checkbox-div {
+                                    gap: 8px;
+
+                                    input {
+                                        width: 24px;
+                                        height: 24px;
+
+                                        border-radius: 6px;
+                                        border: 2px solid var(--neutral-shade-dark-0440, rgba(111, 118, 126, 0.40));
+                                        background: var(--Neutral-01, #FCFCFC);
+                                    }
+
+                                    span {
+                                        color: var(--Neutral-07, #1A1D1F);
+
+                                        /* Body 2 (Semibold) */
+                                        font-family: Inter;
+                                        font-size: 14px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 24px;
+                                        /* 171.429% */
+                                        letter-spacing: -0.14px;
+                                    }
+                                }
+
+                            }
+
+                            .form-actions {
+                                gap: 8px;
+
+                                button {
+                                    flex: 1;
+                                    padding: 12px 20px;
+                                    border-radius: 12px;
+                                    color: var(--Neutral-01, #FCFCFC);
+                                    font-size: 15px;
+                                    font-style: normal;
+                                    font-weight: 700;
+                                    line-height: 24px;
+                                    letter-spacing: -0.15px;
+                                }
+
+                                .clear {
+                                    color: var(--Neutral-07, #1A1D1F);
+                                    border: 2px solid var(--Neutral-03, #EFEFEF);
+                                    background: var(--Neutral-01, #FCFCFC);
+                                }
+
+                            }
+
+                        }
+
+                        .results {
+                            gap: 32px;
+                            flex: 1;
+
+                            .results-title {
+                                color: var(--Neutral-07, #1A1D1F);
+
+                                /* Title 1 (Semibold) */
+                                font-family: Inter;
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: 32px;
+                                /* 160% */
+                                letter-spacing: -0.4px;
+                            }
+
+                            .inputs {
+                                gap: 16px;
+
+                                div {
+
+                                    span:first-child {
+                                        color: var(--Neutral-04, #6F767E);
+                                        font-family: Inter;
+                                        font-size: 15px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 24px;
+                                        letter-spacing: -0.15px;
+                                    }
+                                }
+
+                            }
+
+                            .result {
+                                gap: 16px;
+
+                                div {
+                                    span:first-child {
+                                        color: var(--Neutral-07, #1A1D1F);
+
+                                        /* Base 1 (Semibold) */
+                                        font-family: Inter;
+                                        font-size: 15px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 24px;
+                                        /* 160% */
+                                        letter-spacing: -0.15px;
+                                    }
+
+                                    span:nth-child(2) {
+                                        padding: 2px 8px;
+                                        border-radius: 6px;
+                                        background: var(--Secondary-04, #B5E4CA);
+
+                                        color: var(--Neutral-07, #1A1D1F);
+                                        text-align: center;
+
+                                        /* Base 1 (Semibold) */
+                                        font-family: Inter;
+                                        font-size: 15px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 24px;
+                                        /* 160% */
+                                        letter-spacing: -0.15px;
+                                    }
+                                }
+
+                                span {
+                                    color: var(--Neutral-04, #6F767E);
+
+                                    /* Caption 1 */
+                                    font-family: Inter;
+                                    font-size: 13px;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: 16px;
+                                    /* 123.077% */
+                                    letter-spacing: -0.13px;
+                                }
+
+                            }
+
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    .line {
+        height: 1px;
+        border-radius: 1px;
+        opacity: 0.25;
+        background: var(--neutral-shade-dark-08-over-0750, rgba(17, 19, 21, 0.50));
+    }
+
+    .information {
+        gap: 12px;
+        padding: 16px;
+        border-radius: 12px;
+        background: var(--Secondary-03, #B1E5FC);
+
+        .info-text {
+            color: var(--Neutral-07, #1A1D1F);
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 16px;
+            /* 133.333% */
+            letter-spacing: -0.12px;
+
+            span {
+                text-decoration: underline;
+            }
+        }
+    }
+}

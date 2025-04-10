@@ -58,4 +58,25 @@
 @use './components/social/vacancies/vacancies';
 @use './components/social/vacancies/vacancyDetails';
 @use './components/social/vacancies/vacancyApply';
-
+@use './components/social/vacancies/vacancyFinish';
+@use './pages/social/eventsPage';
+@use './components/ui/inputWithLabel';
+@use './components/social/events/eventsHeader';
+@use './components/social/events/eventsNavbar';
+@use './components/social/events/events';
+@use './components/social/events/event';
+@use './pages/social/tendersPage';
+@use './components/social/tenders/tenders';
+@use './components/social/tenders/tendersHeader';
+@use './components/social/tenders/tenderList';
+@use './components/social/tenders/tenderCard';
+@use './components/dropdowns/activityTypeDropdown';
+@use './components/social/tenders/tendeDetails';
+@use './components/social/tenders/tenderParticipate';
+@use './components/social/tenders/tenderFinish';
+@use './components/social/tenders/announceTender';
+@use './components/ui/input';
+@use './pages/social/customCalculator';
+@use './components/ui/select';
+@use './pages/social/currencyPage';
+@use './components/dropdowns/currencyDropdown';

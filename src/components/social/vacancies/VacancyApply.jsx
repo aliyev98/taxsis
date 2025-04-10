@@ -81,7 +81,12 @@ const VacancyApply = () => {
 
             </div>
 
-            <button className='btn btn-send btn-primary'>Göndər</button>
+            <button
+                className='btn btn-send btn-primary'
+                onClick={() => dispatch(setVacancyNavigate("finish"))}
+            >
+                Göndər
+            </button>
         </div>
     );
 };
