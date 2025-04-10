@@ -15,37 +15,36 @@
                 background: var(--Neutral-01, #FCFCFC);
                 box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
 
+                .title {
+                    width: 100%;
+                    color: var(--Neutral-07, #1A1D1F);
+
+                    /* Title 1 (Semibold) */
+                    font-family: Inter;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 32px;
+                    /* 160% */
+                    letter-spacing: -0.4px;
+                }
+
                 .vat-search {
                     gap: 32px;
-
-                    .title {
-                        width: 100%;
-                        color: var(--Neutral-07, #1A1D1F);
-
-                        /* Title 1 (Semibold) */
-                        font-family: Inter;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 600;
-                        line-height: 32px;
-                        /* 160% */
-                        letter-spacing: -0.4px;
-                    }
+                    width: 60%;
 
                     .search {
                         gap: 32px;
                         padding: 0 16px;
+                        width: 100%;
 
                         .title {
                             color: var(--Neutral-07, #1A1D1F);
-
-                            /* Title 1 (Semibold) */
-                            font-family: Inter;
+                            text-align: center;
                             font-size: 20px;
                             font-style: normal;
                             font-weight: 600;
                             line-height: 32px;
-                            /* 160% */
                             letter-spacing: -0.4px;
                         }
 
@@ -143,16 +142,52 @@
                             }
                         }
 
-                        .inputs{
+                        .inputs {
                             width: 100%;
                             gap: 20px;
-                            input{
+
+                            input {
                                 width: 100%;
                             }
                         }
 
-                        .information{
+                        .information {
+                            gap: 12px;
                             padding: 16px;
+                            border-radius: 12px;
+                            background: var(--Secondary-03, #B1E5FC);
+                            width: 100%;
+
+                            span {
+                                color: var(--Neutral-07, #1A1D1F);
+                                font-family: Inter;
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 16px;
+                                /* 133.333% */
+                                letter-spacing: -0.12px;
+                            }
+                        }
+
+                        .btn-control {
+                            width: 100%;
+                            padding: 12px 20px;
+
+                            color: var(--Neutral-01, #FCFCFC);
+
+                            /* Button 1 */
+                            font-family: Inter;
+                            font-size: 15px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 24px;
+                            /* 160% */
+                            letter-spacing: -0.15px;
+                        }
+
+                        .table {
+                            width: 100%;
                         }
 
                     }
