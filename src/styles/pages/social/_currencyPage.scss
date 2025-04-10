@@ -20,6 +20,19 @@
 
                     .currency-header {
 
+                        .title {
+                            color: var(--Neutral-07, #1A1D1F);
+
+                            /* Title 1 (Semibold) */
+                            font-family: Inter;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 32px;
+                            /* 160% */
+                            letter-spacing: -0.4px;
+                        }
+
                         .btn {
                             gap: 8px;
                             padding: 8px 16px;
@@ -86,7 +99,7 @@
                             border: 1px solid var(--Neutral-03, #EFEFEF);
                             background: var(--Neutral-01, #FCFCFC);
 
-                            input{
+                            input {
                                 font-size: 24px;
                             }
 

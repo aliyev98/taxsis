@@ -79,14 +79,14 @@ const CustomCalculator = () => {
 
                 <FeedSideBar />
 
-                <div className="content d-flex justify-content-center align-items-center">
+                <div className="content d-flex justify-content-center">
 
                     <div className="currency-container d-flex flex-column">
 
                         <div className="currency d-flex flex-column">
 
                             <div className="currency-header position-relative d-flex align-items-center justify-content-between">
-                                <span>Valyuta hesabla</span>
+                                <span className='title'>Valyuta hesabla</span>
                                 <button
                                     className="btn calculate-currency d-flex align-items-center"
                                     onClick={() => setDropdownOpen(prev => !prev)}

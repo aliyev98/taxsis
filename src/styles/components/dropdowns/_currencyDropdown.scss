@@ -1,67 +1,77 @@
 .currency-dropdown {
-    width: 300px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #fff;
+  padding: 16px 20px !important;
+  border-radius: 16px;
+  gap: 12px;
+
+  &::before {
+    content: "";
     position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #fff;
-    padding: 16px 20px;
-    border-radius: 16px;
-    gap: 12px;
-  
-    .dropdown-item {
-      width: 300px;
-  
-      .flag {
-        width: 40px;
-        height: 28px;
-        overflow: hidden;
-        border-radius: 4px;
-  
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-  
-      .left-side {
-        gap: 12px;
-        flex: 1;
-  
-        .currency-info {
-          .code {
-            color: var(--Neutral-07, #1A1D1F);
-            font-family: Inter;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 24px;
-            letter-spacing: -0.14px;
-          }
-  
-          .name {
-            color: var(--neutral-shades-0475, #9A9FA5);
-            font-family: Inter;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 12px;
-            letter-spacing: -0.12px;
-          }
-        }
-      }
-  
-      button {
-        background-color: transparent;
-        border: none;
+    top: -24px; // dropdown üstünden çıksın
+    right: 30px; // oka hizalı, isteğe göre ayarla
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    z-index: 1;
+  }
+
+  .dropdown-item {
+    min-width: 300px;
+    cursor: pointer;
+
+    .flag {
+      width: 40px;
+      height: 28px;
+      overflow: hidden;
+      border-radius: 4px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
-  
-    // 🔽 Line class buraya gelecek:
-    .line {
-      height: 1px;
-      background-color: #EDEDED;
-      margin: 12px 0;
+
+    .left-side {
+      gap: 12px;
+      flex: 1;
+
+      .currency-info {
+        .code {
+          color: var(--Neutral-07, #1A1D1F);
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 24px;
+          letter-spacing: -0.14px;
+        }
+
+        .name {
+          color: var(--neutral-shades-0475, #9A9FA5);
+          font-family: Inter;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 12px;
+          letter-spacing: -0.12px;
+        }
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
     }
   }
-  
+
+  // 🔽 Line class buraya gelecek:
+  .line {
+    height: 1px;
+    background-color: #EDEDED;
+    margin: 12px 0;
+  }
+}

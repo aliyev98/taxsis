@@ -14,7 +14,8 @@ import VacanciesPage from "./pages/social/VacanciesPage";
 import EventsPage from "./pages/social/EventsPage";
 import TendersPage from "./pages/social/TendersPage";
 import CustomCalculator from "./pages/social/CustomCalculator";
-import CurrencyPage from './pages/social/CurrencyPage'
+import CurrencyPage from './pages/social/CurrencyPage';
+import VatSearch from './pages/social/VatSearch';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/tenders" element={<TendersPage />} />
         <Route path="/calculator" element={<CustomCalculator />} />
         <Route path="/currency" element={<CurrencyPage />} />
+        <Route path="/vatSearch" element={<VatSearch />} />
       </Routes>
     </div>
   )
