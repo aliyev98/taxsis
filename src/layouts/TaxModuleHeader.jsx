@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
-import AddRowModal from "../components/modals/AddRowModal"; // ✅ Modal import
+import AddRowModal from "../components/modals/AddRowModal";
+import { openModal } from '../redux/slices/postSlice';
+import ProfileDropdown from '../components/dropdwons/ProfileDropdown';
 
 const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
-
 
     const dispatch = useDispatch();
     const activeNav = useSelector((state) => state.taxModuleSelection.navbarSelection);
@@ -108,8 +109,9 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
                         <div className="red-dot"></div>
                     </button>
 
-                    <div className="profile-picture pointer">
+                    <div className="profile-picture pointer" onClick={() => dispatch(openModal())}>
                         <img src="/assets/profile-picture.png" alt="" />
+
                     </div>
 
                 </div>

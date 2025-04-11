@@ -2,21 +2,23 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileDropdown = () => {
-  const navigate = useNavigate(); // Yönlendirme işlemi için kullanacağımız hook
+  const navigate = useNavigate();
 
   const sections = [
     { id: 1, img: "/assets/profile-icon.svg", content: "Profil" },
     { id: 2, img: "/assets/home-icon.svg", content: "Əsas səhifə" },
   ];
 
-  // Profil butonuna tıklandığında yönlendirme işlemi
   const handleProfileClick = () => {
-    navigate('/IndividualProfile'); // Profil sayfasına yönlendirir
+    navigate('/IndividualProfile');
   };
 
-  // Çıxış et butonuna tıklandığında yönlendirme işlemi
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const handleLogoutClick = () => {
-    navigate('/'); // Anasayfaya yönlendirir
+    navigate('/');
   };
 
   return (
@@ -26,7 +28,13 @@ const ProfileDropdown = () => {
           <div
             key={section.id}
             className="profile section"
-            onClick={section.id === 1 ? handleProfileClick : null}
+            onClick={
+              section.id === 1
+                ? handleProfileClick
+                : section.id === 2
+                ? handleHomeClick
+                : null
+            }
           >
             <img src={section.img} alt="" />
             <span>{section.content}</span>
