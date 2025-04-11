@@ -2,8 +2,13 @@ import React from 'react';
 import Input from '../../../components/ui/Input';
 import Select from '../../../components/ui/Select';
 import TextareaWithLabel from '../../ui/TextareaWithLabel';
+import { useDispatch } from 'react-redux'
+import { setProfileNavigate } from '../../../redux/slices/profileSlice'
 
 const CvEdit = () => {
+
+    const dispatch = useDispatch();
+
     const placeholders = [
         { id: 1, placeholder: "Ad, soyad" },
         { id: 2, placeholder: "Vəzifə" },
@@ -66,7 +71,7 @@ const CvEdit = () => {
 
                 <TextareaWithLabel label={"Əlavə məlumat"} placeholder={'Daxil edin'} rows={5} />
 
-                <button className="btn btn-save btn-primary">Yadda saxla</button>
+                <button className="btn btn-save btn-primary" onClick={() => dispatch(setProfileNavigate("cv"))}>Yadda saxla</button>
 
 
             </div>

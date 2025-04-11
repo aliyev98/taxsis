@@ -1,8 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setProfileNavigate } from '../../../redux/slices/profileSlice';
 
 
 const CV = () => {
+
+    const dispatch = useDispatch();
+
 
     const cvData = useSelector(state => state.cv.cvData);
 
@@ -25,7 +30,7 @@ const CV = () => {
             <div className="cv-header d-flex justify-content-between align-items-center">
                 <span>CV / Resume</span>
 
-                <button className='btn btn-edit'>Düzəliş et</button>
+                <button className='btn btn-edit'  onClick={() => dispatch(setProfileNavigate('cvEdit'))}>Düzəliş et</button>
             </div>
 
             <div className="infos-container d-flex flex-column">

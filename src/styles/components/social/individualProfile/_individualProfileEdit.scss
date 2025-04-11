@@ -1,13 +1,15 @@
 .individual-profile-edit {
+    margin-top: 24px;
 
 
     .header {
         gap: 16px;
         margin-bottom: 48px;
 
-        img{
+        img {
             width: 20px;
             height: 24px;
+            cursor: pointer;
         }
 
         span {
@@ -22,6 +24,40 @@
             /* 160% */
             letter-spacing: -0.4px;
         }
+    }
+
+    .edit-inputs {
+        gap: 24px;
+
+        .left-side {
+            flex: 1;
+            gap: 20px;
+        }
+
+        .right-side {
+            flex: 1;
+            gap: 20px;
+        }
+    }
+
+    .btn-save {
+        width: 100% !important;
+        margin-top: 48px;
+        border: none;
+        border-radius: 12px;
+        background: var(--Primary-01, #2A85FF);
+        padding: 12px 20px;
+
+        color: var(--Neutral-01, #FCFCFC);
+
+        /* Button 1 */
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        /* 160% */
+        letter-spacing: -0.15px;
     }
 
 

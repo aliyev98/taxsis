@@ -12,11 +12,22 @@ const SideBar = () => {
     { id: 4, name: 'Management modulu', img: '/assets/menegment-modul-icon.svg', color: '#FFBC99' },
   ];
 
-  const socialMenu = [
+  const individualMenu = [
     { id: 1, name: 'Dostlar', img: '/assets/friends-icon.svg', path: '/friends' },
     { id: 2, name: 'Qruplar', img: '/assets/groups-icon.svg', path: '/groups' },
     { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '/pages' },
     { id: 4, name: 'Diskusiyalar', img: '/assets/discussion-icon.svg', path: '/discussions' },
+    { id: 5, name: 'Vakansiyalar', img: '/assets/vacations-icon.svg', path: '/vacancies' },
+    { id: 6, name: 'Tədbirlər', img: '/assets/ticket-icon.svg', path: '/events' },
+    { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '/courses' },
+    { id: 8, name: 'Marketplace', img: '/assets/dollar-icon.svg', path: '/marketplace' },
+  ];
+
+  const corporateMenu = [
+    { id: 1, name: 'Əməkdaşlar', img: '/assets/friends-icon.svg', path: '/colleagues' },
+    { id: 2, name: 'Qruplar', img: '/assets/groups-icon.svg', path: '/groups' },
+    { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '/pages' },
+    { id: 4, name: 'Diskusiyalar', img: '/assets/discussion-icon.svg', path: '#' },
     { id: 5, name: 'Vakansiyalar', img: '/assets/vacations-icon.svg', path: '/vacancies' },
     { id: 6, name: 'Tədbirlər', img: '/assets/ticket-icon.svg', path: '/events' },
     { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '/courses' },
@@ -99,7 +110,7 @@ const SideBar = () => {
       <div className="line"></div>
 
       <div className="social-menu d-flex flex-column">
-        {socialMenu.map((item) => (
+        {individualMenu.map((item) => (
           <button
             key={item.id}
             className={`menu-item d-flex align-items-center ${location.pathname === item.path ? 'active' : ''}`}

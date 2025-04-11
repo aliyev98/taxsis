@@ -17,6 +17,8 @@ import CustomCalculator from "./pages/social/CustomCalculator";
 import CurrencyPage from './pages/social/CurrencyPage';
 import VatSearch from './pages/social/VatSearch';
 import IndividualProfile from "./pages/social/IndividualProfile";
+import ColleaguesPage from "./pages/social/ColleaguesPage";
+
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
         <Route path="/currency" element={<CurrencyPage />} />
         <Route path="/vatSearch" element={<VatSearch />} />
         <Route path="/individualProfile" element={<IndividualProfile />} />
+        <Route path="/colleagues" element={<ColleaguesPage  />} />
       </Routes>
     </div>
   )

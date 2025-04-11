@@ -1,0 +1,67 @@
+.colleagues-page-container {
+
+    .social-wrapper {
+
+        .content {
+            background: #F2F2F7;
+            flex: 1;
+            padding: 40px 0 40px 0;
+
+            .colleagues-container {
+                gap: 32px;
+                width: 85%;
+                padding: 24px;
+                border-radius: 16px;
+                background: var(--Neutral-01, #FCFCFC);
+                box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+
+                .colleagues {
+                    border-radius: 16px;
+                    background: var(--Neutral-01, #FCFCFC);
+                    box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+                    z-index: 1;
+                    gap: 24px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px;
+                    width: 100%;
+
+                    .colleagues-header {
+                        width: 100%;
+
+                        span {
+                            color: var(--Neutral-07, #1A1D1F);
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 32px;
+                            letter-spacing: -0.4px;
+                        }
+
+                        .btn-add-colleagues {
+                            gap: 8px;
+                            border-radius: 8px;
+                            border: 2px solid var(--Neutral-03, #EFEFEF);
+                            background: var(--Neutral-01, #FCFCFC);
+                            padding: 8px 16px;
+
+                            span {
+                                color: var(--Neutral-07, #1A1D1F);
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: 24px;
+                                letter-spacing: -0.13px;
+                            }
+
+                        }
+                    }
+
+                    .colleagues-body {
+                        
+                    }
+                }
+            }
+        }
+    }
+}

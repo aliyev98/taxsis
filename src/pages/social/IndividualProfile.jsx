@@ -7,8 +7,13 @@ import IndividualFriends from '../../components/social/individualProfile/Individ
 import CV from '../../components/social/individualProfile/CV';
 import CvEdit from '../../components/social/individualProfile/CvEdit';
 import IndividualProfileEdit from '../../components/social/individualProfile/IndividualProfileEdit';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProfileNavigate } from '../../redux/slices/profileSlice';
 
 const IndividualProfile = () => {
+
+    const dispatch = useDispatch();
+    const activeSection = useSelector((state) => state.profileNav.profileNavigate);
 
     const [activeNav, setActiveNav] = useState(1); // Varsayılan olarak ilk buton (Postlar) aktif
 
@@ -104,41 +109,61 @@ const IndividualProfile = () => {
 
                                 </div>
 
-                                <button className="btn btn-edit">Profilə düzəliş et</button>
+                                <button className="btn btn-edit" onClick={() => dispatch(setProfileNavigate('profileEdit'))}>Profilə düzəliş et</button>
 
                             </div>
                         </div>
 
                         <div className="right-side">
 
-                            <div className="profile-navbar d-flex">
-
+                            {/* <div className="profile-navbar d-flex">
                                 {
                                     navbar.map((nav) => (
-                                        <button key={nav.id} className={nav.id === activeNav ? 'active' : ''} onClick={() => setActiveNav(nav.id)}>
+                                        <button
+                                            key={nav.id}
+                                            className={nav.id === activeNav ? 'active' : ''}
+                                            onClick={() => setActiveNav(nav.id)}
+                                        >
                                             {nav.content}
                                         </button>
                                     ))
                                 }
+                            </div> */}
 
-
-
-                            </div>
-
-                            <div className="wrapper">
-                                {activeNav === 1 && <Feed />}
-                                {activeNav === 2 && <Photos />}
-                                {activeNav === 3 && <Videos />}
-                                {activeNav === 4 && <IndividualFriends />}
-                                {/* {activeNav === 5 && <CV />} */}
-                                {/* {activeNav === 5 && <CvEdit />} */}
-                                {activeNav === 5 && <IndividualProfileEdit/>}
-
-                                
-                            </div>
+                            {
+                                activeSection === "general" ? (
+                                    <div>
+                                        <div className="profile-navbar d-flex">
+                                            {navbar.map((nav) => (
+                                                <button
+                                                    key={nav.id}
+                                                    className={nav.id === activeNav ? 'active' : ''}
+                                                    onClick={() => setActiveNav(nav.id)}
+                                                >
+                                                    {nav.content}
+                                                </button>
+                                            ))}
+                                        </div>
+                                        <div className="wrapper">
+                                            {activeNav === 1 && <Feed />}
+                                            {activeNav === 2 && <Photos />}
+                                            {activeNav === 3 && <Videos />}
+                                            {activeNav === 4 && <IndividualFriends />}
+                                            {activeNav === 5 && <CV />}
+                                        </div>
+                                    </div>
+                                ) : activeSection === "cvEdit" ? (
+                                    <CvEdit />
+                                ) : activeSection === "cv" ? (
+                                    <CV /> // "cv" durumunda CV bileşeni render edilecek
+                                ) : (
+                                    <IndividualProfileEdit />
+                                )
+                            }
 
 
                         </div>
+
 
                     </div>
 
