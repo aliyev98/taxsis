@@ -1,0 +1,64 @@
+.cv-edit-container {
+    margin-top: 24px;
+
+    .cv-edit-header {
+        color: var(--Neutral-07, #1A1D1F);
+
+        /* Title 1 (Semibold) */
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px;
+        /* 160% */
+        letter-spacing: -0.4px;
+
+        margin-bottom: 12px;
+    }
+
+    .cv-edit {
+        gap: 24px;
+        background: var(--Neutral-00, #FFF);
+        padding: 20px;
+        border-radius: 12px;
+
+
+
+        .line {
+            height: 1px;
+            background: var(--Neutrals-6, #E6E8EC);
+        }
+
+        .general-infos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+
+
+        }
+
+        .btn-save {
+            padding: 8px 16px;
+            width: 45%;
+            border-radius: 8px;
+
+            color: var(--Neutral-01, #FCFCFC);
+
+            /* Button 2 */
+            font-family: Inter;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+            /* 184.615% */
+            letter-spacing: -0.13px;
+        }
+    }
+
+
+
+
+
+}

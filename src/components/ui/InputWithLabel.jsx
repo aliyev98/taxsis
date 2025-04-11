@@ -1,10 +1,10 @@
 import React from 'react'
 
-const InputWithLabel = () => {
+const InputWithLabel = ({label, placeholder }) => {
     return (
         <div className="input-div d-flex flex-column">
-            <label htmlFor="">sksksk</label>
-            <input type="text" placeholder='' />
+            <label htmlFor="">{label}</label>
+            <input type="text" placeholder={placeholder} />
         </div>
     )
 }

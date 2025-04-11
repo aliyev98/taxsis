@@ -1,5 +1,6 @@
 .cv-container {
     margin-top: 24px;
+    padding-bottom: 83px;
 
     .cv-header {
         margin-bottom: 12px;
@@ -40,7 +41,202 @@
             border-radius: 12px;
             border: 1px solid var(--Neutral-03, #EFEFEF);
             background: var(--Neutral-00, #FFF);
+            padding: 16px;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px 16px;
+
+            div {
+
+                span:first-child {
+                    color: var(--Neutrals-4, #777E90);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+
+                span:last-child {
+                    color: var(--Neutrals-2, #23262F);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 24px;
+                }
+            }
         }
+
+        .skills {
+            gap: 8px;
+
+            span {
+                color: var(--Neutrals-2, #23262F);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.14px;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    list-style: none;
+                    color: var(--Neutral-05, #33383F);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .work-experience {
+            gap: 8px;
+
+            span {
+                color: var(--Neutrals-2, #23262F);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.14px;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    list-style: none;
+                    color: var(--Neutral-05, #33383F);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .education {
+            gap: 8px;
+
+            span {
+                color: var(--Neutrals-2, #23262F);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.14px;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    list-style: none;
+                    color: var(--Neutral-05, #33383F);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .additional-information {
+            gap: 8px;
+
+            span {
+                color: var(--Neutrals-2, #23262F);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.14px;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    list-style: none;
+                    color: var(--Neutral-05, #33383F);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .pdf-download {
+            gap: 16px;
+
+            .pdf-img {
+                width: 80px;
+                height: 80px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .pdf-infos {
+
+                .name {
+                    color: var(--Neutral-07, #1A1D1F);
+
+                    /* Base 1 (Semibold) */
+                    font-family: Inter;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    /* 160% */
+                    letter-spacing: -0.15px;
+                }
+
+                .size {
+                    color: var(--Neutral-04, #6F767E);
+
+                    /* Body 2 (Semibold) */
+                    font-family: Inter;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 24px;
+                    /* 171.429% */
+                    letter-spacing: -0.14px;
+                }
+            }
+
+            .btn-download {
+                padding: 8px 16px;
+                color: var(--Primary-01, #2A85FF);
+
+                /* Button 2 */
+                font-family: Inter;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                /* 184.615% */
+                letter-spacing: -0.13px;
+
+                border-radius: 20px;
+                border: 2px solid var(--Neutral-03, #EFEFEF);
+                background: var(--Neutral-01, #FCFCFC);
+            }
+        }
+
     }
 
 

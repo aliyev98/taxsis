@@ -5,6 +5,8 @@ import Photos from '../../components/social/individualProfile/Photos';
 import Videos from '../../components/social/individualProfile/Videos';
 import IndividualFriends from '../../components/social/individualProfile/IndividualFriends';
 import CV from '../../components/social/individualProfile/CV';
+import CvEdit from '../../components/social/individualProfile/CvEdit';
+import IndividualProfileEdit from '../../components/social/individualProfile/IndividualProfileEdit';
 
 const IndividualProfile = () => {
 
@@ -128,7 +130,11 @@ const IndividualProfile = () => {
                                 {activeNav === 2 && <Photos />}
                                 {activeNav === 3 && <Videos />}
                                 {activeNav === 4 && <IndividualFriends />}
-                                {activeNav === 5 && <CV />}
+                                {/* {activeNav === 5 && <CV />} */}
+                                {/* {activeNav === 5 && <CvEdit />} */}
+                                {activeNav === 5 && <IndividualProfileEdit/>}
+
+                                
                             </div>
 
 
