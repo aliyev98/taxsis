@@ -26,7 +26,7 @@ const ProfileDropdown = () => {
           <div
             key={section.id}
             className="profile section"
-            onClick={section.id === 1 ? handleProfileClick : null} // İlk butona tıklandığında yönlendir
+            onClick={section.id === 1 ? handleProfileClick : null}
           >
             <img src={section.img} alt="" />
             <span>{section.content}</span>

@@ -155,7 +155,7 @@ const IndividualProfile = () => {
                                 ) : activeSection === "cvEdit" ? (
                                     <CvEdit />
                                 ) : activeSection === "cv" ? (
-                                    <CV /> // "cv" durumunda CV bileşeni render edilecek
+                                    <CV /> 
                                 ) : (
                                     <IndividualProfileEdit />
                                 )

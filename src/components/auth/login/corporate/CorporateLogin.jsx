@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAccountType } from "../../../../redux/slices/loginSlice"; // Path’i projenin yapısına göre düzenle
 
 const CorporateLogin = () => {
   const [phone, setPhone] = useState("");
   const [userId, setUserId] = useState("");
   const [isCodeAcceptVisible, setIsCodeAcceptVisible] = useState(false);
 
-  // Form validasyon
+  const dispatch = useDispatch(); // Redux dispatch
+  const navigate = useNavigate();
+
   const handlePhoneChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     setPhone(value);
@@ -19,16 +23,14 @@ const CorporateLogin = () => {
   const isFormValid = phone.length > 0 && userId.trim() !== "";
 
   const handleButtonClick = () => {
-    // Eğer form geçerliyse "kod doğrulama" görünür
     if (isFormValid) {
       setIsCodeAcceptVisible(true);
     }
   };
 
-  // Kod doğru girdikten sonra "code" butonuna basınca /feed sayfasına gitsin
-  const navigate = useNavigate();
   const handleContinue = () => {
-    navigate("/feed"); // Burada rotayı istediğin sayfaya yönlendirebilirsin
+    dispatch(setAccountType("corporate")); // Burada accountType'ı güncelliyoruz
+    navigate("/feed");
   };
 
   return (
@@ -37,7 +39,6 @@ const CorporateLogin = () => {
       <div className="corporate-title">Daxil ol</div>
       <div className="corporate-info">Asan İmza ilə daxil ol</div>
 
-      {/* Form kısmı */}
       {!isCodeAcceptVisible && (
         <div className="login-form d-flex flex-column">
           <div className="number-input d-flex flex-column">
@@ -69,7 +70,6 @@ const CorporateLogin = () => {
         </div>
       )}
 
-      {/* Kod doğrulama alanı */}
       {isCodeAcceptVisible && (
         <div className="code-accept d-flex flex-column">
           <div className="info">
@@ -78,7 +78,6 @@ const CorporateLogin = () => {
 
           <div className="timer">00:01:48</div>
 
-          {/* "code" butonuna basınca /feed sayfasına yönlenir */}
           <button onClick={handleContinue} className="code">
             Yoxlama kodu: <span>2212</span>
           </button>

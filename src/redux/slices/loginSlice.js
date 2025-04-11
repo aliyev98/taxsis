@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const loginSlice = createSlice({
   name: "login",
   initialState: {
-    step: 1, // Login sürecindeki adımı takip eder
-    accountType: "", // Kullanıcının seçtiği hesap türü ("individual" veya "corporate")
+    step: 1, 
+    accountType: "",
   },
   reducers: {
     setStep: (state, action) => {

@@ -1,48 +1,46 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAccountType } from "../../../../redux/slices/loginSlice"; // path'i projene göre düzenle
 
 const IndividualEnterCode = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const inputRefs = [useRef(), useRef(), useRef(), useRef()]; // 4 input için referanslar
-  const [otp, setOtp] = useState(["", "", "", ""]); // OTP kodlarını saklayan state
+  const inputRefs = [useRef(), useRef(), useRef(), useRef()];
+  const [otp, setOtp] = useState(["", "", "", ""]);
 
-  // Input değiştiğinde çalışacak fonksiyon
   const handleChange = (index, e) => {
     const value = e.target.value;
 
-    if (/^\d$/.test(value)) { // Sadece rakam kabul et
+    if (/^\d$/.test(value)) {
       let newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
 
-      // Son input'a kadar, eğer bir sonraki varsa ona odaklan
       if (index < 3) {
         inputRefs[index + 1].current.focus();
       }
     }
   };
 
-  // Klavyede silme işlemi (Backspace)
   const handleKeyDown = (index, e) => {
     if (e.key === "Backspace") {
       let newOtp = [...otp];
       newOtp[index] = "";
       setOtp(newOtp);
 
-      // Önceki input'a geri dön
       if (index > 0) {
         inputRefs[index - 1].current.focus();
       }
     }
   };
 
-  // Tüm OTP kodu girildiyse butonu aktif yap
   const isOtpComplete = otp.every(num => num !== "");
 
-  // Butona tıklayınca tüm kod doldurulmuşsa /feed rotasına yönlendir
   const handleContinue = () => {
     if (isOtpComplete) {
+      dispatch(setAccountType("individual")); // Burada accountType state'ini güncelliyoruz
       navigate("/feed");
     }
   };
@@ -72,8 +70,8 @@ const IndividualEnterCode = () => {
 
       <button
         className={`btn btn-primary ${!isOtpComplete ? 'deactive disabled' : 'active'}`}
-        disabled={!isOtpComplete}       // buton devre dışı
-        onClick={handleContinue}       // tıklanınca kontrol
+        disabled={!isOtpComplete}
+        onClick={handleContinue}
       >
         Davam et
       </button>

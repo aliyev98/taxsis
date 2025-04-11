@@ -18,20 +18,17 @@
                 .title {
                     width: 100%;
                     color: var(--Neutral-07, #1A1D1F);
-
-                    /* Title 1 (Semibold) */
                     font-family: Inter;
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 600;
                     line-height: 32px;
-                    /* 160% */
                     letter-spacing: -0.4px;
                 }
 
                 .vat-search {
                     gap: 32px;
-                    width: 60%;
+                    width: 70%;
 
                     .search {
                         gap: 32px;
@@ -50,6 +47,7 @@
 
                         .account-type {
                             gap: 16px;
+                            width: 100%;
 
                             .legal-entities {
                                 gap: 12px;
@@ -65,34 +63,31 @@
 
                                 span {
                                     color: var(--Neutral-07, #1A1D1F);
-
-                                    /* Body 2 (Semibold) */
-                                    font-family: Inter;
                                     font-size: 14px;
                                     font-style: normal;
                                     font-weight: 600;
                                     line-height: 24px;
-                                    /* 171.429% */
                                     letter-spacing: -0.14px;
                                 }
 
-                                .input-div {
-                                    border-radius: 50% !important;
+                                .checkbox-div {
+                                    border-radius: 8px;
                                     width: 24px;
                                     height: 24px;
                                     overflow: hidden;
                                     border: 2px solid var(--neutral-shade-dark-0440, rgba(111, 118, 126, 0.40));
 
+                                    input {
+                                        background: var(--Neutral-01, #FCFCFC);
+                                        // border: none;
+                                        width: 100%;
+                                        height: 100%;
+
+                                    }
+
                                 }
 
-                                input {
-                                    border-radius: 20px;
-                                    background: var(--Neutral-01, #FCFCFC);
-                                    border: none;
-                                    width: 100%;
-                                    height: 100%;
 
-                                }
 
                             }
 
@@ -121,23 +116,26 @@
                                     letter-spacing: -0.14px;
                                 }
 
-                                .input-div {
-                                    border-radius: 50% !important;
+                                .checkbox-div {
+                                    border-radius: 8px;
                                     width: 24px;
                                     height: 24px;
                                     overflow: hidden;
                                     border: 2px solid var(--neutral-shade-dark-0440, rgba(111, 118, 126, 0.40));
+                                    position: relative;
+
+                                    input {
+                                        background: var(--Neutral-01, #FCFCFC);
+                                        border: none !important;
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+
+                                    }
 
                                 }
 
-                                input {
-                                    border-radius: 20px;
-                                    background: var(--Neutral-01, #FCFCFC);
-                                    border: none;
-                                    width: 100%;
-                                    height: 100%;
 
-                                }
 
                             }
                         }

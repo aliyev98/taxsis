@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { openModal } from '../redux/slices/postSlice';
 import ProfileDropdown from '../components/dropdwons/ProfileDropdown';
 
@@ -21,10 +22,13 @@ const FeedHeader = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
+
+
   return (
     <div className='feed-header-container d-flex justify-content-between align-items-center'>
 
-      <div className="logo d-flex align-items-center">
+      <div className="logo d-flex align-items-center" onClick={() => navigate('/')}>
 
         <div className="logo-img">
           <img src="/assets/logo.svg" alt="" />

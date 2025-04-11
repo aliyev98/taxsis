@@ -1,9 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const SideBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const accountType = useSelector(state=> state.login.accountType)
+
+  console.log(accountType)
 
   const modules = [
     { id: 1, name: 'Vergi modulu', img: '/assets/tax-modul-icon.svg', color: '#B5E4CA' },
@@ -15,30 +20,40 @@ const SideBar = () => {
   const individualMenu = [
     { id: 1, name: 'Dostlar', img: '/assets/friends-icon.svg', path: '/friends' },
     { id: 2, name: 'Qruplar', img: '/assets/groups-icon.svg', path: '/groups' },
-    { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '/pages' },
-    { id: 4, name: 'Diskusiyalar', img: '/assets/discussion-icon.svg', path: '/discussions' },
+    { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '#' },
+    { id: 4, name: 'Diskusiyalar', img: '/assets/discussion-icon.svg', path: '#' },
     { id: 5, name: 'Vakansiyalar', img: '/assets/vacations-icon.svg', path: '/vacancies' },
     { id: 6, name: 'Tədbirlər', img: '/assets/ticket-icon.svg', path: '/events' },
-    { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '/courses' },
-    { id: 8, name: 'Marketplace', img: '/assets/dollar-icon.svg', path: '/marketplace' },
+    { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '#' },
+    { id: 8, name: 'Marketplace', img: '/assets/dollar-icon.svg', path: '#' },
   ];
 
   const corporateMenu = [
     { id: 1, name: 'Əməkdaşlar', img: '/assets/friends-icon.svg', path: '/colleagues' },
     { id: 2, name: 'Qruplar', img: '/assets/groups-icon.svg', path: '/groups' },
-    { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '/pages' },
+    { id: 3, name: 'Səhifələr', img: '/assets/pages-icon.svg', path: '#' },
     { id: 4, name: 'Diskusiyalar', img: '/assets/discussion-icon.svg', path: '#' },
     { id: 5, name: 'Vakansiyalar', img: '/assets/vacations-icon.svg', path: '/vacancies' },
     { id: 6, name: 'Tədbirlər', img: '/assets/ticket-icon.svg', path: '/events' },
-    { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '/courses' },
-    { id: 8, name: 'Marketplace', img: '/assets/dollar-icon.svg', path: '/marketplace' },
+    { id: 7, name: 'Kurslar', img: '/assets/book-icon.svg', path: '#' },
+    { id: 8, name: 'Marketplace', img: '/assets/dollar-icon.svg', path: '#' },
+    { id: 9, name: 'Tenderlər', img: '/assets/tender-icon.svg', path: '/tenders' },
+    { id: 10, name: 'Gömrük kalkulyatoru', img: '/assets/custom-calculator-icon.svg', path: '/calculator' },
+    { id: 11, name: 'Valyuta hesabla', img: '/assets/currency-icon.svg', path: '/currency' },
+    { id: 12, name: 'Kortirovka', img: '/assets/kartirovka-icon.svg', path: '#' },
+    { id: 13, name: 'VÖEN axtar', img: '/assets/search-icon.svg', path: '/vatSearch' },
   ];
+
+  const activeMenu = accountType === 'individual' ? individualMenu : corporateMenu;
+
 
   const handleModuleClick = (module, index) => {
     if (index === 0) {
       navigate('/taxModule');
     }
   };
+
+  console.log("Account Type:", accountType);
 
   return (
     <div className="sidebar-container col-2">
@@ -110,7 +125,7 @@ const SideBar = () => {
       <div className="line"></div>
 
       <div className="social-menu d-flex flex-column">
-        {individualMenu.map((item) => (
+        {activeMenu.map((item) => (
           <button
             key={item.id}
             className={`menu-item d-flex align-items-center ${location.pathname === item.path ? 'active' : ''}`}

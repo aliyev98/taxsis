@@ -79,7 +79,7 @@ const CustomCalculator = () => {
 
                                 <div className="title">VÖEN-ə və ya Ada görə vergi ödəyicisinin axtarılması</div>
 
-                                <div className="account-type d-flex align-items-center">
+                                <div className="account-type d-flex justify-content-center align-items-center">
 
                                     <div className="legal-entities d-flex justify-content-between align-items-center">
 
@@ -89,11 +89,10 @@ const CustomCalculator = () => {
 
                                         <span>Hüquqi şəxslər üzrə</span>
 
-                                        <div className="input-div">
-
+                                        <div className="checkbox-div">
                                             <input type="checkbox" name="" id="" />
-
                                         </div>
+
 
                                     </div>
 
@@ -105,7 +104,7 @@ const CustomCalculator = () => {
 
                                         <span>Hüquqi şəxslər üzrə</span>
 
-                                        <div className="input-div">
+                                        <div className="checkbox-div">
 
                                             <input type="checkbox" name="" id="" />
 
