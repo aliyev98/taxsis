@@ -1,76 +1,110 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSidebarSelection } from '../redux/slices/taxModuleSlice';
+import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // 🔁 path’i kendi yapına göre güncelle
+
+const labelToPageKeyMap = {
+  'Qaimələr': 'invoices',
+  'Əvəzləşmə reyestri': 'substitution_register',
+  'Deopzit çıxarışları': 'deposits_extracts',
+  'Bank çıxarışları': 'bank_statements',
+  'Kassa əməliyyatları': 'cash_opr',
+  'Gömrük sənədləri': 'customs',
+  'Şirkət bazası': 'company_base',
+  'Vergi hesabatları': 'tax_reports',
+  'İlkin qalıqlar': 'initial_balances',
+  'Daxili qalıqlar': 'internal_balances',
+  'Xarici qalıqlar': 'external_balances',
+  'Qeyri rezidentlər': 'non_residents',
+  'Hesabatlar': 'reports',
+  'Üzləşmə aktları': 'confrontation_acts',
+  'Qaimələr üzrə hesabat': 'invoice_reports',
+  'Pulun hərəkəti hesabatı': 'cash_flow',
+  'Alış-satış hesabatı': 'sales_report',
+  'Gəlir və xərc hesabatı': 'profit_loss',
+  'Borclar cədvəli': 'debt_table',
+  'Vergi uçotu': 'tax_accounting',
+  'Əvəzləşmə': 'substitution',
+  'ƏDV bildirişi': 'vat_statement',
+  'Müqayisəli təhlil': 'comparison_analysis',
+  'Analizlər': 'analyses',
+  'Parametrlər': 'parameters',
+  'Bank hesabı': 'bank_account',
+  'Xərc maddəsi': 'expense_item',
+  'Aktiv maddəsi': 'asset_item',
+  'Gəlir maddəsi': 'income_item',
+};
+
+const accordionMap = {
+  database: [
+    'Qaimələr', 'Əvəzləşmə reyestri', 'Deopzit çıxarışları', 'Bank çıxarışları',
+    'Kassa əməliyyatları', 'Gömrük sənədləri', 'Şirkət bazası',
+    'Vergi hesabatları', 'İlkin qalıqlar', 'Daxili qalıqlar', 'Xarici qalıqlar', 'Qeyri rezidentlər'
+  ],
+  reports: [
+    'Üzləşmə aktları', 'Qaimələr üzrə hesabat', 'Pulun hərəkəti hesabatı',
+    'Alış-satış hesabatı', 'Gəlir və xərc hesabatı', 'Borclar cədvəli'
+  ],
+  accounting: ['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'],
+  analyses: ['Analizlər'],
+  params: ['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'],
+};
+
+const getAccordionIdForLabel = (label) => {
+  for (const [id, items] of Object.entries(accordionMap)) {
+    if (items.includes(label)) return id;
+  }
+  return null;
+};
 
 const TaxModuleSideBar = () => {
   const dispatch = useDispatch();
+  const [activeButton, setActiveButton] = useState('Qaimələr');
 
-  // ✅ 1) İlk dəyər localStorage-dan oxunur
-  const [activeButton, setActiveButton] = useState(() => {
-    return localStorage.getItem("activeButton") || "Qaimələr";
-  });
-
-  // ✅ 2) Hər dəfə dəyişdikdə localStorage-a yaz
   useEffect(() => {
-    localStorage.setItem("activeButton", activeButton);
+    const stored = localStorage.getItem('taxModuleSidebarSelection');
+    if (stored) {
+      setActiveButton(stored);
+      const selectedKey = labelToPageKeyMap[stored];
+      if (selectedKey) dispatch(setSidebarSelection(selectedKey));
+
+      const accordionId = getAccordionIdForLabel(stored);
+      if (accordionId) {
+        const element = document.getElementById(accordionId);
+        if (element && !element.classList.contains('show')) {
+          setTimeout(() => {
+            const collapse = new window.bootstrap.Collapse(element, { toggle: true });
+            collapse.show();
+          }, 0);
+        }
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem('taxModuleSidebarSelection', activeButton);
   }, [activeButton]);
 
   const handleButtonClick = (label) => {
     setActiveButton(label);
-
-    const labelToPageKeyMap = {
-      // ... map ...
-      'Qaimələr': 'invoices',
-      'Əvəzləşmə reyestri': 'substitution_register',
-      'Depozit çıxarışları': 'deposits_extracts',
-      'Bank çıxarışları': 'bank_extracts',
-      'Kassa əməliyyatları': 'cash_opr',
-      'Gömrük sənədləri': 'custom_doc',
-      'Şirkət bazası': 'company_base',
-      'Vergi hesabatları': 'tax_reports',
-      'İlkin qalıqlar': 'initial_residue',
-      'Daxili qalıqlar': 'internal_residue',
-      'Xarici qalıqlar': 'external_residue',
-      'Qeyri rezidentlər': 'non_residents',
-      'Hesabatlar': 'reports',
-      'Üzləşmə aktları': 'confrontation_acts',
-      'Qaimələr üzrə hesabat': 'invoice_reports',
-      'Pulun hərəkəti hesabatı': 'cash_flow',
-      'Alış-satış hesabatı': 'sales_reports',
-      'Gəlir və xərc hesabatı': 'income_reports',
-      'Borclar cədvəli': 'debts',
-      'Vergi uçotu': 'tax_accounting',
-      'Əvəzləşmə': 'substitution',
-      'ƏDV bildirişi': 'vat_notice',
-      'Müqayisəli təhlil': 'comparative_analysis',
-      'Analizlər': 'analyses',
-      'Parametrlər': 'parameters',
-      'Bank hesabı': 'bank_account',
-      'Xərc maddəsi': 'expense_item',
-      'Aktiv maddəsi': 'active_item',
-      'Gəlir maddəsi': 'income_item',
-      'Məlumat bazası': 'invoices',
-    };
+    localStorage.setItem('taxModuleSidebarSelection', label);
 
     const selectedKey = labelToPageKeyMap[label];
-    if (selectedKey) {
-      dispatch(setSidebarSelection(selectedKey));
+    if (selectedKey) dispatch(setSidebarSelection(selectedKey));
+
+    const accordionId = getAccordionIdForLabel(label);
+    if (accordionId) {
+      const element = document.getElementById(accordionId);
+      if (element && !element.classList.contains('show')) {
+        const collapse = new window.bootstrap.Collapse(element, { toggle: true });
+        collapse.show();
+      }
     }
   };
-
-  // Bu listdə "Məlumat bazası" da olacaqsa açıq saxlamalı olacaqsan
-  const databaseItems = [
-    'Məlumat bazası',
-    'Qaimələr',
-    'Əvəzləşmə reyestri',
-    // ... və s.
-  ];
-  const isDatabaseOpen = databaseItems.includes(activeButton);
 
   return (
     <div className="tax-module-sidebar d-flex flex-column">
       <div className="accordion" id="accordionPanelsStayOpenExample">
-
+        {/* Logo alanı */}
         <div
           className="sidebar-header d-flex align-items-center"
           data-bs-toggle="collapse"
@@ -80,7 +114,7 @@ const TaxModuleSideBar = () => {
         >
           <div className="logo d-flex align-items-center gap-3">
             <div className="logo-img">
-              <img src="/assets/logo.svg" alt="" />
+              <img src="./assets/logo.svg" alt="" />
               <div className="lines">
                 <div className="line1"></div>
                 <div className="line2"></div>
@@ -90,41 +124,39 @@ const TaxModuleSideBar = () => {
             <span className="logo-text">TAXSIS</span>
           </div>
           <div className="icon">
-            <img src="/assets/arrow-down.svg" alt="" />
+            <img src="./assets/arrow-down.svg" alt="" />
           </div>
         </div>
 
         <div id="general" className="accordion-collapse collapse show">
+          {/* Məlumat bazası */}
           <button
-            className={`accordion-button ${isDatabaseOpen ? '' : 'collapsed'} ${isDatabaseOpen ? 'active' : ''}`}
+            className={`accordion-button collapsed ${activeButton === 'Məlumat bazası' ? 'active' : ''}`}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#database"
-            aria-expanded={isDatabaseOpen ? 'true' : 'false'}
+            aria-expanded="false"
             aria-controls="database"
             onClick={() => handleButtonClick('Məlumat bazası')}
           >
-            <img src="/assets/database-icon.svg" alt="" />
+            <img src="./assets/database-icon.svg" alt="" />
             <span>Məlumat bazası</span>
           </button>
 
-          <div
-            id="database"
-            className={`accordion-collapse collapse ${isDatabaseOpen ? 'show' : ''}`}
-          >
+          <div id="database" className="accordion-collapse collapse">
             <div className="menu">
               {[
                 'Qaimələr',
                 'Əvəzləşmə reyestri',
-                'Depozit çıxarışları',
+                'Deopzit çıxarışları',
                 'Bank çıxarışları',
                 'Kassa əməliyyatları',
                 'Gömrük sənədləri',
                 'Şirkət bazası',
-                'Vergi hesabatları',
+                'Vergi hesabatları'
               ].map((item, i) => (
                 <div key={i}>
-                  <img src="/assets/tree-icon.svg" alt="" />
+                  <img src="./assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -134,6 +166,7 @@ const TaxModuleSideBar = () => {
                 </div>
               ))}
 
+              {/* İlkin qalıqlar */}
               <div
                 className="accordion-butto collapsed"
                 type="button"
@@ -142,7 +175,7 @@ const TaxModuleSideBar = () => {
                 aria-expanded="false"
                 aria-controls="remains"
               >
-                <img src="/assets/tree-icon.svg" alt="" />
+                <img src="./assets/tree-icon.svg" alt="" />
                 <button
                   className={activeButton === 'İlkin qalıqlar' ? 'active' : ''}
                   onClick={() => handleButtonClick('İlkin qalıqlar')}
@@ -156,7 +189,7 @@ const TaxModuleSideBar = () => {
               <div className="menu">
                 {['Daxili qalıqlar', 'Xarici qalıqlar'].map((sub, i) => (
                   <div key={i}>
-                    <img src="/assets/tree-icon.svg" alt="" />
+                    <img src="./assets/tree-icon.svg" alt="" />
                     <button
                       className={activeButton === sub ? 'active' : ''}
                       onClick={() => handleButtonClick(sub)}
@@ -171,7 +204,7 @@ const TaxModuleSideBar = () => {
             {/* Qeyri rezidentlər */}
             <div className="menu">
               <div>
-                <img src="/assets/tree-icon.svg" alt="" />
+                <img src="./assets/tree-icon.svg" alt="" />
                 <button
                   className={activeButton === 'Qeyri rezidentlər' ? 'active' : ''}
                   onClick={() => handleButtonClick('Qeyri rezidentlər')}
@@ -192,7 +225,7 @@ const TaxModuleSideBar = () => {
             aria-controls="reports"
             onClick={() => handleButtonClick('Hesabatlar')}
           >
-            <img src="/assets/document-icon.svg" alt="" />
+            <img src="./assets/document-icon.svg" alt="" />
             <span>Hesabatlar</span>
           </button>
 
@@ -204,10 +237,10 @@ const TaxModuleSideBar = () => {
                 'Pulun hərəkəti hesabatı',
                 'Alış-satış hesabatı',
                 'Gəlir və xərc hesabatı',
-                'Borclar cədvəli',
+                'Borclar cədvəli'
               ].map((item, i) => (
                 <div key={i}>
-                  <img src="/assets/tree-icon.svg" alt="" />
+                  <img src="./assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -229,7 +262,7 @@ const TaxModuleSideBar = () => {
             aria-controls="accounting"
             onClick={() => handleButtonClick('Vergi uçotu')}
           >
-            <img src="/assets/percent-icon.svg" alt="" />
+            <img src="./assets/percent-icon.svg" alt="" />
             <span>Vergi uçotu</span>
           </button>
 
@@ -237,7 +270,7 @@ const TaxModuleSideBar = () => {
             <div className="menu">
               {['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'].map((item, i) => (
                 <div key={i}>
-                  <img src="/assets/tree-icon.svg" alt="" />
+                  <img src="./assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -259,7 +292,7 @@ const TaxModuleSideBar = () => {
             aria-controls="analyses"
             onClick={() => handleButtonClick('Analizlər')}
           >
-            <img src="/assets/bar-icon.svg" alt="" />
+            <img src="./assets/bar-icon.svg" alt="" />
             <span>Analizlər</span>
           </button>
 
@@ -277,15 +310,20 @@ const TaxModuleSideBar = () => {
             aria-controls="params"
             onClick={() => handleButtonClick('Parametrlər')}
           >
-            <img src="/assets/settings-icon.svg" alt="" />
+            <img src="./assets/settings-icon.svg" alt="" />
             <span>Parametrlər</span>
           </button>
 
           <div id="params" className="accordion-collapse collapse">
             <div className="menu">
-              {['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'].map((item, i) => (
+              {[
+                'Bank hesabı',
+                'Xərc maddəsi',
+                'Aktiv maddəsi',
+                'Gəlir maddəsi'
+              ].map((item, i) => (
                 <div key={i}>
-                  <img src="/assets/tree-icon.svg" alt="" />
+                  <img src="./assets/tree-icon.svg" alt="" />
                   <button
                     className={activeButton === item ? 'active' : ''}
                     onClick={() => handleButtonClick(item)}
@@ -296,7 +334,6 @@ const TaxModuleSideBar = () => {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </div>
