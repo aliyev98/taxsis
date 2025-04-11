@@ -82,3 +82,8 @@
 @use './components/dropdowns/currencyDropdown';
 @use './pages/social/vatSearch';
 @use './pages/social/individualProfile';
+@use './components/social/individualProfile/photos';
+@use './components/social/individualProfile/videos';
+@use './components/social/individualProfile/individualFriends';
+@use './components/social/individualProfile/individualMessage';
+@use './components/social/individualProfile/cv';

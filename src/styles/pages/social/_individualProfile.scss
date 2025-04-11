@@ -7,11 +7,12 @@
             margin-top: 16px;
             width: 80%;
             background-color: #fff;
+            border-radius: 24px;
 
             .cover-img {
                 border-radius: 12px;
                 overflow: hidden;
-                height: 200px;
+                height: 300px;
                 padding: 24px;
 
                 img {
@@ -23,17 +24,17 @@
             }
 
             .profile-wrapper {
-                background-color: red;
                 padding: 0 24px;
 
                 .left-side {
-                    flex: 1;
+                    width: 40%;
 
                     .user-infos-cart {
                         padding: 32px;
                         background-color: #fff;
                         position: absolute;
-                        top: -30px;
+                        top: -160px;
+                        left: 100px;
                         max-width: 352px;
                         border-radius: 24px;
                         border: 1px solid var(--Neutrals-6, #E6E8EC);
@@ -128,15 +129,92 @@
                             }
                         }
 
-                        .user-details{
-                            
+                        .user-details {
+                            width: 100%;
+                            gap: 20px;
+                            margin-bottom: 20px;
+
+                            .item {
+
+                                div {
+                                    gap: 12px;
+
+                                    span {
+                                        color: var(--Neutrals-4, #777E90);
+                                        font-size: 14px;
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        line-height: 24px;
+                                    }
+                                }
+
+                                span {
+                                    color: var(--Neutrals-2, #23262F);
+                                    font-size: 14px;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    line-height: 24px;
+                                }
+
+                            }
+                        }
+
+                        .btn-edit {
+                            border-radius: 90px;
+                            border: 2px solid var(--Neutrals-6, #E6E8EC);
+                            padding: 12px 16px;
+
+                            color: var(--Neutrals-2, #23262F);
+                            text-align: center;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 16px;
                         }
 
                     }
                 }
 
                 .right-side {
-                    flex: 1;
+                    width: 60%;
+                    gap: 32px;
+
+                    .profile-navbar {
+                        gap: 12px;
+
+
+                        button {
+                            padding: 8px 16px;
+                            border: none;
+                            background-color: transparent;
+
+                            border-radius: 20px;
+                            border: 2px solid var(--Neutral-03, #EFEFEF);
+                            background: var(--Neutral-01, #FCFCFC);
+
+                            color: var(--Neutral-07, #1A1D1F);
+                            font-size: 13px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 24px;
+                            letter-spacing: -0.13px;
+                        }
+
+                        .active {
+                            background: var(--Neutral-06, #272B30);
+                            color: var(--Neutral-01, #FCFCFC);
+                            font-size: 13px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 24px;
+                            letter-spacing: -0.13px;
+                        }
+                    }
+
+                    .posts-container{
+                        width: 100%;
+                        margin-top: 0 !important;
+                    }
                 }
 
 

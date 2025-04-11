@@ -1,0 +1,115 @@
+.individual-friends-container {
+    padding: 12px;
+    gap: 12px;
+    margin-top: 24px;
+
+    .header {
+
+        span {
+            color: var(--Neutral-07, #1A1D1F);
+
+            /* Title 1 (Semibold) */
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+            /* 160% */
+            letter-spacing: -0.4px;
+        }
+
+        button {
+            padding: 4px;
+            border-radius: 50%;
+            background: var(--Neutral-03, #EFEFEF);
+            border: none;
+        }
+    }
+
+    .individual-friends-navbar {
+        gap: 24px !important;
+
+        button {
+            background-color: transparent;
+            border: none;
+            padding: 8px 0;
+
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 24px;
+            letter-spacing: -0.13px;
+        }
+
+        .active {
+            border-bottom: 1px solid var(--Neutral-04, #6F767E);
+        }
+    }
+
+    .wrapper {
+
+        .friend-container {
+            gap: 12px;
+            padding: 12px;
+
+            .profile-img {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+
+                img {
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .username {
+                flex: 1;
+                color: var(--Neutral-07, #1A1D1F);
+
+                /* Base 1 (Bold) */
+                font-family: Inter;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                /* 160% */
+                letter-spacing: -0.15px;
+            }
+
+            .online-div {
+                gap: 12px;
+                .online-time {
+                    color: var(--neutral-shades-0475, #9A9FA5);
+
+                    /* Caption 1 */
+                    font-family: Inter;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 16px;
+                    /* 123.077% */
+                    letter-spacing: -0.13px;
+                }
+
+                .icon {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                }
+
+                .online {
+                    background: var(--Primary-01, #2A85FF);
+                }
+
+                .offline {
+                    background: var(--neutral-shades-0475, #9A9FA5);
+                }
+            }
+        }
+
+    }
+}
