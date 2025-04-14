@@ -60,7 +60,7 @@
 @use './components/social/vacancies/vacancyApply';
 @use './components/social/vacancies/vacancyFinish';
 @use './pages/social/eventsPage';
-@use './components/ui/inputWithLabel';
+// @use './components/ui/inputWithLabel';
 @use './components/social/events/eventsHeader';
 @use './components/social/events/eventsNavbar';
 @use './components/social/events/events';
@@ -75,9 +75,9 @@
 @use './components/social/tenders/tenderParticipate';
 @use './components/social/tenders/tenderFinish';
 @use './components/social/tenders/announceTender';
-@use './components/ui/input';
+// @use './components/ui/input';
 @use './pages/social/customCalculator';
-@use './components/ui/select';
+// @use './components/ui/select';
 @use './pages/social/currencyPage';
 @use './components/dropdowns/currencyDropdown';
 @use './pages/social/vatSearch';
@@ -88,6 +88,10 @@
 @use './components/social/individualProfile/individualMessage';
 @use './components/social/individualProfile/cv';
 @use './components/social/individualProfile/cvEdit';
-@use './components/ui/textareaWithLabel';
+// @use './components/ui/textareaWithLabel';
 @use './components/social/individualProfile/individualProfileEdit';
 @use './pages/social/colleaguesPage';
+
+
+
+@use './components/ui/ui.scss';

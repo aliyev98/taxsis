@@ -9,38 +9,49 @@ const EnterCode = () => {
 
   const handleChange = (index, e) => {
     const value = e.target.value;
-    if (/^\d$/.test(value)) {
-      let newCode = [...code];
-      let newErrors = [...errors];
 
-      newCode[index] = value;
-      setCode(newCode);
+    if (!/^\d?$/.test(value)) return;
 
-      newErrors[index] = value !== correctCode[index];
-      setErrors(newErrors);
+    let newCode = [...code];
+    let newErrors = [...errors];
 
-      if (index < 3 && !newErrors[index]) {
-        inputRefs[index + 1].current.focus();
-      }
+    newCode[index] = value;
+    setCode(newCode);
+
+    // ✅ Sadece değer varsa ve yanlışsa hata göster
+    newErrors[index] = value !== "" && value !== correctCode[index];
+    setErrors(newErrors);
+
+    if (value && index < 3) {
+      inputRefs[index + 1].current.focus();
     }
   };
+
+
 
   const handleKeyDown = (index, e) => {
     if (e.key === "Backspace") {
       let newCode = [...code];
       let newErrors = [...errors];
 
-      newCode[index] = "";
-      newErrors[index] = false;
+      if (code[index] === "") {
+        // Eğer input zaten boşsa bir önceki inputa git
+        if (index > 0) {
+          newCode[index - 1] = "";
+          newErrors[index - 1] = false;
+          inputRefs[index - 1].current.focus();
+        }
+      } else {
+        // Eğer input doluysa sadece o inputu temizle
+        newCode[index] = "";
+        newErrors[index] = false;
+      }
 
       setCode(newCode);
       setErrors(newErrors);
-
-      if (index > 0) {
-        inputRefs[index - 1].current.focus();
-      }
     }
   };
+
 
   const isCodeCorrect = code.join("") === correctCode && !errors.includes(true);
 

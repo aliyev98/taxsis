@@ -1,7 +1,7 @@
 import React from 'react'
-import InputWithLabel from '../../ui/InputWithLabel'
-import Input from '../../ui/Input'
-import TextareaWithLabel from '../../ui/TextareaWithLabel'
+import InputWithLabel from '../../ui/inputs/InputWithLabel'
+import Input from '../../ui/inputs/Input'
+import TextareaWithLabel from '../../ui/inputs/TextareaWithLabel'
 import { useDispatch } from 'react-redux';
 import { setProfileNavigate } from '../../../redux/slices/profileSlice';
 

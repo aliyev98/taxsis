@@ -3,8 +3,8 @@ import FeedHeader from '../../layouts/FeedHeader'
 import FeedSideBar from '../../sidebars/FeedSideBar'
 import GroupsHeader from '../../components/social/groups/GroupsHeader'
 import Group from '../../components/social/groups/Group'
-import Input from '../../components/ui/Input'
-import Select from '../../components/ui/Select'
+import Input from '../../components/ui/inputs/Input'
+import Select from '../../components/ui/inputs/Select'
 import CurrencyDropdown from '../../components/dropdwons/CurrencyDropdown'
 
 

@@ -21,6 +21,7 @@ const IndividualLogin = () => {
 
     return (
         <div className="individual-login-container col-md-8 col-lg-7 col-xl-5 col-xxl-5 col-11">
+            
             <div className="login-type">Fərdi hesab</div>
             <div className="login-title">Daxil ol</div>
             <div className="login-info">Telefon nömrəsi ilə daxil olun</div>

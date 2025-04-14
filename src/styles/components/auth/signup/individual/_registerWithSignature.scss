@@ -8,39 +8,75 @@
         width: fit-content;
         padding: 4px 12px;
         font-size: 24px;
-        font-style: normal;
         font-weight: 600;
-        line-height: 32px;
-        letter-spacing: -0.48px;
     }
 
     .signature-register-title {
         color: #1A1D1F;
         margin-bottom: 32px;
         font-size: 48px;
-        font-style: normal;
         font-weight: 600;
-        line-height: 48px;
-        letter-spacing: -1.44px;
     }
 
     .signature-register-info {
-        color:#1A1D1F;
+        color: #1A1D1F;
         margin-bottom: 24px;
-        font-family: Inter;
         font-size: 20px;
-        font-style: normal;
         font-weight: 600;
-        line-height: 32px;
-        letter-spacing: -0.4px;
     }
 
-    .qr-code {
+    .qr-code-container {
+        gap: 12px;
 
-        img{
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
+        .qr-image {
+            width: 10 0%;
+            gap: 8px;
+            border-radius: 16px;
+            border: 1px solid lightgray;
+            padding: 12px;
+
+            .qr-img-div {
+                width: 35%;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .expire {
+                color: #3C60B3;
+                gap: 8px;
+
+                span:first-child {
+                    font-weight: 500;
+                }
+
+                span:last-child {
+                    font-weight: 700;
+                }
+            }
+
         }
+
+
+
+        ul {
+            border-radius: 16px;
+            border: 1px solid lightgray;
+
+            li{
+                color: #6F767E;
+                font-weight: 600;
+            }
+
+            li::marker {
+                color: #3579F6 !important;
+                font-size: 30px !important;
+            }
+        }
+
+
     }
 }

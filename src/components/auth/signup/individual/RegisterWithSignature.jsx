@@ -4,9 +4,9 @@ import { setStep } from "../../../../redux/slices/stepSlice";
 
 const RegisterWithSignature = () => {
 
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
 
-    const handleContinue = () =>{
+    const handleContinue = () => {
         dispatch(setStep(4))
     }
 
@@ -19,8 +19,25 @@ const RegisterWithSignature = () => {
 
             <div className="signature-register-info">SİMA İmza ilə qeydiyyat</div>
 
-            <div className="qr-code">
-                <img src="/assets/qr2.png" alt="" />
+            <div className="qr-code-container d-flex flex-column">
+
+                <div className="qr-image d-flex flex-column align-items-center">
+
+                    <div className="qr-img-div">
+                        <img src="/assets/qrcode.png" alt="" />
+                    </div>
+
+                    <div className="expire d-flex">
+                        <span>Bitmə vaxtı :</span> <span>00:00:48</span>
+                    </div>
+                </div>
+
+                <ul>
+                    <li>SIMA mobil tədbiqini açın</li>
+                    <li><b>Skan et</b> düyməsini sıxın</li>
+                    <li>QR kou skan edərək daxil olun</li>
+                </ul>
+
             </div>
 
             <div onClick={handleContinue} className="btn btn-primary">QR kod scan edildi</div>

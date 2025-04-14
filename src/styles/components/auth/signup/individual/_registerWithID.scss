@@ -3,7 +3,7 @@
 
 .id-register-container {
     margin-top: 100px !important;
-    
+
 
     @include mq(big-desktop-down) {
         width: 35% !important;
@@ -51,28 +51,10 @@
             border: 2px solid #9A9FA5;
             padding: 8px 16px;
 
-            .input-group {
-
-                label {
-                    color: #111315;
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 12px;
-                    letter-spacing: -0.12px;
-                }
-
-                input {
-                    color: var(--Neutral-07, #1A1D1F);
-                    font-size: 15px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-                    border: none;
-                    outline: none;
-                    text-transform: uppercase;
-                }
+            .input-div {
+                flex: 1;
+                background-color: transparent;
+                padding: 0;
             }
 
             img {
@@ -81,68 +63,16 @@
 
         }
 
-        .input-element {
-            border-radius: 12px;
-            border: 1px solid #EFEFEF;
-            background: #F4F4F4;
-            padding: 16px;
-
-
-            input {
-                background: #F4F4F4;
-                outline: none;
-                border: none;
-                color: #6F767E;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-                width: 100%;
-            }
-        }
-
-        .special-input {
-            border-radius: 12px;
-            border: 2px solid #9A9FA5;
+        .input-div:nth-child(6) {
             padding: 8px 16px;
-            background-color: #fff;
-
-            input {
-                background-color: #fff;
-                color: #1A1D1F;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-            }
-
-            label {
-                color: #111315;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 12px;
-                letter-spacing: -0.12px;
-            }
+            background-color: transparent;
+            border: 2px solid var(--neutral-shades-0475, #9A9FA5);
         }
-    }
 
-    .btn {
-        width: 100%;
-        margin-top: 40px;
-        border-radius: 12px;
-        padding: 12px 20px;
-        margin-bottom: 100px;
-        border: none;
-    }
-
-    .active {
-        background-color: #2A85FF;
-    }
-
-    .deactive {
-        background-color: rgba(42, 133, 255, 0.50);
+        .input-div:nth-child(7) {
+            padding: 8px 16px;
+            background-color: transparent;
+            border: 2px solid var(--neutral-shades-0475, #9A9FA5);
+        }
     }
 }

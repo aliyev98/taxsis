@@ -9,6 +9,7 @@ import CorporateRegistrationType from '../../components/auth/signup/corporate/Co
 import RegisterWithAsan from '../../components/auth/signup/corporate/RegisterWithAsan';
 import ChooseCompany from '../../components/auth/signup/corporate/ChooseCompany'
 import CompanyRegister from '../../components/auth/signup/corporate/CompanyRegister'
+import LogoWhite from '../../components/ui/LogoWhite'
 import { useSelector } from "react-redux";
 
 
@@ -26,23 +27,13 @@ const SingUp = () => {
 
                 <img src="/assets/image 1.jpg" alt="" />
 
-                <div className="logo d-flex align-items-center">
+                <LogoWhite />
 
-                    <div className="logo-img">
-
-                        <img src="/assets/white-logo.svg" alt="" />
-
-                        <div className="lines">
-                            <div className="line1"></div>
-                            <div className="line2"></div>
-                            <div className="line3"></div>
-                        </div>
-
-                    </div>
-                    
-                    <span className='logo-text'>TAXSIS</span>
-
+                <div className="phone-number position-absolute d-flex align-items-center">
+                    <img src="/assets/phone-icon.svg" alt="" />
+                    <span>+994 12 345 67 89</span>
                 </div>
+
             </div>
 
             <div className="signup-form d-flex justify-content-center align-items-center flex-column row">

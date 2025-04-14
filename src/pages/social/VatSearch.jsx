@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import FeedHeader from '../../layouts/FeedHeader'
 import FeedSideBar from '../../sidebars/FeedSideBar'
-import Input from '../../components/ui/Input'
+import Input from '../../components/ui/inputs/Input'
 import TaxModuleTable from '../../components/tables/TaxModuleTable'
 
 
