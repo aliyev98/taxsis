@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import LinkedAccountsDropdown from '../components/dropdwons/LinkedAccountsDropdown';
 
 const SideBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const accountType = useSelector(state=> state.login.accountType)
+  const accountType = useSelector(state => state.login.accountType)
 
   console.log(accountType)
 
@@ -53,55 +54,65 @@ const SideBar = () => {
     }
   };
 
-  console.log("Account Type:", accountType);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const [selectedAccount, setSelectedAccount] = useState({
+    name: "ACCFIN Group",
+    img: "/assets/account-img1.png",
+  });
+
+  const accounts = [
+    {
+      name: "ACCFIN Group",
+      img: "/assets/account-img.jpg",
+    },
+    {
+      name: "Test Company",
+      img: "/assets/account-img1.png",
+    },
+    {
+      name: "Beta Group",
+      img: "/assets/account-img3.png",
+    },
+  ];
+
+  const handleSelectAccount = (account) => {
+    setSelectedAccount(account);
+    setShowDropdown(false);
+  };
+
 
   return (
-    <div className="sidebar-container col-2">
-      
+    <div className="sidebar-container d-flex flex-column col-2">
+
       <div className="linked-accounts d-flex flex-column">
         <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
 
-        <div className="dropdown custom-dropdown">
-          <button className="dropdown-toggle selected-account d-flex justify-content-between align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div className="left-side d-flex align-items-center">
-              <div className="account-img">
-                <img src="/assets/account-img1.png" alt="" />
-              </div>
-              <div className="account-name">
-                <span>ACCFIN Group</span>
-              </div>
-            </div>
-            <div className="dropdown-icon">
-              <img src="/assets/dropdown-icon.svg" alt="" />
-            </div>
-          </button>
+        <div className="selected-account d-flex align-items-center" onClick={() => setShowDropdown((prev) => !prev)} >
 
-          <ul className="dropdown-menu accounts dropdown-menu-end">
-            <div className="title">VEÖN-Ə BAĞLI HESABLAR</div>
+          <div className="account-img">
+            <img src={selectedAccount.img} alt="" />
+          </div>
 
-            {['ACCFIN Group', 'ACFA MMC', 'Innova Co'].map((name, i) => (
-              <li key={i}>
-                <button className="account d-flex justify-content-between align-items-center">
-                  <div className="left-side d-flex align-items-center">
-                    <div className="account-img">
-                      <img src="/assets/account-img1.png" alt="" />
-                    </div>
-                    <div className="account-name">
-                      <span>{name}</span>
-                    </div>
-                  </div>
-                </button>
-              </li>
-            ))}
-          </ul>
+          <span className="account-name">{selectedAccount.name}</span>
+
+          <div className="arrow-icon">
+            <img src="/assets/arrow-down.svg" alt="" />
+
+            {showDropdown && (
+              <LinkedAccountsDropdown accounts={accounts} onSelect={handleSelectAccount} />
+            )}
+
+          </div>
+
         </div>
 
-        <button className="add-account d-flex align-items-center">
-          <div className="icon">
+        <div className="add-account d-flex align-items-center">
+          <div className="add-icon-img">
             <img src="/assets/plus-icon.svg" alt="" />
           </div>
           <span>Hesab əlavə et</span>
-        </button>
+        </div>
       </div>
 
       <div className="line"></div>
@@ -138,6 +149,22 @@ const SideBar = () => {
           </button>
         ))}
       </div>
+
+      <div className="sidebar-footer">
+        <div className="line"></div>
+
+        <div className="footer-actions d-flex flex-column">
+          <a href="">Məxfilik siyasəti</a>
+          <a href="">Qaydalar və şərtlər</a>
+
+          <div className="copyright d-flex">
+            <img src="/assets/copyright-icon.svg" alt="" />
+            <span>Bütün hüquqlar qorunur</span>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   );
 };

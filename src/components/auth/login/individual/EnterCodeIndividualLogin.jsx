@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setAccountType } from "../../../../redux/slices/loginSlice"; // path'i projene göre düzenle
+import { setAccountType } from "../../../../redux/slices/loginSlice";
 
 const IndividualEnterCode = () => {
   const navigate = useNavigate();
@@ -14,27 +14,44 @@ const IndividualEnterCode = () => {
     const value = e.target.value;
 
     if (/^\d$/.test(value)) {
-      let newOtp = [...otp];
+      const newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
 
-      if (index < 3) {
+      if (index < inputRefs.length - 1) {
         inputRefs[index + 1].current.focus();
       }
     }
   };
 
+
   const handleKeyDown = (index, e) => {
     if (e.key === "Backspace") {
-      let newOtp = [...otp];
-      newOtp[index] = "";
-      setOtp(newOtp);
-
-      if (index > 0) {
-        inputRefs[index - 1].current.focus();
+      e.preventDefault();
+      const newOtp = [...otp];
+  
+      if (otp[index] !== "") {
+        // Eğer input doluysa, önce temizle sonra önceki input'a odakla
+        newOtp[index] = "";
+        setOtp(newOtp);
+  
+        if (index > 0) {
+          setTimeout(() => {
+            inputRefs[index - 1].current.focus();
+          }, 0);
+        }
+      } else if (index > 0) {
+        // Eğer zaten boşsa, direkt bir önceki input'a odakla ve onu da temizle
+        newOtp[index - 1] = "";
+        setOtp(newOtp);
+        setTimeout(() => {
+          inputRefs[index - 1].current.focus();
+        }, 0);
       }
     }
   };
+  
+
 
   const isOtpComplete = otp.every(num => num !== "");
 

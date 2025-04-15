@@ -1,16 +1,13 @@
 import React, { useState } from "react";
+import { formatPhoneNumber } from '../../../../utils/InputUtils'
+import FormButton from '../../../ui/buttons/FormButton';
 import { useDispatch } from "react-redux";
 import { setStep } from "../../../../redux/slices/stepSlice";
 
 
 const IndividualLogin = () => {
     const [phone, setPhone] = useState("");
-    const isPhoneValid = phone.length >= 10; // 10 karakterden fazla ise ikon gözükecek
-
-    const handlePhoneChange = (e) => {
-        const value = e.target.value.replace(/\D/g, ""); // Sadece rakam girilebilir
-        setPhone(value);
-    };
+    const isPhoneValid = phone.length >= 13;
 
     const dispatch = useDispatch();
 
@@ -21,13 +18,14 @@ const IndividualLogin = () => {
 
     return (
         <div className="individual-login-container col-md-8 col-lg-7 col-xl-5 col-xxl-5 col-11">
-            
+
             <div className="login-type">Fərdi hesab</div>
             <div className="login-title">Daxil ol</div>
             <div className="login-info">Telefon nömrəsi ilə daxil olun</div>
 
             {/* Telefon numarası inputu */}
             <div className="number-input d-flex align-items-center justify-content-between">
+
                 <div className="number-input-group d-flex flex-column">
                     <label htmlFor="phone">Telefon nömrəsi</label>
                     <div className="input-group d-flex">
@@ -39,7 +37,7 @@ const IndividualLogin = () => {
                             id="phone"
                             maxLength={13}
                             value={phone}
-                            onChange={handlePhoneChange}
+                            onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
                         />
                     </div>
                 </div>
@@ -60,10 +58,8 @@ const IndividualLogin = () => {
                 <label htmlFor="remember">Girişi yadda saxla</label>
             </div>
 
-            {/* Butona class ekleme: Eğer ikon görünüyorsa buton aktif olur */}
-            <button onClick={handleContinue} className={`btn btn-primary ${isPhoneValid ? "active" : "deactive disabled"}`}>
-                Davam et
-            </button>
+            <FormButton content="Davam et" isActive={isPhoneValid} handleContinue={handleContinue} />
+
         </div>
     );
 };

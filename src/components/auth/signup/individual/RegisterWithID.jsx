@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setStep } from "../../../../redux/slices/stepSlice";
 import InputWithLabel from "../../../ui/inputs/InputWithLabel";
+import Input from '../../../ui/inputs/Input';
 import FormButton from '../../../ui/buttons/FormButton';
 import { allowOnlyNumbers, makeWordsCapitalize, formatBirthDate, formatPhoneNumber } from "../../../../utils/InputUtils";
 
@@ -59,17 +60,17 @@ const RegisterWithID = () => {
           )}
         </div>
 
-        <InputWithLabel placeholder={"ID"} value={id} htmlFor={"id"} name={"id"} onChange={(e) => setId(allowOnlyNumbers(e.target.value))} />
+        <Input placeholder={"ID"} value={id} htmlFor={"id"} name={"id"} onChange={(e) => setId(allowOnlyNumbers(e.target.value))} />
 
-        <InputWithLabel placeholder={"Ad, Soyad"} value={fullName} htmlFor={"fullname"} name={"fullname"} onChange={(e) => setFullName(makeWordsCapitalize(e.target.value))} />
+        <Input placeholder={"Ad, Soyad"} value={fullName} htmlFor={"fullname"} name={"fullname"} onChange={(e) => setFullName(makeWordsCapitalize(e.target.value))} />
 
-        <InputWithLabel placeholder={"Doğum tarixi"} value={birthDate} htmlFor={"birthDate"} name={"birthDate"} onChange={(e) => setBirthDate(formatBirthDate(e.target.value))} />
+        <Input placeholder={"Doğum tarixi"} value={birthDate} htmlFor={"birthDate"} name={"birthDate"} onChange={(e) => setBirthDate(formatBirthDate(e.target.value))} />
 
-        <InputWithLabel placeholder={"Əsas iş yeri"} value={workPlace} htmlFor={"workPlace"} name={"workPLace"} onChange={(e) => setWorkPlace(e.target.value)} />
+        <Input placeholder={"Əsas iş yeri"} value={workPlace} htmlFor={"workPlace"} name={"workPLace"} onChange={(e) => setWorkPlace(e.target.value)} />
 
-        <InputWithLabel label={"Telefon"} value={email} htmlFor={"email"} name={"email"} onChange={(e) => setEmail(e.target.value)} />
+        <InputWithLabel label={"Telefon"} value={phone} htmlFor={"phone"} name={"phone"} onChange={(e) => setPhone(formatPhoneNumber(e.target.value))} />
 
-        <InputWithLabel label={"Email"} value={phone} htmlFor={"phone"} name={"phone"} onChange={(e) => setPhone(e.target.value)} />
+        <InputWithLabel label={"Email"} value={email} htmlFor={"email"} name={"email"} onChange={(e) => setEmail(e.target.value)} />
 
       </div>
 

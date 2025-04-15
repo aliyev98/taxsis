@@ -1,0 +1,22 @@
+// general
+@use './general/accountType';
+@use './general/finish';
+
+// individual signup
+@use './signup/individual/enterCodeSignUp';
+@use './signup/individual/individualRegistrationType';
+@use './signup/individual/registerWithID';
+@use './signup/individual/registerWithSignature';
+
+// corporate singup
+@use './signup/corporate/chooseCompany';
+@use './signup/corporate/companyRegister';
+@use './signup/corporate/corporateRegistrationType';
+@use './signup/corporate/registerWithAsan';
+
+// individual login
+@use './login/individual/enterCodeIndividualLogin';
+@use './login/individual/individualLogin';
+
+// corporate login
+@use './login/corporate/corporateLogin';

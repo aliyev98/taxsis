@@ -3,7 +3,7 @@
 .asan-register-container {
     gap: 20px;
 
-    @include mq(big-desktop-down){
+    @include mq(big-desktop-down) {
         width: 35% !important;
     }
 
@@ -33,71 +33,23 @@
     }
 
     .asan-register-form {
-        // display: none;
+        gap: 20px;
 
-        .phone-input {
-            border-radius: 12px;
-            border: 2px solid #9A9FA5;
-            background: #FFF;
+        .input-div {
             padding: 8px 16px;
-            margin-bottom: 20px;
-
-            label {
-                color: #111315;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 12px;
-                letter-spacing: -0.12px;
-            }
-
-            input {
-                color: #1A1D1F;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-                border: none;
-                outline: none;
-            }
+            background-color: #fff;
+            border-radius: 12px;
+            border: 2px solid var(--neutral-shades-0475, #9A9FA5);
+            background: var(--Neutral-00, #FFF);
         }
 
-        .id-input {
-            border-radius: 12px;
-            border: 1px solid var(--Neutral-03, #EFEFEF);
-            background: var(--Neutral-02, #F4F4F4);
-            padding: 16px;
-            margin-bottom: 40px;
-
-            input {
-                background-color: transparent;
-                border: none;
-                outline: none;
-                color: #6F767E;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-            }
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border-radius: 12px;
-            border: none;
+        input {
             width: 100%;
         }
 
-        .active {
-            background-color: #2A85FF;
+        .btn {
+            margin-top: 20px;
         }
-
-        .deactive {
-            background: rgba(42, 133, 255, 0.50);
-        }
-
     }
 
     .code-accept {

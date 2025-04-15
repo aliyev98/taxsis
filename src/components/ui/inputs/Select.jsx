@@ -1,17 +1,19 @@
 import React from 'react';
 
-const Select = ({ placeholder, options = [], defaultValue = "", name }) => {
+const Select = ({ placeholder, options = [], defaultValue = "", name, onChange, value }) => {
   return (
     <div className="select-div position-relative">
       <select
+        onChange={onChange}
         className="select"
         name={name}
         id={name}
         defaultValue={defaultValue}
+        value={value}
       >
         <option value="" disabled hidden>{placeholder}</option>
-        {options.map((opt, index) => (
-          <option key={index} value={opt.value || opt}>{opt.label || opt}</option>
+        {options.map(opt => (
+          <option key={opt.value} value={opt.value}>{opt.label}</option>
         ))}
       </select>
 

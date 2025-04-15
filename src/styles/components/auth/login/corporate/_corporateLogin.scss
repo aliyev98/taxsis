@@ -1,11 +1,10 @@
 @use '../../../../abstracts/mixin' as *;
 
 .corporate-login-container {
-    // width: fit-content !important;
     margin-top: auto !important;
     margin-bottom: auto !important;
 
-    @include mq(big-desktop-down){
+    @include mq(big-desktop-down) {
         width: 35% !important;
     }
 
@@ -52,49 +51,19 @@
             border: 2px solid #9A9FA5;
             padding: 8px 16px;
 
-            label {
-                color: #111315;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 12px;
-                letter-spacing: -0.12px;
-            }
-
-            input {
-                color: #1A1D1F;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-                width: 100%;
-                border: none;
-                outline: none;
-            }
-        }
-
-        .id-input {
-            border-radius: 12px;
-            border: 1px solid #EFEFEF;
-            background: #F4F4F4;
-            padding: 16px;
-
-            input {
-                color: #6F767E;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-                border: none;
-                outline: none;
+            .input-div {
                 background-color: transparent;
             }
+
+
+        }
+
+        .input-div:nth-child(2){
+            padding: 16px;
         }
 
         .btn {
-            margin-top: 40px;
+            margin-top: 20px;
             width: 100%;
             padding: 12px 20px;
             border-radius: 12px;

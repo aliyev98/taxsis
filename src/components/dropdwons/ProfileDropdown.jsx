@@ -32,8 +32,8 @@ const ProfileDropdown = () => {
               section.id === 1
                 ? handleProfileClick
                 : section.id === 2
-                ? handleHomeClick
-                : null
+                  ? handleHomeClick
+                  : null
             }
           >
             <img src={section.img} alt="" />
@@ -47,30 +47,41 @@ const ProfileDropdown = () => {
       <div className="tax-accounts d-flex flex-column">
         <span className='title'>VEÖN-Ə BAĞLI HESAB</span>
 
-        <div className="account d-flex align-items-center">
-          <div className="account-img">
+        <div className="dropdown-account d-flex justify-content-between align-items-center">
+
+          <div className="account-image">
             <img src="/assets/account-img3.png" alt="" />
           </div>
 
           <span className='account-name'>ACFA MMC</span>
 
-          <img src="/assets/arrow-right-icon.svg" alt="" />
+          <div className="left-icon">
+            <img src="/assets/arrow-right-icon.svg" alt="" />
+          </div>
+
+
         </div>
+
       </div>
 
       <div className="line"></div>
 
       <div className="tax-modules d-flex flex-column">
+
         <span className='title'>Vergi modulu</span>
 
-        <div className="module d-flex align-items-center">
+        <div className="dropdown-module d-flex justify-content-between align-items-center">
+
           <div className="module-img">
             <img src="/assets/calculator-icon.svg" alt="" />
           </div>
 
           <span className='module-name'>ACFA MMC</span>
 
-          <img src="/assets/arrow-right-icon.svg" alt="" />
+          <div className="left-icon">
+            <img src="/assets/arrow-right-icon.svg" alt="" />
+          </div>
+
         </div>
       </div>
 

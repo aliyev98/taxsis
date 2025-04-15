@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import FormButton from '../../../ui/buttons/FormButton';
+import InputWithLabel from '../../../ui/inputs/InputWithLabel';
+import Input from '../../../ui/inputs/Input';
 import { setStep } from "../../../../redux/slices/stepSlice";
+import { formatPhoneNumber, allowOnlyNumbers } from "../../../../utils/InputUtils";
 
 const RegisterWithAsan = () => {
     const [phone, setPhone] = useState("");
     const [userId, setUserId] = useState("");
     const [isCodeAcceptVisible, setIsCodeAcceptVisible] = useState(false); // Code accept div'inin görünürlüğünü kontrol eden state
-
-    const handlePhoneChange = (e) => {
-        const value = e.target.value.replace(/\D/g, "");
-        setPhone(value);
-    };
-
-    const handleIdChange = (e) => {
-        const value = e.target.value.replace(/\D/g, "");
-        setUserId(value);
-    };
 
     const isFormValid = phone.length > 0 && userId.length > 0;
 
@@ -42,38 +36,20 @@ const RegisterWithAsan = () => {
 
             {/* Eğer `isCodeAcceptVisible` false ise formu göster, true ise gizle */}
             {!isCodeAcceptVisible && (
-                <div className="asan-register-form">
-                    <div className="phone-input special-input numeral-input d-flex flex-column">
-                        <label htmlFor="phone">Mobil nömrə</label>
-                        <input
-                            type="text"
-                            id="phone"
-                            placeholder=""
-                            value={phone}
-                            onChange={handlePhoneChange}
-                        />
-                    </div>
 
-                    <div className="id-input">
-                        <input
-                            type="text"
-                            placeholder="İstifadəçi ID-si"
-                            value={userId}
-                            onChange={handleIdChange}
-                        />
-                    </div>
+                <div className="asan-register-form d-flex flex-column">
 
-                    <button
-                        className={`btn btn-primary ${isFormValid ? "active" : "deactive disabled"}`}
-                        disabled={!isFormValid}
-                        onClick={handleButtonClick} // Butona tıklanınca form kaybolacak, code-accept görünecek
-                    >
-                        Davam et
-                    </button>
+                    <InputWithLabel label={"Mobil nömrə"} id={"phone"} htmlFor={"phone"} name={"phone"} value={phone} onChange={(e) => setPhone(formatPhoneNumber(e.target.value))} />
+
+                    <Input name={"id"} id={"id"} placeholder={"İstifadəçi ID-si"} value={userId} onChange={(e)=> setUserId(allowOnlyNumbers(e.target.value)) }  />
+
+                    <FormButton content={"Davam et"} isActive={isFormValid} handleContinue={handleButtonClick} />
+
                 </div>
             )}
 
             {/* Eğer `isCodeAcceptVisible` true ise `code-accept` div'ini göster */}
+
             {isCodeAcceptVisible && (
                 <div className="code-accept d-flex flex-column">
                     <div className="info">
@@ -85,6 +61,7 @@ const RegisterWithAsan = () => {
                     <button onClick={handleContinue} className="code">Yoxlama kodu: <span>2212</span></button>
                 </div>
             )}
+
         </div>
     );
 };

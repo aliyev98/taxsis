@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { openModal } from '../redux/slices/postSlice';
 import ProfileDropdown from '../components/dropdwons/ProfileDropdown';
+import LogoGreen from '../components/ui/LogoGreen'
 
 const FeedHeader = () => {
 
@@ -26,21 +27,9 @@ const FeedHeader = () => {
 
 
   return (
-    <div className='feed-header-container d-flex justify-content-between align-items-center'>
+    <div className='feed-header-container d-flex justify-content-between align-items-center'> 
 
-      <div className="logo d-flex align-items-center" onClick={() => navigate('/')}>
-
-        <div className="logo-img">
-          <img src="/assets/logo.svg" alt="" />
-          <div className="lines">
-            <div className="line1"></div>
-            <div className="line2"></div>
-            <div className="line3"></div>
-          </div>
-        </div>
-        <span className='logo-text'>TAXSIS</span>
-
-      </div>
+      <LogoGreen />
 
       <div className="search-input d-flex align-items-lg-center">
         <div className="search-icon">
@@ -49,7 +38,7 @@ const FeedHeader = () => {
         <input type="text" placeholder='Axtar' />
       </div>
 
-      <div className='header-nav d-flex align-items-center'>
+      <div className='feed-header-nav d-flex align-items-center'>
 
         <button className="add-post d-flex align-items-center" onClick={() => dispatch(openModal())}>
           <img src="/assets/plus-icon.svg" alt="" />

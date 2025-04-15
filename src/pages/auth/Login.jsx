@@ -4,6 +4,7 @@ import IndividualLogin from '../../components/auth/login/individual/IndividualLo
 import CorporateLogin from '../../components/auth/login/corporate/CorporateLogin'
 import { useSelector } from "react-redux";
 import AccountType from '../../components/auth/general/AccountType';
+import LogoWhite from '../../components/ui/LogoWhite';
 
 
 const Login = () => {
@@ -17,23 +18,7 @@ const Login = () => {
 
         <div className='login-container d-flex f-column align-items-center justify-content-center'>
 
-            <div className="login-image">
-                <img src="/assets/image 1.jpg" alt="" />
-
-                <div className="logo d-flex align-items-center">
-
-                    <div className="logo-img">
-                        <img src="/assets/white-logo.svg" alt="" />
-                        <div className="lines">
-                            <div className="line1"></div>
-                            <div className="line2"></div>
-                            <div className="line3"></div>
-                        </div>
-                    </div>
-                    <span className='logo-text'>TAXSIS</span>
-
-                </div>
-            </div>
+            <LogoWhite />
 
             <div className="login-form d-flex justify-content-center align-items-center flex-column row">
 

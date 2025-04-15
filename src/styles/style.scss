@@ -1,23 +1,18 @@
 @use './base/reset' as *;
 @use './abstracts/mixin' as *;
 @use './abstracts/variables' as *;
+
 @use './pages/public/landingPage';
 @use './layouts/landingPageHeader';
+
 @use './pages/auth/signup/singUp';
 @use './pages/auth/login/login';
-@use './components/auth/general/accountType';
-@use './components/auth/signup/individual/individualRegistrationType';
-@use './components/auth/signup/individual/registerWithID';
-@use './components/auth/general/finish';
-@use './components/auth/signup/individual/registerWithSignature';
-@use './components/auth/signup/individual/enterCodeSignUp';
-@use './components/auth/login/individual/individualLogin';
-@use './components/auth/login/individual/enterCodeIndividualLogin';
-@use './components/auth/signup/corporate/corporateRegistrationType';
-@use './components/auth/signup/corporate/registerWithAsan';
-@use './components/auth/signup/corporate/chooseCompany';
-@use './components/auth/signup/corporate/companyRegister';
-@use './components/auth/login/corporate/corporateLogin';
+
+@use './components/auth/auth.scss';
+
+@use './components/dropdowns/dropdowns.scss';
+
+
 @use './layouts/feedHeader';
 @use './sidebars/feedSideBar';
 @use './components/social/feed/createPost';
@@ -34,20 +29,15 @@
 @use './layouts/reportsHeader';
 @use './layouts/reportsFooter';
 @use './layouts/tableHeader';
-@use './components/dropdowns/columnFilterDropdown';
-@use './components/dropdowns/columnVisibilityDropdown';
 @use './components/modals/addRowModal';
 @use './pages/social/mainPage';
 @use './components/modals/createPostModal';
-@use './components//dropdowns/selectedAccountDropdown';
-@use './components/dropdowns/profileDropdown';
 @use './pages/social/friends';
 @use './components/social/friends/friend';
 @use './components/social/friends/firendsNavbar';
 @use './pages/social/groups';
 @use './components/social/groups/groupsHeader';
 @use './components/social/groups/group';
-@use './components/dropdowns/groupDropdown';
 @use './pages/social/groupFeed';
 @use './components/modals/createGroupModal';
 @use './pages/social/vacanciesPage';
@@ -60,7 +50,6 @@
 @use './components/social/vacancies/vacancyApply';
 @use './components/social/vacancies/vacancyFinish';
 @use './pages/social/eventsPage';
-// @use './components/ui/inputWithLabel';
 @use './components/social/events/eventsHeader';
 @use './components/social/events/eventsNavbar';
 @use './components/social/events/events';
@@ -70,16 +59,12 @@
 @use './components/social/tenders/tendersHeader';
 @use './components/social/tenders/tenderList';
 @use './components/social/tenders/tenderCard';
-@use './components/dropdowns/activityTypeDropdown';
 @use './components/social/tenders/tendeDetails';
 @use './components/social/tenders/tenderParticipate';
 @use './components/social/tenders/tenderFinish';
 @use './components/social/tenders/announceTender';
-// @use './components/ui/input';
 @use './pages/social/customCalculator';
-// @use './components/ui/select';
 @use './pages/social/currencyPage';
-@use './components/dropdowns/currencyDropdown';
 @use './pages/social/vatSearch';
 @use './pages/social/individualProfile';
 @use './components/social/individualProfile/photos';
@@ -88,7 +73,6 @@
 @use './components/social/individualProfile/individualMessage';
 @use './components/social/individualProfile/cv';
 @use './components/social/individualProfile/cvEdit';
-// @use './components/ui/textareaWithLabel';
 @use './components/social/individualProfile/individualProfileEdit';
 @use './pages/social/colleaguesPage';
 

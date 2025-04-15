@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setStep } from "../../../../redux/slices/stepSlice";
+import InputWithLabel from '../../../ui/inputs/InputWithLabel';
+import Input from '../../../ui/inputs/Input';
+import SelectWithLabel from '../../../ui/inputs/SelectWithLabel';
+import { formatPhoneNumber } from '../../../../utils/InputUtils';
+import FormButton from '../../../ui/buttons/FormButton';
+import Select from '../../../ui/inputs/Select';
 
 const CompanyRegister = () => {
     const dispatch = useDispatch();
     const handleContinue = () => dispatch(setStep(6));
 
-    // Telefon ve email state'leri
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [taxType, setTaxType] = useState("default");
 
-    // Yetkilendirilen kişileri saklayan state
+
+    console.log(taxType)
+
+    const isActive = email.trim() !== "" && phone.trim() !== "" && taxType.trim() !== "";
+
     const [inputs, setInputs] = useState([]);
-
-    // Telefon input'unun sadece rakam almasını sağlamak
-    const handlePhoneChange = (e) => {
-        const value = e.target.value.replace(/\D/g, "");
-        setPhone(value);
-    };
 
     // Yetkilendirme inputlarını yönetme fonksiyonları
     const handleAddInput = () => setInputs([...inputs, { id: "", position: "" }]);
@@ -29,7 +33,7 @@ const CompanyRegister = () => {
     };
 
     // Statik inputları liste olarak tanımlamak
-    const companyDetails = [
+    const staticInputs = [
         { id: "sin", label: "SIN", value: "2398845" },
         { id: "voen", label: "VÖEN", value: "330056789" },
         { id: "legalName", label: "Hüquqi adı", value: "ACCFIN MMC" },
@@ -46,73 +50,70 @@ const CompanyRegister = () => {
 
             <div className="company-register-form d-flex flex-column">
                 {/* Statik inputları map ile oluşturma */}
-                {companyDetails.map((detail) => (
-                    <div key={detail.id} className="input-element d-flex flex-column">
-                        <label htmlFor={detail.id}>{detail.label}</label>
-                        <input type="text" id={detail.id} value={detail.value} disabled />
-                    </div>
+
+                {staticInputs.map((input) => (
+
+                    <InputWithLabel key={input.id} htmlFor={input.id} label={input.label} id={input.id} value={input.value} name={input.id} disabled={true} />
+
                 ))}
 
-                {/* Vergi Mükəlləfiyyəti */}
-                <div className="input-element select-element d-flex justify-content-between align-items-center">
-                    <div className="custom-select d-flex flex-column">
-                        <label htmlFor="taxType">Vergi mükəlləfiyyəti növü</label>
-                        <select id="taxType">
-                            <option value="">Maliyyə</option>
-                        </select>
-                    </div>
-                    <div className="select-icon">
-                        <img src="/assets/arrow-down.svg" alt="" />
-                    </div>
-                </div>
+
+                <SelectWithLabel
+                    label="Vergi mükəlləfiyyəti növü"
+                    value={taxType}
+                    onChange={(e) => setTaxType(e.target.value)}
+                    options={[
+                        { value: "Maliyyə", label: "Maliyyə" },
+                        { value: "Menecment", label: "Menecment" }
+                    ]}
+                    name="taxType"
+                />
+
+
 
                 {/* Email ve Telefon Input'ları */}
-                <div className="input-element email-input d-flex flex-column">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
 
-                <div className="input-element phone-input d-flex flex-column">
-                    <label htmlFor="phone">Mobil nömrə</label>
-                    <input type="text" id="phone" value={phone} onChange={handlePhoneChange} placeholder="Telefon nömrəsi" />
-                </div>
+                <InputWithLabel label="Email" htmlFor="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                <InputWithLabel label="Mobil nömrə" htmlFor="phone" id="phone" value={phone} onChange={(e) => setPhone(formatPhoneNumber(e.target.value))} />
 
                 {/* Səlahiyyət verilən şəxslər */}
-                <div>Səlahiyyət verilən şəxslər</div>
+
                 {inputs.map((input, index) => (
-                    <div key={index} className="authorize-input d-flex flex-column">
+                    <div key={index} className="authorize d-flex flex-column">
+
+                        <div className='authorized-persons'>Səlahiyyət verilən şəxslər</div>
+
                         <div className="input-header d-flex justify-content-between ">
                             <label htmlFor={`input-${index + 1}`}>Fərdi hesab {index + 1}</label>
                             <button className="remove-authority" onClick={() => handleRemoveInput(index)}>Səlahiyyəti sil</button>
                         </div>
 
-                        <div className="input-div d-flex flex-column">
-                            <div className="input">
-                                <input type="text" placeholder='Fərdi hesabın ID nömrəsi' id={`input-${index + 1}`} value={input.id} onChange={(e) => handleChange(index, "id", e.target.value)} />
-                            </div>
-                            <div className="select">
-                                <select value={input.position} onChange={(e) => handleChange(index, "position", e.target.value)}>
-                                    <option value="">Fərdi hesaba vəzifə seç</option>
-                                    <option value="manager">Menecer</option>
-                                    <option value="assistant">Asistent</option>
-                                </select>
-                            </div>
+                        <div className="authority-inputs d-flex flex-column">
+                            <Input placeholder='Fərdi hesabın ID nömrəsi' id={`input-${index + 1}`} value={input.id} onChange={(e) => handleChange(index, "id", e.target.value)} />
+
+                            <Select placeholder="Fərdi hesaba vəzifə seç" options={["Menecer", "Asistent"]} value={input.position} onChange={(e) => handleChange(index, "position", e.target.value)} />
                         </div>
+
                     </div>
                 ))}
 
+
                 {/* Buton, inputların en altında kalmalı */}
-                <div className="add-btn d-flex align-items-center">
-                    <button onClick={handleAddInput}><img src="/assets/add-icon.svg" alt="" /></button>
+                <div className="add-authority d-flex align-items-center" onClick={handleAddInput}>
+                    <button ><img src="/assets/add-icon.svg" alt="" /></button>
                     <span>Fərdi hesaba səlahiyyət ver</span>
                 </div>
+
             </div>
 
-            <button onClick={handleContinue} className="btn btn-primary">Müraciət göndər</button>
+            {/* <button onClick={handleContinue} className="btn btn-primary">Müraciət göndər</button> */}
+            <FormButton content="Müraciət et" handleContinue={handleContinue} isActive={isActive} />
 
             <div className="warning">
                 Müraciət edərək <a href="#">Qaydalar və şərtlər </a> ilə razılaşmış olursunuz
             </div>
+
         </div>
     );
 };

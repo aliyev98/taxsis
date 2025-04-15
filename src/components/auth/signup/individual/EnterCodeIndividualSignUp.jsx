@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import FormButton from '../../../ui/buttons/FormButton';
 import { useNavigate } from "react-router-dom";
 
 const EnterCode = () => {
@@ -90,9 +91,8 @@ const EnterCode = () => {
         <div className="error-message">Daxil edilən kod yanlışdır</div>
       )}
 
-      <button onClick={handleContinue} className={`btn btn-primary ${isCodeCorrect ? "active" : "deactive disabled"}`}>
-        Davam et
-      </button>
+      <FormButton content={"Davam et"} handleContinue={handleContinue} isActive={isCodeCorrect} />
+
     </div>
   );
 };

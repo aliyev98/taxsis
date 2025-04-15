@@ -45,81 +45,52 @@
     .company-register-form {
         gap: 20px;
 
-        .input-element {
-            border-radius: 12px;
-            border: 1px solid #EFEFEF;
-            background: #F4F4F4;
+        .input-div {
             padding: 8px 16px;
-            gap: 4px;
-
 
             label {
-                color: #6F767E;
-                font-size: 12px;
-                font-style: normal;
+                color: var(--Neutral-04, #6F767E);
                 font-weight: 500;
                 line-height: 12px;
-                letter-spacing: -0.12px;
             }
-
 
             input {
-                background: #F4F4F4;
-                outline: none;
-                border: none;
-                color: #6F767E;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
-                width: 100%;
+                color: var(--Neutral-04, #6F767E);
+
             }
         }
 
-        .email-input {
+        .input-div:nth-child(7) {
+            label {
+                color: var(--Neutral-08, #111315);
+            }
 
             input {
-                color: #1A1D1F;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
+                color: var(--Neutral-07, #1A1D1F);
             }
-
         }
 
-        .select-element {
-
-            .custom-select {
-                flex-grow: 1;
-                gap: 5px;
-
-                select {
-                    appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    border: none;
-                    background-color: transparent;
-                    color: #1A1D1F;
-                    padding: 0 !important;
-                    font-size: 15px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-                    border: none !important;
-                    outline: none !important;
-                }
+        .input-div:nth-child(8) {
+            label {
+                color: var(--Neutral-08, #111315);
             }
 
-
+            input {
+                color: var(--Neutral-07, #1A1D1F);
+            }
         }
+
     }
 
-    .authorize-input {
+    .authorize {
         gap: 8px;
+
+        .authorized-persons {
+            margin-bottom: 20px;
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 14px;
+            font-weight: 600;
+        }
 
         .input-header {
 
@@ -145,64 +116,14 @@
             }
         }
 
-        .input-div {
+        .authority-inputs {
             gap: 20px;
-
-
-            .input {
-                border: 1px solid #EFEFEF;
-                background: #F4F4F4;
-                padding: 16px;
-                border-radius: 12px;
-                width: 100%;
-
-                input {
-                    border: none;
-                    outline: none;
-                    width: 100%;
-                    background-color: transparent;
-                    color: #6F767E;
-                    font-size: 15px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-                }
-            }
-
-            .select {
-                border: 1px solid #EFEFEF;
-                background: #F4F4F4;
-                padding: 16px;
-                border-radius: 12px;
-                width: 100%;
-
-                select {
-                    appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    border: none;
-                    outline: none;
-                    width: 100%;
-                    background-color: transparent;
-                    color: #6F767E;
-                    font-size: 15px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-
-                    background-image: url("./assets/arrow-down.svg");
-                    background-repeat: no-repeat;
-                    background-position: right 0px center;
-                    background-size: 24px;
-                }
-            }
         }
     }
 
-    .add-btn {
+    .add-authority {
         gap: 8px;
+        cursor: pointer;
 
         button {
             border: none;

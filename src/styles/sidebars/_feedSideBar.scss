@@ -2,6 +2,8 @@
     padding: 32px 24px;
     background-color: #fcfcfc;
     min-width: fit-content !important;
+    gap: 20px;
+
 
     .line {
         background: var(--Neutral-02, #F4F4F4);
@@ -9,147 +11,68 @@
     }
 
     .linked-accounts {
+        cursor: pointer;
         gap: 12px;
-        margin-bottom: 24px;
+
 
         .title {
-            color: #6F767E;
+            color: var(--Neutral-04, #6F767E);
             font-size: 10px;
-            font-style: normal;
             font-weight: 500;
-            line-height: 12px;
         }
 
-        .custom-dropdown {
+        .selected-account {
+            gap: 12px;
 
-            button {
-                width: 100%;
-                padding: 4px;
-                border: none;
-                background-color: transparent;
+            .account-img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                overflow: hidden;
 
-                &::after {
-                    display: none !important;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
-
             }
 
             .account-name {
+                flex: 1;
                 color: var(--Neutral-07, #1A1D1F);
                 font-size: 15px;
-                font-style: normal;
                 font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
             }
 
-            .left-side {
-                gap: 12px;
-
-                .account-img {
-                    width: 32px;
-                    height: 32px;
-
-                    img {
-                        object-fit: cover;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 50%;
-                    }
-                }
-            }
-
-            .dropdown-icon {
-                border-radius: 40px;
-                background: #EFEFEF;
+            .arrow-icon {
                 padding: 4px;
+                border-radius: 50%;
+                background: var(--Neutral-03, #EFEFEF);
+                position: relative;
             }
 
-            .selected-account {
-                gap: 12px;
-
-            }
-
-            .accounts {
-                width: 100%;
-                min-width: 250px;
-                padding: 16px 20px 24px 20px;
-                position: absolute;
-                margin-top: 10px !important;
-                border: none;
-                right: -15px !important;
-                border-radius: 16px;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: -18px;
-                    /* Üçgenin konumu */
-                    right: 25px;
-                    /* Sağ tarafa hizala */
-                    border-width: 10px;
-                    border-style: solid;
-                    border-color: transparent transparent white transparent;
-                    /* Üçgen rengi menü ile aynı */
-                }
-
-
-                li {
-                    padding: 12px 16px; // Varsayılan padding (Tüm li öğeleri için)
-                    // border-top: 1px solid #f4f4f4;
-                    border-bottom: 1px solid #f4f4f4;
-
-                    &:first-child {
-                        padding-bottom: 12px; // Sadece ilk öğenin bottom padding'i olacak
-                        padding-top: 0; // İlk öğenin üst kısmında padding olmasın
-                        border-top: none !important;
-
-
-                    }
-
-                    &:last-child {
-                        padding-top: 12px; // Sadece son öğenin üst padding'i olacak
-                        padding-bottom: 0; // Son öğenin alt kısmında padding olmasın
-                        border: none !important;
-                    }
-                }
-
-                .title {
-                    margin-bottom: 16px;
-                }
-
-            }
         }
 
         .add-account {
             gap: 12px;
-            background-color: transparent;
-            border: none;
 
-            .icon {
-                border-radius: 20px;
-                border: 1px solid #EFEFEF;
-                background: #F4F4F4;
+            .add-icon-img {
                 padding: 4px;
+                border-radius: 50%;
+                border: 1px solid var(--Neutral-03, #EFEFEF);
+                background: var(--Neutral-02, #F4F4F4);
             }
 
             span {
-                color: #6F767E;
+                color: var(--Neutral-04, #6F767E);
                 font-size: 15px;
-                font-style: normal;
                 font-weight: 600;
-                line-height: 24px;
-                letter-spacing: -0.15px;
             }
-
         }
-
     }
 
     .modules {
         gap: 12px;
-        margin-top: 24px;
-        margin-bottom: 24px;
 
         .title {
             color: #6F767E;
@@ -193,7 +116,6 @@
     }
 
     .social-menu {
-        margin-top: 32px;
 
         .menu-item {
             background-color: transparent;
@@ -228,6 +150,31 @@
 
     }
 
+    .sidebar-footer {
+        margin-top: 40px;
+
+        .footer-actions {
+            gap: 12px;
+
+            a {
+                color: var(--Neutral-04, #6F767E);
+                font-size: 13px;
+                font-weight: 600;
+                text-decoration: none;
+            }
+        }
+
+
+        .copyright {
+            gap: 8px;
+
+            span {
+                color: var(--Neutral-04, #6F767E);
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+    }
 
 
 }

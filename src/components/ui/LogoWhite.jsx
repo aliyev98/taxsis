@@ -2,7 +2,7 @@ import React from 'react'
 
 const LogoWhite = () => {
     return (
-        <div className="logo d-flex align-items-center">
+        <div className="logo-white d-flex align-items-center">
 
             <div className="logo-img">
 

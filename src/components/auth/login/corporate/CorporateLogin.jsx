@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAccountType } from "../../../../redux/slices/loginSlice"; // Path’i projenin yapısına göre düzenle
+import InputWithLabel from '../../../ui/inputs/InputWithLabel';
+import Input from '../../../ui/inputs/InputWithLabel';
+import { formatPhoneNumber, allowOnlyNumbers } from '../../../../utils/InputUtils';
+import FormButton from '../../../ui/buttons/FormButton';
 
 const CorporateLogin = () => {
   const [phone, setPhone] = useState("");
@@ -10,11 +14,6 @@ const CorporateLogin = () => {
 
   const dispatch = useDispatch(); // Redux dispatch
   const navigate = useNavigate();
-
-  const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
-    setPhone(value);
-  };
 
   const handleIdChange = (e) => {
     setUserId(e.target.value);
@@ -41,32 +40,17 @@ const CorporateLogin = () => {
 
       {!isCodeAcceptVisible && (
         <div className="login-form d-flex flex-column">
+
           <div className="number-input d-flex flex-column">
-            <label htmlFor="phone">Mobil nömrə</label>
-            <input
-              type="text"
-              id="phone"
-              value={phone}
-              onChange={handlePhoneChange}
-            />
+
+            <InputWithLabel label="Mobil nömrə" id="phone" value={phone} onChange={(e) => setPhone(formatPhoneNumber(e.target.value))} />
+
           </div>
 
-          <div className="id-input">
-            <input
-              type="text"
-              placeholder="İstifadəçi ID-si"
-              value={userId}
-              onChange={handleIdChange}
-            />
-          </div>
+          <Input placeholder="İstifadəçi ID-si" id="id" value={userId} onChange={(e) => setUserId(allowOnlyNumbers(e.target.value))} />
 
-          <button
-            className={`btn btn-primary ${isFormValid ? "active" : "deactive disabled"}`}
-            disabled={!isFormValid}
-            onClick={handleButtonClick}
-          >
-            Davam et
-          </button>
+          <FormButton content="Davam et" isActive={isFormValid} handleContinue={handleButtonClick} />
+
         </div>
       )}
 

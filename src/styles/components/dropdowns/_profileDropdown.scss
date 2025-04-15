@@ -26,7 +26,7 @@
 
 
     .line {
-        height: 4px;
+        height: 1px;
         border-radius: 1px;
         background: var(--Neutral-03, #EFEFEF);
     }
@@ -45,15 +45,8 @@
 
         span {
             color: var(--Neutral-05, #33383F);
-
-            /* Base 1 (Semibold) */
-            font-family: Inter;
             font-size: 15px;
-            font-style: normal;
             font-weight: 600;
-            line-height: 24px;
-            /* 160% */
-            letter-spacing: -0.15px;
         }
     }
 
@@ -66,12 +59,14 @@
             font-weight: 500;
         }
 
-        .account {
+        .dropdown-account {
             gap: 12px;
 
-            .account-img {
+            .account-image {
                 width: 32px;
                 height: 32px;
+                border-radius: 50%;
+                overflow: hidden;
 
                 img {
                     width: 100%;
@@ -82,21 +77,19 @@
 
             .account-name {
                 color: var(--Neutral-07, #1A1D1F);
-
-                /* Base 1 (Semibold) */
-                font-family: Inter;
                 font-size: 15px;
-                font-style: normal;
                 font-weight: 600;
-                line-height: 24px;
-                /* 160% */
-                letter-spacing: -0.15px;
+                flex-grow: 1;
             }
 
-            img {
-                width: 24px;
-                height: 24px;
+            .left-icon {
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
             }
+
+
 
         }
     }
@@ -110,7 +103,7 @@
             font-weight: 500;
         }
 
-        .module {
+        .dropdown-module {
             gap: 12px;
 
             .module-img {
@@ -132,21 +125,19 @@
 
             .module-name {
                 color: var(--Neutral-07, #1A1D1F);
-
-                /* Base 1 (Semibold) */
-                font-family: Inter;
                 font-size: 15px;
-                font-style: normal;
                 font-weight: 600;
-                line-height: 24px;
-                /* 160% */
-                letter-spacing: -0.15px;
+                flex-grow: 1;
             }
 
-            img {
-                width: 24px;
-                height: 24px;
+            .left-icon {
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
             }
+
+
 
         }
     }
