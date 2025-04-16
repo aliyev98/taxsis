@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { openModal } from '../redux/slices/postSlice';
 import ProfileDropdown from '../components/dropdwons/ProfileDropdown';
 import LogoGreen from '../components/ui/LogoGreen'
+import AddButton from '../components/ui/buttons/AddButton';
 
 const FeedHeader = () => {
 
@@ -23,11 +23,9 @@ const FeedHeader = () => {
     };
   }, []);
 
-  const navigate = useNavigate();
-
 
   return (
-    <div className='feed-header-container d-flex justify-content-between align-items-center'> 
+    <div className='feed-header-container d-flex justify-content-between align-items-center'>
 
       <LogoGreen />
 
@@ -40,22 +38,20 @@ const FeedHeader = () => {
 
       <div className='feed-header-nav d-flex align-items-center'>
 
-        <button className="add-post d-flex align-items-center" onClick={() => dispatch(openModal())}>
-          <img src="/assets/plus-icon.svg" alt="" />
-          <span>Yeni post</span>
-        </button>
+        <AddButton content={"Yeni post"} onClick={() => dispatch(openModal())} />
 
-        <button className="messages">
+        <button className="btn-messages">
           <img src="/assets/messages-icon.svg" alt="" />
           <div className="red-dot"></div>
         </button>
 
-        <button className="notifications">
+        <button className="btn-notifications">
           <img src="/assets/notification-icon.svg" alt="" />
           <div className="red-dot"></div>
         </button>
 
-        <div className="profile-picture position-relative" ref={dropdownRef}>
+        <div className="header-profile-picture position-relative" ref={dropdownRef}>
+
           <img
             src="/assets/profile-picture.png"
             alt="profile"
@@ -63,6 +59,7 @@ const FeedHeader = () => {
             style={{ cursor: 'pointer' }}
           />
           {showDropdown && <ProfileDropdown />}
+
         </div>
 
 

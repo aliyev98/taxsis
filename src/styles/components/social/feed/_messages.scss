@@ -1,6 +1,8 @@
 .messages-container {
     margin-top: 40px !important;
     width: 20%;
+    height: 100vh;
+
     .advertising {
 
         img {
@@ -10,19 +12,6 @@
             border-radius: 16px;
         }
 
-        // .title {
-        //     position: absolute;
-        //     bottom: 30px;
-        //     width: 100%;
-        //     color: #FFF;
-        //     text-align: center;
-        //     font-size: 18px;
-        //     font-style: normal;
-        //     font-weight: 600;
-        //     line-height: 32px;
-        //     letter-spacing: -0.36px;
-        // }
-
     }
 
     .messages {
@@ -31,8 +20,10 @@
         background: #FFF;
         padding: 12px;
         gap: 12px;
+        height: 100vh;
+        overflow-y: scroll;
 
-        .messages-header {
+        &-header {
             padding: 12px;
 
             span {

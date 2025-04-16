@@ -8,18 +8,22 @@ const Messages = () => {
         { id: 3, img: '/assets/profile-picture3.jpg', name: 'Turanə Abbasova', time: '09:30AM', online: false },
         { id: 4, img: '/assets/profile-picture4.jpg', name: 'Baba Ağayev', time: '08:00AM', online: true },
         { id: 5, img: '/assets/profile-picture5.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
-
-
+        { id: 6, img: '/assets/profile-picture.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 7, img: '/assets/profile-picture5.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 8, img: '/assets/profile-picture2.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 9, img: '/assets/profile-picture3.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 10, img: '/assets/profile-picture5.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 11, img: '/assets/profile-picture2.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 12, img: '/assets/profile-picture5.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 13, img: '/assets/profile-picture3.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
+        { id: 14, img: '/assets/profile-picture.jpg', name: 'Firuzə Səfərli', time: '07:01AM', online: false },
     ]
 
     return (
         <div className='messages-container col-3'>
 
             <div className="advertising">
-
                 <img src="/assets/add-icon2.jpg" alt="" />
-                {/* <div className='title'>Vergi və Mühasibatlıq uçotu xidməti</div> */}
-
             </div>
 
             <div className="messages">
@@ -31,7 +35,6 @@ const Messages = () => {
                     <div className='dots-img'>
                         <img src="/assets/dots-icon.svg" alt="" />
                     </div>
-
 
                 </div>
 
@@ -53,11 +56,13 @@ const Messages = () => {
                                 </div>
 
                                 <div className="status d-flex align-items-center">
+                                    
                                     <span className="time">{friend.time}</span>
 
                                     <div className={`dot ${friend.online ? "online" : "offline"}`}></div>
 
                                 </div>
+
                             </div>
 
                         ))

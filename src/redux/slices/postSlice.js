@@ -1,4 +1,3 @@
-// redux/postModalSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

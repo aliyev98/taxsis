@@ -1,0 +1,13 @@
+.add-buttonn {
+    padding: 12px 20px !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+    border: 2px solid #EFEFEF !important;
+    background: var(--Neutral-01, #FCFCFC) !important;
+
+    span {
+        color: #1A1D1F;
+        font-size: 15px;
+        font-weight: 700;
+    }
+}

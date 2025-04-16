@@ -49,11 +49,12 @@
 @use './components/social/vacancies/vacancyDetails';
 @use './components/social/vacancies/vacancyApply';
 @use './components/social/vacancies/vacancyFinish';
-@use './pages/social/eventsPage';
-@use './components/social/events/eventsHeader';
-@use './components/social/events/eventsNavbar';
-@use './components/social/events/events';
-@use './components/social/events/event';
+@use './components/social/events/eventsGeneral.scss';
+// @use './pages/social/eventsPage';
+// @use './components/social/events/eventsHeader';
+// @use './components/social/events/eventsNavbar';
+// @use './components/social/events/events';
+// @use './components/social/events/event';
 @use './pages/social/tendersPage';
 @use './components/social/tenders/tenders';
 @use './components/social/tenders/tendersHeader';
