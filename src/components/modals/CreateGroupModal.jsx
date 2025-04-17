@@ -1,9 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
+import InputWithLabel from '../../components/ui/inputs/InputWithLabel';
+import Input from '../../components/ui/inputs/Input';
+import Select from '../../components/ui/inputs/Select';
 
 const CreateGroupModal = ({ show, onClose }) => {
 
   const [imagePreview, setImagePreview] = useState(null);
   const fileInputRef = useRef(null);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const categoryOptions = [
+    { value: "technology", label: "Kateqoriyalı" },
+    { value: "design", label: "Dizayn" },
+    { value: "programming", label: "Proqramlaşdırma" },
+  ];
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -44,20 +59,19 @@ const CreateGroupModal = ({ show, onClose }) => {
 
             <div className="form d-flex flex-column">
 
-              <div className="name-input input-group">
-                <label htmlFor="name">Qrupun adı</label>
-                <input type="text" />
-              </div>
+              <InputWithLabel label={"Qrupun adı"} />
 
-              <div className="category input-group">
-                <select name="" id="">
-                  <option value="">Kategoriyalı</option>
-                </select>
-              </div>
+              <Select
+                placeholder="Kateqoriya seçin"
+                options={categoryOptions}
+                name="category"
+                value={selectedCategory}
+                onChange={handleChange}
+              />
 
-              <div className="description input-group">
-                <input type="text" placeholder='Qısa izahı' />
-              </div>
+              <Input />
+
+              <Input placeholder={"Qısa izahı"} />
 
               <div className="upload-img d-flex flex-column">
                 <label className="upload-label d-flex align-items-center">

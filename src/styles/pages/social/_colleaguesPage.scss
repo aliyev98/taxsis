@@ -1,11 +1,9 @@
 .colleagues-page-container {
+    background: #F2F2F7;
 
     .social-wrapper {
 
         .content {
-            background: #F2F2F7;
-            flex: 1;
-            padding: 40px 0 40px 0;
 
             .colleagues-container {
                 gap: 32px;
@@ -57,9 +55,9 @@
                         }
                     }
 
-                    .colleagues-body {
+                    // .colleagues-body {
                         
-                    }
+                    // }
                 }
             }
         }

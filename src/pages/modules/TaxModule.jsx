@@ -10,6 +10,14 @@ import Reports from '../../components/modules/tax/Reports';
 import ConfrontationActs from '../../components/modules/tax/ConfrontationActs';
 import InvoiceReports from '../../components/modules/tax/InvoiceReports';
 import CashFlowStatement from '../../components/modules/tax/CashFlowSatatement';
+import BankStatements from '../../components/modules/tax/BankStatements';
+import CustomDocuments from '../../components/modules/tax/CustomDocuments';
+import TaxReports from '../../components/modules/tax/TaxReports';
+import InternalBalances from '../../components/modules/tax/InternalBalances';
+import ExternalBalances from '../../components/modules/tax/ExternalBalances';
+import NonResidents from '../../components/modules/tax/NonResidents';
+import Test from '../../components/modules/tax/Test';
+import PurchasAndSalesReports from '../../components/modules/tax/PurchaseAndSalesReports';
 
 
 const TaxModule = () => {
@@ -40,6 +48,22 @@ const TaxModule = () => {
                 {sidebarSelection === "invoice_reports" && <InvoiceReports />}
 
                 {sidebarSelection === "cash_flow" && <CashFlowStatement />}
+
+                {sidebarSelection === "bank_statements" && <BankStatements />}
+
+                {sidebarSelection === "custom_documents" && <CustomDocuments />}
+
+                {sidebarSelection === "tax_reports" && <TaxReports />}
+
+                {sidebarSelection === "internal_balances" && <InternalBalances />}
+
+                {sidebarSelection === "external_balances" && <ExternalBalances />}
+
+                {sidebarSelection === "non_residents" && <NonResidents />}
+
+                {sidebarSelection === "purchase_and_sales_reports" && <PurchasAndSalesReports />}
+
+                {sidebarSelection === "parameters" && <Test />}
 
             </div>
 

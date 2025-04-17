@@ -50,26 +50,11 @@
                     }
                 }
 
-                .name-input {
-                    padding: 8px 16px;
-                }
-
-                .category {
-                    padding: 16px;
-
-                    select {
-                        outline: none;
-                        border: none;
-                        background-color: transparent;
-
-                        color: var(--Neutral-04, #6F767E);
-                        font-size: 15px;
-                        font-weight: 600;
+                .select-div{
+                    padding: 0;
+                    .select{
+                        padding: 16px;
                     }
-                }
-
-                .description {
-                    padding: 16px;
                 }
 
                 .upload-img {

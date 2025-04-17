@@ -640,7 +640,7 @@ export const cashFlowsData = [
     distinction_main: "ABBV 125455",
     distinction_vat: '200.00',
     distinction_final: "36.00",
-  },  {
+  }, {
     no: 1,
     name: "A+CO Açıq Səhmdar Cəmiyyəti",
     vat: "Alış sənədi",
@@ -662,7 +662,7 @@ export const cashFlowsData = [
     distinction_main: "ABBV 125455",
     distinction_vat: '200.00',
     distinction_final: "36.00",
-  },  {
+  }, {
     no: 2,
     name: "A+CO Açıq Səhmdar Cəmiyyəti",
     vat: "Alış sənədi",
@@ -684,7 +684,7 @@ export const cashFlowsData = [
     distinction_main: "ABBV 125455",
     distinction_vat: '200.00',
     distinction_final: "36.00",
-  },  {
+  }, {
     no: 3,
     name: "A+CO Açıq Səhmdar Cəmiyyəti",
     vat: "Alış sənədi",
@@ -706,7 +706,7 @@ export const cashFlowsData = [
     distinction_main: "ABBV 125455",
     distinction_vat: '200.00',
     distinction_final: "36.00",
-  },  {
+  }, {
     no: 4,
     name: "A+CO Açıq Səhmdar Cəmiyyəti",
     vat: "Alış sənədi",
@@ -730,3 +730,1126 @@ export const cashFlowsData = [
     distinction_final: "36.00",
   },
 ]
+
+export const importDocsData = [
+  {
+    no: "1",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    exporter: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: 'EUR',
+    invoice_price: '1.7980',
+    invoice_value: '50,000.00',
+    transport_azn: "5,500.00",
+    invoice_azn: '89,900.00',
+    real_custom_value: "95,400.00",
+    statistical_value: '109,710.00',
+    two: "459",
+    nineteen: '687',
+    thirty_two: '2393',
+    excise: '1209',
+    seventy_five: '897',
+    eighty_five: '220',
+    total_fee: '485697',
+    real_value: '95,400.00',
+    cost_statistical_value: '109,710.00'
+  },
+  {
+    no: "1",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    exporter: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: 'EUR',
+    invoice_price: '1.7980',
+    invoice_value: '50,000.00',
+    transport_azn: "5,500.00",
+    invoice_azn: '89,900.00',
+    real_custom_value: "95,400.00",
+    statistical_value: '109,710.00',
+    two: "459",
+    nineteen: '687',
+    thirty_two: '2393',
+    excise: '1209',
+    seventy_five: '897',
+    eighty_five: '220',
+    total_fee: '485697',
+    real_value: '95,400.00',
+    cost_statistical_value: '109,710.00'
+  },
+  {
+    no: "2",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    exporter: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: 'EUR',
+    invoice_price: '1.7980',
+    invoice_value: '50,000.00',
+    transport_azn: "5,500.00",
+    invoice_azn: '89,900.00',
+    real_custom_value: "95,400.00",
+    statistical_value: '109,710.00',
+    two: "459",
+    nineteen: '687',
+    thirty_two: '2393',
+    excise: '1209',
+    seventy_five: '897',
+    eighty_five: '220',
+    total_fee: '485697',
+    real_value: '95,400.00',
+    cost_statistical_value: '109,710.00'
+  },
+  {
+    no: "3",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    exporter: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: 'EUR',
+    invoice_price: '1.7980',
+    invoice_value: '50,000.00',
+    transport_azn: "5,500.00",
+    invoice_azn: '89,900.00',
+    real_custom_value: "95,400.00",
+    statistical_value: '109,710.00',
+    two: "459",
+    nineteen: '687',
+    thirty_two: '2393',
+    excise: '1209',
+    seventy_five: '897',
+    eighty_five: '220',
+    total_fee: '485697',
+    real_value: '95,400.00',
+    cost_statistical_value: '109,710.00'
+  }
+]
+
+
+export const exportDocsData = [
+  {
+    no: "1",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    importer: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: "EUR",
+    invoice_price: "1.7980",
+    invoice_value: "50,000.00",
+    transport_azn: "5,500.00",
+    invoice_azn: "89,900.00",
+    real_custom_value: "95,400.00",
+    statistical_value: "109,710.00",
+    two: "459",
+    nineteen: "687",
+    thirty_two: "2393",
+    excise: "1209",
+    seventy_five: "897",
+    eighty_five: "220",
+    real_value: "95,400.00",
+    cost_statistical_value: "109,710.00",
+  },
+  {
+    no: "2",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    importer: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: "EUR",
+    invoice_price: "1.7980",
+    invoice_value: "50,000.00",
+    transport_azn: "5,500.00",
+    invoice_azn: "89,900.00",
+    real_custom_value: "95,400.00",
+    statistical_value: "109,710.00",
+    two: "459",
+    nineteen: "687",
+    thirty_two: "2393",
+    excise: "1209",
+    seventy_five: "897",
+    eighty_five: "220",
+    real_value: "95,400.00",
+    cost_statistical_value: "109,710.00",
+  },
+  {
+    no: "3",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    importer: "KOÇ HOLDİNQ LTD STI",
+    usd_price: "1.7000",
+    invoice_currency: "EUR",
+    invoice_price: "1.7980",
+    invoice_value: "50,000.00",
+    transport_azn: "5,500.00",
+    invoice_azn: "89,900.00",
+    real_custom_value: "95,400.00",
+    statistical_value: "109,710.00",
+    two: "459",
+    nineteen: "687",
+    thirty_two: "2393",
+    excise: "1209",
+    seventy_five: "897",
+    eighty_five: "220",
+    real_value: "95,400.00",
+    cost_statistical_value: "109,710.00",
+  },
+];
+
+export const transportExpensesData = [
+  {
+    no: "1",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    counterparty: "TÜRKİYE PETROL A.Ş.",
+    expense_type: "Daşıma",
+    currency_type: "USD",
+    currency_price: "1.7000",
+    amount_currency: "10,000.00",
+    amount_azn: "17,000.00",
+    omv_percent: "10%",
+    omv: "1,700.00",
+    type: "Xarici",
+  },
+  {
+    no: "2",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    counterparty: "TÜRKİYE PETROL A.Ş.",
+    expense_type: "Daşıma",
+    currency_type: "USD",
+    currency_price: "1.7000",
+    amount_currency: "10,000.00",
+    amount_azn: "17,000.00",
+    omv_percent: "10%",
+    omv: "1,700.00",
+    type: "Xarici",
+  },
+  {
+    no: "3",
+    date: "01.01.24",
+    ygb_num: "7156665987",
+    counterparty: "TÜRKİYE PETROL A.Ş.",
+    expense_type: "Daşıma",
+    currency_type: "USD",
+    currency_price: "1.7000",
+    amount_currency: "10,000.00",
+    amount_azn: "17,000.00",
+    omv_percent: "10%",
+    omv: "1,700.00",
+    type: "Xarici",
+  },
+];
+
+export const vatDatas = [
+  {
+    no: 1,
+    date: "01.01.24",
+    counterparty: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+  {
+    no: 2,
+    date: "01.01.24",
+    counterparty: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+  {
+    no: 3,
+    date: "01.01.24",
+    counterparty: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+  {
+    no: 4,
+    date: "01.01.24",
+    counterparty: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+]
+
+
+///daxili qalıqlar
+
+export const internalCreditorData = [
+  {
+    no: 1,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 2,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 3,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  }
+];
+
+export const internalDebitorData = [
+  {
+    no: 1,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 2,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 3,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    invoice_date: "01.01.2024",
+    invoice_series: "MQ2401",
+    invoice_num: "00000170",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  }
+];
+
+export const internalGivenAdvanceData = [
+  {
+    no: 1,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 2,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 3,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  }
+];
+
+export const internalReceivedAdvanceData = [
+  {
+    no: 1,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 2,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  },
+  {
+    no: 3,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    main: "19.8508",
+    vat: "1.0297",
+    total: "20.8805",
+  }
+];
+
+/// xarici qalıqlar
+
+
+export const externalCreditorData = [
+  {
+    no: 1,
+    voen: "9912345678",
+    name: "Global Import GmbH",
+    ygb_date: "2025-04-01",
+    ygb_num: "YGB-2025/001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1200.00",
+    azn: "2040.00",
+  },
+  {
+    no: 2,
+    voen: "9912345678",
+    name: "Global Import GmbH",
+    ygb_date: "2025-04-01",
+    ygb_num: "YGB-2025/001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1200.00",
+    azn: "2040.00",
+  },
+  {
+    no: 3,
+    voen: "9912345678",
+    name: "Global Import GmbH",
+    ygb_date: "2025-04-01",
+    ygb_num: "YGB-2025/001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1200.00",
+    azn: "2040.00",
+  }
+];
+
+
+export const externalDebitorData = [
+  {
+    no: 1,
+    voen: "9912345678",
+    name: "GlobalTech Inc.",
+    ygb_date: "2025-03-30",
+    ygb_num: "YGB-D-001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1000.00",
+    azn: "1700.00",
+  },
+  {
+    no: 2,
+    voen: "9912345678",
+    name: "GlobalTech Inc.",
+    ygb_date: "2025-03-30",
+    ygb_num: "YGB-D-001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1000.00",
+    azn: "1700.00",
+  },
+  {
+    no: 3,
+    voen: "9912345678",
+    name: "GlobalTech Inc.",
+    ygb_date: "2025-03-30",
+    ygb_num: "YGB-D-001",
+    currency: "USD",
+    price: "1.70",
+    currency_amount: "1000.00",
+    azn: "1700.00",
+  }
+];
+
+export const externalGivenAdvanceData = [
+  {
+    no: 1,
+    name: "EuroBuild Ltd.",
+    voen: "9945671234",
+    currency: "EUR",
+    price: "1.85",
+    currency_amount: "1500.00",
+    azn: "2775.00",
+  },
+  {
+    no: 2,
+    name: "EuroBuild Ltd.",
+    voen: "9945671234",
+    currency: "EUR",
+    price: "1.85",
+    currency_amount: "1500.00",
+    azn: "2775.00",
+  },
+  {
+    no: 3,
+    name: "EuroBuild Ltd.",
+    voen: "9945671234",
+    currency: "EUR",
+    price: "1.85",
+    currency_amount: "1500.00",
+    azn: "2775.00",
+  }
+];
+
+export const externalReceivedAdvanceData = [
+  {
+    no: 1,
+    voen: "9901234567",
+    name: "GlobalNet GmbH",
+    main: "Xidmət müqaviləsi üzrə ilkin ödəniş",
+    vat: "180.00",
+    total: "1080.00",
+  },
+  {
+    no: 2,
+    voen: "9901234567",
+    name: "GlobalNet GmbH",
+    main: "Xidmət müqaviləsi üzrə ilkin ödəniş",
+    vat: "180.00",
+    total: "1080.00",
+  },
+  {
+    no: 3,
+    voen: "9901234567",
+    name: "GlobalNet GmbH",
+    main: "Xidmət müqaviləsi üzrə ilkin ödəniş",
+    vat: "180.00",
+    total: "1080.00",
+  }
+];
+
+/// qeyri rezidentlər
+
+export const serviceImportData = [
+  {
+    no: 1,
+    date: "2025-03-05",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    expense_type: "Reklam",
+    currency_type: "EUR",
+    currency_price: "1.7985",
+    pay_amount: "2000",
+    omv_percent: "6%",
+    purchase_amount: "2,127.66",
+    omv: "127.66",
+    vat: "18%",
+    vat_amount: "688.787",
+  },
+  {
+    no: 2,
+    date: "2025-03-05",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    expense_type: "Reklam",
+    currency_type: "EUR",
+    currency_price: "1.7985",
+    pay_amount: "2000",
+    omv_percent: "6%",
+    purchase_amount: "2,127.66",
+    omv: "127.66",
+    vat: "18%",
+    vat_amount: "688.787",
+  },
+  {
+    no: 3,
+    date: "2025-03-05",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    expense_type: "Reklam",
+    currency_type: "EUR",
+    currency_price: "1.7985",
+    pay_amount: "2000",
+    omv_percent: "6%",
+    purchase_amount: "2,127.66",
+    omv: "127.66",
+    vat: "18%",
+    vat_amount: "688.787",
+  }
+];
+
+
+export const serviceExportData = [
+  {
+    no: 1,
+    date: "01.01.24",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2,000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+  {
+    no: 2,
+    date: "01.01.24",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2,000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  },
+  {
+    no: 3,
+    date: "01.01.24",
+    kontragent_name: "ERCİYES TRANSPORT LTDİ STİO",
+    income_type: "Reklam",
+    currency_type: "USD",
+    currency_price: "1.7985",
+    sale_amount: "2,000",
+    amount_azn: "3,400.00",
+    vat: "18%",
+    vat_amount: "612",
+  }
+];
+
+/// alis satis hesabatlari
+
+export const receiptPurchaseData = [
+  {
+    no: "1",
+    name: "ABC MMC",
+    voen: "1234567890",
+    purchase_total_price_without_vat: "10,000.00",
+    purchase_vat_amount: "1,800.00",
+    purchase_not_involved_vat: "500.00",
+    purchase_free_from_vat: "300.00",
+    purchase_final: "12,600.00",
+    return_total_price_without_vat: "2,000.00",
+    return_vat_amount: "360.00",
+    return_not_involved_vat: "100.00",
+    return_free_from_vat: "50.00",
+    return_involved_zero_percent: "0.00",
+    return_final: "2,510.00",
+    net_sales_main: "8,000.00",
+    net_sales_vat: "1,440.00",
+    net_sales_final: "9,440.00",
+  },
+  {
+    no: "2",
+    name: "Xidmətçi Ltd",
+    voen: "9876543210",
+    purchase_total_price_without_vat: "7,500.00",
+    purchase_vat_amount: "1,350.00",
+    purchase_not_involved_vat: "400.00",
+    purchase_free_from_vat: "250.00",
+    purchase_final: "9,500.00",
+    return_total_price_without_vat: "1,200.00",
+    return_vat_amount: "216.00",
+    return_not_involved_vat: "80.00",
+    return_free_from_vat: "40.00",
+    return_involved_zero_percent: "0.00",
+    return_final: "1,536.00",
+    net_sales_main: "6,300.00",
+    net_sales_vat: "1,134.00",
+    net_sales_final: "7,434.00",
+  },
+  {
+    no: "3",
+    name: "Qafqaz Ticarət",
+    voen: "5678901234",
+    purchase_total_price_without_vat: "15,000.00",
+    purchase_vat_amount: "2,700.00",
+    purchase_not_involved_vat: "600.00",
+    purchase_free_from_vat: "400.00",
+    purchase_final: "18,700.00",
+    return_total_price_without_vat: "3,000.00",
+    return_vat_amount: "540.00",
+    return_not_involved_vat: "150.00",
+    return_free_from_vat: "100.00",
+    return_involved_zero_percent: "0.00",
+    return_final: "3,790.00",
+    net_sales_main: "12,000.00",
+    net_sales_vat: "2,160.00",
+    net_sales_final: "14,160.00",
+  }
+];
+
+export const receiptSalesData = [
+  {
+    no: "1",
+    name: "Azəri Ticarət",
+    voen: "1234567890",
+    sales_total_price_without_vat: "12,000.00",
+    sales_vat_amount: "2,160.00",
+    sales_not_involved_vat: "500.00",
+    sales_free_from_vat: "300.00",
+  },
+  {
+    no: "2",
+    name: "Qafqaz MMC",
+    voen: "0987654321",
+    sales_total_price_without_vat: "8,500.00",
+    sales_vat_amount: "1,530.00",
+    sales_not_involved_vat: "300.00",
+    sales_free_from_vat: "200.00",
+  },
+  {
+    no: "3",
+    name: "Servis Ltd",
+    voen: "4561237890",
+    sales_total_price_without_vat: "15,750.00",
+    sales_vat_amount: "2,835.00",
+    sales_not_involved_vat: "700.00",
+    sales_free_from_vat: "500.00",
+  }
+];
+
+export const externalPurchaseData = [
+  {
+    no: "1",
+    name: "Alfa Trade",
+    voen: "1234567890",
+    type: "Mal",
+    organization_currency: "USD",
+    purchase_currency: "10,000.00",
+    purchase_azn: "17,000.00",
+    return_currency: "500.00",
+    return_azn: "850.00",
+    net_purchase_currency: "9,500.00",
+    net_purchase_azn: "16,150.00",
+  },
+  {
+    no: "2",
+    name: "Global Export LLC",
+    voen: "9876543210",
+    type: "Xidmət",
+    organization_currency: "EUR",
+    purchase_currency: "7,200.00",
+    purchase_azn: "13,200.00",
+    return_currency: "200.00",
+    return_azn: "370.00",
+    net_purchase_currency: "7,000.00",
+    net_purchase_azn: "12,830.00",
+  },
+  {
+    no: "3",
+    name: "Neo Import",
+    voen: "1112233445",
+    type: "Mal",
+    organization_currency: "USD",
+    purchase_currency: "12,500.00",
+    purchase_azn: "21,250.00",
+    return_currency: "1,000.00",
+    return_azn: "1,700.00",
+    net_purchase_currency: "11,500.00",
+    net_purchase_azn: "19,550.00",
+  }
+];
+
+export const externalSalesData = [
+  {
+    no: "1",
+    name: "AzExport LLC",
+    voen: "1234567890",
+    type: "Mal",
+    organization_currency: "USD",
+    purchase_currency: "12,000.00",
+    purchase_azn: "20,400.00",
+    return_currency: "1,000.00",
+    return_azn: "1,700.00",
+    net_purchase_currency: "11,000.00",
+    net_purchase_azn: "18,700.00",
+  },
+  {
+    no: "2",
+    name: "EkoTrade",
+    voen: "9988776655",
+    type: "Xidmət",
+    organization_currency: "EUR",
+    purchase_currency: "9,500.00",
+    purchase_azn: "17,100.00",
+    return_currency: "500.00",
+    return_azn: "900.00",
+    net_purchase_currency: "9,000.00",
+    net_purchase_azn: "16,200.00",
+  },
+  {
+    no: "3",
+    name: "Global Exporters",
+    voen: "1122334455",
+    type: "Mal",
+    organization_currency: "USD",
+    purchase_currency: "15,000.00",
+    purchase_azn: "25,500.00",
+    return_currency: "1,500.00",
+    return_azn: "2,550.00",
+    net_purchase_currency: "13,500.00",
+    net_purchase_azn: "22,950.00",
+  }
+];
+
+
+/// borclar cədvəli
+
+export const creditorDebtsData = [
+  {
+    no: "1",
+    kontragen: "AzSuppliers MMC",
+    voen: "1234567890",
+
+    before_debt_balance_main: "15,000.00",
+    before_debt_balance_vat: "2,700.00",
+    before_debt_balance_total: "17,700.00",
+
+    before_advance_balance_main: "5,000.00",
+    before_advance_balance_vat: "900.00",
+    before_advance_balance_total: "5,900.00",
+
+    paid_money_main: "3,000.00",
+    paid_money_vat: "540.00",
+    paid_money_total: "3,540.00",
+
+    return_main: "1,000.00",
+    return_vat: "180.00",
+    return_total: "1,180.00",
+
+    total_expense_main: "20,000.00",
+    total_expense_vat: "3,600.00",
+    total_expense_total: "23,600.00",
+
+    purchase_main: "18,000.00",
+    purchase_vat: "3,240.00",
+    purchase_total: "21,240.00",
+
+    supplier_return_main: "2,000.00",
+    supplier_return_vat: "360.00",
+    supplier_return_total: "2,360.00",
+
+    total_income_main: "21,000.00",
+    total_income_vat: "3,780.00",
+    total_income_total: "24,780.00",
+
+    end_debt_balance_main: "12,000.00",
+    end_debt_balance_vat: "2,160.00",
+    end_debt_balance_total: "14,160.00",
+
+    end_advance_balance_main: "2,000.00",
+    end_advance_balance_vat: "360.00",
+    end_advance_balance_total: "2,360.00"
+  },
+  {
+    no: "2",
+    kontragen: "Bakı Tex Ltd",
+    voen: "9876543210",
+
+    before_debt_balance_main: "8,000.00",
+    before_debt_balance_vat: "1,440.00",
+    before_debt_balance_total: "9,440.00",
+
+    before_advance_balance_main: "3,500.00",
+    before_advance_balance_vat: "630.00",
+    before_advance_balance_total: "4,130.00",
+
+    paid_money_main: "4,000.00",
+    paid_money_vat: "720.00",
+    paid_money_total: "4,720.00",
+
+    return_main: "500.00",
+    return_vat: "90.00",
+    return_total: "590.00",
+
+    total_expense_main: "12,000.00",
+    total_expense_vat: "2,160.00",
+    total_expense_total: "14,160.00",
+
+    purchase_main: "10,000.00",
+    purchase_vat: "1,800.00",
+    purchase_total: "11,800.00",
+
+    supplier_return_main: "1,000.00",
+    supplier_return_vat: "180.00",
+    supplier_return_total: "1,180.00",
+
+    total_income_main: "13,000.00",
+    total_income_vat: "2,340.00",
+    total_income_total: "15,340.00",
+
+    end_debt_balance_main: "7,000.00",
+    end_debt_balance_vat: "1,260.00",
+    end_debt_balance_total: "8,260.00",
+
+    end_advance_balance_main: "1,500.00",
+    end_advance_balance_vat: "270.00",
+    end_advance_balance_total: "1,770.00"
+  }
+];
+
+export const debitorDebtData = [
+  {
+    no: "1",
+    kontragen: "Xalq Bank ASC",
+    voen: "2000147856",
+
+    before_debt_balance_main: "6,000.00",
+    before_debt_balance_vat: "1,080.00",
+    before_debt_balance_total: "7,080.00",
+
+    before_advance_balance_main: "2,000.00",
+    before_advance_balance_vat: "360.00",
+    before_advance_balance_total: "2,360.00",
+
+    paid_money_main: "1,500.00",
+    paid_money_vat: "270.00",
+    paid_money_total: "1,770.00",
+
+    return_main: "200.00",
+    return_vat: "36.00",
+    return_total: "236.00",
+
+    total_expense_main: "7,000.00",
+    total_expense_vat: "1,260.00",
+    total_expense_total: "8,260.00",
+
+    sales_main: "5,500.00",
+    sales_vat: "990.00",
+    sales_total: "6,490.00",
+
+    supplier_return_main: "300.00",
+    supplier_return_vat: "54.00",
+    supplier_return_total: "354.00",
+
+    refund_money_customer_main: "1,200.00",
+    refund_money_customer_vat: "216.00",
+    refund_money_customer_total: "1,416.00",
+
+    total_income_main: "6,000.00",
+    total_income_vat: "1,080.00",
+    total_income_total: "7,080.00",
+
+    end_debt_balance_main: "3,000.00",
+    end_debt_balance_vat: "540.00",
+    end_debt_balance_total: "3,540.00",
+
+    end_advance_balance_main: "1,000.00",
+    end_advance_balance_vat: "180.00",
+    end_advance_balance_total: "1,180.00"
+  },
+  {
+    no: "2",
+    kontragen: "Bakı Elektrik MMC",
+    voen: "3000589236",
+
+    before_debt_balance_main: "8,000.00",
+    before_debt_balance_vat: "1,440.00",
+    before_debt_balance_total: "9,440.00",
+
+    before_advance_balance_main: "3,500.00",
+    before_advance_balance_vat: "630.00",
+    before_advance_balance_total: "4,130.00",
+
+    paid_money_main: "2,800.00",
+    paid_money_vat: "504.00",
+    paid_money_total: "3,304.00",
+
+    return_main: "500.00",
+    return_vat: "90.00",
+    return_total: "590.00",
+
+    total_expense_main: "9,500.00",
+    total_expense_vat: "1,710.00",
+    total_expense_total: "11,210.00",
+
+    sales_main: "6,500.00",
+    sales_vat: "1,170.00",
+    sales_total: "7,670.00",
+
+    supplier_return_main: "800.00",
+    supplier_return_vat: "144.00",
+    supplier_return_total: "944.00",
+
+    refund_money_customer_main: "1,700.00",
+    refund_money_customer_vat: "306.00",
+    refund_money_customer_total: "2,006.00",
+
+    total_income_main: "8,000.00",
+    total_income_vat: "1,440.00",
+    total_income_total: "9,440.00",
+
+    end_debt_balance_main: "4,000.00",
+    end_debt_balance_vat: "720.00",
+    end_debt_balance_total: "4,720.00",
+
+    end_advance_balance_main: "1,500.00",
+    end_advance_balance_vat: "270.00",
+    end_advance_balance_total: "1,770.00"
+  }
+];
+
+export const foreignCreditorData = [
+  {
+    no: "1",
+    kontragen: "Global Trade GmbH",
+    voen: "DE123456789",
+    currency: "EUR",
+
+    before_debt_balance_currency: "5,000.00",
+    before_debt_balance_azn: "9,500.00",
+
+    before_advance_balance_currency: "1,500.00",
+    before_advance_balance_azn: "2,850.00",
+
+    paid_money_currency: "2,000.00",
+    paid_money_azn: "3,800.00",
+
+    return_currency: "300.00",
+    return_azn: "570.00",
+
+    payment_debt_total_expense_currency: "6,000.00",
+    payment_debt_total_expense_azn: "11,400.00",
+
+    incurring_debt_purchase_currency: "4,500.00",
+    incurring_debt_purchase_azn: "8,550.00",
+
+    incurring_debt_supplier_return_currency: "200.00",
+    incurring_debt_supplier_return_azn: "380.00",
+
+    incurring_debt_total_income_currency: "6,300.00",
+    incurring_debt_total_income_azn: "11,970.00",
+
+    incurring_debt_total_expense_currency: "6,000.00",
+    incurring_debt_total_expense_azn: "11,400.00",
+
+    end_debt_balance_currency: "2,200.00",
+    end_debt_balance_azn: "4,180.00",
+
+    end_advance_balance_currency: "1,000.00",
+    end_advance_balance_azn: "1,900.00",
+  },
+  {
+    no: "2",
+    kontragen: "ImportEx Co.",
+    voen: "TR987654321",
+    currency: "USD",
+
+    before_debt_balance_currency: "3,000.00",
+    before_debt_balance_azn: "5,100.00",
+
+    before_advance_balance_currency: "800.00",
+    before_advance_balance_azn: "1,360.00",
+
+    paid_money_currency: "1,200.00",
+    paid_money_azn: "2,040.00",
+
+    return_currency: "100.00",
+    return_azn: "170.00",
+
+    payment_debt_total_expense_currency: "4,000.00",
+    payment_debt_total_expense_azn: "6,800.00",
+
+    incurring_debt_purchase_currency: "2,900.00",
+    incurring_debt_purchase_azn: "4,930.00",
+
+    incurring_debt_supplier_return_currency: "150.00",
+    incurring_debt_supplier_return_azn: "255.00",
+
+    incurring_debt_total_income_currency: "4,300.00",
+    incurring_debt_total_income_azn: "7,310.00",
+
+    incurring_debt_total_expense_currency: "4,000.00",
+    incurring_debt_total_expense_azn: "6,800.00",
+
+    end_debt_balance_currency: "1,500.00",
+    end_debt_balance_azn: "2,550.00",
+
+    end_advance_balance_currency: "600.00",
+    end_advance_balance_azn: "1,020.00",
+  }
+];
+
+export const foreignDebitorData = [
+  {
+    no: "1",
+    kontragen: "ExportCo LLC",
+    voen: "GE123456789",
+    currency: "EUR",
+    before_debt_balance_currency: "6,000.00",
+    before_debt_balance_azn: "11,400.00",
+    before_advance_balance_currency: "1,200.00",
+    before_advance_balance_azn: "2,280.00",
+    paid_money_currency: "2,500.00",
+    paid_money_azn: "4,750.00",
+    return_currency: "400.00",
+    return_azn: "760.00",
+    peyment_debt_total_expense_currency: "7,000.00",
+    peyment_debt_total_expense_azn: "13,300.00",
+    payment_debt_total_expense_currency: "7,000.00",
+    payment_debt_total_expense_azn: "13,300.00",
+    incurring_debt_purchase_currency: "5,500.00",
+    incurring_debt_purchase_azn: "10,450.00",
+    incurring_debt_return_customer_currency: "300.00",
+    incurring_debt_return_customer_azn: "570.00",
+    incurring_debt_incoming_currency: "7,200.00",
+    incurring_debt_incoming_azn: "13,680.00",
+    end_debt_balance_currency: "2,300.00",
+    end_debt_balance_azn: "4,370.00",
+    end_advance_balance_currency: "900.00",
+    end_advance_balance_azn: "1,710.00",
+  },
+  {
+    no: "2",
+    kontragen: "TradePlus GmbH",
+    voen: "RU987654321",
+    currency: "USD",
+    before_debt_balance_currency: "4,500.00",
+    before_debt_balance_azn: "7,650.00",
+    before_advance_balance_currency: "950.00",
+    before_advance_balance_azn: "1,615.00",
+    paid_money_currency: "1,800.00",
+    paid_money_azn: "3,060.00",
+    return_currency: "250.00",
+    return_azn: "425.00",
+    peyment_debt_total_expense_currency: "5,600.00",
+    peyment_debt_total_expense_azn: "9,520.00",
+    payment_debt_total_expense_currency: "5,600.00",
+    payment_debt_total_expense_azn: "9,520.00",
+    incurring_debt_purchase_currency: "4,000.00",
+    incurring_debt_purchase_azn: "6,800.00",
+    incurring_debt_return_customer_currency: "150.00",
+    incurring_debt_return_customer_azn: "255.00",
+    incurring_debt_incoming_currency: "5,200.00",
+    incurring_debt_incoming_azn: "8,840.00",
+    end_debt_balance_currency: "1,600.00",
+    end_debt_balance_azn: "2,720.00",
+    end_advance_balance_currency: "700.00",
+    end_advance_balance_azn: "1,190.00",
+  }
+];

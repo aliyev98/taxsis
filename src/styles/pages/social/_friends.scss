@@ -4,11 +4,9 @@
     .social-wrapper {
 
         .content {
-            flex: 1;
-            
+  
             .friend-list {
                 width: 80%;
-                height: 90%;
                 padding: 24px;
                 border-radius: 16px;
                 background: var(--Neutral-01, #FCFCFC);
@@ -19,7 +17,6 @@
                     font-size: 20px;
                     font-weight: 600;
                     margin-bottom: 16px;
-
                 }
             }
         }

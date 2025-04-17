@@ -12,6 +12,8 @@
 
 @use './components/dropdowns/dropdowns.scss';
 
+@use './pages/social/social.scss';
+
 
 @use './layouts/feedHeader';
 @use './sidebars/feedSideBar';
@@ -30,17 +32,17 @@
 @use './layouts/reportsFooter';
 @use './layouts/tableHeader';
 @use './components/modals/addRowModal';
-@use './pages/social/mainPage';
+// @use './pages/social/mainPage';
 @use './components/modals/createPostModal';
-@use './pages/social/friends';
+// @use './pages/social/friends';
 @use './components/social/friends/friend';
 @use './components/social/friends/firendsNavbar';
-@use './pages/social/groups';
+// @use './pages/social/groups';
 @use './components/social/groups/groupsHeader';
 @use './components/social/groups/group';
-@use './pages/social/groupFeed';
+// @use './pages/social/groupFeed';
 @use './components/modals/createGroupModal';
-@use './pages/social/vacanciesPage';
+// @use './pages/social/vacanciesPage';
 @use './components/social/vacancies/vacanciesHeader';
 @use './components/social/vacancies/vacanciesNavbar';
 @use './components/social/vacancies/vacancyList';
@@ -55,7 +57,7 @@
 // @use './components/social/events/eventsNavbar';
 // @use './components/social/events/events';
 // @use './components/social/events/event';
-@use './pages/social/tendersPage';
+// @use './pages/social/tendersPage';
 @use './components/social/tenders/tenders';
 @use './components/social/tenders/tendersHeader';
 @use './components/social/tenders/tenderList';
@@ -64,10 +66,10 @@
 @use './components/social/tenders/tenderParticipate';
 @use './components/social/tenders/tenderFinish';
 @use './components/social/tenders/announceTender';
-@use './pages/social/customCalculator';
-@use './pages/social/currencyPage';
-@use './pages/social/vatSearch';
-@use './pages/social/individualProfile';
+// @use './pages/social/customCalculator';
+// @use './pages/social/currencyPage';
+// @use './pages/social/vatSearch';
+// @use './pages/social/individualProfile';
 @use './components/social/individualProfile/photos';
 @use './components/social/individualProfile/videos';
 @use './components/social/individualProfile/individualFriends';
@@ -75,7 +77,7 @@
 @use './components/social/individualProfile/cv';
 @use './components/social/individualProfile/cvEdit';
 @use './components/social/individualProfile/individualProfileEdit';
-@use './pages/social/colleaguesPage';
+// @use './pages/social/colleaguesPage';
 
 
 

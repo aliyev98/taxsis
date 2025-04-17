@@ -12,9 +12,27 @@ import { setNavbarSelection } from "../../redux/slices/taxModuleSlice";
 import ColumnFilterDropdown from "../dropdwons/ColumnFilterDropdown";
 import ColumnVisibilityDropdown from "../dropdwons/ColumnVisibilityDropdown";
 import TableHeader from "../../layouts/TableHeader";
+import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
+
+export default function TaxModuleTable({
+  columns,
+  data,
+  title,
+  navBtns,
+  reportsHeader,
+  customHeaderButtons,
+  showGroupedHeader,
+  isEditing,
+  setIsEditing,
+  emptyMessageVisible,
+  colSpans,
+  infos,
+  infosHeader,
+  editable,
+}) {
 
 
-export default function TaxModuleTable({ columns, data, title, navBtns, reportsHeader, customHeaderButtons, showGroupedHeader, isEditing, setIsEditing, emptyMessageVisible, colSpans, infos, infosHeader }) {
+
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [columnVisibility, setColumnVisibility] = useState(
     columns.reduce((acc, col) => {
@@ -25,6 +43,9 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
   const [filters, setFilters] = useState({});
   const [openDropdown, setOpenDropdown] = useState(null);
   const [showColumnMenu, setShowColumnMenu] = useState(false);
+  const [editingCell, setEditingCell] = useState(null); // << EKLENDİ
+  const [editMode, setEditMode] = useState(false);
+  const [editValue, setEditValue] = useState("");
 
   const filterDropdownRef = useRef();
   const columnDropdownRef = useRef();
@@ -43,12 +64,13 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
   }, []);
 
   const processedColumns = useMemo(() => {
-
     return columns.map((col) => ({
       ...col,
       cell: col.cell || ((info) => info.getValue()),
       header: () => (
-        <div className="d-flex align-items-center justify-content-between" style={{ cursor: "pointer" }}
+        <div
+          className="d-flex align-items-center justify-content-between"
+          style={{ cursor: "pointer" }}
           onClick={() => {
             if (col.filterOptions) {
               setOpenDropdown((prev) => (prev === col.accessorKey ? null : col.accessorKey));
@@ -102,6 +124,17 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
     return currentData;
   }, [data, filters]);
 
+  const footerTotals = useMemo(() => {
+    const totals = {};
+    columns.forEach((col) => {
+      const key = col.accessorKey;
+      if (!key || col.enableFooterTotal !== true) return;
+      const total = finalData.reduce((sum, row) => sum + Number(row[key] ?? 0), 0);
+      totals[key] = total;
+    });
+    return totals;
+  }, [columns, finalData]);
+
   const table = useReactTable({
     data: finalData,
     columns: processedColumns,
@@ -131,64 +164,53 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
   };
 
   return (
-
     <div className="position-relative table-container">
+      <TableHeader
+        ColumnVisibilityDropdown={ColumnVisibilityDropdown}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+        columnDropdownRef={columnDropdownRef}
+        setShowColumnMenu={setShowColumnMenu}
+        showColumnMenu={showColumnMenu}
+        customHeaderButtons={customHeaderButtons}
+        ColumnVisibilityDropdow={ColumnVisibilityDropdown}
+        table={table}
+        columns={columns}
+        navBtns={navBtns}
+      />
 
-
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-
-      {finalData.length > 0 && (
-
-        <TableHeader
-          ColumnVisibilityDropdown={ColumnVisibilityDropdown}
-          isEditing={isEditing}
-          setIsEditing={setIsEditing}
-          columnDropdownRef={columnDropdownRef}
-          setShowColumnMenu={setShowColumnMenu}
-          showColumnMenu={showColumnMenu}
-          customHeaderButtons={customHeaderButtons}
-          ColumnVisibilityDropdow={ColumnVisibilityDropdown}
-          table={table}
-          columns={columns}
-          navBtns={navBtns}
-        />
+      {infosHeader === true && (
+        <div className="infos d-flex">
+          {infos?.map((info) => (
+            <div className="info d-flex" key={info.id}>
+              <span>{info.title}</span>
+              <span>{info.content}</span>
+            </div>
+          ))}
+        </div>
       )}
 
-
-
-      {infosHeader === true &&
-
-        (
-          <div className="infos d-flex">
-
-            {infos?.map((info) => (
-              <div className="info d-flex" key={info.id}>
-                <span>{info.title}</span>
-                <span>{info.content}</span>
-              </div>
-            ))}
-
-          </div>
-        )
-      }
-
-
-      {reportsHeader && (
-        <ReportsHeader isEditing={isEditing} />
-      )}
-
+      {reportsHeader && <ReportsHeader isEditing={isEditing} />}
 
       <div className="table-div">
         <table className="tables custom-table">
-
           <thead>
+
             {showGroupedHeader && (
               <tr className="group-header">
                 {colSpans?.map((span) => (
-                  <th key={span.id} colSpan={span.col} className="group-title"><div>{span.content}</div></th>
+                  <th
+                    key={span.id}
+                    colSpan={span.col}
+                    className="group-title"
+                    style={{ visibility: span.content ? 'visible' : 'hidden' }}
+                  >
+                    <div>{span.content}</div>
+                  </th>
                 ))}
               </tr>
             )}
+
 
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
@@ -200,11 +222,15 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
                       <div className="th d-flex">
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </div>
-
                       {openDropdown === colKey && filterOpts && (
-                        <ColumnFilterDropdown colKey={colKey} filterOpts={filterOpts} filters={filters} handleSearchChange={handleSearchChange}
+                        <ColumnFilterDropdown
+                          colKey={colKey}
+                          columns={columns}
+                          filterOpts={filterOpts}
+                          filters={filters}
+                          handleSearchChange={handleSearchChange}
                           handleCheckboxChange={handleCheckboxChange}
-                          filterDropdownRef={filterDropdownRef}
+                          ref={filterDropdownRef}
                         />
                       )}
                     </th>
@@ -216,72 +242,84 @@ export default function TaxModuleTable({ columns, data, title, navBtns, reportsH
 
           <tbody>
             {finalData.length > 0 ? (
-              finalData.map((row, rowIndex) => {
-                if (row.isGroupHeader) {
-                  const colCount = table.getAllLeafColumns().length;
-                  const remainingCols = colCount - 2;
+              table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => {
+                    const colKey = cell.column.columnDef.accessorKey;
+                    const rowIndex = row.index;
 
-                  return (
-                    <tr key={`group-${rowIndex}`} className="group-header-row">
-                      <td colSpan={2}>
-                        <strong>{row.groupName}</strong>
+                    return (
+                      <td
+                        key={cell.id}
+                        onClick={() => {
+                          if (editable && editingCell !== `${row.id}-${cell.column.id}`) {
+                            setEditingCell(`${row.id}-${cell.column.id}`);
+                            setEditMode(false);
+                          }
+                        }}
+                      >
+                        <div style={{ position: "relative" }}>
+                          {editingCell === `${row.id}-${cell.column.id}` ? (
+                            editMode ? (
+                              <input
+                                type="text"
+                                value={editValue}
+                                onChange={(e) => setEditValue(e.target.value)}
+                                onBlur={() => {
+                                  row.original[cell.column.id] = editValue;
+                                  setEditingCell(null);
+                                  setEditMode(false);
+                                }}
+                                autoFocus
+                              />
+                            ) : (
+                              <>
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 10 }}>
+                                  <TableDataEditDropdown
+                                    onEdit={() => {
+                                      setEditMode(true);
+                                      setEditValue(cell.getValue());
+                                    }}
+                                    onDelete={() => {
+                                      console.log("Silinecek:", row.original);
+                                      setEditingCell(null);
+                                    }}
+                                    closeDropdown={() => setEditingCell(null)}
+                                  />
+                                </div>
+                              </>
+                            )
+                          ) : (
+                            flexRender(cell.column.columnDef.cell, cell.getContext())
+                          )}
+                        </div>
                       </td>
-                      {Array.from({ length: remainingCols }).map((_, i) => (
-                        <td key={`empty-${i}`} />
-                      ))}
-                    </tr>
-                  );
-                }
-
-                // Normal veri satırı
-                const tableRow = table.getRowModel().rows.find((r) => r.original === row);
-                if (!tableRow) return null;
-
-                return (
-                  <tr key={tableRow.id}>
-                    {tableRow.getVisibleCells().map((cell) => (
-                      <td key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })
-            ) : emptyMessageVisible ? (
+                    );
+                  })}
+                </tr>
+              ))
+            ) : (
               <tr>
-                <td colSpan={table.getAllLeafColumns().length}>
-
-                  <div className="empty-message d-flex flex-column align-items-center py-5">
-                    <div className="icon"><span>🧮</span></div>
-                    <div className="message d-flex flex-column align-items-center">
-                      <span>Oops!</span>
-                      <span>Hal-hazırda hər hansı bir hesabatınız yoxdur.</span>
-                      <span>
-                        Hesabatlar üzrə məlumatların göstərilməsi üçün “Hesabatları filterlə” <br />
-                        düyməsinə klik edib uyğun parametrləri seçin
-                      </span>
-                    </div>
-                    <button onClick={() => setShowFilterModal(true)} className="btn btn-primary filter">
-                      Hesabatları filterlə
-                    </button>
-                  </div>
-                  
+                <td colSpan={columns.length} className="text-center">
+                  Heç bir məlumat tapılmadı
                 </td>
               </tr>
-            ) : null}
+            )}
           </tbody>
 
 
         </table>
       </div>
 
-      {showFilterModal && <ReportsFilterModal onClose={() => setShowFilterModal(false)} />}
-
-      {reportsHeader && (
-        <ReportsFooter />
+      {emptyMessageVisible && finalData.length === 0 && (
+        <div className="empty-table-message">Heç bir məlumat tapılmadı</div>
       )}
 
+      {reportsHeader && (
+        <ReportsFooter footerTotals={footerTotals} columns={columns} />
+      )}
 
-    </div >
+    </div>
   );
 }

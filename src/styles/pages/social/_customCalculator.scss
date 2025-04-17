@@ -3,9 +3,6 @@
     .social-wrapper {
 
         .content {
-            background: #F2F2F7;
-            flex: 1;
-            padding: 40px 0 40px 0;
 
             .calculator-container {
                 gap: 32px;
@@ -20,15 +17,8 @@
 
                     .title {
                         color: var(--Neutral-07, #1A1D1F);
-
-                        /* Title 1 (Semibold) */
-                        font-family: Inter;
                         font-size: 20px;
-                        font-style: normal;
                         font-weight: 600;
-                        line-height: 32px;
-                        /* 160% */
-                        letter-spacing: -0.4px;
                     }
 
                     .infos-and-results {

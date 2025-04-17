@@ -1,5 +1,45 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { purchaseData, actsData, replacedData, initialsData, advanceData, depositsData, onlineCashData, physicalData, confrontationActsData, onPurchaseData, cashFlowsData } from '../../constants/TableDatas';
+import {
+  purchaseData,
+  actsData,
+  replacedData,
+  initialsData,
+  advanceData,
+  depositsData,
+  onlineCashData,
+  physicalData,
+  confrontationActsData,
+  onPurchaseData,
+  cashFlowsData,
+  importDocsData,
+  exportDocsData,
+  transportExpensesData,
+  vatDatas,
+
+  internalCreditorData,
+  internalDebitorData,
+  internalGivenAdvanceData,
+  internalReceivedAdvanceData,
+
+  externalCreditorData,
+  externalDebitorData,
+  externalGivenAdvanceData,
+  externalReceivedAdvanceData,
+
+  serviceImportData,
+  serviceExportData,
+
+  receiptPurchaseData,
+  receiptSalesData,
+  externalPurchaseData,
+  externalSalesData,
+
+  creditorDebtsData,
+  debitorDebtData,
+  foreignCreditorData,
+  foreignDebitorData,
+
+} from '../../constants/TableDatas';
 import { data } from 'react-router-dom';
 
 const initialState = {
@@ -8,12 +48,38 @@ const initialState = {
   replaced: { data: replacedData },
   initial: { data: initialsData },
   advanced: { data: advanceData },
-  deposits: {data: depositsData},
-  online: {data: onlineCashData},
-  physical: {data: physicalData},
-  confrontation: {data: confrontationActsData},
-  onPurchase: {data: onPurchaseData},
-  cashFlows: {data: cashFlowsData}
+  deposits: { data: depositsData },
+  online: { data: onlineCashData },
+  physical: { data: physicalData },
+  confrontation: { data: confrontationActsData },
+  onPurchase: { data: onPurchaseData },
+  cashFlows: { data: cashFlowsData },
+  importDocs: { data: importDocsData },
+  exportDocs: { data: exportDocsData },
+  transporExpense: { data: transportExpensesData },
+  vat: { data: vatDatas },
+  internalCreditor: { data: internalCreditorData },
+  internalDebitor: { data: internalDebitorData },
+  internalGivenAdvance: { data: internalGivenAdvanceData },
+  internalReceivedAdvance: { data: internalReceivedAdvanceData },
+  externalCreditor: { data: externalCreditorData },
+  externalDebitor: { data: externalDebitorData },
+  externalGivenAdvance: { data: externalGivenAdvanceData },
+  externalReceivedAdvance: { data: externalReceivedAdvanceData },
+  serviceImport: { data: serviceImportData },
+  serviceExport: { data: serviceExportData },
+
+  receiptPurchase: { data: receiptPurchaseData },
+  receiptSales: { data: receiptSalesData },
+  externalPurchase: { data: externalPurchaseData },
+  externalSales: { data: externalSalesData },
+
+  // borclar
+  creditorDebts: { data: creditorDebtsData },
+  debitorDebt: { data: debitorDebtData },
+  foreignCreditor: { data: foreignCreditorData },
+  foreignDebitor: { data: foreignDebitorData }
+
 };
 
 const tableDataSlice = createSlice({

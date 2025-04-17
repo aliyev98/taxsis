@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
+import TestTable from "../../../components/tables/TestTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { purchaseColumns, actsColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
@@ -78,6 +79,7 @@ const Invoices1 = () => {
                 title="Qaimələr"
                 headerBtns={headerBtns}
                 columns={columns}
+                navBtns={navBtns}
             />
 
             <div className="table">

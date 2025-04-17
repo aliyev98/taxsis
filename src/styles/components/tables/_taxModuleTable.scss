@@ -33,16 +33,17 @@
         overflow-y: auto;
         scrollbar-width: none !important;
         scroll-behavior: smooth;
-        height: 90vh;
         position: relative;
+        min-height: 500px;
 
         .custom-table {
             width: 100%;
+            overflow-y: scroll;
 
             .group-header {
 
                 .group-title {
-                    border-right: 1px solid #6F767E;
+                    // border-right: 1px solid #6F767E;
                     padding: 0 20px !important;
 
                     &:last-child {
@@ -67,7 +68,7 @@
             }
 
             thead {
-                
+
                 tr {
 
                     th {
@@ -106,6 +107,23 @@
                         padding: 16px 24px !important;
                         font-weight: 600;
                         font-size: 14px;
+                        position: relative;
+
+                    }
+                }
+            }
+
+            tfoot {
+                border-top: 1px solid gray;
+
+                tr {
+
+                    td {
+                        padding: 12px 24px !important;
+                        color: var(--Neutral-07, #1A1D1F);
+                        font-size: 15px;
+                        font-weight: 600;
+
                     }
                 }
             }
@@ -166,6 +184,35 @@
         }
     }
 
+    .type {
+        border-radius: 6px;
+        background: var(--Secondary-04, #B5E4CA);
+        padding: 2px 8px;
+
+        color: var(--Neutral-07, #1A1D1F);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .invoice-azn-cell{
+
+        button{
+            background-color: transparent;
+            border: none;
+
+        }
+    }
+
+    .transport-azn-cell{
+
+        button{
+            background-color: transparent;
+            border: none;
+            
+        }
+    }
+
     .approved {
         background-color: #B5E4CA;
         padding: 2px 8px;
@@ -186,13 +233,6 @@
         font-weight: 700;
         font-size: 15px;
         text-transform: uppercase;
-    }
-
-    .total{
-        position: sticky;
-        bottom: 0;
-        width: 100%;
-        background-color: green;
     }
 
 }

@@ -1,0 +1,18 @@
+@use './colleaguesPage';
+@use './currencyPage';
+@use './customCalculator';
+@use './eventsPage';
+@use './friends';
+@use './groupFeed';
+@use './groups';
+@use './individualProfile';
+@use './mainPage';
+@use './tendersPage';
+@use './vacanciesPage';
+@use './vatSearch';
+
+.content {
+    flex: 1;
+    padding: 40px 0 40px 0;
+    background: #F2F2F7;
+}

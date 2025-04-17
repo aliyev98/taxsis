@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CreateGroupModal from '../../modals/CreateGroupModal'
+import AddButton from '../../ui/buttons/AddButton'
 
 const GroupsHeader = () => {
 
@@ -9,10 +10,7 @@ const GroupsHeader = () => {
     <div className='groups-header d-flex align-items-center justify-content-between'>
       <div className="title">Qruplar</div>
 
-      <button className="create-group d-flex align-items-center" onClick={() => setShowModal(true)}>
-        <img src="/assets/plus-icon.svg" alt="" />
-        <span>Qrup yarat</span>
-      </button>
+      <AddButton content="Qrup yarat" onClick={() => setShowModal(true)} />
 
       <CreateGroupModal show={showModal} onClose={() => setShowModal(false)} />
     </div>

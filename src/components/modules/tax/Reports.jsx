@@ -5,7 +5,7 @@ import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
-const SubstitutionRegister = () => {
+const Reports = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
@@ -19,11 +19,11 @@ const SubstitutionRegister = () => {
         }
     }, [sidebarSelection, dispatch]);
 
-    const headerBtns = [
-        { id: 1, content: "Əlavə et", className: "add" },
-        { id: 2, content: "Şablonu yüklə", className: "download" },
-        { id: 3, content: "İmport et", className: "import" },
-    ];
+    // const headerBtns = [
+    //     { id: 1, content: "Əlavə et", className: "add" },
+    //     { id: 2, content: "Şablonu yüklə", className: "download" },
+    //     { id: 3, content: "İmport et", className: "import" },
+    // ];
 
     const navBtns = [
         { id: "internal", content: "Daxili üzləşmələr" },
@@ -47,13 +47,10 @@ const SubstitutionRegister = () => {
     }
 
     return (
-        <div className="invoices-container content">
-
-
+        <div className="reports-container content">
 
             <TaxModuleHeader
                 title="Hesabatlar"
-                headerBtns={headerBtns}
                 columns={[]}
                 navBtns={navBtns}
             />
@@ -66,4 +63,4 @@ const SubstitutionRegister = () => {
     );
 }
 
-export default SubstitutionRegister
+export default Reports

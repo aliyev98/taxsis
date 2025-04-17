@@ -11,6 +11,7 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
     const activeNav = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showProfileFropdown, setShowProfileDropdown] = useState(false)
     const [showModal, setShowModal] = useState(false); // ✅ Modal görünürlüğü
     const [selectedNavForModal, setSelectedNavForModal] = useState(""); // ✅ Modal için seçim
     const dropdownRef = useRef();

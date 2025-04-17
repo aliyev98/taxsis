@@ -10,13 +10,10 @@ const Feed = ({ groupId }) => {
     const showModal = useSelector(state => state.post.showModal);
 
 
-
-
     return (
         <div className="posts-container d-flex flex-column">
 
 
-            {/* ✅ Sadece grup sayfasında göster */}
             {groupId && (
                 <div className="group-header d-flex align-items-center">
                     <div className="group-img">
