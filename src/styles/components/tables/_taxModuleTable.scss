@@ -276,6 +276,13 @@
         font-weight: 600;
     }
 
+    .account-count-cell {
+        padding: 2px 8px;
+        border-radius: 6px;
+        background: var(--Secondary-04, #B5E4CA);
+        width: fit-content;
+    }
+
     .group-header-row {
         background-color: #B1E5FC !important;
         font-weight: 700;

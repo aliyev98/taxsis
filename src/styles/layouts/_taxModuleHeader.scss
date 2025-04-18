@@ -3,8 +3,14 @@
     gap: 32px;
     background-color: #fcfcfc;
 
+
+
     .header-btns {
         flex: 1;
+
+        .btn-back{
+            padding: 10px !important;
+        }
 
         .title {
             color: #272B30;

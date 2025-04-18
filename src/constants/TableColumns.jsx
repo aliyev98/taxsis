@@ -2015,7 +2015,16 @@ export const banksColumns = [
     { id: "no", accessorKey: "no", header: "No" },
     { id: "name", accessorKey: "name", header: "Bankın adı" },
     { id: "branch", accessorKey: "branch", header: "Filialı" },
-    { id: "account_list", accessorKey: "account_list", header: "Hesab sayı" },
+    {
+        id: "account_list",
+        accessorKey: "account_list",
+        header: "Hesab sayı",
+        cell: ({ getValue }) => (
+            <div className="account-count-cell">
+                {getValue()}
+            </div>
+        )
+    },
     { id: "currency", accessorKey: "currency", header: "Valyuta növü" },
 ]
 
