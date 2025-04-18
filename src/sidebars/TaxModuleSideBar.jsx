@@ -85,8 +85,17 @@ const TaxModuleSideBar = () => {
   }, [activeButton]);
 
   const handleButtonClick = (label) => {
+    if (label === "İlkin qalıqlar") {
+      const element = document.getElementById("remains");
+      if (element && !element.classList.contains("show")) {
+        const collapse = new window.bootstrap.Collapse(element, { toggle: true });
+        collapse.show();
+      }
+      return; // ✅ Seçim olarak ayarlama
+    }
+
     setActiveButton(label);
-    localStorage.setItem('taxModuleSidebarSelection', label);
+    localStorage.setItem("taxModuleSidebarSelection", label);
 
     const selectedKey = labelToPageKeyMap[label];
     if (selectedKey) dispatch(setSidebarSelection(selectedKey));
@@ -94,12 +103,13 @@ const TaxModuleSideBar = () => {
     const accordionId = getAccordionIdForLabel(label);
     if (accordionId) {
       const element = document.getElementById(accordionId);
-      if (element && !element.classList.contains('show')) {
+      if (element && !element.classList.contains("show")) {
         const collapse = new window.bootstrap.Collapse(element, { toggle: true });
         collapse.show();
       }
     }
   };
+
 
   return (
     <div className="tax-module-sidebar d-flex flex-column">

@@ -52,7 +52,7 @@ const TaxModule = () => {
 
                 {sidebarSelection === "cash_flow" && <CashFlowStatement />}
 
-                {sidebarSelection === "bank_statements" && <BankStatements />}
+                {/* {sidebarSelection === "bank_statements" && <BankStatements />} */}
 
                 {sidebarSelection === "custom_documents" && <CustomDocuments />}
 
