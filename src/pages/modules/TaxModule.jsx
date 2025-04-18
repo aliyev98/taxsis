@@ -18,6 +18,7 @@ import ExternalBalances from '../../components/modules/tax/ExternalBalances';
 import NonResidents from '../../components/modules/tax/NonResidents';
 import Test from '../../components/modules/tax/Test';
 import PurchasAndSalesReports from '../../components/modules/tax/PurchaseAndSalesReports';
+import DebtsTable from '../../components/modules/tax/DebtsTable';
 
 
 const TaxModule = () => {
@@ -62,6 +63,8 @@ const TaxModule = () => {
                 {sidebarSelection === "non_residents" && <NonResidents />}
 
                 {sidebarSelection === "purchase_and_sales_reports" && <PurchasAndSalesReports />}
+
+                {sidebarSelection === "debts_table" && <DebtsTable />}
 
                 {sidebarSelection === "parameters" && <Test />}
 

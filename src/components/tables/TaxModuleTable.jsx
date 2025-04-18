@@ -23,6 +23,7 @@ export default function TaxModuleTable({
   setIsEditing,
   emptyMessageVisible,
   colSpans,
+  colSpans2,
   infos,
   infosHeader,
   editable,
@@ -189,15 +190,31 @@ export default function TaxModuleTable({
 
       <div className="table-div">
         <table className="tables custom-table">
+
           <thead>
-            {showGroupedHeader && (
-              <tr className="group-header">
-                {colSpans?.map((span) => (
+            {colSpans2 && (
+              <tr className="top-header">
+                {colSpans2.map((span) => (
                   <th
-                    key={span.id}
+                    key={`colspans2-${span.id}`}
+                    colSpan={span.col}
+                    className="top-header-title"
+                    style={{ visibility: span.content ? "visible" : "hidden" }}
+                  >
+                    <div>{span.content}</div>
+                  </th>
+                ))}
+              </tr>
+            )}
+
+            {showGroupedHeader && colSpans && (
+              <tr className="group-header">
+                {colSpans.map((span) => (
+                  <th
+                    key={`colspans-${span.id}`}
                     colSpan={span.col}
                     className="group-title"
-                    style={{ visibility: span.content ? 'visible' : 'hidden' }}
+                    style={{ visibility: span.content ? "visible" : "hidden" }}
                   >
                     <div>{span.content}</div>
                   </th>
@@ -233,6 +250,7 @@ export default function TaxModuleTable({
               </tr>
             ))}
           </thead>
+
 
           <tbody>
             {finalData.length > 0 ? (

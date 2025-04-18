@@ -1530,6 +1530,7 @@ export const creditorDebtsColumns = [
     {
         id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",
     },
+    ///
     {
         id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",
     },
@@ -1757,13 +1758,14 @@ export const foreignCreditorColumns = [
     {
         id: "currency", accessorKey: "currency", header: "Valyuta",
     },
-
+    /////
     {
         id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",
     },
     {
         id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
     },
+    ///
 
     {
         id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
@@ -1771,6 +1773,7 @@ export const foreignCreditorColumns = [
     {
         id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",
     },
+    ////
 
     {
         id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",
@@ -1778,49 +1781,42 @@ export const foreignCreditorColumns = [
     {
         id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
     },
-
+    ///
     {
         id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
     },
     {
         id: "return_azn", accessorKey: "return_azn", header: "AZN",
     },
-
+    ////
     {
         id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta",
     },
     {
         id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN",
     },
-
+    ////
     {
         id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
     },
     {
         id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",
     },
-
+    ////
     {
         id: "incurring_debt_supplier_return_currency", accessorKey: "incurring_debt_supplier_return_currency", header: "Valyuta",
     },
     {
         id: "incurring_debt_supplier_return_azn", accessorKey: "incurring_debt_supplier_return_azn", header: "AZN",
     },
-
+    ////
     {
         id: "incurring_debt_total_income_currency", accessorKey: "incurring_debt_total_income_currency", header: "Valyuta",
     },
     {
         id: "incurring_debt_total_income_azn", accessorKey: "incurring_debt_total_income_azn", header: "AZN",
     },
-
-    {
-        id: "incurring_debt_total_expense_currency", accessorKey: "incurring_debt_total_expense_currency", header: "Valyuta",
-    },
-    {
-        id: "incurring_debt_total_expense_azn", accessorKey: "incurring_debt_total_expense_azn", header: "AZN",
-    },
-
+    ////
 
     {
         id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",
@@ -1828,7 +1824,7 @@ export const foreignCreditorColumns = [
     {
         id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",
     },
-
+    /////
     {
         id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",
     },
@@ -1858,7 +1854,7 @@ export const foreignDebitorColumns = [
     {
         id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
     },
-
+    ////
     {
         id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
     },
@@ -1872,30 +1868,21 @@ export const foreignDebitorColumns = [
     {
         id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
     },
-
+////
     {
         id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
     },
     {
         id: "return_azn", accessorKey: "return_azn", header: "AZN",
     },
-
+////
     {
         id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta",
     },
     {
         id: "peyment_debt_total_expense_azn", accessorKey: "peyment_debt_total_expense_azn", header: "AZN",
     },
-
-
-
-    {
-        id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta",
-    },
-    {
-        id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN",
-    },
-
+    ////
     {
         id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
     },
@@ -1931,4 +1918,28 @@ export const foreignDebitorColumns = [
         id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",
     },
 
+]
+
+/// əvəzləşmə
+
+export const substitutionReportColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "voen", accessorKey: "voen", header: "VÖEN" },
+    { id: "date", accessorKey: "date", header: "Qaimə tarixi" },
+    { id: "serie_num", accessorKey: "serie_num", header: "Qaimə seriyası və nömrəsi" },
+    { id: "main", accessorKey: "main", header: "Əsas" },
+    { id: "vat", accessorKey: "vat", header: "ƏDV" },
+    { id: "total", accessorKey: "total", header: "Cəmi" },
+    { id: "substitution_vat_amount", accessorKey: "substitution_vat_amount", header: "Əvəzləşən ƏDV məbləği" },
+    { id: "returned_amount", accessorKey: "returned_amount", header: "Geri qayıdan məbləğ" },
+    { id: "remaining_vat_amount", accessorKey: "remaining_vat_amount", header: "Qalan ƏDV məbləği" },
+    { id: "status", accessorKey: "status", header: "Status" },
+]
+
+export const substitutionRestorationColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "voen", accessorKey: "voen", header: "VÖEN" },
+    
 ]

@@ -5,15 +5,15 @@ import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { creditorDebtsColumns, debitorDebtColumns, foreignCreditorColumns, foreignDebitorColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
-const DebtsTable = () => {
+const Substitution = () => {
 
     const dispatch = useDispatch();
 
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
 
     useEffect(() => {
-        if (sidebarSelection === "debts_table") {
-            dispatch(setNavbarSelection("creditor_debts"));
+        if (sidebarSelection === "substitution") {
+            dispatch(setNavbarSelection("substitution_report"));
         }
     }, [sidebarSelection, dispatch]);
 
@@ -32,10 +32,10 @@ const DebtsTable = () => {
     ];
 
     const navBtns = [
-        { id: "creditor_debts", content: "Kreditor borcları" },
-        { id: "debitor_debts", content: "Debitor borcları" },
-        { id: "foreign_creditor_debts", content: "Xarici kreditor borcları" },
-        { id: "foreign_debitor_debts", content: "Xarici debitor borcları" },
+        { id: "substitution_report", content: "Əvəzləşmə hesabatı" },
+        { id: "substitution_restoration", content: "Əvəzləşmə - Bərpaı" },
+        { id: "substitution_current", content: "Əvəzləşmə - Cari" },
+        { id: "substitution_list", content: "Əvəzləşmə siyahısı" },
     ];
 
     let colSpans;
@@ -209,4 +209,4 @@ const DebtsTable = () => {
     )
 }
 
-export default DebtsTable
+export default Substitution
