@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { creditorDebtsColumns, debitorDebtColumns, foreignCreditorColumns, foreignDebitorColumns } from "../../../constants/TableColumns";
+import { substitutionReportColumns, substitutionRestorationColumns, substitutionListColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const Substitution = () => {
@@ -19,10 +19,9 @@ const Substitution = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
-    const creditorDebtsData = useSelector((state) => state.tableData.creditorDebts.data);
-    const debitorDebtData = useSelector((state) => state.tableData.debitorDebt.data);
-    const foreignCreditorData = useSelector((state) => state.tableData.foreignCreditor.data);
-    const foreignDebitorData = useSelector((state) => state.tableData.foreignDebitor.data);
+    const substitutionReportData = useSelector((state) => state.tableData.substitutionReport.data);
+    const substitutionRestorationData = useSelector((state) => state.tableData.substitutionRestoration.data);
+    const substitutionListData = useSelector((state) => state.tableData.substitutionList.data);
 
 
     const headerBtns = [
@@ -43,158 +42,105 @@ const Substitution = () => {
 
 
     switch (navbarSelection) {
-        case "creditor_debts":
+        case "substitution_report":
             colSpans = [
-                { id: 1, content: "KONTRAGENTİN ADI", col: 3 },
-                { id: 2, content: "ƏVVƏLƏ BORC QALIQ", col: 3 },
-                { id: 3, content: "ƏVVƏLƏ AVANS QALIQ", col: 3 },
-                { id: 4, content: "ÖDƏNİLƏN PUL", col: 3 },
-                { id: 5, content: "MALLARIN GERİ QAYTARILMASI", col: 3 },
-                { id: 6, content: "CƏMİ MƏXARİC", col: 3 },
-                { id: 7, content: "Alışlar", col: 3 },
-                { id: 8, content: "TƏCHİZATÇIDAN PUL GERİ", col: 3 },
-                { id: 9, content: "CƏMİ MƏDAXİL", col: 3 },
-                { id: 10, content: "SONA BORC QALIQ", col: 3 },
-                { id: 11, content: "SONA AVANS QALIQ", col: 3 },
+                { id: 1, content: "", col: 5 },
+                { id: 2, content: "QAİMƏ MƏBLƏĞİ", col: 3 },
             ];
             break;
-        case "debitor_debts":
+        case "substitution_restoration":
             colSpans = [
-                { id: 1, content: "KONTRAGENTİN ADI", col: 3 },
-                { id: 2, content: "ƏVVƏLƏ BORC QALIQ", col: 3 },
-                { id: 3, content: "ƏVVƏLƏ AVANS QALIQ", col: 3 },
-                { id: 4, content: "ÖDƏNİLƏN PUL", col: 3 },
-                { id: 5, content: "MALLARIN GERİ QAYTARILMASI", col: 3 },
-                { id: 6, content: "CƏMİ MƏXARİC", col: 3 },
-                { id: 7, content: "Satışlar", col: 3 },
-                { id: 8, content: "TƏCHİZATÇIDAN PUL GERİ", col: 3 },
-                { id: 9, content: "MÜŞTƏRİDƏN PUL GERİ QAYTARILMASI", col: 3 },
-                { id: 10, content: "CƏMİ MƏDAXİL", col: 3 },
-                { id: 11, content: "SONA BORC QALIQ", col: 3 },
-                { id: 12, content: "SONA AVANS QALIQ", col: 3 },
-            ];
-            break;
-        case "foreign_creditor_debts":
-            colSpans = [
-                { id: 1, content: "KONTRAGENTİN ADI", col: 4 },
-                { id: 2, content: "ƏVVƏLƏ BORC QALIQ", col: 2 },
-                { id: 3, content: "ƏVVƏLƏ AVANS QALIQ", col: 2 },
-                { id: 4, content: "ÖDƏNİLƏN PUL", col: 2 },
-                { id: 5, content: "MALLARIN GERİ QAYTARILMASI", col: 2 },
-                { id: 6, content: "CƏMİ MƏXARİC", col: 2 },
-                { id: 7, content: "ALIŞLAR", col: 2 },
-                { id: 8, content: "TƏCHİZATÇIDAN PUL GERİ", col: 2 },
-                { id: 6, content: "CƏMİ MƏDAXİL", col: 2 },
-                { id: 11, content: "SONA BORC QALIQ", col: 2 },
-                { id: 12, content: "SONA AVANS QALIQ", col: 2 },
+                { id: 1, content: "", col: 3 },
+                { id: 2, content: "QALIQ", col: 1 },
+                { id: 3, content: "CƏMİ ALIŞ", col: 2 },
+                { id: 4, content: "ƏVƏZLƏŞİB", col: 1 },
+                { id: 5, content: "GERİ QAYTARMA", col: 1 },
+                { id: 6, content: "QALIQ", col: 1 },
+                { id: 7, content: "DÖVR ƏRZİNDƏ ÖDƏNİŞ", col: 2 },
+                { id: 8, content: "ƏVVƏLDƏN AVANSDA QALAN", col: 2 },
+                { id: 9, content: "CƏMİ", col: 2 },
+                { id: 10, content: "ƏVƏZLƏŞMƏLİ", col: 1 },
+                { id: 11, content: "ƏVƏZLƏŞMƏYİB", col: 1 },
+                { id: 12, content: "BÖLÜŞDÜRÜLÜB", col: 1 },
+                { id: 13, content: "İMTİYAZA DÜŞƏN", col: 2 },
+                { id: 14, content: "AVANSA DÜŞƏN", col: 2 },
 
             ];
             break;
-        case "foreign_debitor_debts":
+        case "substitution_current":
             colSpans = [
-                { id: 1, content: "KONTRAGENTİN ADI", col: 4 },
-                { id: 2, content: "ƏVVƏLƏ BORC QALIQ", col: 2 },
-                { id: 3, content: "ƏVVƏLƏ AVANS QALIQ", col: 2 },
-                { id: 4, content: "ÖDƏNİLƏN PUL", col: 2 },
-                { id: 5, content: "MALLARIN GERİ QAYTARILMASI", col: 2 },
-                { id: 6, content: "CƏMİ MƏXARİC", col: 2 },
-                { id: 7, content: "ALIŞLAR", col: 2 },
-                { id: 8, content: "MÜŞTƏRİYƏ PUL GERİ", col: 2 },
-                { id: 9, content: "CƏMİ MƏDAXİL", col: 2 },
-                { id: 10, content: "SONA BORC QALIQ", col: 2 },
-                { id: 11, content: "SONA AVANS QALIQ", col: 2 },
+            ];
+            break;
+        case "substitution_list":
+            colSpans = [
             ];
             break;
         default:
             colSpans = [
-                { id: 1, content: "Təşkilat", col: 3 },
-                { id: 2, content: "Alış", col: 5 },
-                { id: 3, content: "Geri qaytarma", col: 6 },
-                { id: 4, content: "XALİS ALIŞ", col: 3 },
+                { id: 1, content: "", col: 5 },
+                { id: 2, content: "QAİMƏ MƏBLƏĞİ", col: 3 },
             ];
     }
 
     switch (navbarSelection) {
-        case "creditor_debts":
+        case "substitution_report":
             colSpans2 = [
-                { id: 1, content: "TƏŞKİLAT", col: 3 },
-                { id: 2, content: "ƏVVƏLƏ QALIQ", col: 6 },
-                { id: 3, content: "BORCUN ÖDƏNİLMƏSİ (DÖVRİYYƏ)", col: 9 },
-                { id: 4, content: "BORCUN YARANMASI (DÖVRİYYƏ)", col: 9 },
-                { id: 5, content: "SONA QALIQ", col: 6 },
             ];
             break;
-        case "debitor_debts":
+        case "substitution_restoration":
             colSpans2 = [
-                { id: 1, content: "TƏŞKİLAT", col: 3 },
-                { id: 2, content: "ƏVVƏLƏ QALIQ", col: 6 },
-                { id: 3, content: "BORCUN ÖDƏNİLMƏSİ (DÖVRİYYƏ)", col: 9 },
-                { id: 4, content: "BORCUN YARANMASI (DÖVRİYYƏ)", col: 12 },
-                { id: 5, content: "SONA QALIQ", col: 6 },
+                { id: 1, content: "", col: 3 },
+                { id: 2, content: "ALIŞ", col: 6 },
+                { id: 3, content: "ÖDƏNİŞ", col: 9 },
             ];
             break;
-        case "foreign_creditor_debts":
+        case "substitution_current":
             colSpans2 = [
-                { id: 1, content: "TƏŞKİLAT", col: 4 },
-                { id: 2, content: "ƏVVƏLƏ QALIQ", col: 4 },
-                { id: 3, content: "BORCUN ÖDƏNİLMƏSİ (DÖVRİYYƏ)", col: 6 },
-                { id: 4, content: "BORCUN YARANMASI (DÖVRİYYƏ)", col: 6 },
-                { id: 5, content: "SONA QALIQ", col: 4 },
             ];
             break;
-        case "foreign_debitor_debts":
+        case "substitution_list":
             colSpans2 = [
-                { id: 1, content: "TƏŞKİLAT", col: 4 },
-                { id: 2, content: "ƏVVƏLƏ QALIQ", col: 4 },
-                { id: 3, content: "BORCUN ÖDƏNİLMƏSİ (DÖVRİYYƏ)", col: 6 },
-                { id: 4, content: "BORCUN YARANMASI (DÖVRİYYƏ)", col: 6 },
-                { id: 5, content: "SONA QALIQ", col: 4 },
             ];
             break;
         default:
             colSpans2 = [
-                { id: 1, content: "Təşkilat", col: 3 },
-                { id: 2, content: "Alış", col: 5 },
-                { id: 3, content: "Geri qaytarma", col: 6 },
-                { id: 4, content: "XALİS ALIŞ", col: 3 },
             ];
     }
 
-    const creditorDebtsCol = creditorDebtsColumns;
-    const debitorDebtCol = debitorDebtColumns;
-    const foreignCreditorCol = foreignCreditorColumns;
-    const foreignDebitorCol = foreignDebitorColumns;
+    const substitutionReportCol = substitutionReportColumns;
+    const substitutionRestorationCol = substitutionRestorationColumns;
+    const substitutionListCol = substitutionListColumns;
 
     let columns;
     let data;
 
     switch (navbarSelection) {
-        case "creditor_debts":
-            columns = creditorDebtsCol;
-            data = creditorDebtsData;
+        case "substitution_report":
+            columns = substitutionReportCol;
+            data = substitutionReportData;
             break;
-        case "debitor_debts":
-            columns = debitorDebtCol;
-            data = debitorDebtData;
+        case "substitution_restoration":
+            columns = substitutionRestorationCol;
+            data = substitutionRestorationData;
             break;
-        case "foreign_creditor_debts":
-            columns = foreignCreditorCol;
-            data = foreignCreditorData;
+        case "substitution_current":
+            columns = substitutionReportCol;
+            data = substitutionReportData;
             break;
-        case "foreign_debitor_debts":
-            columns = foreignDebitorCol;
-            data = foreignDebitorData;
+        case "substitution_list":
+            columns = substitutionListCol;
+            data = substitutionListData;
             break;
         default:
-            columns = creditorDebtsCol;
-            data = creditorDebtsData;
+            columns = substitutionReportCol;
+            data = substitutionReportData;
     }
 
     return (
         <div className="content">
 
             <TaxModuleHeader
-                title="Alış-satış hesabatı"
+                title="Əvəzləşmə"
                 headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}

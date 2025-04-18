@@ -75,6 +75,7 @@ const CustomDocuments = () => {
     let data;
     let tableTitle;
 
+    let showGroupedHeader = true
 
 
     switch (navbarSelection) {
@@ -114,7 +115,7 @@ const CustomDocuments = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true} />
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={showGroupedHeader} />
             </div>
 
 

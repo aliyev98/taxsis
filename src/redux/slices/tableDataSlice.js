@@ -39,6 +39,14 @@ import {
   foreignCreditorData,
   foreignDebitorData,
 
+  substitutionReportData,
+  substitutionRestorationData,
+  substitutionListData,
+
+  banksData,
+  accountsData,
+
+
 } from '../../constants/TableDatas';
 import { data } from 'react-router-dom';
 
@@ -78,7 +86,18 @@ const initialState = {
   creditorDebts: { data: creditorDebtsData },
   debitorDebt: { data: debitorDebtData },
   foreignCreditor: { data: foreignCreditorData },
-  foreignDebitor: { data: foreignDebitorData }
+  foreignDebitor: { data: foreignDebitorData },
+
+
+  ///əvəzləşmə
+  substitutionReport: {data: substitutionReportData},
+  substitutionRestoration: {data: substitutionRestorationData},
+  substitutionList: {data: substitutionListData},
+
+  //params
+
+  banks: {data: banksData},
+  accounts: {data: accountsData}
 
 };
 

@@ -19,6 +19,8 @@ import NonResidents from '../../components/modules/tax/NonResidents';
 import Test from '../../components/modules/tax/Test';
 import PurchasAndSalesReports from '../../components/modules/tax/PurchaseAndSalesReports';
 import DebtsTable from '../../components/modules/tax/DebtsTable';
+import Substitution from '../../components/modules/tax/Substitution';
+import BankAccount from '../../components/modules/tax/BankAccount';
 
 
 const TaxModule = () => {
@@ -66,7 +68,11 @@ const TaxModule = () => {
 
                 {sidebarSelection === "debts_table" && <DebtsTable />}
 
-                {sidebarSelection === "parameters" && <Test />}
+                {sidebarSelection === "substitution" && <Substitution />}
+
+                {sidebarSelection === "bank_account" && <BankAccount />}
+
+
 
             </div>
 

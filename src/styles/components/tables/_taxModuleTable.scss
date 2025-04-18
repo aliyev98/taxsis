@@ -243,6 +243,39 @@
         color: #EFEFEF;
     }
 
+    .status-exceeded {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: var(--Secondary-02, #CABDFF);
+
+        color: var(--Neutral-07, #1A1D1F);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .status-complete {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: var(--Secondary-04, #B5E4CA);
+
+        color: var(--Neutral-07, #1A1D1F);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .status-partial {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: var(--Secondary-01, #FFBC99);
+
+        color: var(--Neutral-07, #1A1D1F);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
     .group-header-row {
         background-color: #B1E5FC !important;
         font-weight: 700;

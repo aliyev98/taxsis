@@ -1868,14 +1868,14 @@ export const foreignDebitorColumns = [
     {
         id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
     },
-////
+    ////
     {
         id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
     },
     {
         id: "return_azn", accessorKey: "return_azn", header: "AZN",
     },
-////
+    ////
     {
         id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta",
     },
@@ -1924,22 +1924,113 @@ export const foreignDebitorColumns = [
 
 export const substitutionReportColumns = [
     { id: "no", accessorKey: "no", header: "No" },
-    { id: "no", accessorKey: "no", header: "No" },
     { id: "voen", accessorKey: "voen", header: "VÖEN" },
     { id: "date", accessorKey: "date", header: "Qaimə tarixi" },
     { id: "serie_num", accessorKey: "serie_num", header: "Qaimə seriyası və nömrəsi" },
     { id: "main", accessorKey: "main", header: "Əsas" },
     { id: "vat", accessorKey: "vat", header: "ƏDV" },
     { id: "total", accessorKey: "total", header: "Cəmi" },
-    { id: "substitution_vat_amount", accessorKey: "substitution_vat_amount", header: "Əvəzləşən ƏDV məbləği" },
-    { id: "returned_amount", accessorKey: "returned_amount", header: "Geri qayıdan məbləğ" },
+    {
+        id: "substitution_vat_amount",
+        accessorKey: "substitution_vat_amount",
+        header: "Əvəzləşən ƏDV məbləği",
+        cell: ({ getValue }) => (
+            <div className="d-flex align-items-center gap-2">
+                <span>{getValue()}</span>
+                <img src="/assets/info-icon-light.svg" alt="icon" style={{ width: 24, height: 24 }} />
+            </div>
+        )
+    },
+    {
+        id: "returned_amount", accessorKey: "returned_amount", header: "Geri qayıdan məbləğ",
+        cell: ({ getValue }) => (
+            <div className="d-flex align-items-center gap-2">
+                <span>{getValue()}</span>
+                <img src="/assets/info-icon-light.svg" alt="icon" style={{ width: 24, height: 24 }} />
+            </div>
+        )
+    },
     { id: "remaining_vat_amount", accessorKey: "remaining_vat_amount", header: "Qalan ƏDV məbləği" },
-    { id: "status", accessorKey: "status", header: "Status" },
+    {
+        id: "status",
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ getValue }) => {
+            const value = getValue();
+
+            let className = "status-badge";
+
+            if (value === "Artıq əvəzləşib") {
+                className += " status-exceeded"; // kırmızı
+            } else if (value === "Tam əvəzləşib") {
+                className += " status-complete"; // yeşil
+            } else if (value === "Qismən əvəzləşib") {
+                className += " status-partial"; // sarı
+            }
+
+            return <div className={className}>{value}</div>;
+        },
+    }
 ]
 
 export const substitutionRestorationColumns = [
     { id: "no", accessorKey: "no", header: "No" },
     { id: "no", accessorKey: "no", header: "No" },
     { id: "voen", accessorKey: "voen", header: "VÖEN" },
-    
+    { id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV" },
+    { id: "total_purchase_main", accessorKey: "total_purchase_main", header: "Əsas" },
+    { id: "total_purchase_vat", accessorKey: "total_purchase_vat", header: "Ədv" },
+    { id: "replaced_vat", accessorKey: "replaced_vat", header: "Ədv" },
+    { id: "return_return", accessorKey: "return_return", header: "Geri qaytarma" },
+    { id: "residue_residue", accessorKey: "residue_residue", header: "Qalıq" },
+    { id: "payment_period_main", accessorKey: "payment_period_main", header: "Əsas" },
+    { id: "payment_period_vat", accessorKey: "payment_period_vat", header: "Ədv" },
+    { id: "before_advance_main", accessorKey: "before_advance_main", header: "Əsas" },
+    { id: "before_advance_vat", accessorKey: "before_advance_vat", header: "Ədv" },
+    { id: "total_main", accessorKey: "total_main", header: "Əsas" },
+    { id: "total_vat", accessorKey: "total_vat", header: "Ədv" },
+    { id: "should_substitution_vat", accessorKey: "should_substitution_vat", header: "Ədv" },
+    { id: "not_replaced", accessorKey: "not_replaced", header: "Əvəzləşməyib" },
+    { id: "distributed", accessorKey: "distributed", header: "Bölüşdürülüb" },
+    { id: "privilege_main", accessorKey: "privilege_main", header: "Əsas" },
+    { id: "privilege_vat", accessorKey: "privilege_vat", header: "Ədv" },
+    { id: "advance_main", accessorKey: "advance_main", header: "Əsas" },
+    { id: "advance_vat", accessorKey: "advance_vat", header: "Ədv" },
+
+]
+
+export const substitutionListColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "doc_num", accessorKey: "doc_num", header: "Sənəd nömrəsi" },
+    { id: "period", accessorKey: "period", header: "Dövr" },
+    { id: "main_amount", accessorKey: "main_amount", header: "Əvəzləşən əsas məbləğ" },
+    { id: "vat_amount", accessorKey: "vat_amount", header: "Əvəzləşən ƏDV məbləğ" },
+    { id: "total_amount", accessorKey: "total_amount", header: "Əvəzləşən cəmi məbləğ" },
+    { id: "invoice_num", accessorKey: "invoice_num", header: "Qaimə sayı" },
+]
+
+///params
+
+export const banksColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "name", accessorKey: "name", header: "Bankın adı" },
+    { id: "branch", accessorKey: "branch", header: "Filialı" },
+    { id: "account_list", accessorKey: "account_list", header: "Hesab sayı" },
+    { id: "currency", accessorKey: "currency", header: "Valyuta növü" },
+]
+
+export const accountsColumns = [
+    { id: "no", accessorKey: "no", header: "No" },
+    { id: "name", accessorKey: "name", header: "Şirkətin adı" },
+    { id: "branch", accessorKey: "branch", header: "Filialı" },
+    { id: "voen", accessorKey: "voen", header: "VÖEN" },
+    { id: "banks_voen", accessorKey: "banks_voen", header: "Bankın VÖEN-i" },
+    { id: "currency", accessorKey: "currency", header: "Valyuta növü" },
+    { id: "code", accessorKey: "code", header: "Kod" },
+    { id: "swift", accessorKey: "swift", header: "SWIFT" },
+    { id: "correspondent_account", accessorKey: "correspondent_account", header: "Müxbir hesab" },
+
+
+
+
 ]
