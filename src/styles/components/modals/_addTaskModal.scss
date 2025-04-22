@@ -1,0 +1,40 @@
+.add-task-modal {
+
+    .modal-content {
+        padding: 48px 24px !important;
+        gap: 32px !important;
+
+        .modal-header {
+            padding: 0 !important;
+
+            div:first-child {
+                color: var(--Neutral-07, #1A1D1F);
+                text-align: center;
+                font-size: 32px;
+                font-weight: 600;
+            }
+
+            div:last-child {
+                color: var(--Neutral-05, #33383F);
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .modal-body{
+            padding: 0 !important;
+        }
+
+        .modal-footer{
+            padding: 0;
+
+            .btn{
+                width: 100%;
+            }
+        }
+
+    }
+
+
+}

@@ -31,9 +31,9 @@
 @use './layouts/reportsHeader';
 @use './layouts/reportsFooter';
 @use './layouts/tableHeader';
-@use './components/modals/addRowModal';
+// @use './components/modals/addRowModal';
 // @use './pages/social/mainPage';
-@use './components/modals/createPostModal';
+// @use './components/modals/createPostModal';
 // @use './pages/social/friends';
 @use './components/social/friends/friend';
 @use './components/social/friends/firendsNavbar';
@@ -78,7 +78,12 @@
 @use './components/social/individualProfile/cvEdit';
 @use './components/social/individualProfile/individualProfileEdit';
 // @use './pages/social/colleaguesPage';
-
+@use './components/social/corporateProfile/aboutProfile';
+@use './components/social/corporateProfile/portfolio';
+@use './components/social/corporateProfile/tasks';
+@use './components/social/corporateProfile/authority';
+@use './components/social/colleagues/addColleagues';
+@use './components/social/colleagues/colleagues';
 
 
 @use './components/ui/ui.scss';

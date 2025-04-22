@@ -1,0 +1,27 @@
+.colleagues {
+    border-radius: 16px;
+    background: var(--Neutral-01, #FCFCFC);
+    box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
+    z-index: 1;
+    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+
+    .colleagues-header {
+        width: 100%;
+
+        .colleagues-title {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .colleagues-body {
+        .table-header {
+            display: none !important;
+        }
+    }
+}

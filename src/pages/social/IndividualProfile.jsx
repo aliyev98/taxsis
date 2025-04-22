@@ -13,15 +13,16 @@ import { setProfileNavigate } from '../../redux/slices/profileSlice';
 const IndividualProfile = () => {
 
     const dispatch = useDispatch();
+
     const activeSection = useSelector((state) => state.profileNav.profileNavigate);
 
-    const [activeNav, setActiveNav] = useState(1); // Varsayılan olarak ilk buton (Postlar) aktif
+    const [activeNav, setActiveNav] = useState(1);
 
 
 
     const details = [
         { id: 1, img: "/assets/bag-icon.svg", content: "İş yeri", value: "ACFA MMC, Mühasib" },
-        { id: 2, img: "/assets/bag-icon.svg", content: "Ünvan", value: "Bakı" },
+        { id: 2, img: "/assets/location-icon.svg", content: "Ünvan", value: "Bakı" },
         { id: 3, img: "/assets/bag-icon.svg", content: "Dil", value: "Azərbaycan, İngilis" },
         { id: 4, img: "/assets/bag-icon.svg", content: "İxtissas", value: "Mühasibatlıq" },
         { id: 5, img: "/assets/bag-icon.svg", content: "Ailə", value: "Subay" },

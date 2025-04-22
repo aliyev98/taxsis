@@ -1,0 +1,48 @@
+.about-company {
+
+    &-title {
+        color: var(--Neutrals-2, #23262F);
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    &-description {
+        color: var(--Neutral-05, #33383F);
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 32px;
+    }
+
+    &-info-list {
+        gap: 20px;
+
+
+        .info-list-item {
+            gap: 33px;
+
+            .list-item-label {
+                gap: 12px;
+                width: 10%;
+
+                span {
+                    color: var(--Neutrals-4, #777E90);
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .list-item-value {
+                color: var(--Neutrals-2, #23262F);
+                font-size: 14px;
+                font-weight: 500;
+                flex-grow: 1;
+            }
+        }
+    }
+}

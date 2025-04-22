@@ -18,6 +18,7 @@ import CurrencyPage from './pages/social/CurrencyPage';
 import VatSearch from './pages/social/VatSearch';
 import IndividualProfile from "./pages/social/IndividualProfile";
 import ColleaguesPage from "./pages/social/ColleaguesPage";
+import CorporateProfile from "./pages/social/CorporateProfile";
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/currency" element={<CurrencyPage />} />
         <Route path="/vatSearch" element={<VatSearch />} />
         <Route path="/individualProfile" element={<IndividualProfile />} />
+        <Route path="/corporateProfile" element={<CorporateProfile/>} />
         <Route path="/colleagues" element={<ColleaguesPage  />} />
       </Routes>
     </div>

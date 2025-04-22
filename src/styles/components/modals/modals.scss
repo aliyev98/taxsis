@@ -1,3 +1,11 @@
+@use './addRowModal';
+@use './addTaskModal';
+@use './createGroupModal';
+@use './createPostModal';
+@use './authorizeModal';
+
+
+
 .modal-dialog {
 
     .modal-content {

@@ -1,0 +1,22 @@
+.authority-container {
+    width: 100%;
+    gap: 24px;
+    padding-right: 40px;
+
+    .authority-header {
+
+        .authority-title {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .table {
+        width: 100%;
+
+        .table-header {
+            display: none !important;
+        }
+    }
+}

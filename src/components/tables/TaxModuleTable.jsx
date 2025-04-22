@@ -60,26 +60,45 @@ export default function TaxModuleTable({
   }, []);
 
   const processedColumns = useMemo(() => {
-    return columns.map((col) => ({
-      ...col,
-      cell: col.cell || ((info) => info.getValue()),
-      header: () => (
-        <div
-          className="d-flex align-items-center justify-content-between"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            if (col.filterOptions) {
-              setOpenDropdown((prev) => (prev === col.accessorKey ? null : col.accessorKey));
-              setShowColumnMenu(false);
-            }
-          }}
-        >
-          <span>{col.header}</span>
-          <img src="/assets/huni-icon.svg" alt="filter" style={{ width: 16, marginLeft: 6 }} />
-        </div>
-      ),
-    }));
+    return columns.map((col) => {
+      const hasHeader = !!col.header;
+      const hasFilter = !!col.filterOptions;
+
+      return {
+        ...col,
+        cell: col.cell || ((info) => info.getValue()),
+        header: () => {
+          if (!hasHeader) return null;
+
+          return (
+            <div
+              className="d-flex align-items-center justify-content-between"
+              style={{ cursor: hasFilter ? "pointer" : "default" }}
+              onClick={() => {
+                if (hasFilter) {
+                  setOpenDropdown((prev) =>
+                    prev === col.accessorKey ? null : col.accessorKey
+                  );
+                  setShowColumnMenu(false);
+                }
+              }}
+            >
+              <span>{col.header}</span>
+
+              {hasFilter && (
+                <img
+                  src="/assets/huni-icon.svg"
+                  alt="filter"
+                  style={{ width: 16, marginLeft: 6 }}
+                />
+              )}
+            </div>
+          );
+        },
+      };
+    });
   }, [columns]);
+
 
   const finalData = useMemo(() => {
     let currentData = [...data];

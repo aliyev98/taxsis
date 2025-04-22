@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import FeedHeader from '../../layouts/FeedHeader';
 import FeedSideBar from '../../sidebars/FeedSideBar';
 import TenderDetails from '../../components/social/tenders/TenderDetails';
-import VacancyFinish from '../../components/social/vacancies/VacancyFinish';
 import Tenders from '../../components/social/tenders/Tenders'
 import TenderParticipate from '../../components/social/tenders/TenderParticipate';
 import TenderFinish from '../../components/social/tenders/TenderFinish';
