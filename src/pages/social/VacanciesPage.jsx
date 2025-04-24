@@ -18,12 +18,14 @@ const VacanciesPage = () => {
                 <FeedSideBar />
 
                 <div className="content d-flex justify-content-center">
+
                     <div className="vacancies-container">
                         {vacancyNavigate === 'vacanciesList' && <Vacancies />}
                         {vacancyNavigate === 'detail' && <VacancyDetails vacancy={selectedVacancy} />}
                         {vacancyNavigate === 'apply' && <VacancyApply vacancy={selectedVacancy} />}
                         {vacancyNavigate === "finish" && <VacancyFinish />}
                     </div>
+                    
                 </div>
             </div>
         </div>

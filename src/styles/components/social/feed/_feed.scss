@@ -1,13 +1,12 @@
-.posts-container {
+.feed-container {
     background: #FCFCFC;
     padding: 24px;
     border-radius: 16px;
     box-shadow: 1px 0px 0px 0px #F4F4F4 inset;
     gap: 24px;
-    height: 100vh;
+    height: 100%;
     overflow: scroll;
     scrollbar-width: none;
-    margin-top: 40px !important;
     width: 50%;
 
     .group-header {
@@ -60,6 +59,14 @@
         span {
             color: transparent;
         }
+    }
+
+}
+
+.mainpage-container {
+
+    .feed-container {
+        margin-top: 32px;
     }
 
 }

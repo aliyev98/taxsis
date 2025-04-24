@@ -4,8 +4,8 @@ const Post = () => {
 
     const actions = [
         { id: 1, img: "/assets/like-icon.svg", content: 'Bəyən' },
-        { id: 2, img: "/assets/comment-icon.svg", content: 'Bəyən' },
-        { id: 3, img: "/assets/share-icon.svg", content: 'Bəyən' },
+        { id: 2, img: "/assets/comment-icon.svg", content: 'Rəy yaz' },
+        { id: 3, img: "/assets/share-icon.svg", content: 'Paylaş' },
     ]
 
     const posts = [

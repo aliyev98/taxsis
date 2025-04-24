@@ -1,26 +1,24 @@
 import React, { useState } from 'react'
 import { useSelector } from "react-redux";
-
+import { useNavigate } from 'react-router-dom';
 import FeedHeader from '../../layouts/FeedHeader'
-import Feed from '../../components/social/feed/Feed';
-import Photos from '../../components/social/individualProfile/Photos';
-import Videos from '../../components/social/individualProfile/Videos';
-import AboutCompany from '../../components/social/corporateProfile/AboutCompany';
-import Portfolio from '../../components/social/corporateProfile/Portfolio';
 import Tasks from '../../components/social/corporateProfile/Tasks';
 import Authority from '../../components/social/corporateProfile/Authority';
 import Colleagues from '../../components/social/colleagues/Colleagues';
 import AddColleagues from '../../components/social/colleagues/AddColleagues';
+import PartnersPage from './PartnersPage';
+import ProfileSection from '../../components/social/corporateProfile/ProfileSection';
+import CorporateProfileVacancies from '../../components/social/corporateProfile/CroporateProfileVacancies';
+import CorporateProfileSetings from '../../components/social/corporateProfile/CorporateProfileSetings';
+import BankAccount from '../../components/modules/tax/BankAccount';
 
 const CorporateProfile = () => {
 
+    const navigate = useNavigate();
+
     const colleagueNavigate = useSelector((state) => state.colleague.colleagueNavigate);
 
-
     const [activeBtnId, setActiveBtnId] = useState(1);
-
-    const [activeSection, setActiveSection] = useState(1)
-
 
     const sidebarBtns = [
         { id: 1, content: "Profil", img: '/assets/profile-icon.svg' },
@@ -34,14 +32,7 @@ const CorporateProfile = () => {
         { id: 9, content: "Çıxış et", img: '/assets/logout-icon.svg' },
     ]
 
-    const navbar = [
-        { id: 1, content: "Postlar" },
-        { id: 2, content: "Fotolar" },
-        { id: 3, content: "Videolar" },
-        { id: 4, content: "Haqqında" },
-        { id: 5, content: "Portfolio" },
-        { id: 6, content: "Məhsullar" },
-    ]
+    const { vacancyNavigate, selectedVacancy } = useSelector((state) => state.vacancy);
 
     return (
         <div className='corporate-profile-page'>
@@ -109,18 +100,27 @@ const CorporateProfile = () => {
                             </div>
 
                             <div className="buttons">
+
                                 {
                                     sidebarBtns.map((btn) => (
                                         <button
                                             key={btn.id}
                                             className={`sidebar-btn d-flex align-items-center ${activeBtnId === btn.id ? 'active' : ''}`}
-                                            onClick={() => setActiveBtnId(btn.id)}
+                                            onClick={() => {
+                                                if (btn.id === 9) {
+                                                    navigate('/login');
+                                                } else {
+                                                    setActiveBtnId(btn.id);
+                                                }
+                                            }}
+
                                         >
                                             <img src={btn.img} alt="" />
                                             <span>{btn.content}</span>
                                         </button>
                                     ))
                                 }
+
                             </div>
 
                         </div>
@@ -128,54 +128,34 @@ const CorporateProfile = () => {
 
                         <div className="line"></div>
 
-                        {
-                            activeBtnId === 1 &&
+                        <div className="corporate-content">
 
-                            (<div className="profile-content-container d-flex flex-column">
+                            {activeBtnId === 1 && <ProfileSection />}
 
-                                <div className="content-navbar d-flex align-items-center">
-                                    {
-                                        navbar.map((nav) => (
+                            {/* {activeBtnId === 2 && <BankAccount />} */}
 
-                                            <button
-                                                key={nav.id}
-                                                className={`nav-btn ${activeSection === nav.id ? "active" : ''}`}
-                                                onClick={() => setActiveSection(nav.id)}
-                                            >
-                                                {nav.content}
-                                            </button>
+                            {activeBtnId === 3 && <Tasks />}
 
-                                        ))
-                                    }
-                                </div>
+                            {activeBtnId === 4 && <Authority />}
 
-                                <div className="content d-flex flex-column">
+                            {activeBtnId === 5 && (
+                                <>
+                                    {colleagueNavigate === "colleagueList" && <Colleagues />}
+                                    {colleagueNavigate === "addColleague" && <AddColleagues />}
+                                </>
+                            )}
 
-                                    {activeSection === 1 && <Feed />}
-                                    {activeSection === 2 && <Photos />}
-                                    {activeSection === 3 && <Videos />}
-                                    {activeSection === 4 && <AboutCompany />}
-                                    {activeSection === 5 && <Portfolio />}
+                            {activeBtnId === 6 && <PartnersPage />}
 
-                                </div>
+                            {activeBtnId === 7 && (
+                                <CorporateProfileVacancies />
+                            )}
 
-                            </div>)
-                        }
-
-                        {activeBtnId === 3 && <Tasks />}
-
-                        {activeBtnId === 4 && <Authority />}
-
-                        {activeBtnId === 5 && (
-                            <>
-                                {colleagueNavigate === "colleagueList" && <Colleagues />}
-                                {colleagueNavigate === "addColleague" && <AddColleagues />}
-                            </>
-                        )}
+                            {activeBtnId === 8 && <CorporateProfileSetings />}
 
 
 
-
+                        </div>
 
                     </div>
 

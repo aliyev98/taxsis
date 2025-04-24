@@ -117,7 +117,7 @@
             .profile-wrapper {
                 border-radius: 24px;
                 background: var(--Neutral-01, #FCFCFC);
-                padding: 24px;
+                padding: 24px 24px 60px 24px;
                 gap: 24px;
 
                 .profile-sidebar {
@@ -164,43 +164,8 @@
                     background: var(--Neutral-03, #EFEFEF);
                 }
 
-                .profile-content-container {
-                    padding: 0;
-                    gap: 32px ;
-                    flex-grow: 1;
-
-
-                    .content-navbar {
-                        gap: 12px;
-
-                        .nav-btn {
-                            border-radius: 20px;
-                            border: 2px solid var(--Neutral-03, #EFEFEF);
-                            background: var(--Neutral-01, #FCFCFC);
-                            padding: 8px 16px;
-
-                            color: var(--Neutral-07, #1A1D1F);
-                            font-size: 13px;
-                            font-weight: 700;
-                        }
-
-                        .active {
-                            background: var(--Neutral-06, #272B30);
-                            color: var(--Neutral-01, #FCFCFC);
-                        }
-                    }
-
-                    .content {
-                        background-color: transparent;
-                        padding: 0;
-                        flex-grow: 1;
-
-                        .posts-container {
-                            width: 100%;
-                            margin-top: 0 !important;
-                        }
-                    }
-
+                .corporate-content {
+                    width: 100%;
                 }
             }
         }

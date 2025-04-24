@@ -13,6 +13,7 @@ const GroupsHeader = () => {
       <AddButton content="Qrup yarat" onClick={() => setShowModal(true)} />
 
       <CreateGroupModal show={showModal} onClose={() => setShowModal(false)} />
+          
     </div>
   )
 }

@@ -55,9 +55,6 @@ const Group = () => {
     };
 
 
-
-
-
     return (
         <>
             {groups.map((group) => (

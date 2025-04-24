@@ -11,7 +11,7 @@ const Feed = ({ groupId }) => {
 
 
     return (
-        <div className="posts-container d-flex flex-column">
+        <div className="feed-container d-flex flex-column">
 
 
             {groupId && (

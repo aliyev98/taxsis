@@ -2,7 +2,7 @@
 @use './currencyPage';
 @use './customCalculator';
 @use './eventsPage';
-@use './friends';
+@use './friendsPage';
 @use './groupFeed';
 @use './groups';
 @use './individualProfile';
@@ -11,10 +11,11 @@
 @use './vacanciesPage';
 @use './vatSearch';
 @use './corporateProfile';
+@use './partnersPage';
 
 
 .content {
     flex: 1;
-    padding: 40px 0 40px 0;
+    padding: 32px 0 32px 0;
     background: #F2F2F7;
 }

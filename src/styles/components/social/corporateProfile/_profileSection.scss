@@ -1,0 +1,35 @@
+.corporate-profile-section {
+    gap: 32px;
+
+    .content-navbar {
+        gap: 12px;
+
+        .nav-btn {
+            border-radius: 20px;
+            border: 2px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-01, #FCFCFC);
+            padding: 8px 16px;
+
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .active {
+            background: var(--Neutral-06, #272B30);
+            color: var(--Neutral-01, #FCFCFC);
+        }
+    }
+
+    .content {
+        background-color: transparent;
+        padding: 0;
+        flex-grow: 1;
+
+        .feed-container {
+            width: 100%;
+            padding-top: 0;
+        }
+    }
+
+}

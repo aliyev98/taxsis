@@ -1,0 +1,16 @@
+.corporate-profile-vacancies {
+    gap: 24px;
+
+    &-header {
+
+        .title {
+            color: var(--Neutral-07, #1A1D1F);
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    &-list{
+        gap: 8px;
+    }
+}

@@ -22,6 +22,7 @@ const VacancyCart = ({ vacancy }) => {
       </div>
 
       <div className="vacancy-infos d-flex flex-column">
+
         <span className="name">{vacancy.name}</span>
         <span className="company">{vacancy.company}</span>
 
@@ -31,11 +32,13 @@ const VacancyCart = ({ vacancy }) => {
             <span className='city'>{vacancy.city}</span>
           </div>
 
-          <div className="line"></div>
+          {/* <div className="line"></div> */}
 
           <span className="deadline">{vacancy.deadline}</span>
         </div>
+
       </div>
+
     </div>
   );
 };

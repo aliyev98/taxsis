@@ -1,0 +1,51 @@
+.corporate-profile-settings {
+    gap: 48px;
+
+    &-header {
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+    }
+
+    &-form {
+        gap: 20px;
+        width: 50%;
+
+        .input-div {
+            padding: 8px 16px;
+
+            label {
+                color: var(--Neutral-04, #6F767E);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            input {
+                color: var(--Neutral-04, #6F767E);
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+        }
+
+        .input-div:nth-child(7),
+        .input-div:nth-child(8) {
+            label {
+                color: var(--Neutral-08, #111315);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            input {
+                color: var(--Neutral-07, #1A1D1F);
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .btn{
+        width: 50%;
+    }
+}

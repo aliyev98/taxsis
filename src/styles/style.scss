@@ -21,7 +21,7 @@
 @use './components/social/feed/feed';
 @use './test';
 @use './components/social/feed/post';
-@use './components/social/feed/messages';
+@use './components/social/feed/feedFriends';
 @use './pages/modules/taxModule';
 @use './layouts/taxModuleHeader';
 @use './sidebars/taxModuleSideBar';
@@ -84,6 +84,13 @@
 @use './components/social/corporateProfile/authority';
 @use './components/social/colleagues/addColleagues';
 @use './components/social/colleagues/colleagues';
+@use './components/social/partners/partners';
+@use './components/social/partners/addPartner';
+@use './components/social/corporateProfile/profileSection';
+@use './components/social/corporateProfile/corporateProfileVacancies';
+@use './components/social/corporateProfile/corporateProfileSettings';
+@use './components/social/individualProfile/individualProfileCart';
+
 
 
 @use './components/ui/ui.scss';

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Messages = () => {
+const FeedFriends = () => {
 
     const friends = [
         { id: 1, img: '/assets/profile-picture.jpg', name: 'Elman Vəli', time: '03:30PM', online: true },
@@ -20,7 +20,7 @@ const Messages = () => {
     ]
 
     return (
-        <div className='messages-container col-3'>
+        <div className='feed-friends-container col-3'>
 
             <div className="advertising">
                 <img src="/assets/add-icon2.jpg" alt="" />
@@ -56,7 +56,7 @@ const Messages = () => {
                                 </div>
 
                                 <div className="status d-flex align-items-center">
-                                    
+
                                     <span className="time">{friend.time}</span>
 
                                     <div className={`dot ${friend.online ? "online" : "offline"}`}></div>
@@ -76,4 +76,4 @@ const Messages = () => {
     )
 }
 
-export default Messages
+export default FeedFriends 

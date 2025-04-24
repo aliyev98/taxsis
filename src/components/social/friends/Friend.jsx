@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FriendList = () => {
+const Friend = () => {
   const [friends, setFriends] = useState([
     { id: 1, name: "Elman Vəli", avatar: "/assets/profile-picture.png", isFollowing: false },
     { id: 2, name: "Vaqif Əliyev", avatar: "/assets/profile-picture.png", isFollowing: false },
@@ -56,4 +56,4 @@ const FriendList = () => {
   );
 };
 
-export default FriendList;
+export default Friend;

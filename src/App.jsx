@@ -8,7 +8,7 @@ import Module from "./Module";
 import Invoices from "./components/modules/tax/Invoices";
 import MainPage from "./pages/social/MainPage";
 import Groups from "./pages/social/Groups";
-import Friends from "./pages/social/Friends";
+import FriendsPage from "./pages/social/FriendsPage";
 import GroupFeed from "./pages/social/GroupFeed";
 import VacanciesPage from "./pages/social/VacanciesPage";
 import EventsPage from "./pages/social/EventsPage";
@@ -19,6 +19,7 @@ import VatSearch from './pages/social/VatSearch';
 import IndividualProfile from "./pages/social/IndividualProfile";
 import ColleaguesPage from "./pages/social/ColleaguesPage";
 import CorporateProfile from "./pages/social/CorporateProfile";
+import Test from "./Test";
 
 
 
@@ -28,6 +29,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="test" element={<Test />} />
         <Route path="/signUp" element={<SingUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/feed" element={<MainPage />} />
@@ -35,7 +37,7 @@ function App() {
         <Route path="/module" element={<Module />} />
         <Route path="/invoices" element={<Invoices />} />
         <Route path="/groups" element={<Groups />} />
-        <Route path="/friends" element={<Friends />} />
+        <Route path="/friends" element={<FriendsPage />} />
         <Route path="/groups/:id" element={<GroupFeed />} />
         <Route path="/vacancies" element={<VacanciesPage />} />
         <Route path="/events" element={<EventsPage />} />

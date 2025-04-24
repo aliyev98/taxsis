@@ -7,10 +7,8 @@ import FriendsNavbar from '../../components/social/friends/FriendsNavbar'
 
 const Friends = () => {
 
-
-
     return (
-        <div className='friends-container'>
+        <div className='friends-page-container'>
 
             <FeedHeader />
 

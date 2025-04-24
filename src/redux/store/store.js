@@ -8,6 +8,7 @@ import postReducer from '../slices/postSlice';
 import vacancyReducer from '../slices/vacancySlice';
 import tenderReducer from '../slices/tenderSlice';
 import colleagueReducer from '../slices/colleagueSlice';
+import partnerReducer from '../slices/partnersSlice';
 import cvReducer from '../slices/cvSlice';
 import profileReducer from '../slices/profileSlice';
 
@@ -22,6 +23,7 @@ const store = configureStore({
     vacancy: vacancyReducer,
     tender: tenderReducer,
     colleague: colleagueReducer,
+    partner: partnerReducer,
     cv: cvReducer,
     profileNav: profileReducer,
   },

@@ -1,0 +1,66 @@
+.image-upload {
+    gap: 12px;
+
+    label {
+        gap: 4px;
+
+        span {
+            color: var(--Neutral-05, #33383F);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+
+    }
+
+    .image-preview {
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .drag-drop-zone-wrapper {
+        min-height: 200px;
+        border-radius: 12px;
+        background: var(--Neutral-02, #F4F4F4);
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .drag-drop-zone {
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--Neutral-03, #EFEFEF);
+            background: var(--Neutral-01, #FCFCFC);
+            box-shadow: 0px 12px 13px -6px rgba(0, 0, 0, 0.04);
+
+            .input-info {
+                gap: 8px;
+
+                span {
+                    color: var(--Neutral-07, #1A1D1F);
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    input {
+        width: 400px;
+        height: 400px;
+    }
+}

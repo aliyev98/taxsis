@@ -1,5 +1,4 @@
-.messages-container {
-    margin-top: 40px !important;
+.feed-friends-container {
     width: 20%;
     height: 100vh;
 
@@ -89,15 +88,23 @@
                         border-radius: 50%;
                     }
 
-                    .online{
+                    .online {
                         background-color: #9A9FA5;
                     }
 
-                    .offline{
+                    .offline {
                         background-color: #2A85FF;
                     }
                 }
             }
         }
     }
+}
+
+.mainpage-container {
+
+    .feed-friends-container{
+        margin-top: 32px;
+    }
+
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import FeedHeader from '../../layouts/FeedHeader'
 import FeedSideBar from '../../sidebars/FeedSideBar'
 import Feed from '../../components/social/feed/Feed'
-import Messages from '../../components/social/feed/Messages'
+import FeedFriends  from '../../components/social/feed/FeedFriends'
 
 const MainPage = () => {
   return (
@@ -16,7 +16,7 @@ const MainPage = () => {
 
         <Feed />
 
-        <Messages />
+        <FeedFriends  />
 
       </div>
 
