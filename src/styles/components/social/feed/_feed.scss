@@ -53,9 +53,9 @@
     }
 
     .line {
-        max-height: 2px;
+        height: 2px !important;
+        width: 100% !important;
         background: var(--Neutral-03, #EFEFEF);
-        background-color: red !important;
         span {
             color: transparent;
         }
