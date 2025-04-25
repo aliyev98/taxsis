@@ -1,7 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const ProfileDropdown = () => {
+
+  const accountType = useSelector((state) => state.login.accountType);
+
+
   const navigate = useNavigate();
 
   const sections = [
@@ -10,7 +16,13 @@ const ProfileDropdown = () => {
   ];
 
   const handleProfileClick = () => {
-    navigate('/IndividualProfile');
+
+    if (accountType === "individual") {
+      navigate('/IndividualProfile');
+    }
+    else {
+      navigate('/corporateProfile');
+    }
   };
 
   const handleHomeClick = () => {

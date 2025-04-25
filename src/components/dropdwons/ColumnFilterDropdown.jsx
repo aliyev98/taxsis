@@ -2,7 +2,7 @@ import React from "react";
 
 const ColumnFilterDropdown = ({
   colKey,
-  columns,         // ✅ yeni prop: bütün sütunların siyahısı
+  columns, 
   filterOpts,
   filters,
   handleSearchChange,

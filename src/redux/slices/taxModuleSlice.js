@@ -4,7 +4,6 @@ const initialState = {
     sidebarSelection: localStorage.getItem("sidebarSelection") || "invoices",
     navbarSelection: localStorage.getItem("navbarSelection") || "purchase",
 };
-
 const selectionSlice = createSlice({
     name: "taxModuleSelection",
     initialState,

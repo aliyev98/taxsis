@@ -31,7 +31,6 @@ const IndividualEnterCode = () => {
       const newOtp = [...otp];
   
       if (otp[index] !== "") {
-        // Eğer input doluysa, önce temizle sonra önceki input'a odakla
         newOtp[index] = "";
         setOtp(newOtp);
   

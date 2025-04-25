@@ -1,6 +1,5 @@
 import React from 'react'
 import TaxModuleSideBar from '../../sidebars/TaxModuleSideBar'
-import TaxModuleHeader from '../../layouts/TaxModuleHeader';
 import Invoices1 from '../../components/modules/tax/Invoices1'
 import { useSelector } from "react-redux";
 import SubstitutionRegister from '../../components/modules/tax/SubstitutionRegister';
@@ -16,11 +15,11 @@ import TaxReports from '../../components/modules/tax/TaxReports';
 import InternalBalances from '../../components/modules/tax/InternalBalances';
 import ExternalBalances from '../../components/modules/tax/ExternalBalances';
 import NonResidents from '../../components/modules/tax/NonResidents';
-import Test from '../../components/modules/tax/Test';
 import PurchasAndSalesReports from '../../components/modules/tax/PurchaseAndSalesReports';
 import DebtsTable from '../../components/modules/tax/DebtsTable';
 import Substitution from '../../components/modules/tax/Substitution';
 import BankAccount from '../../components/modules/tax/BankAccount';
+import TaxModuleSidebar2 from '../../sidebars/TaxModuleSidebar2';
 
 
 const TaxModule = () => {
@@ -31,6 +30,8 @@ const TaxModule = () => {
         <div className='module-container d-flex'>
 
             <TaxModuleSideBar />
+
+            {/* <TaxModuleSidebar2/> */}
 
 
             <div className="content-wrapper d-flex flex-column">

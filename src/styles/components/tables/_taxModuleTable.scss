@@ -32,13 +32,12 @@
         overflow-x: auto;
         overflow-y: auto;
         scrollbar-width: none !important;
-        scroll-behavior: smooth;
+        // scroll-behavior: smooth;
         position: relative;
         min-height: 500px;
 
         .custom-table {
             width: 100%;
-            overflow-y: scroll;
 
             .top-header {
                 &-title {

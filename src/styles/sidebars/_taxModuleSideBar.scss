@@ -1,187 +1,16 @@
 .tax-module-sidebar {
     width: 20%;
-    padding: 24px;
-    background-color: #fcfcfc;
-    height: fit-content;
-
-    .sidebar-header {
-        margin-bottom: 48px;
-        cursor: pointer;
-
-        .logo {
-            top: 20px;
-            left: 20px;
-            gap: 12px;
-
-            .logo-img {
-                position: relative;
-
-                .lines {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 4px;
-
-                    .line1 {
-                        width: 4px;
-                        height: 8px;
-                        border-radius: 12px;
-                        background: #fff;
-                    }
-
-                    .line2 {
-                        width: 4px;
-                        height: 12px;
-                        border-radius: 12px;
-                        background: #fff;
-                    }
-
-                    .line3 {
-                        width: 4px;
-                        height: 8px;
-                        border-radius: 12px;
-                        background: #fff;
-                    }
-                }
-
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
-                }
-
-            }
-
-            .logo-text {
-                color: #000;
-                font-size: 24px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 32px;
-                letter-spacing: -0.48px;
-            }
-        }
-
-        .icon {
-            margin-left: auto;
-            border-radius: 20px;
-            border: 1px solid var(--Neutral-03, #EFEFEF);
-            background: var(--Neutral-02, #F4F4F4);
-            padding: 4px;
-        }
-
-    }
-
-    .accordion {
-        background-color: transparent;
-
-        .collapse {
-
-
-            .accordion-button:not(.collapsed) {
-                width: 100%;
-                display: flex;
-                box-shadow: none !important;
-                background-color: transparent !important;
-
-                span {
-                    margin-left: 12px;
-                    color: #6F767E;
-                    font-size: 15px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-                    font-style: normal;
-                }
-            }
-
-            .collapsed {
-                width: 100%;
-                box-shadow: none !important;
-                background-color: transparent !important;
-
-                span {
-                    margin-left: 12px;
-                    color: #6F767E;
-                    font-size: 15px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: -0.15px;
-                    font-style: normal;
-                }
-            }
-
-            .menu {
-
-                div {
-                    display: flex;
-
-                    button {
-                        flex: 1;
-                        font-size: 15px;
-                        font-weight: 600;
-                        color: #6F767E;
-                        background-color: transparent;
-                        border: none;
-                        text-align: left;
-                        padding: 12px;
-                        border-radius: 12px;
-                    }
-                }
-            }
-
-            .submenu {
-                border-left: 2px solid #efefef;
-                width: 80%;
-                margin-left: 23px;
-            }
-
-        }
-
-    }
-
-    .active {
-        background-color: #EFEFEF !important;
-        position: relative;
-        border-radius: 12px;
-        font-size: 15px;
-        font-weight: 700 !important;
-        color: #1A1D1F !important;
-        box-shadow: 0px .5px #6F767E !important;
-
-        &::after {
-            content: '';
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            background-image: url('/assets/right-arrow.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin-right: auto;
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-    }
-}
-
-.tax-module-sidebar {
-    width: 20%;
+    width: fit-content;
     padding: 24px;
     background-color: #fcfcfc;
 
     .sidebar-header {
         margin-bottom: 48px;
-        cursor: pointer;
+        cursor: default;
 
         .logo {
-            top: 20px;
-            left: 20px;
             gap: 12px;
+            margin-right: 20px; /////
 
             .logo-img {
                 position: relative;
@@ -224,20 +53,30 @@
             .logo-text {
                 color: #000;
                 font-size: 24px;
-                font-style: normal;
                 font-weight: 600;
                 line-height: 32px;
                 letter-spacing: -0.48px;
             }
         }
 
-        .icon {
+        .arrow-icon {
             margin-left: auto;
             border-radius: 20px;
             border: 1px solid var(--Neutral-03, #EFEFEF);
             background: var(--Neutral-02, #F4F4F4);
             padding: 4px;
         }
+
+        .toggle-sidebar-icon {
+            margin-left: 16px;
+
+            img {
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+        }
+
     }
 
     .accordion {
@@ -251,6 +90,7 @@
             background-color: transparent !important;
             padding: 12px;
             gap: 8px;
+            position: relative;
 
             span {
                 margin-left: 12px;
@@ -259,7 +99,23 @@
                 font-weight: 600;
                 line-height: 24px;
                 letter-spacing: -0.15px;
-                font-style: normal;
+            }
+
+            &::after {
+                content: '';
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background-image: url('/assets/right-arrow.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: auto;
+                transition: transform 0.3s ease;
+                transform: rotate(0deg); // default: sağa bakar
+            }
+
+            &[aria-expanded='true']::after {
+                transform: rotate(90deg); // içerik açıkken: aşağı bakar
             }
 
             &.active {
@@ -267,107 +123,214 @@
                 border-radius: 12px;
                 font-weight: 700 !important;
                 color: #1A1D1F !important;
-                position: relative;
-
-                &::after {
-                    content: '';
-                    display: inline-block;
-                    width: 14px;
-                    height: 14px;
-                    background-image: url('/assets/right-arrow.png');
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    position: absolute;
-                    right: 10px;
-                    top: 18px;
-                }
             }
         }
 
-        // Yalnız accordion collapseları üçün stil
-        #database,
-        #reports,
-        #accounting,
-        #analyses,
-        #params {
-            &.collapse {
-                .menu {
-                    div {
-                        display: flex;
+        .collapse {
+            .menu {
+                div {
+                    display: flex;
 
-                        button {
-                            flex: 1;
-                            font-size: 15px;
-                            font-weight: 600;
-                            color: #6F767E;
-                            background-color: transparent;
-                            border: none;
-                            text-align: left;
-                            padding: 12px;
+                    button {
+                        flex: 1;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #6F767E;
+                        background-color: transparent;
+                        border: none;
+                        text-align: left;
+                        padding: 12px;
+                        border-radius: 12px;
+
+                        &.active {
+                            background-color: #EFEFEF !important;
+                            font-weight: 600 !important;
+                            color: #1A1D1F !important;
+                            position: relative;
+
                             border-radius: 12px;
+                            background: var(--Neutral-03, #EFEFEF);
+                            box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
 
-                            &.active {
-                                background-color: #EFEFEF !important;
-                                font-weight: 700 !important;
-                                color: #1A1D1F !important;
-                                position: relative;
-
-                                &::after {
-                                    content: '';
-                                    display: inline-block;
-                                    width: 14px;
-                                    height: 14px;
-                                    background-image: url('/assets/right-arrow.png');
-                                    background-size: contain;
-                                    background-repeat: no-repeat;
-                                    position: absolute;
-                                    right: 10px;
-                                    top: 18px;
-                                }
+                            &::after {
+                                content: '';
+                                display: inline-block;
+                                width: 14px;
+                                height: 14px;
+                                background-image: url('/assets/right-arrow.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                position: absolute;
+                                right: 10px;
+                                top: 18px;
                             }
                         }
                     }
                 }
+            }
 
-                .submenu {
-                    border-left: 2px solid #efefef;
-                    width: 80%;
-                    margin-left: 23px;
-                }
+            .submenu {
+                border-left: 2px solid #efefef;
+                width: 80%;
+                margin-left: 23px;
+            }
+        }
+
+        .collapse.show {
+
+            .menu,
+            .submenu {
+                display: block !important;
+                opacity: 1;
+                visibility: visible;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+
+        .collapse:not(.show) {
+
+            .menu,
+            .submenu {
+                display: none;
+            }
+        }
+
+        .submenu.collapse {
+            &.show {
+                display: block !important;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            &:not(.show) {
+                display: none !important;
+                opacity: 0;
+                visibility: hidden;
             }
         }
     }
 
-    .collapse.show {
+    .collapsed-icons {
+        width: fit-content !important;
 
-        .menu,
-        .submenu {
-            display: block !important;
-            opacity: 1;
-            visibility: visible;
-            transition: all 0.2s ease-in-out;
+        .sidebar-header-collapsed {
+            margin-bottom: 48px;
+
+            .logo {
+                margin-bottom: 20px;
+
+                .logo-img {
+                    position: relative;
+
+                    .lines {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 4px;
+
+                        .line1,
+                        .line2,
+                        .line3 {
+                            width: 4px;
+                            border-radius: 12px;
+                            background: #fff;
+                        }
+
+                        .line1,
+                        .line3 {
+                            height: 8px;
+                        }
+
+                        .line2 {
+                            height: 12px;
+                        }
+                    }
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .arrow-icon {
+                border-radius: 20px;
+                border: 1px solid var(--Neutral-03, #EFEFEF);
+                background: var(--Neutral-02, #F4F4F4);
+                padding: 4px;
+            }
+
+            .toggle-sidebar-icon {
+                margin-top: 16px;
+            }
         }
-    }
 
-    .collapse:not(.show) {
+        .icon-wrapper {
 
-        .menu,
-        .submenu {
-            display: none;
-        }
-    }
+            .active {
+                border-radius: 12px;
+                background: var(--Neutral-03, #EFEFEF);
+                box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+            }
 
-    .submenu.collapse {
-        &.show {
-            display: block !important;
-            opacity: 1;
-            visibility: visible;
+            .sidebar-icon {
+                padding: 12px;
+            }
         }
 
-        &:not(.show) {
-            display: none !important;
-            opacity: 0;
-            visibility: hidden;
+        .icon-dropdown {
+            z-index: 9999;
+            left: 0;
+            top: 60px;
+            padding: 24px 24px 12px 0;
+            min-width: 240px;
+
+            border-radius: 16px;
+            border: 1px solid var(--Neutral-00, #FFF);
+            background: rgba(252, 252, 252, 0.90);
+            box-shadow: 0px -13px 24px -7px rgba(0, 0, 0, 0.05), 0px 24px 40px -11px rgba(0, 0, 0, 0.10);
+            backdrop-filter: blur(12px);
+
+            .dropdown-button {
+
+                .dropdown-item {
+                    padding: 12px;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 14px;
+                        height: 14px;
+                        background-image: url('/assets/right-arrow.png'); // 👈 ikon path’ini kendi dosyana göre ayarla
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+
+
+                    span {
+                        color: var(--Neutral-04, #6F767E);
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+                }
+
+                .active {
+                    border-radius: 12px;
+                    background: var(--Neutral-03, #EFEFEF);
+                    box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+                }
+            }
+
+
+
         }
     }
 }
