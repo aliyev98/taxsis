@@ -3,8 +3,6 @@
     gap: 32px;
     background-color: #fcfcfc;
 
-
-
     .header-btns {
         flex: 1;
 
@@ -48,6 +46,18 @@
             }
 
             .add {
+                border: 2px solid #2A85FF !important;
+                color: #2A85FF;
+                background-color: #FCFCFC;
+            }
+
+            .add-bank{
+                border: 2px solid #2A85FF !important;
+                color: #2A85FF;
+                background-color: #FCFCFC;
+            }
+
+            .add-account{
                 border: 2px solid #2A85FF !important;
                 color: #2A85FF;
                 background-color: #FCFCFC;

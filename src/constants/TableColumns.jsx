@@ -26,16 +26,34 @@ export const purchaseColumns = [
             type: "checkbox",
             options: ["Hamısı", "Təsdiqləndi", "Təsdiqlənmədi", "Boş"],
         },
-        cell: ({ getValue }) => {
+        cell: ({ row, getValue }) => {
             const value = getValue();
             const isApproved = value === "Təsdiqləndi";
+
+            const handleChange = (e) => {
+                const newStatus = e.target.value;
+                row.original.status = newStatus;
+            };
+
             return (
-                <div className={`status-cell ${isApproved ? "approved" : "unapproved"}`}>
-                    {value}
+                <div className="status-cell d-flex" >
+                    <select className={`${isApproved ? "approved" : "unapproved"}`}
+                        value={value}
+                        onChange={handleChange}
+
+                    >
+                        <option value="Təsdiqləndi">Təsdiqləndi</option>
+                        <option value="Təsdiqlənmədi">Təsdiqlənmədi</option>
+                        <option value="Boş">Boş</option>
+                    </select>
+
+                    <img src="/assets/arrow-down.svg" alt="" />
                 </div>
+
             );
         },
     },
+
     { id: "date", accessorKey: "date", header: "Qaimə Tarixi" },
     {
         id: "currency", accessorKey: "currency", header: "Valyuta",

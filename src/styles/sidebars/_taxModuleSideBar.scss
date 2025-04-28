@@ -1,6 +1,4 @@
 .tax-module-sidebar {
-    width: 20%;
-    width: fit-content;
     padding: 24px;
     background-color: #fcfcfc;
 
@@ -10,10 +8,11 @@
 
         .logo {
             gap: 12px;
-            margin-right: 20px; /////
+            margin-right: 20px;
 
             .logo-img {
                 position: relative;
+                min-width: 48px;
 
                 .lines {
                     position: absolute;
@@ -81,6 +80,7 @@
 
     .accordion {
         background-color: transparent;
+        width: fit-content;
 
         .accordion-button {
             width: 100%;

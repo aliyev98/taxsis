@@ -2,18 +2,20 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
 import AddRowModal from "../components/modals/AddRowModal";
+import AddBankModal from "../components/modals/AddBankModal"; // ✅ Yeni modalı import ediyoruz
 import { openModal } from '../redux/slices/postSlice';
-import ProfileDropdown from '../components/dropdwons/ProfileDropdown';
+import AddAccountModal from "../components/modals/AddAccountModal";
 
 const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
-
     const dispatch = useDispatch();
     const activeNav = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
     const [showDropdown, setShowDropdown] = useState(false);
-    const [showProfileFropdown, setShowProfileDropdown] = useState(false)
-    const [showModal, setShowModal] = useState(false); // ✅ Modal görünürlüğü
-    const [selectedNavForModal, setSelectedNavForModal] = useState(""); // ✅ Modal için seçim
+    const [showProfileFropdown, setShowProfileDropdown] = useState(false);
+    const [showModal, setShowModal] = useState(false); // AddRowModal için
+    const [showBankModal, setShowBankModal] = useState(false); // ✅ AddBankModal için
+    const [showAccountModal, setShowAccountModal] = useState(false); // ✅ AddAccountModal için state
+    const [selectedNavForModal, setSelectedNavForModal] = useState("");
     const dropdownRef = useRef();
 
     const handleOutsideClick = (e) => {
@@ -27,63 +29,88 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
         return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
-
-
     return (
         <div className='module-header d-flex justify-content-between align-items-center'>
-
 
             <div className="header-btns d-flex justify-content-between">
 
                 <div className="title">{title}</div>
 
                 <div className="btns d-flex align-items-center">
-                    {headerBtns?.map((btn) =>
-                        btn.className === "add" ? (
-                            <div key={btn.id} className="position-relative">
+                    {headerBtns?.map((btn) => {
+                        if (btn.className === "add") {
+                            return (
+                                <div key={btn.id} className="position-relative">
+                                    <button
+                                        className={`d-flex align-items-center ${btn.className}`}
+                                        onClick={() => setShowDropdown(!showDropdown)}
+                                    >
+                                        {btn.content}
+                                    </button>
+
+                                    {showDropdown && (
+                                        <div className="dropdown-menu add-dropdown show d-flex flex-column" ref={dropdownRef}>
+                                            <div className="dropdown-title">Hansı menuya əlavə edilsin?</div>
+                                            {navBtns?.map((item) => (
+                                                <button
+                                                    key={item.id}
+                                                    className="dropdown-item"
+                                                    onClick={() => {
+                                                        dispatch(setNavbarSelection(item.id));
+                                                        setSelectedNavForModal(item.content);
+                                                        setShowDropdown(false);
+                                                        setShowModal(true);
+                                                    }}
+                                                >
+                                                    {item.content}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+
+                        else if (btn.className === "add-bank") {
+                            return (
                                 <button
+                                    key={btn.id}
                                     className={`d-flex align-items-center ${btn.className}`}
-                                    onClick={() => setShowDropdown(!showDropdown)}
+                                    onClick={() => setShowBankModal(true)} // ✅ Yeni modalı açıyoruz
                                 >
                                     {btn.content}
                                 </button>
+                            );
+                        }
 
-                                {showDropdown && (
-                                    <div
-                                        className="dropdown-menu add-dropdown show d-flex flex-column"
-                                        ref={dropdownRef}
-                                    >
-                                        <div className="dropdown-title">Hansı menuya əlavə edilsin?</div>
-                                        {navBtns?.map((item) => (
-                                            <button
-                                                key={item.id}
-                                                className="dropdown-item"
-                                                onClick={() => {
-                                                    dispatch(setNavbarSelection(item.id));
-                                                    setSelectedNavForModal(item.content);
-                                                    setShowDropdown(false);
-                                                    setShowModal(true);
-                                                }}
-                                            >
-                                                {item.content}
-                                            </button>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <button key={btn.id} className={`d-flex align-items-center ${btn.className}`}>
-                                {btn.className === "filter" && (
-                                    <img
-                                        src="/assets/filter-light-icon.svg"
-                                        alt="filter icon"
-                                        style={{ width: 16, height: 16, marginRight: 6 }}
-                                    />
-                                )}
-                                {btn.content}
-                            </button>
-                        )
-                    )}
+                        else if (btn.className === "add-account") {
+                            return (
+                                <button
+                                    key={btn.id}
+                                    className={`d-flex align-items-center ${btn.className}`}
+                                    onClick={() => setShowAccountModal(true)} // ✅ AddAccountModal açılıyor
+                                >
+                                    {btn.content}
+                                </button>
+                            );
+                        }
+
+
+                        else {
+                            return (
+                                <button key={btn.id} className={`d-flex align-items-center ${btn.className}`}>
+                                    {btn.className === "filter" && (
+                                        <img
+                                            src="/assets/filter-light-icon.svg"
+                                            alt="filter icon"
+                                            style={{ width: 16, height: 16, marginRight: 6 }}
+                                        />
+                                    )}
+                                    {btn.content}
+                                </button>
+                            );
+                        }
+                    })}
                 </div>
 
             </div>
@@ -112,15 +139,12 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
 
                     <div className="profile-picture pointer" onClick={() => dispatch(openModal())}>
                         <img src="/assets/profile-picture.png" alt="" />
-
                     </div>
 
                 </div>
             </div>
 
-
-
-            {/* ✅ Modal bileşeni */}
+            {/* ✅ Modal bileşenleri */}
             <AddRowModal
                 show={showModal}
                 onClose={() => setShowModal(false)}
@@ -128,8 +152,20 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
                 columns={columns}
             />
 
+            <AddBankModal
+                show={showBankModal}
+                onClose={() => setShowBankModal(false)}
+            />
+
+            <AddAccountModal
+                show={showAccountModal}
+                onClose={() => setShowAccountModal(false)}
+                title="Yeni Hesab Əlavə Et"
+                columns={columns}
+            />
+
         </div>
     )
 }
 
-export default TaxModuleHeader
+export default TaxModuleHeader;

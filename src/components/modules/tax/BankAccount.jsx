@@ -10,7 +10,6 @@ const BankAccount = () => {
   const banksData = useSelector((state) => state.tableData.banks.data);
   const accountsData = useSelector((state) => state.tableData.accounts.data); // ✅ dikkat: .data ekli!
 
-  // ✅ Bankalara bağlı hesap sayılarını hesapla
   const enrichedBankData = banksData.map((bank) => {
     const relatedAccounts = accountsData.filter((acc) =>
       acc.branch.includes(bank.name)
@@ -21,7 +20,6 @@ const BankAccount = () => {
     };
   });
 
-  // ✅ Seçilen bankaya göre filtrelenmiş hesapları göster
   const currentTableData = selectedBank
     ? accountsData.filter((acc) =>
         acc.branch.includes(selectedBank.name)

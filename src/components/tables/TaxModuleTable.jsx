@@ -299,6 +299,7 @@ export default function TaxModuleTable({
                         {editingCell === `${row.id}-${cell.column.id}` ? (
                           editMode ? (
                             <input
+                            className="column-edit-input"
                               type="text"
                               value={editValue}
                               onChange={(e) => setEditValue(e.target.value)}

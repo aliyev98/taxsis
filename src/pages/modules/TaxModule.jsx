@@ -31,11 +31,7 @@ const TaxModule = () => {
 
             <TaxModuleSideBar />
 
-            {/* <TaxModuleSidebar2/> */}
-
-
             <div className="content-wrapper d-flex flex-column">
-
 
                 {sidebarSelection === "invoices" && <Invoices1 />}
 
@@ -53,7 +49,7 @@ const TaxModule = () => {
 
                 {sidebarSelection === "cash_flow" && <CashFlowStatement />}
 
-                {/* {sidebarSelection === "bank_statements" && <BankStatements />} */}
+                {sidebarSelection === "bank_statements" && <BankStatements />}
 
                 {sidebarSelection === "custom_documents" && <CustomDocuments />}
 

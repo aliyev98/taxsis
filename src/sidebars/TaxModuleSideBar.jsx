@@ -184,7 +184,9 @@ const TaxModuleSideBar = () => {
             {/* Logo */}
             <div className="sidebar-header d-flex align-items-center">
 
+
               <div className="logo d-flex align-items-center gap-3">
+
                 <div className="logo-img">
                   <img src="./assets/logo.svg" alt="" />
                   <div className="lines">
@@ -194,6 +196,7 @@ const TaxModuleSideBar = () => {
                   </div>
                 </div>
                 <span className="logo-text">TAXSIS</span>
+
               </div>
 
               <div className="arrow-icon">

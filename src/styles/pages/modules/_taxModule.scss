@@ -2,17 +2,17 @@
     overflow: hidden !important;
     scrollbar-width: none !important;
     min-height: 100vh;
+    width: 100%;
 
     .content-wrapper {
-        width: 80%;
         background-color: #efefef;
-
+        width: 100vw;
 
         .content {
             display: flex;
             flex-direction: column;
             gap: 24px;
-            padding: 0;
+            padding: 0 !important;
             padding-bottom: 40px;
 
             .table {
@@ -22,10 +22,6 @@
             }
         }
     }
-}
-
-.reports-container {
-    .custom-table {}
 }
 
 

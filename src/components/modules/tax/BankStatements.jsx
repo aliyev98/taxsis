@@ -1,92 +1,89 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
-import TaxModuleTable from "../../../components/tables/TaxModuleTable";
-import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { purchaseColumns, actsColumns } from "../../../constants/TableColumns";
+import React, { useState, useMemo } from "react";
+import { useSelector } from "react-redux";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
+import TaxModuleTable from "../../tables/TaxModuleTable";
+import { banksColumns, accountsColumns } from "../../../constants/TableColumns";
 
 const BankStatements = () => {
+  const [selectedBank, setSelectedBank] = useState(null);
 
-    const dispatch = useDispatch();
+  const banksData = useSelector((state) => state.tableData.banks.data);
+  const accountsData = useSelector((state) => state.tableData.accounts.data);
 
-    const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
+  // ✅ Bankaların altında kaç hesap olduğunu hesapla
+  const enrichedBankData = useMemo(() => {
+    return banksData.map((bank) => {
+      const relatedAccounts = accountsData.filter((acc) =>
+        acc.branch.includes(bank.name)
+      );
+      return {
+        ...bank,
+        account_list: relatedAccounts.length,
+      };
+    });
+  }, [banksData, accountsData]);
 
-    useEffect(() => {
-        if (sidebarSelection === "bank_statements") {
-            dispatch(setNavbarSelection("purchase"));
-        }
-    }, [sidebarSelection, dispatch]);
+  // ✅ Şu anda hangi tabloyu göstereceğiz
+  const currentTableData = selectedBank
+    ? accountsData.filter((acc) => acc.branch.includes(selectedBank.name))
+    : enrichedBankData;
 
-    const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
+  const currentColumns = selectedBank ? accountsColumns : banksColumns;
 
-    const purchaseData = useSelector((state) => state.tableData.purchases.data);
-    const actsData = useSelector((state) => state.tableData.acts.data);
-
-
-    const headerBtns = [
-        { id: 1, content: "Şablonu yüklə", className: "download" },
-        { id: 2, content: "İmport et", className: "import" },
+  // ✅ Header butonları dinamik oluştur
+  const headerBtns = useMemo(() => {
+    const baseButtons = [
+      { id: 3, content: "İmport et", className: "import" }
     ];
 
-    const navBtns = [
-        { id: "purchase", content: "Alış qaimələri" },
-        { id: "sales", content: "Satış qaimələri" },
-        { id: "returns", content: "Alıcıdan geri qaytarmalar" },
-        { id: "acts", content: "Alış aktları" },
-    ];
-
-    const purchaseCol = purchaseColumns;
-
-    const actsCol = actsColumns
-
-    let columns;
-    let data;
-    let tableTitle;
-
-    switch (navbarSelection) {
-        case "purchase":
-            columns = purchaseCol;
-            data = purchaseData;
-            tableTitle = "Alış qaimələri";
-            break;
-        case "sales":
-            columns = actsCol;
-            data = actsData;
-            tableTitle = "Satış qaimələri";
-            break;
-        case "returns":
-            columns = actsCol;
-            data = actsData;
-            tableTitle = "Alıcıdan geri qaytarmalar";
-            break;
-        case "acts":
-            columns = actsCol;
-            data = actsData;
-            tableTitle = "Alış aktları";
-            break;
-        default:
-            columns = purchaseCol;
-            data = purchaseData;
-            tableTitle = "Alış qaimələri";
+    if (selectedBank) {
+      return [
+        { id: 2, content: "Yeni hesab əlavə et", className: "add-account" },
+        ...baseButtons
+      ];
+    } else {
+      return [
+        { id: 1, content: "Yeni bank əlavə et", className: "add-bank" },
+        ...baseButtons
+      ];
     }
+  }, [selectedBank]);
 
-    return (
-        <div className="content">
+  return (
+    <div className="content">
+      {/* Header */}
+      <TaxModuleHeader
+        title={
+          <div className="d-flex align-items-center">
+            {selectedBank && (
+              <button
+                className="btn btn-back"
+                onClick={() => setSelectedBank(null)}
+              >
+                <img src="/assets/arrow-back-icon.svg" alt="back" />
+              </button>
+            )}
+            <span className="ms-2">
+              {selectedBank ? selectedBank.name : "Bank hesabları"}
+            </span>
+          </div>
+        }
+        headerBtns={headerBtns}
+        columns={currentColumns}
+      />
 
-            <TaxModuleHeader
-                title="Banklar"
-                headerBtns={headerBtns}
-                columns={columns}
-            />
+      {/* Table */}
+      <div className="table">
+        <TaxModuleTable
+          columns={currentColumns}
+          data={currentTableData}
+          editable={false}
+          rowClickEnabled={!selectedBank} // ✅ sadece bank tablosunda tıklanabilir
+          onRowClick={(bank) => setSelectedBank(bank)}
+        />
+      </div>
+    </div>
+  );
+};
 
-            <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} editable={true} />
-            </div>
-
-
-        </div>
-    )
-}
-
-export default BankStatements
+export default BankStatements;

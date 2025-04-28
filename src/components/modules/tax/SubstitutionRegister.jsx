@@ -82,7 +82,7 @@ const SubstitutionRegister = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} />
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} editable={true} />
             </div>
 
 

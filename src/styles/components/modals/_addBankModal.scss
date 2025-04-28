@@ -1,0 +1,47 @@
+.add-bank-modal {
+
+    .modal-content {
+        padding: 48px 24px !important;
+        position: absolute;
+        gap: 0 !important;
+
+        .modal-header {
+            padding: 0 !important;
+            gap: 8px;
+            margin-bottom: 32px;
+
+            span:first-child {
+                color: var(--Neutral-07, #1A1D1F);
+                text-align: center;
+                font-size: 32px;
+                font-weight: 600;
+            }
+
+            span:nth-child(2) {
+                color: var(--Neutral-05, #33383F);
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .modal-body{
+            gap: 20px;
+
+            .select-group{
+                padding: 0 !important;
+
+                select{
+                    width: 100%;
+                }
+            }
+        }
+
+        .modal-footer{
+            margin-top: 40px;
+            padding: 0 !important;
+        }
+    }
+
+
+}

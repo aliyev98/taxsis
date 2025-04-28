@@ -33,7 +33,8 @@ const Invoices1 = () => {
     const navBtns = [
         { id: "purchase", content: "Alış qaimələri" },
         { id: "sales", content: "Satış qaimələri" },
-        { id: "returns", content: "Alıcıdan geri qaytarmalar" },
+        { id: "returns_buyer", content: "Alıcıdan geri qaytarmalar" },
+        { id: "returns_seller", content: "Satıcıdan geri qaytarmalar" },
         { id: "acts", content: "Alış aktları" },
     ];
 
@@ -56,7 +57,12 @@ const Invoices1 = () => {
             data = actsData;
             tableTitle = "Satış qaimələri";
             break;
-        case "returns":
+        case "returns_buyer":
+            columns = actsCol;
+            data = actsData;
+            tableTitle = "Alıcıdan geri qaytarmalar";
+            break;
+        case "returns_seller":
             columns = actsCol;
             data = actsData;
             tableTitle = "Alıcıdan geri qaytarmalar";
