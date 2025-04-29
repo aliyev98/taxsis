@@ -30,7 +30,7 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
     }, []);
 
     return (
-        <div className='module-header d-flex justify-content-between align-items-center'>
+        <div className='tax-module-header d-flex justify-content-between align-items-center'>
 
             <div className="header-btns d-flex justify-content-between">
 

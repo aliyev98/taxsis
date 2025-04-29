@@ -47,7 +47,7 @@ const Invoices = () => {
     // }
 
     return (
-        <div className="content">
+        <div className="deposit-extracts tax-module-content">
 
             <TaxModuleHeader
                 title="Çıxarışlar"

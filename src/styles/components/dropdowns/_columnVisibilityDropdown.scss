@@ -5,7 +5,7 @@
     background-color: white;
     border-radius: 16px;
     min-width: 200px;
-    right: 90px;
+    right: 0px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 
     &::before {
@@ -30,6 +30,7 @@
     .column-inputs {
 
         label {
+            color: var(--Neutral-07, #1A1D1F);
             font-size: 14px;
             font-weight: 600;
             display: flex;

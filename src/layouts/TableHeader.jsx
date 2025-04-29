@@ -35,7 +35,6 @@ const TableHeader = ({
     }, []);
 
 
-
     return (
         <div className="table-header d-flex align-items-center justify-content-between">
             <div className="left-side d-flex align-items-center">
@@ -64,21 +63,26 @@ const TableHeader = ({
                     </button>
                 ) : (
                     <div className="buttons d-flex align-items-center">
+
                         <button
                             className="btn-columns d-flex align-items-center"
                             onClick={() => setShowColumnMenu((p) => !p)}
                         >
                             <span>Sütunlar</span>
                             <img src="/assets/layout-icon.svg" alt="" />
+
+                            {showColumnMenu && (
+                                <ColumnVisibilityDropdown table={table} columns={columns} />
+                            )}
+
                         </button>
 
                         {customHeaderButtons && customHeaderButtons}
 
                         <button className="export">Export</button>
 
-                        {showColumnMenu && (
-                            <ColumnVisibilityDropdown table={table} columns={columns} />
-                        )}
+
+
                     </div>
                 )}
             </div>
@@ -87,53 +91,3 @@ const TableHeader = ({
 };
 
 export default TableHeader;
-
-
-
-
-
-// <div className="table-header d-flex align-items-center justify-content-between">
-
-//   <div className="left-side d-flex align-items-center">
-
-//   </div>
-
-//   <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-
-//     <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
-//       {isEditing ? (
-
-//         <button className="btn btn-primary save"
-//           onClick={() => {
-//             setIsEditing(!isEditing)
-//           }}
-//         >
-//           Dəyişiklikləri yadda saxla
-//         </button>
-
-//       ) : (
-//         <div className="buttons d-flex align-items-center">
-//           <button
-//             className="btn-columns d-flex align-items-center"
-//             onClick={() => setShowColumnMenu((p) => !p)}
-//           >
-//             <span>Sütunlar</span>
-//             <img src="/assets/layout-icon.svg" alt="" />
-//           </button>
-
-//           {customHeaderButtons && customHeaderButtons}
-
-//           <button className="export">Export</button>
-
-//           {showColumnMenu && (
-
-//             <ColumnVisibilityDropdown table={table} columns={columns} />
-
-//           )}
-//         </div>
-//       )}
-//     </div>
-
-//   </div>
-
-// </div>

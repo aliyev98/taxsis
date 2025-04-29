@@ -1,6 +1,6 @@
 import React from 'react'
 import TaxModuleSideBar from '../../sidebars/TaxModuleSideBar'
-import Invoices1 from '../../components/modules/tax/Invoices1'
+import Invoices from '../../components/modules/tax/Invoices'
 import { useSelector } from "react-redux";
 import SubstitutionRegister from '../../components/modules/tax/SubstitutionRegister';
 import DepositExtracts from '../../components/modules/tax/DepositExtracts';
@@ -20,6 +20,7 @@ import DebtsTable from '../../components/modules/tax/DebtsTable';
 import Substitution from '../../components/modules/tax/Substitution';
 import BankAccount from '../../components/modules/tax/BankAccount';
 import TaxModuleSidebar2 from '../../sidebars/TaxModuleSidebar2';
+import TaxModuleHeader from '../../layouts/TaxModuleHeader';
 
 
 const TaxModule = () => {
@@ -27,51 +28,52 @@ const TaxModule = () => {
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
 
     return (
-        <div className='module-container d-flex'>
+        <div className='tax-module-container d-flex'>
 
             <TaxModuleSideBar />
 
-            <div className="content-wrapper d-flex flex-column">
-
-                {sidebarSelection === "invoices" && <Invoices1 />}
-
-                {sidebarSelection === 'substitution_register' && <SubstitutionRegister />}
-
-                {sidebarSelection === "deposits_extracts" && <DepositExtracts />}
-
-                {sidebarSelection === "cash_opr" && <CashOperations />}
-
-                {sidebarSelection === "reports" && <Reports />}
-
-                {sidebarSelection === "confrontation_acts" && <ConfrontationActs />}
-
-                {sidebarSelection === "invoice_reports" && <InvoiceReports />}
-
-                {sidebarSelection === "cash_flow" && <CashFlowStatement />}
-
-                {sidebarSelection === "bank_statements" && <BankStatements />}
-
-                {sidebarSelection === "custom_documents" && <CustomDocuments />}
-
-                {sidebarSelection === "tax_reports" && <TaxReports />}
-
-                {sidebarSelection === "internal_balances" && <InternalBalances />}
-
-                {sidebarSelection === "external_balances" && <ExternalBalances />}
-
-                {sidebarSelection === "non_residents" && <NonResidents />}
-
-                {sidebarSelection === "purchase_and_sales_reports" && <PurchasAndSalesReports />}
-
-                {sidebarSelection === "debts_table" && <DebtsTable />}
-
-                {sidebarSelection === "substitution" && <Substitution />}
-
-                {sidebarSelection === "bank_account" && <BankAccount />}
 
 
 
-            </div>
+
+            {sidebarSelection === "invoices" && <Invoices />}
+
+            {sidebarSelection === 'substitution_register' && <SubstitutionRegister />}
+
+            {sidebarSelection === "deposits_extracts" && <DepositExtracts />}
+
+            {sidebarSelection === "cash_opr" && <CashOperations />}
+
+            {sidebarSelection === "reports" && <Reports />}
+
+            {sidebarSelection === "confrontation_acts" && <ConfrontationActs />}
+
+            {sidebarSelection === "invoice_reports" && <InvoiceReports />}
+
+            {sidebarSelection === "cash_flow" && <CashFlowStatement />}
+
+            {sidebarSelection === "bank_statements" && <BankStatements />}
+
+            {sidebarSelection === "custom_documents" && <CustomDocuments />}
+
+            {sidebarSelection === "tax_reports" && <TaxReports />}
+
+            {sidebarSelection === "internal_balances" && <InternalBalances />}
+
+            {sidebarSelection === "external_balances" && <ExternalBalances />}
+
+            {sidebarSelection === "non_residents" && <NonResidents />}
+
+            {sidebarSelection === "purchase_and_sales_reports" && <PurchasAndSalesReports />}
+
+            {sidebarSelection === "debts_table" && <DebtsTable />}
+
+            {sidebarSelection === "substitution" && <Substitution />}
+
+            {sidebarSelection === "bank_account" && <BankAccount />}
+
+
+
 
         </div>
     )

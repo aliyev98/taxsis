@@ -26,9 +26,8 @@ const DebtsTable = () => {
 
 
     const headerBtns = [
-        { id: 1, content: "Əlavə et", className: "add" },
-        { id: 2, content: "Şablonu yüklə", className: "download" },
-        { id: 3, content: "İmport et", className: "import" },
+        { id: 1, content: "Şablonu yüklə", className: "download" },
+        { id: 2, content: "İmport et", className: "import" },
     ];
 
     const navBtns = [
@@ -191,10 +190,10 @@ const DebtsTable = () => {
     }
 
     return (
-        <div className="content">
+        <div className="debts-table tax-module-content">
 
             <TaxModuleHeader
-                title="Alış-satış hesabatı"
+                title="Borclar cədvəli"
                 headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}

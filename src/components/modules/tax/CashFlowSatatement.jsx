@@ -27,7 +27,6 @@ const CashFlowStatement = () => {
 
     const headerBtns = [
         { id: 1, content: "Filterlə", className: "filter", icon: "/assets/huni-icon.svg" },
-        { id: 2, content: "Əlavə et", className: "add" },
     ];
 
     const navBtns = [
@@ -91,7 +90,7 @@ const CashFlowStatement = () => {
 
     return (
 
-        <div className="invoices-container content">
+        <div className="cash-flow-statement tax-module-content">
 
             <TaxModuleHeader
                 title="Pulun hərəkəti hesabatı"

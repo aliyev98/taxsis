@@ -53,7 +53,7 @@ const TaxReports = () => {
     }
 
     return (
-        <div className="content">
+        <div className="tax-reports tax-module-content">
 
             <TaxModuleHeader
                 title="Vergi hesabatları"

@@ -72,7 +72,9 @@ const SubstitutionRegister = () => {
     }
 
     return (
-        <div className="content">
+
+        <div className="substitution-register tax-module-content">
+
 
             <TaxModuleHeader
                 title="Əvəzləşmə reyestri"
@@ -87,6 +89,19 @@ const SubstitutionRegister = () => {
 
 
         </div>
+        // <div className="content">
+
+        //     <TaxModuleHeader
+        //         title="Əvəzləşmə reyestri"
+        //         headerBtns={headerBtns}
+        //         columns={columns}
+        //         navBtns={navBtns}
+        //     />
+
+
+
+
+        // </div>
     );
 }
 

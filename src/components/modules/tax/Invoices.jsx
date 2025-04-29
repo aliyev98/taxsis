@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
-import TaxModuleTable from "../../../components/tables/TaxModuleTable";
+import TaxModuleTable from "../../tables/TaxModuleTable";
+import TestTable from "../../tables/TestTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { purchaseColumns, actsColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
@@ -27,13 +28,13 @@ const Invoices = () => {
     const headerBtns = [
         { id: 1, content: "Şablonu yüklə", className: "download" },
         { id: 2, content: "İmport et", className: "import" },
-        { id: 3, content: "Əlavə et", className: "add" }
     ];
 
     const navBtns = [
         { id: "purchase", content: "Alış qaimələri" },
         { id: "sales", content: "Satış qaimələri" },
-        { id: "returns", content: "Alıcıdan geri qaytarmalar" },
+        { id: "returns_buyer", content: "Alıcıdan geri qaytarmalar" },
+        { id: "returns_seller", content: "Satıcıdan geri qaytarmalar" },
         { id: "acts", content: "Alış aktları" },
     ];
 
@@ -56,7 +57,12 @@ const Invoices = () => {
             data = actsData;
             tableTitle = "Satış qaimələri";
             break;
-        case "returns":
+        case "returns_buyer":
+            columns = actsCol;
+            data = actsData;
+            tableTitle = "Alıcıdan geri qaytarmalar";
+            break;
+        case "returns_seller":
             columns = actsCol;
             data = actsData;
             tableTitle = "Alıcıdan geri qaytarmalar";
@@ -73,26 +79,23 @@ const Invoices = () => {
     }
 
     return (
-        <div className="invoices-container content">
+        <div className="invoices tax-module-content">
 
-            {/* <TaxModuleContentHeader
+
+            <TaxModuleHeader
                 title="Qaimələr"
-                navBtns={navBtns}
                 headerBtns={headerBtns}
                 columns={columns}
-            /> */}
-
-            <TaxModuleHeader
+                navBtns={navBtns}
             />
 
+            <div className="table">
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} />
+            </div>
 
-            <TaxModuleHeader
-                navBtns={navBtns}
-                columns={columns} />
 
-            <TaxModuleTable columns={columns} data={data} navBtns={navBtns} />
         </div>
-    );
-};
+    )
+}
 
-export default Invoices;
+export default Invoices

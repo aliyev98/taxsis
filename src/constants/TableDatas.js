@@ -8,6 +8,7 @@ export const purchaseData = [
   { no: 8, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
   { no: 9, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
   { no: 10, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
+  
 ];
 
 export const actsData = [
@@ -249,6 +250,69 @@ export const depositsData = [
     classification: "Geri"
   },
 ]
+
+export const bankStatementsData = [
+  {
+    no: 1,
+    opr_date: "01.22.21",
+    opr_num: "48654867548785",
+    voen: "1406129621",
+    taxpayer_name: "ÇƏLƏBİ TARYEL FAZİL OĞLU",
+    income_azn: "366.29",
+    expense_azn: "0.00",
+    payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
+    money_flow: "Pulun hərəkət maddəsi mətni",
+    form: "Qarışıq"
+  },
+  {
+    no: 2,
+    opr_date: "01.22.21",
+    opr_num: "48654867548785",
+    voen: "1406129621",
+    taxpayer_name: "ÇƏLƏBİ TARYEL FAZİL OĞLU",
+    income_azn: "366.29",
+    expense_azn: "0.00",
+    payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
+    money_flow: "Pulun hərəkət maddəsi mətni",
+    form: "ƏDV"
+  },
+  {
+    no: 3,
+    opr_date: "01.22.21",
+    opr_num: "48654867548785",
+    voen: "1406129621",
+    taxpayer_name: "ÇƏLƏBİ TARYEL FAZİL OĞLU",
+    income_azn: "366.29",
+    expense_azn: "0.00",
+    payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
+    money_flow: "Pulun hərəkət maddəsi mətni",
+    form: "Qarışıq"
+  },
+  {
+    no: 4,
+    opr_date: "01.22.21",
+    opr_num: "48654867548785",
+    voen: "1406129621",
+    taxpayer_name: "ÇƏLƏBİ TARYEL FAZİL OĞLU",
+    income_azn: "366.29",
+    expense_azn: "0.00",
+    payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
+    money_flow: "Pulun hərəkət maddəsi mətni",
+    form: "Əsas"
+  },
+  {
+    no: 5,
+    opr_date: "01.22.21",
+    opr_num: "48654867548785",
+    voen: "1406129621",
+    taxpayer_name: "ÇƏLƏBİ TARYEL FAZİL OĞLU",
+    income_azn: "366.29",
+    expense_azn: "0.00",
+    payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
+    money_flow: "Pulun hərəkət maddəsi mətni",
+    form: "ƏDV"
+  }
+];
 
 export const onlineCashData = [
   {
@@ -740,10 +804,10 @@ export const importDocsData = [
     usd_price: "1.7000",
     invoice_currency: 'EUR',
     invoice_price: '1.7980',
-    invoice_value: '50,000.00',
-    transport_azn: "5,500.00",
-    invoice_azn: '89,900.00',
-    real_custom_value: "95,400.00",
+    invoice_value: '50.000.00',
+    transport_azn: "5.500.00",
+    invoice_azn: '89.900.00',
+    real_custom_value: "95.400.00",
     statistical_value: '109,710.00',
     two: "459",
     nineteen: '687',
@@ -764,7 +828,7 @@ export const importDocsData = [
     invoice_currency: 'EUR',
     invoice_price: '1.7980',
     invoice_value: '50,000.00',
-    transport_azn: "5,500.00",
+    transport_azn: "5.500.00",
     invoice_azn: '89,900.00',
     real_custom_value: "95,400.00",
     statistical_value: '109,710.00',
@@ -787,7 +851,7 @@ export const importDocsData = [
     invoice_currency: 'EUR',
     invoice_price: '1.7980',
     invoice_value: '50,000.00',
-    transport_azn: "5,500.00",
+    transport_azn: "5.500.00",
     invoice_azn: '89,900.00',
     real_custom_value: "95,400.00",
     statistical_value: '109,710.00',
@@ -837,7 +901,7 @@ export const exportDocsData = [
     invoice_currency: "EUR",
     invoice_price: "1.7980",
     invoice_value: "50,000.00",
-    transport_azn: "5,500.00",
+    transport_azn: "5.500.00",
     invoice_azn: "89,900.00",
     real_custom_value: "95,400.00",
     statistical_value: "109,710.00",
@@ -859,7 +923,7 @@ export const exportDocsData = [
     invoice_currency: "EUR",
     invoice_price: "1.7980",
     invoice_value: "50,000.00",
-    transport_azn: "5,500.00",
+    transport_azn: "5.500.00",
     invoice_azn: "89,900.00",
     real_custom_value: "95,400.00",
     statistical_value: "109,710.00",
@@ -881,8 +945,8 @@ export const exportDocsData = [
     invoice_currency: "EUR",
     invoice_price: "1.7980",
     invoice_value: "50,000.00",
-    transport_azn: "5,500.00",
-    invoice_azn: "89,900.00",
+    transport_azn: "5.500.00",
+    invoice_azn: "89.900",
     real_custom_value: "95,400.00",
     statistical_value: "109,710.00",
     two: "459",
@@ -2099,7 +2163,7 @@ export const accountsData = [
     swift: "AIIBAZ2X",
     correspondent_account: "AZ00KB00112233445566",
   },
- 
+
 
   // Azərbaycan Beynəlxalq Bankı - 3 hesab
   {

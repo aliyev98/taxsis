@@ -55,7 +55,7 @@ const NonResidents = () => {
     }
 
     return (
-        <div className="content">
+        <div className="non-residents tax-module-content">
 
             <TaxModuleHeader
                 title="Qeyri rezidentlər"

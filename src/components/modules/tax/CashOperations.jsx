@@ -62,7 +62,7 @@ const SubstitutionRegister = () => {
     }
 
     return (
-        <div className="content">
+        <div className="cash-operations tax-module-content">
 
 
             <TaxModuleHeader
@@ -73,7 +73,7 @@ const SubstitutionRegister = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} />
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} editable={true} />
             </div>
 
         </div>

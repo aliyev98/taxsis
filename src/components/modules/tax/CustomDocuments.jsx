@@ -105,7 +105,7 @@ const CustomDocuments = () => {
     }
 
     return (
-        <div className="custom-documents content">
+        <div className="custom-documents tax-module-content">
 
             <TaxModuleHeader
                 title="Əvəzləşmə reyestri"
@@ -115,7 +115,7 @@ const CustomDocuments = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={showGroupedHeader} />
+                <TaxModuleTable columns={columns} data={data} title={tableTitle} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={showGroupedHeader} editable={true} />
             </div>
 
 

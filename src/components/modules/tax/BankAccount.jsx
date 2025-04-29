@@ -35,7 +35,7 @@ const BankAccount = () => {
   ];
 
   return (
-    <div className="content">
+    <div className="bank-account tax-module-content">
       <TaxModuleHeader
         title={
           <div className="d-flex">

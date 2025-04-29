@@ -82,7 +82,7 @@ const ConfrontationActs = () => {
 
     return (
 
-        <div className="invoices-container content">
+        <div className="confirmation-acts tax-module-content">
 
 
             <TaxModuleHeader

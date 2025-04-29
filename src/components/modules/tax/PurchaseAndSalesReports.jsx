@@ -27,9 +27,8 @@ const PurchasAndSalesReports = () => {
 
 
     const headerBtns = [
-        { id: 1, content: "Əlavə et", className: "add" },
-        { id: 2, content: "Şablonu yüklə", className: "download" },
-        { id: 3, content: "İmport et", className: "import" },
+        { id: 1, content: "Şablonu yüklə", className: "download" },
+        { id: 2, content: "İmport et", className: "import" },
     ];
 
     const navBtns = [
@@ -125,7 +124,7 @@ const PurchasAndSalesReports = () => {
     }
 
     return (
-        <div className="content">
+        <div className="purchase-and-salses-reports tax-module-content">
 
             <TaxModuleHeader
                 title="Alış-satış hesabatı"

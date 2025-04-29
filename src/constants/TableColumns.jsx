@@ -2,7 +2,7 @@
 /// qaimələr
 
 export const purchaseColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No",  enableFooterTotal: true, },
     {
         id: "voen", accessorKey: "voen", header: "VÖEN",
         filterOptions: { search: true, type: "search" },
@@ -17,7 +17,12 @@ export const purchaseColumns = [
             options: ["A-dan Z-yə", "Z-dən A-ya"],
         },
     },
-    { id: "type", accessorKey: "type", header: "Tipi" },
+    {
+        id: "type", accessorKey: "type", header: "Tipi",
+        filterOptions: { search: true, type: "search" },
+
+    },
+
     {
         id: "status",
         accessorKey: "status",
@@ -54,7 +59,11 @@ export const purchaseColumns = [
         },
     },
 
-    { id: "date", accessorKey: "date", header: "Qaimə Tarixi" },
+    {
+        id: "date", accessorKey: "date", header: "Qaimə Tarixi",
+        filterOptions: { search: true, type: "search" },
+
+    },
     {
         id: "currency", accessorKey: "currency", header: "Valyuta",
         filterOptions: {
@@ -64,7 +73,7 @@ export const purchaseColumns = [
 ];
 
 export const actsColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true,  },
     {
         id: "infos",
         accessorKey: "infos",
@@ -75,17 +84,37 @@ export const actsColumns = [
             options: ["A-dan Z-yə", "Z-dən A-ya"],
         },
     },
-    { id: "series", accessorKey: "series", header: "Seriya" },
-    { id: "number", accessorKey: "number", header: "Nömrə" },
-    { id: "situation", accessorKey: "situation", header: "Vəziyyəti" },
-    { id: "status", accessorKey: "status", header: "Status" },
-    { id: "date", accessorKey: "date", header: "Tarix" },
+    {
+        id: "series", accessorKey: "series", header: "Seriya",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "number", accessorKey: "number", header: "Nömrə",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "situation", accessorKey: "situation", header: "Vəziyyəti",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "status", accessorKey: "status", header: "Status",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "date", accessorKey: "date", header: "Tarix",
+        filterOptions: { search: true, type: "search" },
+
+    },
 ];
 
 //əvəzləşmə reyestri
 
 export const replacedColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "series", accessorKey: "series", header: "Seriya",
         filterOptions: {
@@ -137,6 +166,7 @@ export const replacedColumns = [
             search: true,
             type: "search",
         },
+        enableFooterTotal: true,
     },
     {
         id: "vat_cost", accessorKey: "vat_cost", header: "Malın ƏDV dəyəri",
@@ -144,6 +174,7 @@ export const replacedColumns = [
             search: true,
             type: "search",
         },
+        enableFooterTotal: true,
     },
     {
         id: "paid_value", accessorKey: "paid_value", header: "Ödənilmiş ümumi dəyər",
@@ -151,6 +182,7 @@ export const replacedColumns = [
             search: true,
             type: "search",
         },
+        enableFooterTotal: true,
     },
     {
         id: "paid_vat", accessorKey: "paid_vat", header: "Ödənilmiş ƏDV",
@@ -158,6 +190,7 @@ export const replacedColumns = [
             search: true,
             type: "search",
         },
+        enableFooterTotal: true,
     },
     {
         id: "replacement_period", accessorKey: "replacement_period", header: "Əvəzləşmə dövrü",
@@ -169,7 +202,7 @@ export const replacedColumns = [
 ];
 
 export const initialsColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "voen",
         accessorKey: "voen",
@@ -213,6 +246,7 @@ export const initialsColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "vat", accessorKey: "vat", header: "ƏDV",
@@ -220,6 +254,7 @@ export const initialsColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "total", accessorKey: "total", header: "Cəmi",
@@ -227,11 +262,12 @@ export const initialsColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
 ];
 
 export const advanceColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "voen",
         accessorKey: "voen",
@@ -268,13 +304,14 @@ export const advanceColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
 ];
 
 // depozit cizarislari
 
 export const depositsColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "voen",
         accessorKey: "voen",
@@ -304,6 +341,7 @@ export const depositsColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "expense", accessorKey: "expense", header: "Məxaric(AZN)",
@@ -311,6 +349,7 @@ export const depositsColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "account_type", accessorKey: "account_type", header: "Hesabın növü",
@@ -356,10 +395,89 @@ export const depositsColumns = [
     },
 ];
 
+// bank çıxarışları
+
+export const bankStatementsColumns = [
+    {
+        id: "no", accessorKey: "no", header: "no", enableFooterTotal: true,
+    },
+    {
+        id: "opr_date", accessorKey: "opr_date", header: "Əməliyyat tarixi",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "opr_num", accessorKey: "opr_num", header: "Əməliyyat nömrəsi",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "voen", accessorKey: "voen", header: "VÖEN",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "taxpayer_name", accessorKey: "taxpayer_name", header: "Vergi ödəyicisinin adı",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "income_azn", accessorKey: "income_azn", header: "Mədaxil (AZN)",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "expense_azn", accessorKey: "expense_azn", header: "Məxaric (AZN)",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "payment_dest", accessorKey: "payment_dest", header: "Ödəniş təyinatı",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "money_flow", accessorKey: "money_flow", header: "Pulun hərəkət maddəsi",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "form",
+        accessorKey: "form",
+        header: "Forması",
+        filterOptions: { search: true, type: "search" },
+        cell: ({ getValue, row, column }) => {
+            const value = getValue();
+            const rowIndex = row.index;
+            const colId = column.id;
+
+            const getColorClass = (val) => {
+                switch (val) {
+                    case "əsas":
+                        return "form-main";
+                    case "ədv":
+                        return "form-vat";
+                    case "qarışıq":
+                        return "form-mixed";
+                    default:
+                        return "";
+                }
+            };
+
+            return (
+                <select
+                    className={`form-select ${getColorClass(value)}`}
+                    value={value}
+                    onChange={(e) => {
+                        row.original[colId] = e.target.value;
+                    }}
+                >
+                    <option value="əsas">əsas</option>
+                    <option value="ədv">ədv</option>
+                    <option value="qarışıq">qarışıq</option>
+                </select>
+            );
+        }
+    }
+
+]
+
 //kassa əməliyyatları
 
 export const onlineCashColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "code",
         accessorKey: "code",
@@ -389,6 +507,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "return", accessorKey: "return", header: "Geri qaytarma",
@@ -396,6 +515,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "cancel", accessorKey: "cancel", header: "Ləğv etmə",
@@ -403,6 +523,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "net_sale", accessorKey: "net_sale", header: "Xalis satış",
@@ -410,6 +531,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "cash", accessorKey: "cash", header: "Nağd",
@@ -417,6 +539,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "cashless", accessorKey: "cashless", header: "Nağdsız",
@@ -424,6 +547,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "vat_exempt", accessorKey: "vat_exempt", header: "ƏDV-dən azad",
@@ -431,6 +555,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "eighteen_percent", accessorKey: "eighteen_percent", header: "18%",
@@ -438,6 +563,7 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "tax", accessorKey: "tax", header: "Vergi",
@@ -445,11 +571,12 @@ export const onlineCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
 ];
 
 export const physicalCashColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "date",
         accessorKey: "date",
@@ -479,6 +606,7 @@ export const physicalCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "expense", accessorKey: "expense", header: "Məxaric(AZN)",
@@ -486,6 +614,7 @@ export const physicalCashColumns = [
             type: "search",
             search: true,
         },
+        enableFooterTotal: true,
     },
     {
         id: "payment_destination", accessorKey: "payment_destination", header: "Ödəniş təyinatı",
@@ -839,16 +968,16 @@ export const cashFlowColumns = [
 // gömrük sənədləri
 
 export const ImportDocsColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" }, },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" } },
     { id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi", filterOptions: { search: true, type: "search" }, },
     { id: "exporter", accessorKey: "exporter", header: "İxracatçı", filterOptions: { search: true, type: "search" }, },
     { id: "usd_price", accessorKey: "usd_price", header: "USD məzənnə", filterOptions: { search: true, type: "search" }, },
     { id: "invoice_currency", accessorKey: "invoice_currency", header: "İnvoys valyuta", filterOptions: { search: true, type: "search" }, },
     { id: "invoice_price", accessorKey: "invoice_price", header: "İnvoys məzənnə", filterOptions: { search: true, type: "search" }, },
-    { id: "invoice_value", accessorKey: "invoice_price", header: "İnvoys dəyəri", filterOptions: { search: true, type: "search" }, },
+    { id: "invoice_value", accessorKey: "invoice_price", header: "İnvoys dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true, },
     {
-        id: "transport_azn", accessorKey: "transport_azn", header: "Daşıma AZN", filterOptions: { search: true, type: "search" },
+        id: "transport_azn", accessorKey: "transport_azn", header: "Daşıma AZN", filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
         cell: ({ row }) => (
             <div className="transport-azn-cell d-flex align-items-center justify-content-between">
                 <span>{row.original.invoice_azn}</span>
@@ -860,7 +989,7 @@ export const ImportDocsColumns = [
 
     },
     { id: "invoice_azn", accessorKey: "invoice_azn", header: "İnvoys AZN", filterOptions: { search: true, type: "search" }, },
-    { id: "real_custom_value", accessorKey: "real_custom_value", header: "Real Gömrük dəyəri", filterOptions: { search: true, type: "search" }, },
+    { id: "real_custom_value", accessorKey: "real_custom_value", header: "Real Gömrük dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true,},
     { id: "statistical_value", accessorKey: "statistical_value", header: "Statistik dəyər", filterOptions: { search: true, type: "search" }, },
     { id: "two", accessorKey: "two", header: "02", filterOptions: { search: true, type: "search" }, },
     { id: "nineteen", accessorKey: "nineteen", header: "19", filterOptions: { search: true, type: "search" }, },
@@ -1941,7 +2070,7 @@ export const foreignDebitorColumns = [
 /// əvəzləşmə
 
 export const substitutionReportColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     { id: "voen", accessorKey: "voen", header: "VÖEN" },
     { id: "date", accessorKey: "date", header: "Qaimə tarixi" },
     { id: "serie_num", accessorKey: "serie_num", header: "Qaimə seriyası və nömrəsi" },

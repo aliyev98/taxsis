@@ -10,6 +10,7 @@ import ColumnFilterDropdown from "../dropdwons/ColumnFilterDropdown";
 import ColumnVisibilityDropdown from "../dropdwons/ColumnVisibilityDropdown";
 import TableHeader from "../../layouts/TableHeader";
 import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
+import EmptyDataMessage from "../ui/EmptyDataMessage";
 
 export default function TaxModuleTable({
   columns,
@@ -144,11 +145,16 @@ export default function TaxModuleTable({
     columns.forEach((col) => {
       const key = col.accessorKey;
       if (!key || col.enableFooterTotal !== true) return;
-      const total = finalData.reduce((sum, row) => sum + Number(row[key] ?? 0), 0);
-      totals[key] = total;
+
+      if (key === "no") {
+        totals[key] = finalData.length; // ✅ no için satır sayısı
+      } else {
+        totals[key] = finalData.reduce((sum, row) => sum + Number(row[key] ?? 0), 0);
+      }
     });
     return totals;
   }, [columns, finalData]);
+
 
   const table = useReactTable({
     data: finalData,
@@ -299,7 +305,7 @@ export default function TaxModuleTable({
                         {editingCell === `${row.id}-${cell.column.id}` ? (
                           editMode ? (
                             <input
-                            className="column-edit-input"
+                              className="column-edit-input"
                               type="text"
                               value={editValue}
                               onChange={(e) => setEditValue(e.target.value)}
@@ -339,11 +345,22 @@ export default function TaxModuleTable({
             ) : (
               <tr>
                 <td colSpan={columns.length} className="text-center">
-                  Heç bir məlumat tapılmadı
+                  <EmptyDataMessage />
                 </td>
               </tr>
             )}
           </tbody>
+
+          <tfoot>
+            <tr>
+              {columns.map((col) => (
+                <td key={col.id}>
+                  {col.enableFooterTotal ? footerTotals[col.accessorKey]?.toFixed(2) : null}
+                </td>
+              ))}
+            </tr>
+          </tfoot>
+
         </table>
       </div>
 

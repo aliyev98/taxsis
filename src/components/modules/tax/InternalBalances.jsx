@@ -69,7 +69,7 @@ const InternalBalances = () => {
     }
 
     return (
-        <div className="content">
+        <div className="internal-balances tax-module-content">
 
             <TaxModuleHeader
                 title="Daxili qalıqlar"
@@ -79,7 +79,7 @@ const InternalBalances = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} />
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} editable={true} />
             </div>
 
 

@@ -137,7 +137,7 @@ const Substitution = () => {
     }
 
     return (
-        <div className="content">
+        <div className="substitution tax-module-content">
 
             <TaxModuleHeader
                 title="Əvəzləşmə"

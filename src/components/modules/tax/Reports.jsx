@@ -19,12 +19,6 @@ const Reports = () => {
         }
     }, [sidebarSelection, dispatch]);
 
-    // const headerBtns = [
-    //     { id: 1, content: "Əlavə et", className: "add" },
-    //     { id: 2, content: "Şablonu yüklə", className: "download" },
-    //     { id: 3, content: "İmport et", className: "import" },
-    // ];
-
     const navBtns = [
         { id: "internal", content: "Daxili üzləşmələr" },
         { id: "external", content: "Xarici üzləşmələr" },
@@ -47,7 +41,7 @@ const Reports = () => {
     }
 
     return (
-        <div className="reports-container content">
+        <div className="reports tax-module-content">
 
             <TaxModuleHeader
                 title="Hesabatlar"
@@ -56,7 +50,7 @@ const Reports = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={[]} data={[]} navBtns={navBtns} title={tableTitle} emptyMessageVisible={true} />
+                <TaxModuleTable columns={[]} data={[]} navBtns={navBtns} title={tableTitle} emptyMessageVisible={false} />
             </div>
 
         </div>
