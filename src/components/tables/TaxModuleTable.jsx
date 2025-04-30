@@ -276,72 +276,89 @@ export default function TaxModuleTable({
             ))}
           </thead>
 
-
           <tbody>
             {finalData.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <tr
-                  key={row.id}
-                  onClick={() => {
-                    if (rowClickEnabled && onRowClick) {
-                      onRowClick(row.original);
-                    }
-                  }}
-                  style={{ cursor: rowClickEnabled ? "pointer" : "default" }}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      onClick={(e) => {
-                        if (!editable) return;
-                        e.stopPropagation(); // sadece düzenleme modundaysa satır tıklamasını engelle
-                        if (editingCell !== `${row.id}-${cell.column.id}`) {
-                          setEditingCell(`${row.id}-${cell.column.id}`);
-                          setEditMode(false);
-                        }
-                      }}
-                    >
-                      <div style={{ position: "relative" }}>
-                        {editingCell === `${row.id}-${cell.column.id}` ? (
-                          editMode ? (
-                            <input
-                              className="column-edit-input"
-                              type="text"
-                              value={editValue}
-                              onChange={(e) => setEditValue(e.target.value)}
-                              onBlur={() => {
-                                row.original[cell.column.id] = editValue;
-                                setEditingCell(null);
-                                setEditMode(false);
-                              }}
-                              autoFocus
-                            />
+              finalData.map((row, rowIndex) => {
+                if (row.isGroupHeader) {
+                  return (
+                    <tr key={`group-${rowIndex}`} className="group-header-row">
+                      <td colSpan={columns.length} className="group-name-cell">
+                        {row.groupName}
+                      </td>
+                    </tr>
+                  );
+                }
+
+                const tableRow = table.getRowModel().rows.find(r =>
+                  r.original === row
+                );
+
+                if (!tableRow) return null;
+
+                return (
+                  <tr
+                    key={tableRow.id}
+                    onClick={() => {
+                      if (rowClickEnabled && onRowClick) {
+                        onRowClick(tableRow.original);
+                      }
+                    }}
+                    style={{ cursor: rowClickEnabled ? "pointer" : "default" }}
+                  >
+                    {tableRow.getVisibleCells().map((cell) => (
+                      <td
+                        key={cell.id}
+                        onClick={(e) => {
+                          if (!editable) return;
+                          e.stopPropagation();
+                          if (editingCell !== `${tableRow.id}-${cell.column.id}`) {
+                            setEditingCell(`${tableRow.id}-${cell.column.id}`);
+                            setEditMode(false);
+                          }
+                        }}
+                      >
+                        <div style={{ position: "relative" }}>
+                          {editingCell === `${tableRow.id}-${cell.column.id}` ? (
+                            editMode ? (
+                              <input
+                                className="column-edit-input"
+                                type="text"
+                                value={editValue}
+                                onChange={(e) => setEditValue(e.target.value)}
+                                onBlur={() => {
+                                  tableRow.original[cell.column.id] = editValue;
+                                  setEditingCell(null);
+                                  setEditMode(false);
+                                }}
+                                autoFocus
+                              />
+                            ) : (
+                              <>
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 10 }}>
+                                  <TableDataEditDropdown
+                                    onEdit={() => {
+                                      setEditMode(true);
+                                      setEditValue(cell.getValue());
+                                    }}
+                                    onDelete={() => {
+                                      console.log("Silinecek:", tableRow.original);
+                                      setEditingCell(null);
+                                    }}
+                                    closeDropdown={() => setEditingCell(null)}
+                                  />
+                                </div>
+                              </>
+                            )
                           ) : (
-                            <>
-                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                              <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 10 }}>
-                                <TableDataEditDropdown
-                                  onEdit={() => {
-                                    setEditMode(true);
-                                    setEditValue(cell.getValue());
-                                  }}
-                                  onDelete={() => {
-                                    console.log("Silinecek:", row.original);
-                                    setEditingCell(null);
-                                  }}
-                                  closeDropdown={() => setEditingCell(null)}
-                                />
-                              </div>
-                            </>
-                          )
-                        ) : (
-                          flexRender(cell.column.columnDef.cell, cell.getContext())
-                        )}
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-              ))
+                            flexRender(cell.column.columnDef.cell, cell.getContext())
+                          )}
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })
             ) : (
               <tr>
                 <td colSpan={columns.length} className="text-center">
@@ -350,7 +367,6 @@ export default function TaxModuleTable({
               </tr>
             )}
           </tbody>
-
 
           <tfoot>
             <tr>

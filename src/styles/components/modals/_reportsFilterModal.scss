@@ -1,109 +1,109 @@
-.reports-filter-modal {
-    .modal-body {
-        gap: 20px;
-        padding: 0 !important;
+.reports-filter-modal{
+        .modal-body {
+            gap: 20px;
+            padding: 0 !important;
 
-        .input-div {
-            background-color: #F4F4F4;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            padding: 8px 16px;
-            border-radius: 12px;
-
-            label {
-                font-size: 12px;
-                font-weight: 500;
-                padding: 0 !important;
-                text-align: left !important;
-            }
-
-            .icon {
-                width: 24px;
-                height: 24px;
-
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
-
-                }
-            }
-
-            .input {
-                flex: 1;
-            }
-
-            input {
-                font-size: 15px;
-                font-weight: 600;
-                padding: 0 !important;
-                background-color: transparent;
-                border: none;
-                outline: none;
-            }
-        }
-
-        .calendar-input {
-            padding: 0;
-        }
-
-        .select-div {
-            background-color: #F4F4F4;
-            gap: 0;
-            padding: 8px 16px;
-            border-radius: 12px;
-            align-items: center;
-
-            label {
-                font-size: 12px;
-                font-weight: 500;
-                padding: 0 !important;
-            }
-
-            .select {
+            .input-div {
+                background-color: #F4F4F4;
                 display: flex;
                 flex-direction: column;
-                flex: 1;
+                gap: 0;
+                padding: 8px 16px;
+                border-radius: 12px;
 
-                select {
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
+                label {
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 0 !important;
+                    text-align: left !important;
+                }
+
+                .icon {
+                    width: 24px;
+                    height: 24px;
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+
+                    }
+                }
+
+                .input {
+                    flex: 1;
+                }
+
+                input {
                     font-size: 15px;
                     font-weight: 600;
-
-                    appearance: none; // modern tarayıcılar
-                    -webkit-appearance: none; // Safari
-                    -moz-appearance: none; // Firefox
-
-                    background-image: none;
+                    padding: 0 !important;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
                 }
             }
 
-            input {
+            .calendar-input {
+                padding: 0;
+            }
+
+            .select-div {
+                background-color: #F4F4F4;
+                gap: 0;
+                padding: 8px 16px;
+                border-radius: 12px;
+                align-items: center;
+
+                label {
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 0 !important;
+                }
+
+                .select {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+
+                    select {
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        font-size: 15px;
+                        font-weight: 600;
+
+                        appearance: none; // modern tarayıcılar
+                        -webkit-appearance: none; // Safari
+                        -moz-appearance: none; // Firefox
+
+                        background-image: none;
+                    }
+                }
+
+                input {
+                    font-size: 15px;
+                    font-weight: 600;
+                    padding: 0 !important;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                }
+            }
+
+        }
+
+        .modal-footer {
+            border: none;
+
+            .btn {
+                width: 100%;
+                padding: 12px 20px !important;
+                border-radius: 12px;
                 font-size: 15px;
-                font-weight: 600;
-                padding: 0 !important;
-                background-color: transparent;
-                border: none;
-                outline: none;
+                font-weight: 700;
             }
         }
-
-    }
-
-    .modal-footer {
-        border: none;
-
-        .btn {
-            width: 100%;
-            padding: 12px 20px !important;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-        }
-    }
-
+      
 
 }
