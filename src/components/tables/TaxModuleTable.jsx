@@ -11,11 +11,11 @@ import ColumnVisibilityDropdown from "../dropdwons/ColumnVisibilityDropdown";
 import TableHeader from "../../layouts/TableHeader";
 import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
 import EmptyDataMessage from "../ui/EmptyDataMessage";
+import EmptyReportsMessage from "../ui/EmptyReportsMessage";
 
 export default function TaxModuleTable({
   columns,
   data,
-  title,
   navBtns,
   reportsHeader,
   customHeaderButtons,
@@ -345,11 +345,12 @@ export default function TaxModuleTable({
             ) : (
               <tr>
                 <td colSpan={columns.length} className="text-center">
-                  <EmptyDataMessage />
+                  {emptyMessageVisible ? <EmptyReportsMessage /> : <EmptyDataMessage />}
                 </td>
               </tr>
             )}
           </tbody>
+
 
           <tfoot>
             <tr>

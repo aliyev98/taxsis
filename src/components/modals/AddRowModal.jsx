@@ -20,7 +20,7 @@ const AddRowModal = ({ show, onClose, title, columns }) => {
 
       {/* Modal kutusu */}
       <div
-        className="modal fade show d-block"
+        className="modal fade show d-block add-row-modal"
         tabIndex="-1"
         role="dialog"
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}

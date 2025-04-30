@@ -3,8 +3,8 @@ import FormButton from './buttons/FormButton';
 
 const EmptyDataMessage = () => {
   return (
-    <div className='empty-message-container'>
-{/* 
+    <div className='empty-data-message'>
+
       <div className="message-content d-flex flex-column justify-content-center align-items-center">
 
         <div className="image-div">
@@ -14,7 +14,7 @@ const EmptyDataMessage = () => {
         <span>Oops!</span>
         <span>Heç bir məlumat tapılmadı!</span>
 
-      </div> */}
+      </div>
 
     </div>
   )

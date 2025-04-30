@@ -147,7 +147,7 @@ const Substitution = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} />
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} editable={true} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} />
             </div>
 
 

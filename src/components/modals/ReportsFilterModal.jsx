@@ -3,8 +3,23 @@ import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import SelectWithLabel from "../ui/inputs/SelectWithLabel";
+import InputWithLabel from '../ui/inputs/InputWithLabel';
 
 const ReportsFilterModal = ({ onClose }) => {
+
+    const typeOptions = [
+        { value: "debtor", label: "Debitor" },
+        { value: "creditor", label: "Kreditor" },
+        { value: "foreign_creditor", label: "Xarici kreditor" },
+        { value: "foreign_debtor", label: "Xarici debitor" },
+    ];
+
+    const kontragentOptions = [
+        { value: "voen", label: "VÖEN" },
+        { value: "name", label: "Ad" },
+    ]
+
 
     const [selectedValue, setSelectedValue] = useState("vat");
     const [inputValue, setInputValue] = useState("");
@@ -64,7 +79,7 @@ const ReportsFilterModal = ({ onClose }) => {
     }, [showCalendar]);
 
     return (
-        <div className="modal show overflow-hidden d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+        <div className="reports-filter-modal modal show overflow-hidden d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
 
             <div className="modal-dialog w-50" role="document">
 
@@ -77,43 +92,27 @@ const ReportsFilterModal = ({ onClose }) => {
 
                     <div className="modal-body d-flex flex-column">
 
-                        <div className="select-div d-flex justify-content-between">
-                            <div className="select">
-                                <label htmlFor="">Növü</label>
-                                <select>
-                                    <option value="creditor">Kreditor</option>
-                                    <option value="debtor">Debitor</option>
-                                    <option value="foregin_creditor">Xarici kreditor</option>
-                                    <option value="foregin_debtor">Xarici debitor</option>
-                                </select>
-                            </div>
-                            <div className="icon">
-                                <img src="/assets/arrow-down.svg" alt="" />
-                            </div>
-                        </div>
+                        <SelectWithLabel
+                            name="reportType"
+                            label="Növü"
+                            value={selectedValue}
+                            onChange={(e) => setSelectedValue(e.target.value)}
+                            options={typeOptions}
+                        />
 
-                        <div className="select-div d-flex justify-content-between">
-                            <div className="select">
-                                <label htmlFor="">Kontragent</label>
-                                <select
-                                    value={selectedValue}
-                                    onChange={(e) => {
-                                        setSelectedValue(e.target.value);
-                                        setInputValue("");
-                                    }}
-                                >
-                                    <option value="vat">VÖEN</option>
-                                    <option value="name">Ad</option>
-                                </select>
-                            </div>
-                            <div className="icon">
-                                <img src="/assets/arrow-down.svg" alt="" />
-                            </div>
-                        </div>
+                        <SelectWithLabel
+                            name="kontragent"
+                            label="Kontragent"
+                            value={selectedValue}
+                            options={kontragentOptions}
+                            onChange={(e) => setSelectedValue(e.target.value)}
 
-                        <div className="input-div">
+                        />
+
+
+                        <div className="input-div d-flex">
                             <label htmlFor={selectedValue}>
-                                {selectedValue === "vat" ? "VÖEN" : "Ad"}
+                                {selectedValue === "voen" ? "VÖEN" : "Ad"}
                             </label>
                             <input
                                 type="text"
@@ -128,7 +127,7 @@ const ReportsFilterModal = ({ onClose }) => {
                             />
                         </div>
 
-                        <div className="input-div position-relative">
+                        <div className="input-div calendar-input position-relative">
 
                             <div className="calendar-input d-flex align-items-center" onClick={() => setShowCalendar((p) => !p)}
                             >

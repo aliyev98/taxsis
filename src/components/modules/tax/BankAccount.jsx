@@ -60,7 +60,7 @@ const BankAccount = () => {
         <TaxModuleTable
           columns={currentColumns}
           data={currentTableData}
-          editable={false}
+          editable={true}
           rowClickEnabled={!selectedBank}
           onRowClick={(bank) => setSelectedBank(bank)}
         />

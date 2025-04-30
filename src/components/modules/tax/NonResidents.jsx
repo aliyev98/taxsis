@@ -65,7 +65,7 @@ const NonResidents = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} emptyMessageVisible={true} />
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} editable={true} emptyMessageVisible={true} />
             </div>
 
 

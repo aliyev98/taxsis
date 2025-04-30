@@ -5,6 +5,7 @@ import AddRowModal from "../components/modals/AddRowModal";
 import AddBankModal from "../components/modals/AddBankModal"; // ✅ Yeni modalı import ediyoruz
 import { openModal } from '../redux/slices/postSlice';
 import AddAccountModal from "../components/modals/AddAccountModal";
+import AddRowDropdown from "../components/dropdwons/AddRowDropdown";
 
 const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
     const dispatch = useDispatch();
@@ -49,23 +50,14 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
                                     </button>
 
                                     {showDropdown && (
-                                        <div className="dropdown-menu add-dropdown show d-flex flex-column" ref={dropdownRef}>
-                                            <div className="dropdown-title">Hansı menuya əlavə edilsin?</div>
-                                            {navBtns?.map((item) => (
-                                                <button
-                                                    key={item.id}
-                                                    className="dropdown-item"
-                                                    onClick={() => {
-                                                        dispatch(setNavbarSelection(item.id));
-                                                        setSelectedNavForModal(item.content);
-                                                        setShowDropdown(false);
-                                                        setShowModal(true);
-                                                    }}
-                                                >
-                                                    {item.content}
-                                                </button>
-                                            ))}
-                                        </div>
+                                        <AddRowDropdown
+                                            navBtns={navBtns}
+                                            setNavbarSelection={(id) => dispatch(setNavbarSelection(id))}
+                                            setSelectedNavForModal={setSelectedNavForModal}
+                                            setShowModal={setShowModal}
+                                            setShowDropdown={setShowDropdown}
+                                            dropdownRef={dropdownRef}
+                                        />
                                     )}
                                 </div>
                             );

@@ -194,7 +194,7 @@ const DebtsTable = () => {
 
             <TaxModuleHeader
                 title="Borclar cədvəli"
-                headerBtns={headerBtns}
+                // headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}
             />

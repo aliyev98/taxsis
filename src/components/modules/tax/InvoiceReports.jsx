@@ -10,7 +10,6 @@ const ConfrontationActs = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
-    const [reportsHeader, setReportsHeader] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
 
     const dispatch = useDispatch();

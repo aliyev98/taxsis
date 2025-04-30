@@ -37,8 +37,9 @@ const Reports = () => {
             break;
         default:
             tableTitle = 'Daxili üzləşmələr';
-
     }
+
+
 
     return (
         <div className="reports tax-module-content">
@@ -50,7 +51,7 @@ const Reports = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={[]} data={[]} navBtns={navBtns} title={tableTitle} emptyMessageVisible={false} />
+                <TaxModuleTable columns={[]} data={[]} navBtns={navBtns} title={tableTitle} emptyMessageVisible={true} />
             </div>
 
         </div>
