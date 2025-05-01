@@ -28,7 +28,6 @@ const PurchasAndSalesReports = () => {
 
     const headerBtns = [
         { id: 1, content: "Şablonu yüklə", className: "download" },
-        { id: 2, content: "İmport et", className: "import" },
     ];
 
     const navBtns = [

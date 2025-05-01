@@ -343,4 +343,18 @@
         background: var(--Secondary-01, #FFBC99);
     }
 
+    .form-control {
+        box-shadow: none !important;
+        border: none !important;
+        background-color: transparent !important;
+
+
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        flex-grow: 1 !important;
+        width: 60px !important;
+        padding: 0 !important;
+    }
+
 }

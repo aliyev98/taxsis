@@ -1,4 +1,5 @@
 .reports-filter-modal{
+
         .modal-body {
             gap: 20px;
             padding: 0 !important;
@@ -48,48 +49,48 @@
                 padding: 0;
             }
 
-            .select-div {
-                background-color: #F4F4F4;
-                gap: 0;
-                padding: 8px 16px;
-                border-radius: 12px;
-                align-items: center;
+            // .select-div {
+            //     background-color: #F4F4F4;
+            //     gap: 0;
+            //     padding: 8px 16px;
+            //     border-radius: 12px;
+            //     align-items: center;
 
-                label {
-                    font-size: 12px;
-                    font-weight: 500;
-                    padding: 0 !important;
-                }
+            //     label {
+            //         font-size: 12px;
+            //         font-weight: 500;
+            //         padding: 0 !important;
+            //     }
 
-                .select {
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1;
+            //     .select {
+            //         display: flex;
+            //         flex-direction: column;
+            //         flex: 1;
 
-                    select {
-                        border: none;
-                        outline: none;
-                        background-color: transparent;
-                        font-size: 15px;
-                        font-weight: 600;
+            //         select {
+            //             border: none;
+            //             outline: none;
+            //             background-color: transparent;
+            //             font-size: 15px;
+            //             font-weight: 600;
 
-                        appearance: none; // modern tarayıcılar
-                        -webkit-appearance: none; // Safari
-                        -moz-appearance: none; // Firefox
+            //             appearance: none; // modern tarayıcılar
+            //             -webkit-appearance: none; // Safari
+            //             -moz-appearance: none; // Firefox
 
-                        background-image: none;
-                    }
-                }
+            //             background-image: none;
+            //         }
+            //     }
 
-                input {
-                    font-size: 15px;
-                    font-weight: 600;
-                    padding: 0 !important;
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                }
-            }
+            //     input {
+            //         font-size: 15px;
+            //         font-weight: 600;
+            //         padding: 0 !important;
+            //         background-color: transparent;
+            //         border: none;
+            //         outline: none;
+            //     }
+            // }
 
         }
 

@@ -44,6 +44,8 @@ export default function TaxModuleTable({
   const [editMode, setEditMode] = useState(false);
   const [editValue, setEditValue] = useState("");
 
+
+
   const filterDropdownRef = useRef();
   const columnDropdownRef = useRef();
 
@@ -147,13 +149,24 @@ export default function TaxModuleTable({
       if (!key || col.enableFooterTotal !== true) return;
 
       if (key === "no") {
-        totals[key] = finalData.length; // ✅ no için satır sayısı
+        totals[key] = finalData.length;
       } else {
-        totals[key] = finalData.reduce((sum, row) => sum + Number(row[key] ?? 0), 0);
+        totals[key] = finalData.reduce((sum, row) => {
+          const raw = row[key];
+
+          // Sayısal format düzeltmesi
+          const parsed =
+            typeof raw === "string"
+              ? parseFloat(raw.replace(/\./g, "").replace(",", "."))
+              : Number(raw);
+
+          return sum + (isNaN(parsed) ? 0 : parsed);
+        }, 0);
       }
     });
     return totals;
   }, [columns, finalData]);
+
 
 
   const table = useReactTable({
@@ -162,7 +175,15 @@ export default function TaxModuleTable({
     state: { columnVisibility },
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
+    meta: {
+      setEditingCell,
+      setEditMode,
+      setEditValue,
+    },
   });
+
+
+
 
   const handleSearchChange = (colKey, val) => {
     setFilters((prev) => ({
@@ -372,11 +393,18 @@ export default function TaxModuleTable({
             <tr>
               {columns.map((col) => (
                 <td key={col.id}>
-                  {col.enableFooterTotal ? footerTotals[col.accessorKey]?.toFixed(2) : null}
+                  {col.enableFooterTotal
+                    ? !isNaN(footerTotals[col.accessorKey])
+                      ? col.accessorKey === 'no'
+                        ? footerTotals[col.accessorKey] // 👈 sadece sayı
+                        : footerTotals[col.accessorKey].toFixed(2) // 👈 diğerleri ondalıklı
+                      : ''
+                    : null}
                 </td>
               ))}
             </tr>
           </tfoot>
+
 
         </table>
       </div>
