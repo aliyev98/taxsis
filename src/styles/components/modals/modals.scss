@@ -41,21 +41,21 @@
 
     }
 
-    .calendar-popup {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 999;
+    // .calendar-popup {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     z-index: 999;
 
-        .rdrDayNumber span:hover {
-            font-size: 12px !important;
-        }
+    //     .rdrDayNumber span:hover {
+    //         font-size: 12px !important;
+    //     }
 
-        .rdrDayNumber:hover {
-            font-size: 12px !important;
-        }
-    }
+    //     .rdrDayNumber:hover {
+    //         font-size: 12px !important;
+    //     }
+    // }
 
 
 }

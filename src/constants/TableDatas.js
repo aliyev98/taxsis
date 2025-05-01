@@ -1,13 +1,13 @@
 export const purchaseData = [
   { no: 1, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqləndi", date: "01.12.2024", currency: "AZN" },
-  { no: 3, voen: "1406129621", name: "“BTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "EUR" },
-  { no: 4, voen: "3216129621", name: "“CTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "USD" },
-  { no: 5, voen: "1406129621", name: "“DTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "EUR" },
-  { no: 6, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
-  { no: 7, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "USD" },
+  { no: 2, voen: "1406129621", name: "“BTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "EUR" },
+  { no: 3, voen: "3216129621", name: "“CTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "USD" },
+  { no: 4, voen: "1406129621", name: "“DTS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "EUR" },
+  { no: 5, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
+  { no: 6, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "USD" },
+  { no: 7, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
   { no: 8, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
   { no: 9, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
-  { no: 10, voen: "1406129621", name: "“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ", type: "Cari", status: "Təsdiqlənmədi", date: "01.12.2024", currency: "AZN" },
   
 ];
 

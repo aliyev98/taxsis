@@ -520,7 +520,7 @@ export const depositsColumns = [
 
 export const bankStatementsColumns = [
     {
-        id: "no", accessorKey: "no", header: "no", enableFooterTotal: true,
+        id: "no", accessorKey: "no", header: "no",  enableFooterTotal: true,
     },
     {
         id: "opr_date", accessorKey: "opr_date", header: "Əməliyyat tarixi",
@@ -1795,106 +1795,106 @@ export const creditorDebtsColumns = [
         id: "before_debt_balance_main", accessorKey: "before_debt_balance_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV",
+        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",
+        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
     ///
     {
-        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",
+        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV",
+        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi",
-    },
-
-    {
-        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas",
-    },
-    {
-        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV",
-    },
-    {
-        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi",
+        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "return_main", accessorKey: "return_main", header: "Əsas",
+        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "return_vat", accessorKey: "return_vat", header: "ƏDV",
+        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "return_total", accessorKey: "return_total", header: "Cəmi",
-    },
-
-    {
-        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas",
-    },
-    {
-        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV",
-    },
-    {
-        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi",
+        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "purchase_main", accessorKey: "purchase_main", header: "Əsas",
+        id: "return_main", accessorKey: "return_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "purchase_vat", accessorKey: "purchase_vat", header: "ƏDV",
+        id: "return_vat", accessorKey: "return_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "purchase_total", accessorKey: "purchase_total", header: "Cəmi",
-    },
-
-    {
-        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas",
-    },
-    {
-        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV",
-    },
-    {
-        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi",
+        id: "return_total", accessorKey: "return_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas",
+        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV",
+        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi",
-    },
-
-    {
-        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas",
-    },
-    {
-        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV",
-    },
-    {
-        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi",
+        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas",
+        id: "purchase_main", accessorKey: "purchase_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV",
+        id: "purchase_vat", accessorKey: "purchase_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi",
+        id: "purchase_total", accessorKey: "purchase_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi",  enableFooterTotal: true,
+    }, 
+
+    {
+        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
 ]
 
 export const debitorDebtColumns = [
     {
-        id: "no", accessorKey: "no", header: "NO",
+        id: "no", accessorKey: "no", header: "NO",  enableFooterTotal: true,
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
@@ -1904,119 +1904,119 @@ export const debitorDebtColumns = [
     },
 
     {
-        id: "before_debt_balance_main", accessorKey: "before_debt_balance_main", header: "Əsas",
+        id: "before_debt_balance_main", accessorKey: "before_debt_balance_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV",
+        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",
-    },
-
-    {
-        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",
-    },
-    {
-        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV",
-    },
-    {
-        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi",
+        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas",
+        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV",
+        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi",
-    },
-
-    {
-        id: "return_main", accessorKey: "return_main", header: "Əsas",
-    },
-    {
-        id: "return_vat", accessorKey: "return_vat", header: "ƏDV",
-    },
-    {
-        id: "return_total", accessorKey: "return_total", header: "Cəmi",
+        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas",
+        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV",
+        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi",
-    },
-
-    {
-        id: "sales_main", accessorKey: "sales_main", header: "Əsas",
-    },
-    {
-        id: "sales_vat", accessorKey: "sales_vat", header: "ƏDV",
-    },
-    {
-        id: "sales_total", accessorKey: "sales_total", header: "Cəmi",
+        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas",
+        id: "return_main", accessorKey: "return_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV",
+        id: "return_vat", accessorKey: "return_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi",
-    },
-
-    {
-        id: "refund_money_customer_main", accessorKey: "refund_money_customer_main", header: "Əsas",
-    },
-    {
-        id: "refund_money_customer_vat", accessorKey: "refund_money_customer_vat", header: "ƏDV",
-    },
-    {
-        id: "refund_money_customer_total", accessorKey: "refund_money_customer_total", header: "Cəmi",
+        id: "return_total", accessorKey: "return_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas",
+        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV",
+        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi",
-    },
-
-    {
-        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas",
-    },
-    {
-        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV",
-    },
-    {
-        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi",
+        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi",  enableFooterTotal: true,
     },
 
     {
-        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas",
+        id: "sales_main", accessorKey: "sales_main", header: "Əsas",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV",
+        id: "sales_vat", accessorKey: "sales_vat", header: "ƏDV",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi",
+        id: "sales_total", accessorKey: "sales_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "refund_money_customer_main", accessorKey: "refund_money_customer_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "refund_money_customer_vat", accessorKey: "refund_money_customer_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "refund_money_customer_total", accessorKey: "refund_money_customer_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi",  enableFooterTotal: true,
+    },
+
+    {
+        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas",  enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV",  enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi",  enableFooterTotal: true,
     },
 ]
 
 export const foreignCreditorColumns = [
     {
-        id: "no", accessorKey: "no", header: "NO",
+        id: "no", accessorKey: "no", header: "NO",  enableFooterTotal: true,
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
@@ -2026,86 +2026,86 @@ export const foreignCreditorColumns = [
     },
 
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta",
+        id: "currency", accessorKey: "currency", header: "Valyuta", 
     },
     /////
     {
-        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",
+        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",   enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
+        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
     ///
 
     {
-        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
+        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
-    {
-        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",
+    { 
+        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
 
     {
-        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",
+        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
+        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",  enableFooterTotal: true,
     },
     ///
     {
-        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
+        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "return_azn", accessorKey: "return_azn", header: "AZN",
-    },
-    ////
-    {
-        id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta",
-    },
-    {
-        id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN",
+        id: "return_azn", accessorKey: "return_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
+        id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",
-    },
-    ////
-    {
-        id: "incurring_debt_supplier_return_currency", accessorKey: "incurring_debt_supplier_return_currency", header: "Valyuta",
-    },
-    {
-        id: "incurring_debt_supplier_return_azn", accessorKey: "incurring_debt_supplier_return_azn", header: "AZN",
+        id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_total_income_currency", accessorKey: "incurring_debt_total_income_currency", header: "Valyuta",
+        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_total_income_azn", accessorKey: "incurring_debt_total_income_azn", header: "AZN",
+        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",  enableFooterTotal: true,
+    },
+    ////
+    {
+        id: "incurring_debt_supplier_return_currency", accessorKey: "incurring_debt_supplier_return_currency", header: "Valyuta",  enableFooterTotal: true,
+    },
+    {
+        id: "incurring_debt_supplier_return_azn", accessorKey: "incurring_debt_supplier_return_azn", header: "AZN",  enableFooterTotal: true,
+    },
+    ////
+    {
+        id: "incurring_debt_total_income_currency", accessorKey: "incurring_debt_total_income_currency", header: "Valyuta",  enableFooterTotal: true,
+    },
+    {
+        id: "incurring_debt_total_income_azn", accessorKey: "incurring_debt_total_income_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
 
-    {
-        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",
+    { 
+        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",
+        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
     /////
     {
-        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",
+        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",
+        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
 ]
 
 export const foreignDebitorColumns = [
     {
-        id: "no", accessorKey: "no", header: "NO",
+        id: "no", accessorKey: "no", header: "NO",  enableFooterTotal: true,
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
@@ -2115,77 +2115,77 @@ export const foreignDebitorColumns = [
     },
 
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta",
+        id: "currency", accessorKey: "currency", header: "Valyuta", 
     },
     /////
     {
-        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",
+        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
-    },
-    ////
-    {
-        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
-    },
-    {
-        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",
+        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
     {
-        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",
+        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
+        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",  enableFooterTotal: true,
+    },
+    ////
+    {   
+        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",  enableFooterTotal: true,
+    },
+    {
+        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
     {
-        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
+        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "return_azn", accessorKey: "return_azn", header: "AZN",
-    },
-    ////
-    {
-        id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta",
-    },
-    {
-        id: "peyment_debt_total_expense_azn", accessorKey: "peyment_debt_total_expense_azn", header: "AZN",
+        id: "return_azn", accessorKey: "return_azn", header: "AZN",  enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
+        id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",
+        id: "peyment_debt_total_expense_azn", accessorKey: "peyment_debt_total_expense_azn", header: "AZN",  enableFooterTotal: true,
+    },
+    ////
+    {
+        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",  enableFooterTotal: true,
+    },
+    {
+        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",  enableFooterTotal: true,
+    }, 
+
+    {
+        id: "incurring_debt_return_customer_currency", accessorKey: "incurring_debt_return_customer_currency", header: "Valyuta",  enableFooterTotal: true,
+    },
+    {
+        id: "incurring_debt_return_customer_azn", accessorKey: "incurring_debt_return_customer_azn", header: "AZN",  enableFooterTotal: true,
     },
 
     {
-        id: "incurring_debt_return_customer_currency", accessorKey: "incurring_debt_return_customer_currency", header: "Valyuta",
+        id: "incurring_debt_incoming_currency", accessorKey: "incurring_debt_incoming_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_return_customer_azn", accessorKey: "incurring_debt_return_customer_azn", header: "AZN",
-    },
-
-    {
-        id: "incurring_debt_incoming_currency", accessorKey: "incurring_debt_incoming_currency", header: "Valyuta",
-    },
-    {
-        id: "incurring_debt_incoming_azn", accessorKey: "incurring_debt_incoming_azn", header: "AZN",
+        id: "incurring_debt_incoming_azn", accessorKey: "incurring_debt_incoming_azn", header: "AZN",  enableFooterTotal: true,
     },
 
     {
-        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",
+        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",
+        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
 
     {
-        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",
+        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",  enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",
+        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",  enableFooterTotal: true,
     },
 
 ]
@@ -2282,11 +2282,11 @@ export const substitutionListColumns = [
 ///params
 
 export const banksColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No",  enableFooterTotal: true, },
     { id: "name", accessorKey: "name", header: "Bankın adı" },
     { id: "branch", accessorKey: "branch", header: "Filialı" },
     {
-        id: "account_list",
+        id: "account_list", 
         accessorKey: "account_list",
         header: "Hesab sayı",
         cell: ({ getValue }) => (
@@ -2299,7 +2299,7 @@ export const banksColumns = [
 ]
 
 export const accountsColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
+    { id: "no", accessorKey: "no", header: "No",  enableFooterTotal: true, },
     { id: "name", accessorKey: "name", header: "Şirkətin adı" },
     { id: "branch", accessorKey: "branch", header: "Filialı" },
     { id: "voen", accessorKey: "voen", header: "VÖEN" },

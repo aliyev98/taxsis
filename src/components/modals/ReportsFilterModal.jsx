@@ -127,7 +127,32 @@ const ReportsFilterModal = ({ onClose }) => {
                             />
                         </div>
 
-                        <div className="input-div calendar-input position-relative">
+                        <div className="calendar-input d-flex align-items-center">
+
+                            <div className="default-input d-flex flex-column">
+                                <label htmlFor="">Tarix aralığı</label>
+                                <input type="text" value={formatRange()} readOnly />
+                            </div>
+
+                            <div className="icon" onClick={() => setShowCalendar((p) => !p)}>
+                                <img src="/assets/calendar-icon.svg" alt="calendar" />
+                            </div>
+
+                            {showCalendar && (
+                                <div ref={calendarRef} className="calendar-popup position-absolute" >
+                                    <DateRange
+                                        editableDateInputs={true}
+                                        onChange={handleSelect}
+                                        moveRangeOnFirstSelection={false}
+                                        ranges={range}
+                                        locale={undefined}
+                                    />
+                                </div>
+                            )}
+
+                        </div>
+
+                        {/* <div className="input-div calendar-input position-relative">
 
                             <div className="calendar-input d-flex align-items-center" onClick={() => setShowCalendar((p) => !p)}
                             >
@@ -151,7 +176,7 @@ const ReportsFilterModal = ({ onClose }) => {
                                     />
                                 </div>
                             )}
-                        </div>
+                        </div> */}
 
                     </div>
 
