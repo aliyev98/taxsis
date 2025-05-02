@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { substitutionReportColumns, substitutionRestorationColumns, substitutionListColumns } from "../../../constants/TableColumns";
+import { tableJoinColumns, substitutionReportColumns, substitutionRestorationColumns, substitutionListColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const Substitution = () => {
@@ -13,26 +13,33 @@ const Substitution = () => {
 
     useEffect(() => {
         if (sidebarSelection === "substitution") {
-            dispatch(setNavbarSelection("substitution_report"));
+            dispatch(setNavbarSelection("table_join"));
         }
     }, [sidebarSelection, dispatch]);
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
+    const tableJoinData = useSelector((state => state.tableData.tableJoin.data));
     const substitutionReportData = useSelector((state) => state.tableData.substitutionReport.data);
     const substitutionRestorationData = useSelector((state) => state.tableData.substitutionRestoration.data);
     const substitutionListData = useSelector((state) => state.tableData.substitutionList.data);
 
 
     const headerBtns = [
-        { id: 1, content: "Əlavə et", className: "add" },
-        { id: 2, content: "Şablonu yüklə", className: "download" },
-        { id: 3, content: "İmport et", className: "import" },
+        { id: 1, content: "İmport et", className: "import" },
     ];
 
+    const commonBtns = [
+        { id: 1, content: "Bölüşdür", className: "btn-white" },
+        { id: 2, content: "Redaktə et", className: "btn-white" },
+        { id: 3, content: "Avans at", className: "btn-white" },
+        { id: 4, content: "İmport et", className: "import" },
+    ]
+
     const navBtns = [
+        { id: "table_join", content: "Table Join Əvəzləşmə" },
         { id: "substitution_report", content: "Əvəzləşmə hesabatı" },
-        { id: "substitution_restoration", content: "Əvəzləşmə - Bərpaı" },
+        { id: "substitution_restoration", content: "Əvəzləşmə - Bərpa" },
         { id: "substitution_current", content: "Əvəzləşmə - Cari" },
         { id: "substitution_list", content: "Əvəzləşmə siyahısı" },
     ];
@@ -42,6 +49,9 @@ const Substitution = () => {
 
 
     switch (navbarSelection) {
+        case 'table_join':
+            colSpans = []
+            break;
         case "substitution_report":
             colSpans = [
                 { id: 1, content: "", col: 5 },
@@ -50,20 +60,24 @@ const Substitution = () => {
             break;
         case "substitution_restoration":
             colSpans = [
-                { id: 1, content: "", col: 3 },
-                { id: 2, content: "QALIQ", col: 1 },
+                { id: 1, content: "KONTRAGENT", col: 3 },
+                { id: 2, content: "İLKİN QALIQ", col: 2 },
                 { id: 3, content: "CƏMİ ALIŞ", col: 2 },
-                { id: 4, content: "ƏVƏZLƏŞİB", col: 1 },
-                { id: 5, content: "GERİ QAYTARMA", col: 1 },
-                { id: 6, content: "QALIQ", col: 1 },
+                { id: 4, content: "ƏVƏZLƏŞİB", col: 2 },
+                { id: 5, content: "GERİ QAYTARMA", col: 2 },
+                { id: 6, content: "SONA QALIQ", col: 2 },
                 { id: 7, content: "DÖVR ƏRZİNDƏ ÖDƏNİŞ", col: 2 },
-                { id: 8, content: "ƏVVƏLDƏN AVANSDA QALAN", col: 2 },
-                { id: 9, content: "CƏMİ", col: 2 },
-                { id: 10, content: "ƏVƏZLƏŞMƏLİ", col: 1 },
-                { id: 11, content: "ƏVƏZLƏŞMƏYİB", col: 1 },
-                { id: 12, content: "BÖLÜŞDÜRÜLÜB", col: 1 },
-                { id: 13, content: "İMTİYAZA DÜŞƏN", col: 2 },
-                { id: 14, content: "AVANSA DÜŞƏN", col: 2 },
+                { id: 8, content: "DÖVR ƏRZİNDƏ GERİ QAYTARMA", col: 2 },
+                { id: 9, content: "ƏVVƏLDƏN İMTİYAZDA QALAN", col: 2 },
+                { id: 10, content: "ƏVVƏLDƏN AVANSDA QALAN", col: 2 },
+                { id: 11, content: "CƏMİ", col: 2 },
+                { id: 12, content: "OLMALIDIR", col: 2 },
+                { id: 13, content: "FƏRQ", col: 2 },
+                { id: 14, content: "ƏVƏZLƏŞMƏLİ", col: 1 },
+                { id: 15, content: "ƏVƏZLƏŞMƏYİB", col: 1 },
+                { id: 16, content: "BÖLÜŞDÜRÜLÜB", col: 1 },
+                { id: 17, content: "İMTİYAZA DÜŞƏN", col: 2 },
+                { id: 18, content: "AVANSA DÜŞƏN", col: 2 },
 
             ];
             break;
@@ -83,6 +97,11 @@ const Substitution = () => {
     }
 
     switch (navbarSelection) {
+
+        case 'table_join':
+            colSpans2 = [
+            ];
+            break;
         case "substitution_report":
             colSpans2 = [
             ];
@@ -90,8 +109,12 @@ const Substitution = () => {
         case "substitution_restoration":
             colSpans2 = [
                 { id: 1, content: "", col: 3 },
-                { id: 2, content: "ALIŞ", col: 6 },
-                { id: 3, content: "ÖDƏNİŞ", col: 9 },
+                { id: 2, content: "ALIŞ", col: 10 },
+                { id: 3, content: "ÖDƏNİŞ", col: 10 },
+                { id: 4, content: "MÜQAYİSƏ", col: 4 },
+                { id: 5, content: "ƏVƏZLƏŞMƏ", col: 7 },
+
+
             ];
             break;
         case "substitution_current":
@@ -115,6 +138,10 @@ const Substitution = () => {
     let data;
 
     switch (navbarSelection) {
+        case "table_join":
+            columns = tableJoinColumns;
+            data = tableJoinData;
+            break;
         case "substitution_report":
             columns = substitutionReportCol;
             data = substitutionReportData;
@@ -147,7 +174,7 @@ const Substitution = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} editable={true} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} />
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} />
             </div>
 
 

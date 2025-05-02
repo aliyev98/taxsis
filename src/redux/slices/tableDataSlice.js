@@ -40,6 +40,7 @@ import {
   foreignCreditorData,
   foreignDebitorData,
 
+  tableJoinData,
   substitutionReportData,
   substitutionRestorationData,
   substitutionListData,
@@ -58,7 +59,7 @@ const initialState = {
   initial: { data: initialsData },
   advanced: { data: advanceData },
   deposits: { data: depositsData },
-  bankStatements: {data: bankStatementsData},
+  bankStatements: { data: bankStatementsData },
   online: { data: onlineCashData },
   physical: { data: physicalData },
   confrontation: { data: confrontationActsData },
@@ -91,15 +92,16 @@ const initialState = {
   foreignDebitor: { data: foreignDebitorData },
 
 
-  ///əvəzləşmə
-  substitutionReport: {data: substitutionReportData},
-  substitutionRestoration: {data: substitutionRestorationData},
-  substitutionList: {data: substitutionListData},
+  ///vergi uçotu
+  tableJoin: { data: tableJoinData },
+  substitutionReport: { data: substitutionReportData },
+  substitutionRestoration: { data: substitutionRestorationData },
+  substitutionList: { data: substitutionListData },
 
   //params
 
-  banks: {data: banksData},
-  accounts: {data: accountsData}
+  banks: { data: banksData },
+  accounts: { data: accountsData }
 
 };
 

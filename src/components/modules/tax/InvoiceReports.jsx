@@ -91,7 +91,8 @@ const ConfrontationActs = () => {
 
             <div className="table">
                 <TaxModuleTable columns={columns} navBtns={navBtns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
-                    showGroupedHeader={showGroupedHeader} colSpans={colSpans} groupByCompany="company_name" />
+                    showGroupedHeader={showGroupedHeader} colSpans={colSpans} />
+
             </div>
 
 

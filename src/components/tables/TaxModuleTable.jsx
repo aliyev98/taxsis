@@ -207,6 +207,7 @@ export default function TaxModuleTable({
 
   return (
     <div className="position-relative table-container">
+
       <TableHeader
         ColumnVisibilityDropdown={ColumnVisibilityDropdown}
         isEditing={isEditing}
@@ -232,9 +233,11 @@ export default function TaxModuleTable({
         </div>
       )}
 
+
       {reportsHeader && <ReportsHeader isEditing={isEditing} />}
 
       <div className="table-div">
+
         <table className="tables custom-table">
 
           <thead>
@@ -298,6 +301,7 @@ export default function TaxModuleTable({
           </thead>
 
           <tbody>
+            {/* fdfd////////////////////////////////////////////////////////////////////////////////////////////////////// */}
             {finalData.length > 0 ? (
               finalData.map((row, rowIndex) => {
                 if (row.isGroupHeader) {
@@ -396,14 +400,17 @@ export default function TaxModuleTable({
                   {col.enableFooterTotal
                     ? !isNaN(footerTotals[col.accessorKey])
                       ? col.accessorKey === 'no'
-                        ? footerTotals[col.accessorKey] // 👈 sadece sayı
-                        : footerTotals[col.accessorKey].toFixed(2) // 👈 diğerleri ondalıklı
+                        ? footerTotals[col.accessorKey] // sadece sayı
+                        : Number.isInteger(footerTotals[col.accessorKey])
+                          ? footerTotals[col.accessorKey]
+                          : footerTotals[col.accessorKey].toFixed(2)
                       : ''
                     : null}
                 </td>
               ))}
             </tr>
           </tfoot>
+
 
 
         </table>

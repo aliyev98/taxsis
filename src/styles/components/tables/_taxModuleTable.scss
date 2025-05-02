@@ -51,6 +51,7 @@
 
             .top-header {
                 &-title {
+                    // border-right: 1px solid black;
 
                     div {
                         text-align: center;
@@ -67,8 +68,9 @@
             .group-header {
 
                 .group-title {
-                    // border-right: 1px solid #6F767E;
                     padding: 0 20px !important;
+
+                    // border-right: 1px solid black;
 
                     &:last-child {
                         border-right: none !important;
@@ -87,6 +89,12 @@
                         font-size: 13px;
                         font-weight: 600;
                         border-radius: 4px;
+                        text-align: center;
+
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
                     }
                 }
             }
@@ -132,7 +140,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         position: relative;
-
+                        // text-align: center;
                     }
                 }
             }
