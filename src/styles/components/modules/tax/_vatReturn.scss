@@ -1,0 +1,53 @@
+.vat-return {
+
+    .table {
+
+        .tables {
+            background-color: #fcfcfc;
+        }
+
+        .table-container:not(:first-of-type) {
+            .table-header {
+                display: none !important;
+            }
+        }
+
+    }
+
+    .table-container {
+        margin-bottom: 48px;
+
+        .table-div {
+            scrollbar-width: none !important;
+        }
+
+        thead {
+            background: rgba(177, 229, 252, 0.30);
+
+            .group-header{
+                background-color: #fcfcfc;
+
+                th{
+                    div{
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                background-color: transparent !important;
+            }
+        }
+
+        tfoot {
+            background: var(--Neutral-03, #EFEFEF);
+        }
+    }
+
+    .table-header:nth-child(2) {
+        display: none !important;
+        background-color: blue;
+    }
+}

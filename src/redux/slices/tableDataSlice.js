@@ -43,7 +43,14 @@ import {
   tableJoinData,
   substitutionReportData,
   substitutionRestorationData,
+  substitutionCurrentData,
   substitutionListData,
+
+  wholesaleData,
+  returnData,
+  netSalesData,
+  retailSalesData,
+  finalData,
 
   banksData,
   accountsData,
@@ -93,10 +100,22 @@ const initialState = {
 
 
   ///vergi uçotu
+
+  // (əvəzləşmə)
   tableJoin: { data: tableJoinData },
   substitutionReport: { data: substitutionReportData },
   substitutionRestoration: { data: substitutionRestorationData },
+  substitutionCurrent : {data: substitutionCurrentData},
   substitutionList: { data: substitutionListData },
+
+  // (ədv bildirişi)
+
+  wholesSale: {data: wholesaleData},
+  return: {data: returnData},
+  netSales: {data: netSalesData},
+  retailSales: {data: retailSalesData},
+  final: {data: finalData},
+
 
   //params
 

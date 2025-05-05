@@ -16,6 +16,8 @@
 
 @use './sidebars/sidebars.scss';
 
+@use './components/modules/tax/vatReturn';
+
 
 @use './layouts/feedHeader';
 @use './sidebars/feedSideBar';

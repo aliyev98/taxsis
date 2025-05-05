@@ -21,6 +21,7 @@ import Substitution from '../../components/modules/tax/Substitution';
 import BankAccount from '../../components/modules/tax/BankAccount';
 import TaxModuleSidebar2 from '../../sidebars/TaxModuleSidebar2';
 import TaxModuleHeader from '../../layouts/TaxModuleHeader';
+import VatReturn from '../../components/modules/tax/VatReturn';
 
 
 const TaxModule = () => {
@@ -71,6 +72,8 @@ const TaxModule = () => {
             {sidebarSelection === "substitution" && <Substitution />}
 
             {sidebarSelection === "bank_account" && <BankAccount />}
+
+            {sidebarSelection === "vat_return" && <VatReturn />}
 
 
 

@@ -25,7 +25,7 @@ const labelToPageKeyMap = {
   'Borclar cədvəli': 'debts_table',
   'Vergi uçotu': 'tax_accounting',
   'Əvəzləşmə': 'substitution',
-  'ƏDV bildirişi': 'vat_statement',
+  'ƏDV bildirişi': 'vat_return',
   'Müqayisəli təhlil': 'comparison_analysis',
   'Analizlər': 'analyses',
   'Parametrlər': 'parameters',

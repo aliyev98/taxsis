@@ -3,7 +3,6 @@
 .table-container {
     background-color: #FCFCFC;
     cursor: pointer;
-    min-height: 100vh;
     border-radius: 8px;
     overflow: hidden !important;
 
@@ -47,7 +46,6 @@
         .custom-table {
             width: 100%;
             overflow-x: scroll;
-
 
             .top-header {
                 &-title {

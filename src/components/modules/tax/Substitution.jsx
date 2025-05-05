@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { tableJoinColumns, substitutionReportColumns, substitutionRestorationColumns, substitutionListColumns } from "../../../constants/TableColumns";
+import { tableJoinColumns, substitutionReportColumns, substitutionRestorationColumns, substitutionListColumns, substitutionCurrentColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const Substitution = () => {
@@ -22,6 +22,7 @@ const Substitution = () => {
     const tableJoinData = useSelector((state => state.tableData.tableJoin.data));
     const substitutionReportData = useSelector((state) => state.tableData.substitutionReport.data);
     const substitutionRestorationData = useSelector((state) => state.tableData.substitutionRestoration.data);
+    const substitutionCurrentData = useSelector((state) => state.tableData.substitutionCurrent.data)
     const substitutionListData = useSelector((state) => state.tableData.substitutionList.data);
 
 
@@ -83,6 +84,22 @@ const Substitution = () => {
             break;
         case "substitution_current":
             colSpans = [
+                { id: 1, content: "KONTRAGENT", col: 3 },
+                { id: 2, content: "ƏVVƏLƏ QALIQ", col: 2 },
+                { id: 3, content: "CƏMİ ALIŞ", col: 2 },
+                { id: 4, content: "GERİ QAYTARMA", col: 2 },
+                { id: 5, content: "SONA QALIQ", col: 2 },
+                { id: 6, content: "DÖVR ƏRZİNDƏ ÖDƏNİŞ", col: 2 },
+                { id: 7, content: "DÖVR ƏRZİNDƏ GERİ QAYTARMA", col: 2 },
+                { id: 8, content: "ƏVVƏLDƏN İMTİYAZDA QALAN", col: 2 },
+                { id: 9, content: "ƏVVƏLDƏN AVANSDA QALAN", col: 2 },
+                { id: 10, content: "CƏMİ", col: 2 },
+                { id: 11, content: "OLMALIDIR", col: 2 },
+                { id: 12, content: "FƏRQ", col: 2 },
+                { id: 13, content: "ƏVƏZLƏŞMƏLİ", col: 1 },
+                { id: 14, content: "BÖLÜŞDÜRÜLÜB", col: 1 },
+                { id: 15, content: "İMTİYAZA DÜŞƏN", col: 2 },
+                { id: 16, content: "AVANSA DÜŞƏN", col: 2 },
             ];
             break;
         case "substitution_list":
@@ -113,12 +130,15 @@ const Substitution = () => {
                 { id: 3, content: "ÖDƏNİŞ", col: 10 },
                 { id: 4, content: "MÜQAYİSƏ", col: 4 },
                 { id: 5, content: "ƏVƏZLƏŞMƏ", col: 7 },
-
-
             ];
             break;
         case "substitution_current":
             colSpans2 = [
+                { id: 1, content: '', col: 3 },
+                { id: 2, content: "ALIŞ", col: 8 },
+                { id: 3, content: "ÖDƏNİŞ", col: 10 },
+                { id: 4, content: "MÜQAYİSƏ", col: 4 },
+                { id: 5, content: "ƏVƏZLƏŞMƏ", col: 6 }
             ];
             break;
         case "substitution_list":
@@ -132,6 +152,7 @@ const Substitution = () => {
 
     const substitutionReportCol = substitutionReportColumns;
     const substitutionRestorationCol = substitutionRestorationColumns;
+    const substitutionCurrendCol = substitutionCurrentColumns;
     const substitutionListCol = substitutionListColumns;
 
     let columns;
@@ -151,8 +172,8 @@ const Substitution = () => {
             data = substitutionRestorationData;
             break;
         case "substitution_current":
-            columns = substitutionReportCol;
-            data = substitutionReportData;
+            columns = substitutionCurrendCol;
+            data = substitutionCurrentData;
             break;
         case "substitution_list":
             columns = substitutionListCol;
@@ -167,7 +188,7 @@ const Substitution = () => {
         <div className="substitution tax-module-content">
 
             <TaxModuleHeader
-                title="Əvəzləşmə"
+                title="Vergi uçotu"
                 headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}

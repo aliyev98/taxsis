@@ -37,6 +37,7 @@ const TableHeader = ({
 
     return (
         <div className="table-header d-flex align-items-center justify-content-between">
+
             <div className="left-side d-flex align-items-center">
 
                 <div className="nav-links d-flex mt-3">
@@ -86,6 +87,7 @@ const TableHeader = ({
                     </div>
                 )}
             </div>
+            
         </div>
     );
 };

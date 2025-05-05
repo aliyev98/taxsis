@@ -2081,7 +2081,6 @@ export const substitutionReportData = [
   }
 ];
 
-
 export const substitutionRestorationData = [
   {
     no: "1",
@@ -2193,6 +2192,113 @@ export const substitutionRestorationData = [
   }
 ];
 
+export const substitutionCurrentData = [
+  {
+    no: 1,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    opening_balance_main: 19.8508,
+    opening_balance_vat: 19.8508,
+    total_purchase_main: 19.8508,
+    total_purchase_vat: 20.8805,
+    refund_main: 20.8805,
+    refund_vat: 20.8805,
+    ending_balance_main: 20.8805,
+    ending_balance_vat: 20.8805,
+    payment_period_main: 20.8805,
+    payment_period_vat: 20.8805,
+    refund_period_main: 20.8805,
+    refund_period_vat: 19.8508,
+    privileged_balance_main: 19.8508,
+    privileged_balance_vat: 19.8508,
+    advance_bf_main: 19.8508,
+    advance_bf_vat: 19.8508,
+    total_main: 19.8508,
+    total_vat: 19.8508,
+    should_main: 19.8508,
+    should_vat: 19.8508,
+    difference_main: 19.8508,
+    difference_vat: 19.8508,
+    should_substitute_main: 19.8508,
+    should_substitute_vat: 19.8508,
+    divided_main: 19.8508,
+    divided_vat: 20.8805,
+    privileged_main: 20.8805,
+    privileged_vat: 20.8805,
+    advance_main: 20.8805,
+    advance_vat: 20.8805,
+  },
+  {
+    no: 2,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    opening_balance_main: 19.8508,
+    opening_balance_vat: 19.8508,
+    total_purchase_main: 19.8508,
+    total_purchase_vat: 20.8805,
+    refund_main: 20.8805,
+    refund_vat: 20.8805,
+    ending_balance_main: 20.8805,
+    ending_balance_vat: 20.8805,
+    payment_period_main: 20.8805,
+    payment_period_vat: 20.8805,
+    refund_period_main: 20.8805,
+    refund_period_vat: 19.8508,
+    privileged_balance_main: 19.8508,
+    privileged_balance_vat: 19.8508,
+    advance_bf_main: 19.8508,
+    advance_bf_vat: 19.8508,
+    total_main: 19.8508,
+    total_vat: 19.8508,
+    should_main: 19.8508,
+    should_vat: 19.8508,
+    difference_main: 19.8508,
+    difference_vat: 19.8508,
+    should_substitute_main: 19.8508,
+    should_substitute_vat: 19.8508,
+    divided_main: 19.8508,
+    divided_vat: 20.8805,
+    privileged_main: 20.8805,
+    privileged_vat: 20.8805,
+    advance_main: 20.8805,
+    advance_vat: 20.8805,
+  },
+  {
+    no: 3,
+    voen: "6700331512",
+    name: "“ATS FOOD” Məhdud Məsuliyyətli Cəmiyyəti",
+    opening_balance_main: 19.8508,
+    opening_balance_vat: 19.8508,
+    total_purchase_main: 19.8508,
+    total_purchase_vat: 20.8805,
+    refund_main: 20.8805,
+    refund_vat: 20.8805,
+    ending_balance_main: 20.8805,
+    ending_balance_vat: 20.8805,
+    payment_period_main: 20.8805,
+    payment_period_vat: 20.8805,
+    refund_period_main: 20.8805,
+    refund_period_vat: 19.8508,
+    privileged_balance_main: 19.8508,
+    privileged_balance_vat: 19.8508,
+    advance_bf_main: 19.8508,
+    advance_bf_vat: 19.8508,
+    total_main: 19.8508,
+    total_vat: 19.8508,
+    should_main: 19.8508,
+    should_vat: 19.8508,
+    difference_main: 19.8508,
+    difference_vat: 19.8508,
+    should_substitute_main: 19.8508,
+    should_substitute_vat: 19.8508,
+    divided_main: 19.8508,
+    divided_vat: 20.8805,
+    privileged_main: 20.8805,
+    privileged_vat: 20.8805,
+    advance_main: 20.8805,
+    advance_vat: 20.8805,
+  }
+];
 
 export const substitutionListData = [
   {
@@ -2223,6 +2329,248 @@ export const substitutionListData = [
     invoice_num: "INV-003"
   }
 ];
+
+// ədv bilidişi
+
+// (topdan satış)
+
+export const wholesaleData = [
+  {
+    no: "1",
+    wholesale: "18$ cəlb olunan əməliyyatlar",
+    sale_main: 1850.5,
+    sale_vat: 333.09,
+    cash_main: 1120.75,
+    cash_vat: 201.74,
+    cash_total: 1322.49,
+    cash_main_vat: 201.74,
+    cash_vat_main: 1120.75,
+  },
+  {
+    no: "2",
+    wholesale: "ƏDV azad əməliyyatlar",
+    sale_main: 2210.0,
+    sale_vat: 397.8,
+    cash_main: 930.0,
+    cash_vat: 167.4,
+    cash_total: 1097.4,
+    cash_main_vat: 167.4,
+    cash_vat_main: 930.0,
+  },
+  {
+    no: "3",
+    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+  {
+    no: "4",
+    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+  // {
+  //   no: "#",
+  //   wholesale: "Cəmi satışlar",
+  //   sale_main: ,
+  //   sale_vat: ,
+  //   cash_main: ,
+  //   cash_vat: ,
+  //   cash_total: ,
+  //   cash_main_vat: ,
+  //   cash_vat_main: ,
+  // }
+];
+
+// (geri qaytarma)
+
+export const returnData = [
+  {
+    no: "1",
+    wholesale: "18$ cəlb olunan əməliyyatlar",
+    sale_main: 1850.5,
+    sale_vat: 333.09,
+    cash_main: 1120.75,
+    cash_vat: 201.74,
+    cash_total: 1322.49,
+    cash_main_vat: 201.74,
+    cash_vat_main: 1120.75,
+  },
+  {
+    no: "2",
+    wholesale: "ƏDV azad əməliyyatlar",
+    sale_main: 2210.0,
+    sale_vat: 397.8,
+    cash_main: 930.0,
+    cash_vat: 167.4,
+    cash_total: 1097.4,
+    cash_main_vat: 167.4,
+    cash_vat_main: 930.0,
+  },
+  {
+    no: "3",
+    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+  {
+    no: "4",
+    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+
+];
+
+// xalis satış
+
+export const netSalesData = [
+  {
+    no: "1",
+    wholesale: "18$ cəlb olunan əməliyyatlar",
+    sale_main: 1850.5,
+    sale_vat: 333.09,
+    cash_main: 1120.75,
+    cash_vat: 201.74,
+    cash_total: 1322.49,
+    cash_main_vat: 201.74,
+    cash_vat_main: 1120.75,
+  },
+  {
+    no: "2",
+    wholesale: "ƏDV azad əməliyyatlar",
+    sale_main: 2210.0,
+    sale_vat: 397.8,
+    cash_main: 930.0,
+    cash_vat: 167.4,
+    cash_total: 1097.4,
+    cash_main_vat: 167.4,
+    cash_vat_main: 930.0,
+  },
+  {
+    no: "3",
+    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+  {
+    no: "4",
+    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+
+];
+
+// pərakəndə satış
+
+export const retailSalesData = [
+  {
+    no: "1",
+    wholesale: "18$ cəlb olunan əməliyyatlar",
+    sale_main: 1850.5,
+    sale_vat: 333.09,
+    cash_main: 1120.75,
+    cash_vat: 201.74,
+    cash_total: 1322.49,
+    cash_main_vat: 201.74,
+    cash_vat_main: 1120.75,
+  },
+  {
+    no: "2",
+    wholesale: "ƏDV azad əməliyyatlar",
+    sale_main: 2210.0,
+    sale_vat: 397.8,
+    cash_main: 930.0,
+    cash_vat: 167.4,
+    cash_total: 1097.4,
+    cash_main_vat: 167.4,
+    cash_vat_main: 930.0,
+  },
+];
+
+// yekun satışlar
+
+export const finalData = [
+  {
+    no: "1",
+    wholesale: "18$ cəlb olunan əməliyyatlar",
+    sale_main: 1850.5,
+    sale_vat: 333.09,
+    cash_main: 1120.75,
+    cash_vat: 201.74,
+    cash_total: 1322.49,
+    cash_main_vat: 201.74,
+    cash_vat_main: 1120.75,
+  },
+  {
+    no: "2",
+    wholesale: "ƏDV azad əməliyyatlar",
+    sale_main: 2210.0,
+    sale_vat: 397.8,
+    cash_main: 930.0,
+    cash_vat: 167.4,
+    cash_total: 1097.4,
+    cash_main_vat: 167.4,
+    cash_vat_main: 930.0,
+  },
+  {
+    no: "3",
+    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+  {
+    no: "4",
+    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    sale_main: 1425.25,
+    sale_vat: 256.55,
+    cash_main: 875.0,
+    cash_vat: 157.5,
+    cash_total: 1032.5,
+    cash_main_vat: 157.5,
+    cash_vat_main: 875.0,
+  },
+
+];
+
+
+//////// params
 
 
 export const banksData = [
