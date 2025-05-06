@@ -2558,6 +2558,16 @@ export const debtorTransactionsColumns = [
 // (digərləri eynidir, fərqlilik olsa yaradılacaq)
 
 
+// dəqiqləşən bölmə
+
+export const adjustedSectionColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "turnover_amount", accessorKey: "turnover_amount", header: "Dövriyyə məbləği (ƏDV-siz))", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "paid_amount", accessorKey: "paid_amount", header: "Ödənilmiş məbləğ (ƏDV-siz)", filterOptions: { search: true, type: "search" } },
+    { id: "vat_amount", accessorKey: "vat_amount", header: "ƏDV məbləği", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+]
+
+
 
 /////////////////params
 

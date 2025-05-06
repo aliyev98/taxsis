@@ -217,7 +217,7 @@ const TaxModuleSideBar = () => {
                   ? 'show'
                   : ''
               }`}
-              data-bs-parent="#general"
+              // data-bs-parent="#general"
             >
               <div className="menu">
                 {accordionMap.database.map((item) => (
@@ -308,7 +308,7 @@ const TaxModuleSideBar = () => {
             <div
               id="reports"
               className="accordion-collapse collapse"
-              data-bs-parent="#general"
+              // data-bs-parent="#general"
             >
               <div className="menu">
                 {accordionMap.reports.map((item) => (
@@ -343,7 +343,7 @@ const TaxModuleSideBar = () => {
             <div
               id="accounting"
               className="accordion-collapse collapse"
-              data-bs-parent="#general"
+              // data-bs-parent="#general"
             >
               <div className="menu">
                 {accordionMap.accounting.map((item) => (
@@ -378,7 +378,7 @@ const TaxModuleSideBar = () => {
             <div
               id="analyses"
               className="accordion-collapse collapse"
-              data-bs-parent="#general"
+              // data-bs-parent="#general"
             >
               <div className="menu" />
             </div>
@@ -401,7 +401,7 @@ const TaxModuleSideBar = () => {
             <div
               id="params"
               className="accordion-collapse collapse"
-              data-bs-parent="#general"
+              // data-bs-parent="#general"
             >
               <div className="menu">
                 {accordionMap.params.map((item) => (

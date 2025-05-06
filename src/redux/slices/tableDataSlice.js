@@ -54,6 +54,7 @@ import {
   ygbSubstitutionData,
   invoiceSubstitutionData,
   debtorTransactionsData,
+  adjustedSectionData,
 
 
   banksData,
@@ -122,6 +123,7 @@ const initialState = {
   ygbSubstitution: { data: ygbSubstitutionData },
   invoiceSubstitution: {data: invoiceSubstitutionData},
   debtorTransactions: {data: debtorTransactionsData},
+  adjustedSection: {data: adjustedSectionData},
 
 
 

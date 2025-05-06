@@ -9,6 +9,7 @@ import {
     ygbSubstitutionColumns,
     invoiceSubstitutionColumns,
     debtorTransactionsColumns,
+    adjustedSectionColumns,
 
 } from '../../../constants/TableColumns';
 import { setNavbarSelection, setSidebarSelection } from '../../../redux/slices/taxModuleSlice';
@@ -21,11 +22,6 @@ const VatReturn = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
-
-
-
-    console.log(setSidebarSelection)
-    console.log(navbarSelection)
 
 
     useEffect(() => {
@@ -57,54 +53,10 @@ const VatReturn = () => {
     const ygbSubData = useSelector((state) => state.tableData.ygbSubstitution.data);
     const invoiceSubData = useSelector((state) => state.tableData.invoiceSubstitution.data);
     const debtorTransactionsData = useSelector((state) => state.tableData.debtorTransactions.data);
+    const adjustedSectionData = useSelector((state) => state.tableData.adjustedSection.data);
 
     let columns;
     let colSpans;
-
-    // switch (navbarSelection) {
-    //     case 'sale':
-    //         colSpans = [
-    //             { id: 1, content: "", col: 2 },
-    //             { id: 2, content: "SATIŞ", col: 3 },
-    //             { id: 3, content: "PUL", col: 5 },
-    //         ]
-    //         break;
-    //     case "ygb_substitution":
-    //         colSpans = [];
-    //         break;
-    //     case "invoice_substitution":
-    //         colSpans = []
-    //         break;
-    //     case "debtor_transactions":
-    //         colSpans = [
-    //             { id: 1, content: "KONTRAGENT", col: 3 },
-    //             { id: 2, content: "ƏVVƏLƏ QALIQ", col: 2 },
-    //             { id: 3, content: "CƏMİ ALIŞ", col: 2 },
-    //             { id: 4, content: "GERİ QAYTARMA", col: 2 },
-    //             { id: 5, content: "SONA QALIQ", col: 2 },
-    //             { id: 6, content: "DÖVR ƏRZİNDƏ ÖDƏNİŞ", col: 2 },
-    //             { id: 7, content: "DÖVR ƏRZİNDƏ GERİ QAYTARMA", col: 2 },
-    //             { id: 8, content: "ƏVVƏLDƏN İMTİYAZDA QALAN", col: 2 },
-    //             { id: 9, content: "ƏVVƏLDƏN AVANSDA QALAN", col: 2 },
-    //             { id: 10, content: "CƏMİ", col: 2 },
-    //             { id: 11, content: "OLMALIDIR", col: 2 },
-    //             { id: 12, content: "FƏRQ", col: 2 },
-    //             { id: 13, content: "ƏVƏZLƏŞMƏLİ", col: 1 },
-    //             { id: 14, content: "BÖLÜŞDÜRÜLÜB", col: 1 },
-    //             { id: 15, content: "İMTİYAZA DÜŞƏN", col: 2 },
-    //             { id: 16, content: "AVANSA DÜŞƏN", col: 2 },
-    //         ];
-    //         break;
-    //     case "substitution_list":
-    //         colSpans = [
-    //         ];
-    //         break;
-    //     default:
-    //         colSpans = [
-    //             { id: 1, content: "", col: 5 },
-    //             { id: 2, content: "QAİMƏ MƏBLƏĞİ", col: 3 },
-    //         ];
-    // }
 
     return (
         <div className='vat-return tax-module-content'>
@@ -172,6 +124,19 @@ const VatReturn = () => {
 
                                 ]} showGroupedHeader={true} />
                         </div>
+                    )
+                }
+
+                {
+                    navbarSelection === "adjusted_section" && (
+                        <TaxModuleTable columns={adjustedSectionColumns} data={adjustedSectionData} navBtns={navBtns} />
+                    )
+                }
+
+                {
+                    navbarSelection === "report" && (
+                        <TaxModuleTable columns={adjustedSectionColumns} data={adjustedSectionData} navBtns={navBtns} />
+
                     )
                 }
 

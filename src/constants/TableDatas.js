@@ -2737,6 +2737,29 @@ export const debtorTransactionsData = [
 
 // (digərləri eynidir)
 
+// dəqiqləşən bölmə
+
+export const adjustedSectionData = [
+  {
+    no: 1,
+    turnover_amount: "310",
+    paid_amount: "ƏDV-dən azad olunan əməliyyatlar üzrə ARTIRILAN dövriyyə",
+    vat_amount: "45,27",
+  },
+  {
+    no: 2,
+    turnover_amount: "310",
+    paid_amount: "ƏDV-dən azad olunan əməliyyatlar üzrə ARTIRILAN dövriyyə",
+    vat_amount: "45,27",
+  },
+  {
+    no: 3,
+    turnover_amount: "310",
+    paid_amount: "ƏDV-dən azad olunan əməliyyatlar üzrə ARTIRILAN dövriyyə",
+    vat_amount: "45,27",
+  },
+]
+
 
 //////// params
 
