@@ -40,7 +40,7 @@ const TableHeader = ({
 
             <div className="left-side d-flex align-items-center">
 
-                <div className="nav-links d-flex mt-3">
+                <div className="nav-links d-flex">
                     {navBtns?.map((btn) => (
                         <button
                             key={btn.id}

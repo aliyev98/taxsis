@@ -1,53 +1,62 @@
 .vat-return {
+    .tables {
+        background-color: #fcfcfc;
 
-    .table {
+        .table-container {
+            margin-bottom: 48px;
 
-        .tables {
-            background-color: #fcfcfc;
-        }
-
-        .table-container:not(:first-of-type) {
-            .table-header {
-                display: none !important;
+            &:not(:first-of-type) {
+                .table-header {
+                    display: none !important;
+                }
             }
-        }
 
-    }
+            .table-div {
+                // scrollbar-width: none !important;
+            }
 
-    .table-container {
-        margin-bottom: 48px;
+            thead {
+                background: rgba(177, 229, 252, 0.30);
 
-        .table-div {
-            scrollbar-width: none !important;
-        }
+                .group-header {
+                    background-color: #fcfcfc;
 
-        thead {
-            background: rgba(177, 229, 252, 0.30);
-
-            .group-header{
-                background-color: #fcfcfc;
-
-                th{
-                    div{
+                    th div {
                         margin-bottom: 16px;
                     }
                 }
             }
-        }
 
-        tbody {
-            tr {
-                background-color: transparent !important;
+            tbody tr {
+                //   background-color: transparent !important;
+            }
+
+            tfoot {
+                background: var(--Neutral-03, #EFEFEF);
+                border-top: none !important;
+
+                td {
+                    font-weight: 700 !important;
+                }
             }
         }
+    }
 
-        tfoot {
-            background: var(--Neutral-03, #EFEFEF);
+    .group-header {
+        padding: 0 !important;
+
+        .group-title {
+            padding: 0 !important;
+
+            div {
+                text-align: left !important;
+                font-weight: 500 !important;
+            }
         }
     }
 
-    .table-header:nth-child(2) {
-        display: none !important;
-        background-color: blue;
-    }
+    // Əgər lazım olarsa bu hissəni aç:
+    // .table-header:nth-child(2) {
+    //   display: none !important;
+    // }
 }

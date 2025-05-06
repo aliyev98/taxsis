@@ -2417,10 +2417,11 @@ export const substitutionListColumns = [
 
 // (ədv bildirişi)
 
-// topdan satış
+// (topdan satış)
+
 export const wholesaleColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "wholesale", accessorKey: "wholesale", header: "Topdan satış", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
+    { id: "wholesale", accessorKey: "wholesale", header: "Topdan satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
 
     { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -2434,11 +2435,11 @@ export const wholesaleColumns = [
     { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
 
-// geri qaytarma
+// (geri qaytarma)
 
 export const returnColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "return", accessorKey: "return", header: "Geri qaytarma", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
+    { id: "return", accessorKey: "return", header: "Geri qaytarma", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
 
     { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -2452,11 +2453,11 @@ export const returnColumns = [
     { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
 
-// xalis satış
+// (xalis satış)
 
 export const netSalesColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "net_sales", accessorKey: "net_sales", header: "Xalis satış", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
+    { id: "net_sales", accessorKey: "net_sales", header: "Xalis satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
 
     { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -2470,11 +2471,11 @@ export const netSalesColumns = [
     { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
 
-// pərakəndə satış
+// (pərakəndə satış)
 
 export const retailSalesColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "retail_sales", accessorKey: "retail_sales", header: "Pərakəndə satış", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
+    { id: "retail_sales", accessorKey: "retail_sales", header: "Pərakəndə satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
 
     { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -2485,11 +2486,11 @@ export const retailSalesColumns = [
     { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
 
-// yeku satışlar
+// (yeku satışlar)
 
 export const finalSalesColumns = [
-    { id: "no", accessorKey: "no", header: "No" },
-    { id: "final_sales", accessorKey: "final_sales", header: "Yekun satışlar", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
+    { id: "final_sales", accessorKey: "final_sales", header: "Yekun satışlar", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
 
     { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -2504,8 +2505,61 @@ export const finalSalesColumns = [
     { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
 
+// ygb əvəzləşmə
 
-///params
+export const ygbSubstitutionColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "line_code", accessorKey: "line_code", header: "Sətir kodu", filterOptions: { search: true, type: "search" } },
+    { id: "ygb", accessorKey: "ygb", header: "YGB", filterOptions: { search: true, type: "search" } },
+    { id: "ygb_date", accessorKey: "ygb_date", header: "YGB-nin tarixi", filterOptions: { search: true, type: "search" } },
+    { id: "ygb_without_vat_azn", accessorKey: "ygb_without_vat_azn", header: "YGB üzrə alınmış malın ƏDV-siz dəyəri, (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "ygb_with_vat_azn", accessorKey: "ygb_with_vat_azn", header: "YGB üzrə alınmış malın ƏDV məbləği, (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+]
+
+// qaimə əvəzləmə
+
+export const invoiceSubstitutionColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "line_code", accessorKey: "line_code", header: "Sətir kodu", filterOptions: { search: true, type: "search" } },
+    { id: "name", accessorKey: "name", header: "VÖEN/Adı", filterOptions: { search: true, type: "search" } },
+    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" } },
+    { id: "invoice_serie", accessorKey: "invoice_serie", header: "Qaimə seriyası", filterOptions: { search: true, type: "search" } },
+    { id: "invoice_num", accessorKey: "invoice_num", header: "Qaimə nömrəsi", filterOptions: { search: true, type: "search" } },
+    { id: "total_amount_azn", accessorKey: "total_amount_azn", header: "Ümumi məbləğ (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "vat_amount_azn", accessorKey: "vat_amount_azn", header: "ƏDV məbləği (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "total_amount_paid_azn", accessorKey: "total_amount_paid_azn", header: "Ödənilmiş ümumi məbləğ (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "vat_amount_paid_azn", accessorKey: "vat_amount_paid_azn", header: "Ödənilmiş ƏDV məbləği (AZN)", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+]
+
+// debitor hərəkəti
+
+// (Əsasa görə)
+
+export const debtorTransactionsColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "indicators", accessorKey: "indicators", header: "Göstəricilər", filterOptions: { search: true, type: "search" } },
+    { id: "debtor_balance_start", accessorKey: "debtor_balance_start", header: "Hesabat dövrünün əvvəlinə debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "debtor_incurred_month", accessorKey: "debtor_incurred_month", header: "Hesabat dövrü (ay) üzrə yaranan debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "debtor_settled_month", accessorKey: "debtor_settled_month", header: "Hesabat dövrü (ay) ərzində silinən debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    { id: "debtor_balance_end", accessorKey: "debtor_balance_end", header: "Hesabat dövrünün sonuna debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+]
+
+// (ədvyə görə)
+
+// export const basedVatColumns = [
+//     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+//     { id: "indicators", accessorKey: "indicators", header: "Göstəricilər", filterOptions: { search: true, type: "search" } },
+//     { id: "debtor_balance_start", accessorKey: "debtor_balance_start", header: "Hesabat dövrünün əvvəlinə debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+//     { id: "debtor_incurred_month", accessorKey: "debtor_incurred_month", header: "Hesabat dövrü (ay) üzrə yaranan debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+//     { id: "debtor_settled_month", accessorKey: "debtor_settled_month", header: "Hesabat dövrü (ay) ərzində silinən debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+//     { id: "debtor_balance_end", accessorKey: "debtor_balance_end", header: "Hesabat dövrünün sonuna debitor borc", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+// ]
+
+// (digərləri eynidir, fərqlilik olsa yaradılacaq)
+
+
+
+/////////////////params
 
 export const banksColumns = [
     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },

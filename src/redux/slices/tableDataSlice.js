@@ -51,6 +51,10 @@ import {
   netSalesData,
   retailSalesData,
   finalData,
+  ygbSubstitutionData,
+  invoiceSubstitutionData,
+  debtorTransactionsData,
+
 
   banksData,
   accountsData,
@@ -105,22 +109,26 @@ const initialState = {
   tableJoin: { data: tableJoinData },
   substitutionReport: { data: substitutionReportData },
   substitutionRestoration: { data: substitutionRestorationData },
-  substitutionCurrent : {data: substitutionCurrentData},
+  substitutionCurrent: { data: substitutionCurrentData },
   substitutionList: { data: substitutionListData },
 
   // (ədv bildirişi)
 
-  wholesSale: {data: wholesaleData},
-  return: {data: returnData},
-  netSales: {data: netSalesData},
-  retailSales: {data: retailSalesData},
-  final: {data: finalData},
+  wholesSale: { data: wholesaleData },
+  return: { data: returnData },
+  netSales: { data: netSalesData },
+  retailSales: { data: retailSalesData },
+  final: { data: finalData },
+  ygbSubstitution: { data: ygbSubstitutionData },
+  invoiceSubstitution: {data: invoiceSubstitutionData},
+  debtorTransactions: {data: debtorTransactionsData},
+
 
 
   //params
 
   banks: { data: banksData },
-  accounts: { data: accountsData }
+  accounts: { data: accountsData },
 
 };
 

@@ -2397,7 +2397,7 @@ export const wholesaleData = [
 export const returnData = [
   {
     no: "1",
-    wholesale: "18$ cəlb olunan əməliyyatlar",
+    return: "18$ cəlb olunan əməliyyatlar",
     sale_main: 1850.5,
     sale_vat: 333.09,
     cash_main: 1120.75,
@@ -2408,7 +2408,7 @@ export const returnData = [
   },
   {
     no: "2",
-    wholesale: "ƏDV azad əməliyyatlar",
+    return: "ƏDV azad əməliyyatlar",
     sale_main: 2210.0,
     sale_vat: 397.8,
     cash_main: 930.0,
@@ -2419,7 +2419,7 @@ export const returnData = [
   },
   {
     no: "3",
-    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    return: "ƏDV 0 dərəcə əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2430,7 +2430,7 @@ export const returnData = [
   },
   {
     no: "4",
-    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    return: "ƏDV cəlb olunmayan əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2442,12 +2442,12 @@ export const returnData = [
 
 ];
 
-// xalis satış
+// (xalis satış)
 
 export const netSalesData = [
   {
     no: "1",
-    wholesale: "18$ cəlb olunan əməliyyatlar",
+    net_sales: "18$ cəlb olunan əməliyyatlar",
     sale_main: 1850.5,
     sale_vat: 333.09,
     cash_main: 1120.75,
@@ -2458,7 +2458,7 @@ export const netSalesData = [
   },
   {
     no: "2",
-    wholesale: "ƏDV azad əməliyyatlar",
+    net_sales: "ƏDV azad əməliyyatlar",
     sale_main: 2210.0,
     sale_vat: 397.8,
     cash_main: 930.0,
@@ -2469,7 +2469,7 @@ export const netSalesData = [
   },
   {
     no: "3",
-    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    net_sales: "ƏDV 0 dərəcə əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2480,7 +2480,7 @@ export const netSalesData = [
   },
   {
     no: "4",
-    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    net_sales: "ƏDV cəlb olunmayan əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2492,12 +2492,12 @@ export const netSalesData = [
 
 ];
 
-// pərakəndə satış
+// (pərakəndə satış)
 
 export const retailSalesData = [
   {
     no: "1",
-    wholesale: "18$ cəlb olunan əməliyyatlar",
+    retail_sales: "18$ cəlb olunan əməliyyatlar",
     sale_main: 1850.5,
     sale_vat: 333.09,
     cash_main: 1120.75,
@@ -2508,7 +2508,7 @@ export const retailSalesData = [
   },
   {
     no: "2",
-    wholesale: "ƏDV azad əməliyyatlar",
+    retail_sales: "ƏDV azad əməliyyatlar",
     sale_main: 2210.0,
     sale_vat: 397.8,
     cash_main: 930.0,
@@ -2519,12 +2519,12 @@ export const retailSalesData = [
   },
 ];
 
-// yekun satışlar
+// (yekun satışlar)
 
 export const finalData = [
   {
     no: "1",
-    wholesale: "18$ cəlb olunan əməliyyatlar",
+    final_sales: "18$ cəlb olunan əməliyyatlar",
     sale_main: 1850.5,
     sale_vat: 333.09,
     cash_main: 1120.75,
@@ -2535,7 +2535,7 @@ export const finalData = [
   },
   {
     no: "2",
-    wholesale: "ƏDV azad əməliyyatlar",
+    final_sales: "ƏDV azad əməliyyatlar",
     sale_main: 2210.0,
     sale_vat: 397.8,
     cash_main: 930.0,
@@ -2546,7 +2546,7 @@ export const finalData = [
   },
   {
     no: "3",
-    wholesale: "ƏDV 0 dərəcə əməliyyatlar",
+    final_sales: "ƏDV 0 dərəcə əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2557,7 +2557,7 @@ export const finalData = [
   },
   {
     no: "4",
-    wholesale: "ƏDV cəlb olunmayan əməliyyatlar",
+    final_sales: "ƏDV cəlb olunmayan əməliyyatlar",
     sale_main: 1425.25,
     sale_vat: 256.55,
     cash_main: 875.0,
@@ -2568,6 +2568,174 @@ export const finalData = [
   },
 
 ];
+
+// ygb əvəzləşmə
+
+export const ygbSubstitutionData = [
+  {
+    no: 1,
+    line_code: "310",
+    ygb: "1.251000048354E+12",
+    ygb_date: "02.04.2025",
+    ygb_without_vat_azn: "25,1536.83",
+    ygb_with_vat_azn: "45,276.63",
+  },
+  {
+    no: 2,
+    line_code: "310",
+    ygb: "1.251000048354E+12",
+    ygb_date: "02.04.2025",
+    ygb_without_vat_azn: "25,1536.83",
+    ygb_with_vat_azn: "45,276.63",
+  },
+  {
+    no: 3,
+    line_code: "310",
+    ygb: "1.251000048354E+12",
+    ygb_date: "02.04.2025",
+    ygb_without_vat_azn: "25,1536.83",
+    ygb_with_vat_azn: "45,276.63",
+  },
+  {
+    no: 4,
+    line_code: "310",
+    ygb: "1.251000048354E+12",
+    ygb_date: "02.04.2025",
+    ygb_without_vat_azn: "25,1536.83",
+    ygb_with_vat_azn: "45,276.63",
+  },
+];
+
+// qaimə əvəzləşmələri
+
+export const invoiceSubstitutionData = [
+  {
+    no: 1,
+    line_code: "450",
+    name: "1301234567 / ABC MMC",
+    date: "01.04.2025",
+    invoice_serie: "A001",
+    invoice_num: "123456",
+    total_amount_azn: 1450.75,
+    vat_amount_azn: 261.14,
+    total_amount_paid_azn: 1200.00,
+    vat_amount_paid_azn: 216.00
+  },
+  {
+    no: 2,
+    line_code: "450",
+    name: "1301234567 / ABC MMC",
+    date: "01.04.2025",
+    invoice_serie: "A001",
+    invoice_num: "123456",
+    total_amount_azn: 1450.75,
+    vat_amount_azn: 261.14,
+    total_amount_paid_azn: 1200.00,
+    vat_amount_paid_azn: 216.00
+  },
+  {
+    no: 3,
+    line_code: "450",
+    name: "1301234567 / ABC MMC",
+    date: "01.04.2025",
+    invoice_serie: "A001",
+    invoice_num: "123456",
+    total_amount_azn: 1450.75,
+    vat_amount_azn: 261.14,
+    total_amount_paid_azn: 1200.00,
+    vat_amount_paid_azn: 216.00
+  },
+  {
+    no: 4,
+    line_code: "450",
+    name: "1301234567 / ABC MMC",
+    date: "01.04.2025",
+    invoice_serie: "A001",
+    invoice_num: "123456",
+    total_amount_azn: 1450.75,
+    vat_amount_azn: 261.14,
+    total_amount_paid_azn: 1200.00,
+    vat_amount_paid_azn: 216.00
+  },
+]
+
+// debitor hərəkəti
+
+// (əsasa görə)
+
+export const debtorTransactionsData = [
+  {
+    no: 1,
+    indicators: "307.1 Debitor borclar üzrə",
+    debtor_balance_start: "28 499 392, 09 AZN",
+    debtor_incurred_month: "28 499 392, 09 AZN",
+    debtor_settled_month: "28 499 392, 09 AZN",
+    debtor_balance_end: "28 499 392, 09 AZN",
+  },
+  {
+    no: 2,
+    indicators: "307.1 Debitor borclar üzrə",
+    debtor_balance_start: "28 499 392, 09 AZN",
+    debtor_incurred_month: "28 499 392, 09 AZN",
+    debtor_settled_month: "28 499 392, 09 AZN",
+    debtor_balance_end: "28 499 392, 09 AZN",
+  },
+  {
+    no: 3,
+    indicators: "307.1 Debitor borclar üzrə",
+    debtor_balance_start: "28 499 392, 09 AZN",
+    debtor_incurred_month: "28 499 392, 09 AZN",
+    debtor_settled_month: "28 499 392, 09 AZN",
+    debtor_balance_end: "28 499 392, 09 AZN",
+  },
+  {
+    no: 4,
+    indicators: "307.1 Debitor borclar üzrə",
+    debtor_balance_start: "28 499 392, 09 AZN",
+    debtor_incurred_month: "28 499 392, 09 AZN",
+    debtor_settled_month: "28 499 392, 09 AZN",
+    debtor_balance_end: "28 499 392, 09 AZN",
+  },
+];
+
+// (ədv-yə görə)
+
+// export const basedVatData = [
+//   {
+//     no: 1,
+//     indicators: "307.1 Debitor borclar üzrə",
+//     debtor_balance_start: "28 499 392, 09 AZN",
+//     debtor_incurred_month: "28 499 392, 09 AZN",
+//     debtor_settled_month: "28 499 392, 09 AZN",
+//     debtor_balance_end: "28 499 392, 09 AZN",
+//   },
+//   {
+//     no: 2,
+//     indicators: "307.1 Debitor borclar üzrə",
+//     debtor_balance_start: "28 499 392, 09 AZN",
+//     debtor_incurred_month: "28 499 392, 09 AZN",
+//     debtor_settled_month: "28 499 392, 09 AZN",
+//     debtor_balance_end: "28 499 392, 09 AZN",
+//   },
+//   {
+//     no: 3,
+//     indicators: "307.1 Debitor borclar üzrə",
+//     debtor_balance_start: "28 499 392, 09 AZN",
+//     debtor_incurred_month: "28 499 392, 09 AZN",
+//     debtor_settled_month: "28 499 392, 09 AZN",
+//     debtor_balance_end: "28 499 392, 09 AZN",
+//   },
+//   {
+//     no: 4,
+//     indicators: "307.1 Debitor borclar üzrə",
+//     debtor_balance_start: "28 499 392, 09 AZN",
+//     debtor_incurred_month: "28 499 392, 09 AZN",
+//     debtor_settled_month: "28 499 392, 09 AZN",
+//     debtor_balance_end: "28 499 392, 09 AZN",
+//   },
+// ];
+
+// (digərləri eynidir)
 
 
 //////// params

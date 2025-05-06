@@ -395,21 +395,28 @@ export default function TaxModuleTable({
 
           <tfoot>
             <tr>
-              {columns.map((col) => (
-                <td key={col.id}>
-                  {col.enableFooterTotal
-                    ? !isNaN(footerTotals[col.accessorKey])
-                      ? col.accessorKey === 'no'
-                        ? footerTotals[col.accessorKey] // sadece sayı
-                        : Number.isInteger(footerTotals[col.accessorKey])
-                          ? footerTotals[col.accessorKey]
-                          : footerTotals[col.accessorKey].toFixed(2)
-                      : ''
-                    : null}
-                </td>
-              ))}
+              {columns.map((col) => {
+                const total = footerTotals[col.accessorKey];
+                const isTotal = col.enableFooterTotal;
+                const customText = col.footerContent;
+
+                return (
+                  <td key={col.id}>
+                    {customText
+                      ? customText
+                      : isTotal
+                        ? !isNaN(total)
+                          ? Number.isInteger(total)
+                            ? total
+                            : total.toFixed(2)
+                          : ''
+                        : null}
+                  </td>
+                );
+              })}
             </tr>
           </tfoot>
+
 
 
 
