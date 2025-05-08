@@ -69,7 +69,73 @@ export const purchaseColumns = [
         filterOptions: {
             options: ["Hamısı", "AZN", "USD", "EUR"],
         },
-    }
+    },
+    {
+        id: "invoice_serie", accessorKey: "invoice_serie", header: "Qaimə seriyası",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "invoice_num", accessorKey: "invoice_num", header: "Qaimə nömrəsi",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "main_note", accessorKey: "main_note", header: "Əsas qeyd",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "extra_note", accessorKey: "extra_note", header: "Əlavə qeyd",
+        filterOptions: { search: true, type: "search" },
+
+    },
+    {
+        id: "amount_without_vat", accessorKey: "amount_without_vat", header: "Malın ƏDV - siz ümumi dəyəri",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+
+    },
+    {
+        id: "amount_with_vat", accessorKey: "amount_with_vat", header: "Malın ƏDV məbləği",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+
+    },
+    {
+        id: "involve_vat", accessorKey: "involve_vat", header: "ƏDV - yə cəlb edilən",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "not_involve_vat", accessorKey: "not_involve_vat", header: "ƏDV - yə cəlb edilməyən",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "free_vat", accessorKey: "free_vat", header: "ƏDV -dən azad olan",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "zero_involve_vat", accessorKey: "zero_involve_vat", header: "ƏDV - yə “0” dərəcə ilə cəlb edilən",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "road_tax", accessorKey: "road_tax", header: "Yol vergisi",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "axsiz_amount", accessorKey: "axsiz_amount", header: "Aksiz məbləği",
+        filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
+    },
+    {
+        id: "act_type", accessorKey: "act_type", header: "Qaimə / Akt növləri",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "kind", accessorKey: "kind", header: "Növ",
+        filterOptions: { search: true, type: "search" },
+    },
+    {
+        id: "classification", accessorKey: "classification", header: "Təsnifat",
+        filterOptions: { search: true, type: "search" },
+    },
 ];
 
 export const actsColumns = [
