@@ -1,107 +1,123 @@
-import React from 'react';
+import React, { useState } from "react";
+import LogoGreen from '../components/ui/LogoGreen'
 
-const sidebarData = [/* yukarıdaki JSON verisi buraya gelecek */];
+const AccordionSidebar = () => {
+  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-const TreeItem = ({ title }) => (
-  <div className="tree-item d-flex align-items-center">
-    <img src="/assets/tree-icon.svg" alt="" />
-    <button>{title}</button>
-  </div>
-);
+  const toggleAccordion = (id) => {
+    if (!isCollapsed) {
+      setActiveAccordion(activeAccordion === id ? null : id);
+    }
+  };
 
-const AccordionSection = ({ id, icon, title, children }) => (
-  <>
-    <button
-      className="accordion-button collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target={`#${id}`}
-      aria-expanded="false"
-      aria-controls={id}
-    >
-      <div className="d-flex align-items-center gap-2">
-        <img src={icon} alt="" />
-        <span>{title}</span>
-      </div>
-    </button>
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+    setOpenDropdown(null); // Sidebar küçülürse açık olan dropdown kapansın
+  };
 
-    <div id={id} className="accordion-collapse collapse">
-      <div className="menu">
-        {children.map((item, i) =>
-          typeof item === 'string' ? (
-            <TreeItem key={i} title={item} />
-          ) : (
-            <div key={i}>
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`#${id}-child-${i}`}
-                aria-expanded="false"
-                aria-controls={`${id}-child-${i}`}
-              >
-                <img src="/assets/tree-icon.svg" alt="" />
-                <span>{item.title}</span>
-              </button>
+  const toggleDropdown = (id) => {
+    setOpenDropdown(openDropdown === id ? null : id);
+  };
 
-              <div id={`${id}-child-${i}`} className="accordion-collapse collapse">
-                <div className="menu ps-3">
-                  {item.children.map((child, j) => (
-                    <TreeItem key={j} title={child} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          )
-        )}
-      </div>
-    </div>
-  </>
-);
+  const accordions = [
+    {
+      id: "database",
+      title: "Məlumat bazası",
+      icon: "/assets/database-icon.svg",
+      subItems: [
+        "Qaimələr",
+        "Əvəzləşmə reyestri",
+        "Depozit çıxarışları",
+        "Bank çıxarışları",
+        "Kassa əməliyyatları",
+        "Gömrük sənədləri",
+        "Şirkət bazası",
+        "Vergi hesabatları",
+        "İlkin qalıqlar",
+        "Qeyri rezidentlər",
+      ],
+    },
+    {
+      id: "reports",
+      title: "Hesabatlar",
+      icon: "/assets/document-icon.svg",
+      subItems: ["Üzləşmə aktları", "Qaimələr üzrə hesabat", "Pulun hərəkəti hesabatı", "ALış-satış hesabatı", "Gəlir və xərc hesabatı", "Borclar cədvəli"],
+    },
+  ];
 
-const TaxModuleSideBar = () => {
   return (
-    <div className="tax-module-sidebar d-flex flex-column">
-      <div className="accordion" id="accordionPanelsStayOpenExample">
-        {/* Üst Logo */}
-        <div
-          className="sidebar-header d-flex align-items-center"
-          data-bs-toggle="collapse"
-          data-bs-target="#general"
-          aria-expanded="true"
-          aria-controls="general"
-        >
-          <div className="logo d-flex align-items-center gap-3">
-            <div className="logo-img">
-              <img src="/assets/logo.svg" alt="" />
-              <div className="lines">
-                <div className="line1"></div>
-                <div className="line2"></div>
-                <div className="line3"></div>
-              </div>
-            </div>
-            <span className="logo-text">TAXSIS</span>
+    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+
+
+      {/* Header */}
+      <div className={`sidebar-header ${isCollapsed ? "collapsed" : ""}`}>
+
+        <LogoGreen />
+
+        <div className="icons">
+
+          <div className="arrow-icon">
+            <img src="./assets/arrow-down.svg" alt="" />
           </div>
-          <div className="icon">
-            <img src="/assets/arrow-down.svg" alt="" />
+
+          <div className="toggle-sidebar-icon" onClick={toggleSidebar}>
+            <img src="/assets/sidebar-toggle-open.svg" alt="" />
+            {/* {isCollapsed ? "➡️" : "⬅️"} */}
           </div>
+
         </div>
 
-        {/* İçerik Accordionları */}
-        <div id="general" className="accordion-collapse collapse show">
-          {sidebarData.map((section) => (
-            <AccordionSection
-              key={section.id}
-              id={section.id}
-              icon={section.icon}
-              title={section.title}
-              children={section.children}
-            />
-          ))}
-        </div>
       </div>
+
+      {accordions.map((accordion) => (
+        <div key={accordion.id} className="accordion-item">
+
+          <div className="accordion-header" onClick={() => (isCollapsed ? toggleDropdown(accordion.id) : toggleAccordion(accordion.id))} >
+            <img src={accordion.icon} alt="" />
+            {!isCollapsed && <span className="title">{accordion.title}</span>}
+
+            {/* Üçgen ikonu sadece geniş durumda gözükecek */}
+            {!isCollapsed && (
+              <span className={`arrow ${activeAccordion === accordion.id ? "open" : ""}`}>
+                <img src="/assets/arrow-down.svg" alt="" />
+              </span>
+            )}
+          </div>
+
+          {/* Geniş durumda alt başlıklar */}
+          {!isCollapsed && (
+            <div className={`accordion-content ${activeAccordion === accordion.id ? "show" : ""}`}>
+
+              {accordion.subItems.map((subItem, index) => (
+                <div key={index} className="accordion-subitem">
+                  <img src="/assets/tree-icon.svg" alt="" />
+                  <button>
+                    {subItem}
+
+                    <img src="/assets/arrow-right-icon.svg" alt="" />
+                  </button>
+                </div>
+              ))}
+
+            </div>
+          )}
+
+          {/* Küçük durumda dropdown */}
+          {isCollapsed && (
+            <div className={`dropdown ${openDropdown === accordion.id ? "show" : ""}`}>
+              {accordion.subItems.map((subItem, index) => (
+                <div key={index} className="dropdown-item">
+                  {subItem}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
 
-export default TaxModuleSideBar;
+export default AccordionSidebar;

@@ -24,6 +24,7 @@ const Login = () => {
 
                 <LogoWhite />
 
+
                 <div className="phone-number position-absolute d-flex align-items-center">
                     <img src="/assets/phone-icon.svg" alt="" />
                     <span>+994 12 345 67 89</span>

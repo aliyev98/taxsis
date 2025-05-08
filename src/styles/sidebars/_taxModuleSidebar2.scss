@@ -1,82 +1,139 @@
-.tax-module-sidebar-container {
-    width: 20%;
-    padding: 24px;
-    background-color: #fcfcfc;
-    height: fit-content;
+.tax-module-sidebar-2 {
 
-    .sidebar-header {
-        margin-bottom: 48px;
-        cursor: pointer;
 
-        .logo {
-            top: 20px;
-            left: 20px;
-            gap: 12px;
+    .custom-sidebar {
+        padding: 24px;
+        min-width: 300px;
 
-            .logo-img {
-                position: relative;
+        .ps-sidebar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            background-color: transparent;
+            scrollbar-width: none !important;
 
-                .lines {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 4px;
 
-                    .line1 {
-                        width: 4px;
-                        height: 8px;
-                        border-radius: 12px;
-                        background: #fff;
-                    }
+            .sidebar-header {
+                display: flex;
+                align-items: center;
 
-                    .line2 {
-                        width: 4px;
-                        height: 12px;
-                        border-radius: 12px;
-                        background: #fff;
-                    }
+                .icons {
+                    gap: 16px;
+                    cursor: pointer;
 
-                    .line3 {
-                        width: 4px;
-                        height: 8px;
-                        border-radius: 12px;
-                        background: #fff;
+                    .arrow-icon {
+                        margin-left: auto;
+                        border-radius: 20px;
+                        border: 1px solid var(--Neutral-03, #EFEFEF);
+                        background: var(--Neutral-02, #F4F4F4);
+                        padding: 4px;
                     }
                 }
 
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
+
+            }
+
+            .sidebar-menu {
+
+                .submenu {
+
+                    &:hover {
+                        background-color: transparent !important;
+                    }
+
+                    .ps-submenu-expand-icon {
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            right: 8px;
+                            top: 20px;
+                            transform: translateY(-50%);
+                            width: 24px;
+                            height: 24px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-image: url('/assets/arrow-down.svg');
+                        }
+
+                        span {
+                            width: 70%;
+                            height: 70%;
+                            display: none;
+                        }
+                    }
+
+                    .btn-menu-item {
+                        background-color: transparent;
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        gap: 12px;
+                        border: none;
+
+                    }
+
+                    .active {
+
+                        gap: 0 !important;
+
+                        .menu-item {
+
+                            a {
+                                color: var(--Neutral-07, #1A1D1F);
+                                font-size: 15px;
+                                font-weight: 600;
+                                padding: 12px !important;
+                                border-radius: 12px;
+                                background: var(--Neutral-03, #EFEFEF);
+                                box-shadow: 0px -2px 1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 1px 0px #FFF inset;
+                            }
+                        }
+
+                    }
+
+                    a {
+                        padding: 12px !important;
+                        color: var(--Neutral-04, #6F767E);
+                        font-size: 15px;
+                        font-weight: 600;
+                        text-align: left;
+
+                        &:hover {
+                            background-color: transparent !important;
+                        }
+                    }
+
+                    .menu-item {
+                        .ps-menu-button {
+                            padding: 0 !important;
+                        }
+                    }
                 }
 
-            }
+                .submenu-nested {
 
-            .logo-text {
-                color: #000;
-                font-size: 24px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 32px;
-                letter-spacing: -0.48px;
+                    .btn-menu-item {
+                        background-color: transparent;
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        gap: 12px;
+                        border: none;
+                        padding-left: 25px;
+                    }
+
+                    a {
+                        padding: 0 !important;
+                    }
+
+                }
             }
         }
 
-        .icon {
-            margin-left: auto;
-            border-radius: 20px;
-            border: 1px solid var(--Neutral-03, #EFEFEF);
-            background: var(--Neutral-02, #F4F4F4);
-            padding: 4px;
-        }
-
-    }
-
-    .accordion-container{
-        background-color: red;
     }
 }

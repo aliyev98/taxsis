@@ -22,6 +22,8 @@ import BankAccount from '../../components/modules/tax/BankAccount';
 import TaxModuleSidebar2 from '../../sidebars/TaxModuleSidebar2';
 import TaxModuleHeader from '../../layouts/TaxModuleHeader';
 import VatReturn from '../../components/modules/tax/VatReturn';
+import AccordionSidebar from '../../sidebars/Accordion';
+import Sdbr from '../../sidebars/Sdbr'
 
 
 const TaxModule = () => {
@@ -31,10 +33,13 @@ const TaxModule = () => {
     return (
         <div className='tax-module-container d-flex'>
 
-            <TaxModuleSideBar />
+            {/* <TaxModuleSideBar /> */}
 
+            {/* <TaxModuleSidebar2 /> */}
 
+            {/* <AccordionSidebar /> */}
 
+            <Sdbr />
 
 
             {sidebarSelection === "invoices" && <Invoices />}

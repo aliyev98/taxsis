@@ -1,356 +1,258 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setSidebarSelection } from '../redux/slices/taxModuleSlice'; // 🔁 path’i kendi yapına göre güncelle
+import React, { useState } from 'react';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import LogoGreen from '../components/ui/LogoGreen';
+// import 'react-pro-sidebar/dist/css/styles.css';
 
-const labelToPageKeyMap = {
-  'Qaimələr': 'invoices',
-  'Əvəzləşmə reyestri': 'substitution_register',
-  'Deopzit çıxarışları': 'deposits_extracts',
-  'Bank çıxarışları': 'bank_statements',
-  'Kassa əməliyyatları': 'cash_opr',
-  'Gömrük sənədləri': 'custom_documents',
-  'Şirkət bazası': 'company_base',
-  'Vergi hesabatları': 'tax_reports',
-  'İlkin qalıqlar': 'initial_balances',
-  'Daxili qalıqlar': 'internal_balances',
-  'Xarici qalıqlar': 'external_balances',
-  'Qeyri rezidentlər': 'non_residents',
-  'Hesabatlar': 'reports',
-  'Üzləşmə aktları': 'confrontation_acts',
-  'Qaimələr üzrə hesabat': 'invoice_reports',
-  'Pulun hərəkəti hesabatı': 'cash_flow',
-  'Alış-satış hesabatı': 'purchase_and_sales_reports',
-  'Gəlir və xərc hesabatı': 'profit_loss',
-  'Borclar cədvəli': 'debts_table',
-  'Vergi uçotu': 'tax_accounting',
-  'Əvəzləşmə': 'substitution',
-  'ƏDV bildirişi': 'vat_statement',
-  'Müqayisəli təhlil': 'comparison_analysis',
-  'Analizlər': 'analyses',
-  'Parametrlər': 'parameters',
-  'Bank hesabı': 'bank_account',
-  'Xərc maddəsi': 'expense_item',
-  'Aktiv maddəsi': 'asset_item',
-  'Gəlir maddəsi': 'income_item',
-};
+const TaxModuleSidebar2 = ({ onSelect }) => {
+    const [collapsed, setCollapsed] = useState(false);
+    const [activeBtn, setActiveBtn] = useState(null);
 
-const accordionMap = {
-  database: [
-    'Qaimələr',
-    'Əvəzləşmə reyestri',
-    'Deopzit çıxarışları',
-    'Bank çıxarışları',
-    'Kassa əməliyyatları',
-    'Gömrük sənədləri',
-    'Şirkət bazası',
-    'Vergi hesabatları',
-  ],
-  remains: ['Daxili qalıqlar', 'Xarici qalıqlar'],
-  reports: [
-    'Üzləşmə aktları',
-    'Qaimələr üzrə hesabat',
-    'Pulun hərəkəti hesabatı',
-    'Alış-satış hesabatı',
-    'Gəlir və xərc hesabatı',
-    'Borclar cədvəli',
-  ],
-  accounting: ['Əvəzləşmə', 'ƏDV bildirişi', 'Müqayisəli təhlil'],
-  analyses: ['Analizlər'],
-  params: ['Bank hesabı', 'Xərc maddəsi', 'Aktiv maddəsi', 'Gəlir maddəsi'],
-};
+    const [activeSubMenu, setActiveSubMenu] = useState(null);
 
-const getAccordionIdForLabel = (label) => {
-  for (const [id, items] of Object.entries(accordionMap)) {
-    if (items.includes(label)) return id;
-  }
-  return null;
-};
+    const handleSubMenuClick = (id) => {
+        setActiveSubMenu(activeSubMenu === id ? null : id);
+    };
 
-const TaxModuleSideBar = () => {
-  const dispatch = useDispatch();
+    const handleSelect = (id, payload) => {
+        setActiveBtn(id);
+        onSelect?.(payload);
+    };
 
-  // 1) activeButton'ı localStorage'dan başlat, yoksa 'Qaimələr'
-  const [activeButton, setActiveButton] = useState(
-    () => localStorage.getItem('taxModuleSidebarSelection') || 'Qaimələr'
-  );
+    const databaseMenuItems = [
+        { id: 'db1', content: 'Qaimələr' },
+        { id: 'db2', content: 'Əvəzləşmə reyestri' },
+        { id: 'db3', content: 'Depozit çıxarışları' },
+        { id: 'db4', content: 'Bank çıxarışları' },
+        { id: 'db5', content: 'Kassa əməliyyatları' },
+        { id: 'db6', content: 'Şirkət bazası' },
+        { id: 'db7', content: 'Vergi hesabatları' }
+    ];
 
-  // 2) activeButton her değiştiğinde localStorage ve Redux güncelle
-  useEffect(() => {
-    localStorage.setItem('taxModuleSidebarSelection', activeButton);
-    const pageKey = labelToPageKeyMap[activeButton];
-    if (pageKey) dispatch(setSidebarSelection(pageKey));
-  }, [activeButton, dispatch]);
+    const initialBalancesItems = [
+        { id: 'ib1', content: 'Daxili qalıqlar' },
+        { id: 'ib2', content: 'Xarici qalıqlar' }
+    ];
 
-  // 3) Seçime göre collapse'ları aç
-  useEffect(() => {
-    const accordionId = getAccordionIdForLabel(activeButton);
-    if (accordionId) {
-      const elem = document.getElementById(accordionId);
-      if (elem && !elem.classList.contains('show')) {
-        new window.bootstrap.Collapse(elem, { toggle: true }).show();
-      }
-    }
-    // İlkin qalıqlar alt collapse
-    if (activeButton === 'Daxili qalıqlar' || activeButton === 'Xarici qalıqlar') {
-      const rem = document.getElementById('remains');
-      if (rem && !rem.classList.contains('show')) {
-        new window.bootstrap.Collapse(rem, { toggle: true }).show();
-      }
-    }
-  }, [activeButton]);
+    const reportsMenuItems = [
+        { id: 'rp1', content: 'Üzləşmə aktları' },
+        { id: 'rp2', content: 'Qaimələr üzrə hesabat' },
+        { id: 'rp3', content: 'Pulun hərəkəti hesabatı' },
+        { id: 'rp4', content: 'Alış-satış hesabatı' },
+        { id: 'rp5', content: 'Gəlir və xərc hesabatı' },
+        { id: 'rp6', content: 'Borclar cədvəli' }
+    ];
 
-  const handleButtonClick = (label) => {
-    setActiveButton(label);
+    const taxAccountingMenuItems = [
+        { id: 'ta1', content: 'Əvəzləşmə' },
+        { id: 'ta2', content: 'ƏDV bildirişi' },
+        { id: 'ta3', content: 'Müqayisəli təhlil' }
+    ];
 
-    // Eğer "İlkin qalıqlar" ise sadece onun altını toggle et
-    if (label === 'İlkin qalıqlar') {
-      const rem = document.getElementById('remains');
-      if (rem) new window.bootstrap.Collapse(rem, { toggle: true }).toggle();
-    }
-  };
+    const analysesMenuItems = [
+        // doldurun
+    ];
 
-  return (
-    <div className="tax-module-sidebar d-flex flex-column">
-      <div className="accordion" id="accordionPanelsStayOpenExample">
+    const parametersMenuItems = [
+        { id: 'pr1', content: 'Bank hesabı' },
+        { id: 'pr2', content: 'Xərc maddəsi' },
+        { id: 'pr3', content: 'Aktiv maddəsi' },
+        { id: 'pr4', content: 'Gəlir maddəsi' }
+    ];
 
-        {/* Logo */}
-        <div className="sidebar-header d-flex align-items-center">
-
-          <div className="logo d-flex align-items-center gap-3">
-            <div className="logo-img">
-              <img src="./assets/logo.svg" alt="" />
-              <div className="lines">
-                <div className="line1" />
-                <div className="line2" />
-                <div className="line3" />
-              </div>
-            </div>
-            <span className="logo-text">TAXSIS</span>
-          </div>
-
-          <div className="arrow-icon">
-            <img src="./assets/arrow-down.svg" alt="" />
-          </div>
-
-          <div className="toggle-sidebar-icon">
-            <img src="/assets/sidebar-toggle.svg" alt="" />
-          </div>
+    return (
+        <div className='tax-module-sidebar-2' style={{ display: 'flex' }}>
+            <Sidebar className='custom-sidebar' collapsed={collapsed}>
 
 
-        </div>
-
-        <div id="general" className="accordion-collapse collapse show">
-          {/* Məlumat bazası */}
-          <button
-            className={`accordion-button ${
-              activeButton === 'Məlumat bazası' ? 'active' : ''
-            }`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#database"
-            aria-expanded={accordionMap.database.includes(activeButton)}
-            aria-controls="database"
-            onClick={() => handleButtonClick('Məlumat bazası')}
-          >
-            <img src="./assets/database-icon.svg" alt="" />
-            <span>Məlumat bazası</span>
-          </button>
-
-          <div
-            id="database"
-            className={`accordion-collapse collapse ${
-              accordionMap.database.includes(activeButton) ||
-              ['İlkin qalıqlar', 'Daxili qalıqlar', 'Xarici qalıqlar'].includes(activeButton)
-                ? 'show'
-                : ''
-            }`}
-          >
-            <div className="menu">
-              {accordionMap.database.map((item) => (
-                <div key={item} className="d-flex align-items-center">
-                  <img src="./assets/tree-icon.svg" alt="" />
-                  <button
-                    className={activeButton === item ? 'active' : ''}
-                    onClick={() => handleButtonClick(item)}
-                  >
-                    {item}
-                  </button>
+                <div className='sidebar-header d-flex align-items-center justify-content-between'>
+                    <LogoGreen />
+                    <div className="icons d-flex align-items-center">
+                        <div className="arrow-icon">
+                            <img src="./assets/arrow-down.svg" alt="toggle" />
+                        </div>
+                        <div className="toogle-sidebar-icon" onClick={() => setCollapsed(p => !p)}>
+                            <img src="/assets/sidebar-toggle.svg" alt="toggle" />
+                        </div>
+                    </div>
                 </div>
-              ))}
 
-              {/* İlkin qalıqlar */}
-              <div className="d-flex align-items-center">
-                <img src="./assets/tree-icon.svg" alt="" />
-                <button
-                  className={activeButton === 'İlkin qalıqlar' ? 'active' : ''}
-                  onClick={() => handleButtonClick('İlkin qalıqlar')}
-                  data-bs-toggle="collapse"
-                  data-bs-target="#remains"
-                  aria-expanded={
-                    ['İlkin qalıqlar', 'Daxili qalıqlar', 'Xarici qalıqlar'].includes(
-                      activeButton
-                    )
-                  }
-                  aria-controls="remains"
-                >
-                  İlkin qalıqlar
-                </button>
-              </div>
-            </div>
+                <Menu className='sidebar-menu' iconShape="circle">
 
-            {/* İlkin qalıqlar alt */}
-            <div
-              id="remains"
-              className={`accordion-collapse collapse submenu ${
-                ['Daxili qalıqlar', 'Xarici qalıqlar'].includes(activeButton)
-                  ? 'show'
-                  : ''
-              }`}
-            >
-              <div className="menu">
-                {accordionMap.remains.map((sub) => (
-                  <div key={sub} className="d-flex align-items-center ps-4">
-                    <img src="./assets/tree-icon.svg" alt="" />
-                    <button
-                      className={activeButton === sub ? 'active' : ''}
-                      onClick={() => handleButtonClick(sub)}
+                    {/* Məlumat bazası */}
+                    <SubMenu
+                       className="submenu activ"
+                        label="Məlumat bazası"
+                        icon={<img src="/assets/database-icon.svg" alt="db" />}
+                        onClick={()=>handleSubMenuClick("reports")}
                     >
-                      {sub}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
+                        {databaseMenuItems.map((item, idx) => {
+                            const isLast = idx === databaseMenuItems.length - 1;
+                            const isActive = activeBtn === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSelect(item.id, item.content)}
+                                >
+                                    <img
+                                        src={`/assets/${isLast ? 'tree-icon.svg' : 'tree-icon.svg'}`}
+                                        alt={item.content}
+                                    />
+                                    <MenuItem className="menu-item">
+                                        {item.content}
+                                    </MenuItem>
 
-            {/* Qeyri rezidentlər */}
-            <div className="menu">
-              <div className="d-flex align-items-center">
-                <img src="./assets/tree-icon.svg" alt="" />
-                <button
-                  className={activeButton === 'Qeyri rezidentlər' ? 'active' : ''}
-                  onClick={() => handleButtonClick('Qeyri rezidentlər')}
-                >
-                  Qeyri rezidentlər
-                </button>
-              </div>
-            </div>
-          </div>
+                                </button>
+                            );
+                        })}
 
-          {/* Hesabatlar */}
-          <button
-            className={`accordion-button collapsed ${
-              activeButton === 'Hesabatlar' ? 'active' : ''
-            }`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#reports"
-            aria-expanded={false}
-            aria-controls="reports"
-            onClick={() => handleButtonClick('Hesabatlar')}
-          >
-            <img src="./assets/document-icon.svg" alt="" />
-            <span>Hesabatlar</span>
-          </button>
-          <div id="reports" className="accordion-collapse collapse">
-            <div className="menu">
-              {accordionMap.reports.map((item) => (
-                <div key={item} className="d-flex align-items-center">
-                  <img src="./assets/tree-icon.svg" alt="" />
-                  <button
-                    className={activeButton === item ? 'active' : ''}
-                    onClick={() => handleButtonClick(item)}
-                  >
-                    {item}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+                        <SubMenu
+                            className="submenu submenu-nested"
+                            label="İlkin qalıqlar"
+                            icon={<img src="/assets/tree-icon.svg" alt="ib" />}
+                        >
+                            {initialBalancesItems.map((item, idx) => {
+                                const isLastNested = idx === initialBalancesItems.length - 1;
+                                const isActive = activeBtn === item.id;
+                                return (
+                                    <button
+                                        key={item.id}
+                                        className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                        onClick={() => handleSelect(item.id, item.content)}
+                                    >
+                                        <img
+                                            src={`/assets/${isLastNested ? 'tree-end.svg' : 'tree-icon.svg'}`}
+                                            alt={item.content}
+                                        />
+                                        <MenuItem className="menu-item" >
+                                            {item.content}
+                                        </MenuItem>
+                                    </button>
+                                );
+                            })}
+                        </SubMenu>
 
-          {/* Vergi uçotu */}
-          <button
-            className={`accordion-button collapsed ${
-              activeButton === 'Vergi uçotu' ? 'active' : ''
-            }`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#accounting"
-            aria-expanded={false}
-            aria-controls="accounting"
-            onClick={() => handleButtonClick('Vergi uçotu')}
-          >
-            <img src="./assets/percent-icon.svg" alt="" />
-            <span>Vergi uçotu</span>
-          </button>
-          <div id="accounting" className="accordion-collapse collapse">
-            <div className="menu">
-              {accordionMap.accounting.map((item) => (
-                <div key={item} className="d-flex align-items-center">
-                  <img src="./assets/tree-icon.svg" alt="" />
-                  <button
-                    className={activeButton === item ? 'active' : ''}
-                    onClick={() => handleButtonClick(item)}
-                  >
-                    {item}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+                        <button
+                            className={`btn-menu-item ${activeBtn === 'nr' ? 'active' : ''}`}
+                            onClick={() => handleSelect('nr', 'Qeyri-rezidentlər')}
+                        >
+                            <img src="/assets/tree-end.svg" alt="nr" />
+                            <MenuItem className="menu-item">Qeyri-rezidentlər</MenuItem>
+                        </button>
+                    </SubMenu>
 
-          {/* Analizlər */}
-          <button
-            className={`accordion-button collapsed ${
-              activeButton === 'Analizlər' ? 'active' : ''
-            }`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#analyses"
-            aria-expanded={false}
-            aria-controls="analyses"
-            onClick={() => handleButtonClick('Analizlər')}
-          >
-            <img src="./assets/bar-icon.svg" alt="" />
-            <span>Analizlər</span>
-          </button>
-          <div id="analyses" className="accordion-collapse collapse">
-            <div className="menu" />
-          </div>
+                    {/* Hesabatlar */}
+                    <SubMenu
+                        className="submenu"
+                        label="Hesabatlar"
+                        icon={<img src="/assets/document-icon.svg" alt="rep" />}
+                    >
+                        {reportsMenuItems.map((item, idx) => {
+                            const isLast = idx === reportsMenuItems.length - 1;
+                            const isActive = activeBtn === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSelect(item.id, item.content)}
+                                >
+                                    <img
+                                        src={`/assets/${isLast ? 'tree-end.svg' : 'tree-icon.svg'}`}
+                                        alt={item.content}
+                                    />
+                                    <MenuItem className="menu-item">
+                                        {item.content}
+                                    </MenuItem>
+                                </button>
+                            );
+                        })}
+                    </SubMenu>
 
-          {/* Parametrlər */}
-          <button
-            className={`accordion-button collapsed ${
-              activeButton === 'Parametrlər' ? 'active' : ''
-            }`}
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#params"
-            aria-expanded={false}
-            aria-controls="params"
-            onClick={() => handleButtonClick('Parametrlər')}
-          >
-            <img src="./assets/settings-icon.svg" alt="" />
-            <span>Parametrlər</span>
-          </button>
-          <div id="params" className="accordion-collapse collapse">
-            <div className="menu">
-              {accordionMap.params.map((item) => (
-                <div key={item} className="d-flex align-items-center">
-                  <img src="./assets/tree-icon.svg" alt="" />
-                  <button
-                    className={activeButton === item ? 'active' : ''}
-                    onClick={() => handleButtonClick(item)}
-                  >
-                    {item}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+                    {/* Vergi uçotu */}
+                    <SubMenu
+                        className="submenu"
+                        label="Vergi uçotu"
+                        icon={<img src="/assets/percent-icon.svg" alt="tax" />}
+                    >
+                        {taxAccountingMenuItems.map((item, idx) => {
+                            const isLast = idx === taxAccountingMenuItems.length - 1;
+                            const isActive = activeBtn === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSelect(item.id, item.content)}
+                                >
+                                    <img
+                                        src={`/assets/${isLast ? 'tree-end.svg' : 'tree-icon.svg'}`}
+                                        alt={item.content}
+                                    />
+                                    <MenuItem className="menu-item">
+                                        {item.content}
+                                    </MenuItem>
+                                </button>
+                            );
+                        })}
+                    </SubMenu>
+
+                    {/* Analizlər */}
+                    <SubMenu
+                        className="submenu"
+                        label="Analizlər"
+                        icon={<img src="/assets/bar-icon.svg" alt="an" />}
+                    >
+                        {analysesMenuItems.map((item, idx) => {
+                            const isLast = idx === analysesMenuItems.length - 1;
+                            const isActive = activeBtn === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSelect(item.id, item.content)}
+                                >
+                                    <img
+                                        src={`/assets/${isLast ? 'tree-end.svg' : 'tree-icon.svg'}`}
+                                        alt={item.content}
+                                    />
+                                    <MenuItem className="menu-item">
+                                        {item.content}
+                                    </MenuItem>
+                                </button>
+                            );
+                        })}
+                    </SubMenu>
+
+                    {/* Parametrlər */}
+                    <SubMenu
+                        className="submenu"
+                        label="Parametrlər"
+                        icon={<img src="/assets/settings-icon.svg" alt="pr" />}
+                    >
+                        {parametersMenuItems.map((item, idx) => {
+                            const isLast = idx === parametersMenuItems.length - 1;
+                            const isActive = activeBtn === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    className={`btn-menu-item ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSelect(item.id, item.content)}
+                                >
+                                    <img
+                                        src={`/assets/${isLast ? 'tree-end.svg' : 'tree-icon.svg'}`}
+                                        alt={item.content}
+                                    />
+                                    <MenuItem className="menu-item">
+                                        {item.content}
+                                    </MenuItem>
+                                </button>
+                            );
+                        })}
+                    </SubMenu>
+
+                </Menu>
+            </Sidebar>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default TaxModuleSideBar;
+export default TaxModuleSidebar2;
