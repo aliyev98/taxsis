@@ -1,122 +1,110 @@
 import React, { useState } from "react";
-import LogoGreen from '../components/ui/LogoGreen'
+import LogoGreen from "../components/ui/LogoGreen";
 
 const AccordionSidebar = () => {
-  const [activeAccordion, setActiveAccordion] = useState(null);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
+  const [openInitial, setOpenInitial] = useState(false);
 
-  const toggleAccordion = (id) => {
-    if (!isCollapsed) {
-      setActiveAccordion(activeAccordion === id ? null : id);
+  const toggleSection = (section) => {
+    if (openSection === section) {
+      setOpenSection(null);
+      setOpenInitial(false);
+    } else {
+      setOpenSection(section);
+      setOpenInitial(false);
     }
   };
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-    setOpenDropdown(null); // Sidebar küçülürse açık olan dropdown kapansın
+  const toggleInitial = (e) => {
+    e.stopPropagation();
+    setOpenInitial((prev) => !prev);
   };
-
-  const toggleDropdown = (id) => {
-    setOpenDropdown(openDropdown === id ? null : id);
-  };
-
-  const accordions = [
-    {
-      id: "database",
-      title: "Məlumat bazası",
-      icon: "/assets/database-icon.svg",
-      subItems: [
-        "Qaimələr",
-        "Əvəzləşmə reyestri",
-        "Depozit çıxarışları",
-        "Bank çıxarışları",
-        "Kassa əməliyyatları",
-        "Gömrük sənədləri",
-        "Şirkət bazası",
-        "Vergi hesabatları",
-        "İlkin qalıqlar",
-        "Qeyri rezidentlər",
-      ],
-    },
-    {
-      id: "reports",
-      title: "Hesabatlar",
-      icon: "/assets/document-icon.svg",
-      subItems: ["Üzləşmə aktları", "Qaimələr üzrə hesabat", "Pulun hərəkəti hesabatı", "ALış-satış hesabatı", "Gəlir və xərc hesabatı", "Borclar cədvəli"],
-    },
-  ];
 
   return (
-    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
-
-
-      {/* Header */}
-      <div className={`sidebar-header ${isCollapsed ? "collapsed" : ""}`}>
-
+    <aside className="sidebar">
+      <div className="sidebar-header">
         <LogoGreen />
-
-        <div className="icons">
-
-          <div className="arrow-icon">
-            <img src="./assets/arrow-down.svg" alt="" />
-          </div>
-
-          <div className="toggle-sidebar-icon" onClick={toggleSidebar}>
-            <img src="/assets/sidebar-toggle-open.svg" alt="" />
-            {/* {isCollapsed ? "➡️" : "⬅️"} */}
-          </div>
-
-        </div>
-
+        {/* Sənin collapse düymən buraya, lazımdırsa əlavə et */}
       </div>
 
-      {accordions.map((accordion) => (
-        <div key={accordion.id} className="accordion-item">
+      <ul className="accordion">
+        {/* — Məlumat bazası bölməsi */}
+        <li className="accordion-section">
 
-          <div className="accordion-header" onClick={() => (isCollapsed ? toggleDropdown(accordion.id) : toggleAccordion(accordion.id))} >
-            <img src={accordion.icon} alt="" />
-            {!isCollapsed && <span className="title">{accordion.title}</span>}
+          <button className="section-button" onClick={() => toggleSection("database")} >
+            <img src="/assets/database-icon.svg" alt="" />
+            <span>Məlumat bazası</span>
+            <img className={`arrow ${openSection === "database" ? "open" : ""}`} src="/assets/arrow-down.svg" alt="" />
+          </button>
 
-            {/* Üçgen ikonu sadece geniş durumda gözükecek */}
-            {!isCollapsed && (
-              <span className={`arrow ${activeAccordion === accordion.id ? "open" : ""}`}>
-                <img src="/assets/arrow-down.svg" alt="" />
-              </span>
-            )}
-          </div>
+          {openSection === "database" && (
+            <ul className="accordion-list">
+              <li> <img src="/assets/tree-icon.svg" alt="" /> <button>Qaimələr</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Əvəzləşmə reyestri</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Depozit çıxarışları</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Bank çıxarışları</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Kassa əməliyyatları</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Gömrük sənədləri</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Şirkət bazası</button></li>
+              <li><img src="/assets/tree-icon.svg" alt="" /> <button>Vergi hesabatları</button></li>
 
-          {/* Geniş durumda alt başlıklar */}
-          {!isCollapsed && (
-            <div className={`accordion-content ${activeAccordion === accordion.id ? "show" : ""}`}>
+              {/* İlkin qalıqlar */}
+              <li className="nested-section">
+              <img src="/assets/tree-icon.svg" alt="" />
+                <button
+                  className="section-button initial"
+                  onClick={toggleInitial}
+                >
+                  <span>İlkin qalıqlar</span>
+                  <img
+                    className={`arrow ${openInitial ? "open" : ""}`}
+                    src="/assets/arrow-down.svg"
+                    alt=""
+                  />
+                </button>
 
-              {accordion.subItems.map((subItem, index) => (
-                <div key={index} className="accordion-subitem">
-                  <img src="/assets/tree-icon.svg" alt="" />
-                  <button>
-                    {subItem}
+                {openInitial && (
+                  <ul className="nested-list">
+                    <li><button>Daxili qalıqlar</button></li>
+                    <li><button>Xarici qalıqlar</button></li>
+                  </ul>
+                )}
+              </li>
 
-                    <img src="/assets/arrow-right-icon.svg" alt="" />
-                  </button>
-                </div>
-              ))}
-
-            </div>
+              <li><button>Qeyri rezidentlər</button></li>
+            </ul>
           )}
+        </li>
 
-          {/* Küçük durumda dropdown */}
-          {isCollapsed && (
-            <div className={`dropdown ${openDropdown === accordion.id ? "show" : ""}`}>
-              {accordion.subItems.map((subItem, index) => (
-                <div key={index} className="dropdown-item">
-                  {subItem}
-                </div>
-              ))}
-            </div>
+        {/* — Hesabatlar bölməsi */}
+        <li className="accordion-section">
+          <button
+            className="section-button"
+            onClick={() => toggleSection("reports")}
+          >
+            <img src="/assets/document-icon.svg" alt="" />
+            <span>Hesabatlar</span>
+            <img
+              className={`arrow ${openSection === "reports" ? "open" : ""}`}
+              src="/assets/arrow-down.svg"
+              alt=""
+            />
+          </button>
+
+          {openSection === "reports" && (
+            <ul className="accordion-list">
+              <li><button>Üzləşmə aktları</button></li>
+              <li><button>Qaimələr üzrə hesabat</button></li>
+              <li><button>Pulun hərəkəti hesabatı</button></li>
+              <li><button>Alış-satış hesabatı</button></li>
+              <li><button>Gəlir və xərc hesabatı</button></li>
+              <li><button>Borclar cədvəli</button></li>
+            </ul>
           )}
-        </div>
-      ))}
-    </div>
+        </li>
+
+      </ul>
+    </aside>
   );
 };
 

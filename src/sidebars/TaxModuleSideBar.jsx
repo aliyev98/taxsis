@@ -184,6 +184,7 @@ const TaxModuleSideBar = () => {
             >
               <img src="/assets/sidebar-toggle.svg" alt="" />
             </div>
+            
           </div>
 
           {/* ---------- ACCORDION BODY ---------- */}

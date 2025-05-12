@@ -102,6 +102,8 @@
 
                     th {
                         padding: 16px 24px !important;
+                        border-left: 1px solid #e1e1e1;
+                        border-radius: 1px solid #e1e1e1;
 
                         .th {
                             gap: 8px;
@@ -125,6 +127,7 @@
             tbody {
                 position: relative;
 
+
                 tr {
                     white-space: nowrap;
 
@@ -133,11 +136,14 @@
                     }
 
                     td {
-                        padding: 16px 24px !important;
                         font-weight: 600;
                         font-size: 14px;
                         position: relative;
-                        // text-align: center;
+                        border-left: 1px solid #e1e1e1;
+                        border-radius: 1px solid #e1e1e1;
+                        padding: 16px 24px !important;
+
+
                     }
                 }
             }

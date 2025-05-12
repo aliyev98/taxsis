@@ -80,7 +80,7 @@ const TaxModuleSidebar2 = ({ onSelect }) => {
 
                     {/* Məlumat bazası */}
                     <SubMenu
-                       className="submenu activ"
+                       className="submenu activ "
                         label="Məlumat bazası"
                         icon={<img src="/assets/database-icon.svg" alt="db" />}
                         onClick={()=>handleSubMenuClick("reports")}

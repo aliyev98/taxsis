@@ -24,6 +24,7 @@ import TaxModuleHeader from '../../layouts/TaxModuleHeader';
 import VatReturn from '../../components/modules/tax/VatReturn';
 import AccordionSidebar from '../../sidebars/Accordion';
 import Sdbr from '../../sidebars/Sdbr'
+import ManualSidebar from '../../sidebars/ManualSidebar';
 
 
 const TaxModule = () => {
@@ -39,7 +40,9 @@ const TaxModule = () => {
 
             {/* <AccordionSidebar /> */}
 
-            <Sdbr />
+            <ManualSidebar />
+
+            {/* <Sdbr /> */}
 
 
             {sidebarSelection === "invoices" && <Invoices />}
