@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import LogoGreen from '../components/ui/LogoGreen';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSidebarSelection } from '../redux/slices/taxModuleSlice';
+
+
+
 
 const ManualSidebar = () => {
     // State for toggling sections
@@ -11,51 +16,68 @@ const ManualSidebar = () => {
     const [showParameters, setShowParameters] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(false);
 
+    const [activeSubItem, setActiveSubItem] = useState(null);
+
+    const dispatch = useDispatch();
+
+    // const sidebar = useSelector((state) => ))
+
+    const handleSectionSelect = (section) => {
+        dispatch(setSidebarSelection(section));
+    };
+
+    const handleItemSelect = (itemId) => {
+        setActiveSubItem(itemId);
+        dispatch(setSidebarSelection(itemId));
+    };
+
+
+
     const toggleSidebar = () => {
         setIsCollapsed(prev => !prev);
     };
 
     const databaseMenuItems = [
-        { id: 'db1', content: 'Qaimələr' },
-        { id: 'db2', content: 'Əvəzləşmə reyestri' },
-        { id: 'db3', content: 'Depozit çıxarışları' },
-        { id: 'db4', content: 'Bank çıxarışları' },
-        { id: 'db5', content: 'Kassa əməliyyatları' },
-        { id: 'db6', content: 'Şirkət bazası' },
-        { id: 'db7', content: 'Vergi hesabatları' },
+        { id: 'invoices', content: 'Qaimələr' },
+        { id: 'substitution_register', content: 'Əvəzləşmə reyestri' },
+        { id: 'deposits_extracts', content: 'Depozit çıxarışları' },
+        { id: 'bank_statements', content: 'Bank çıxarışları' },
+        { id: 'cash_opr', content: 'Kassa əməliyyatları' },
+        { id: 'company_base', content: 'Şirkət bazası' },
+        { id: 'tax_reports', content: 'Vergi hesabatları' },
     ];
 
     const initialBalancesItems = [
-        { id: 'ib1', content: 'Daxili qalıqlar' },
-        { id: 'ib2', content: 'Xarici qalıqlar' },
+        { id: 'internal_balances', content: 'Daxili qalıqlar' },
+        { id: 'external_balances', content: 'Xarici qalıqlar' },
     ];
 
     const reportsMenuItems = [
-        { id: 'rp1', content: 'Üzləşmə aktları' },
-        { id: 'rp2', content: 'Qaimələr üzrə hesabat' },
-        { id: 'rp3', content: 'Pulun hərəkəti hesabatı' },
-        { id: 'rp4', content: 'Alış-satış hesabatı' },
-        { id: 'rp5', content: 'Gəlir və xərc hesabatı' },
-        { id: 'rp6', content: 'Borclar cədvəli' },
+        { id: 'confrontation_acts', content: 'Üzləşmə aktları' },
+        { id: 'invoice_reports', content: 'Qaimələr üzrə hesabat' },
+        { id: 'cash_flow', content: 'Pulun hərəkəti hesabatı' },
+        { id: 'urchase_and_sales_reports', content: 'Alış-satış hesabatı' },
+        { id: 'profit_loss', content: 'Gəlir və xərc hesabatı' },
+        { id: 'debts_table', content: 'Borclar cədvəli' },
     ];
 
     const taxAccountingMenuItems = [
-        { id: 'ta1', content: 'Əvəzləşmə' },
-        { id: 'ta2', content: 'ƏDV bildirişi' },
-        { id: 'ta3', content: 'Müqayisəli təhlil' },
+        { id: 'substitution', content: 'Əvəzləşmə' },
+        { id: 'vat_return', content: 'ƏDV bildirişi' },
+        { id: 'comparison_analysis', content: 'Müqayisəli təhlil' },
     ];
 
     const analysesMenuItems = [
-        { id: 'an1', content: 'Satış analizi' },
-        { id: 'an2', content: 'Xərc analizi' },
-        { id: 'an3', content: 'Mənfəət analizi' },
+        // { id: 'an1', content: 'Satış analizi' },
+        // { id: 'an2', content: 'Xərc analizi' },
+        // { id: 'an3', content: 'Mənfəət analizi' },
     ];
 
     const parametersMenuItems = [
-        { id: 'pr1', content: 'Bank hesabı' },
-        { id: 'pr2', content: 'Xərc maddəsi' },
-        { id: 'pr3', content: 'Aktiv maddəsi' },
-        { id: 'pr4', content: 'Gəlir maddəsi' },
+        { id: 'bank_account', content: 'Bank hesabı' },
+        { id: 'expense_item', content: 'Xərc maddəsi' },
+        { id: 'asset_item', content: 'Aktiv maddəsi' },
+        { id: 'income_item', content: 'Gəlir maddəsi' },
     ];
 
     // Helper to close all except one
@@ -94,235 +116,477 @@ const ManualSidebar = () => {
                 <div className={`sidebar-body ${isCollapsed ? 'collapsed' : ''}`}>
 
                     {/* Məlumat bazası */}
-                    <div className=''>
-
-                        <button className="sidebar-section"
+                    <div>
+                        <button
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showDatabase ? 'active' : ''} `}
                             onClick={() => {
                                 if (isCollapsed) {
-                                    // kiçik halda təkcə dropdown toggle et
-                                    setShowDatabase(d => !d);
+                                    // collapsed halda toggle et: əgər açıqdırsa bağla, bağlıdırsa aç
+                                    setShowDatabase(prev => {
+                                        const next = !prev;
+                                        // digər bölmələri hər zaman bağla
+                                        setShowReports(false);
+                                        setShowTaxAccounting(false);
+                                        setShowAnalyses(false);
+                                        setShowParameters(false);
+                                        setShowInitial(false);
+                                        return next;
+                                    });
                                 } else {
-                                    // geniş halda inline menyunu açıb-bağla
-                                    setShowDatabase(d => !d);
-                                    setShowInitial(false);
-                                    setShowReports(false);
-                                    setShowTaxAccounting(false);
-                                    setShowAnalyses(false);
-                                    setShowParameters(false);
+                                    // geniş halda inline siyahını aç-bağla
+                                    setShowDatabase(d => {
+                                        const next = !d;
+                                        if (next) {
+                                            setShowReports(false);
+                                            setShowTaxAccounting(false);
+                                            setShowAnalyses(false);
+                                            setShowParameters(false);
+                                            setShowInitial(false);
+                                        }
+                                        return next;
+                                    });
                                 }
                             }}
+
                         >
                             <img src="/assets/database-icon.svg" alt="" />
-
                             {!isCollapsed && <span>Məlumat bazası</span>}
-
                         </button>
 
+                        {/* ——————————————————————————————————————————— */}
+                        {/* Geniş halda inline siyahı */}
                         {showDatabase && !isCollapsed && (
                             <ul className="sidebar-list">
-
                                 {databaseMenuItems.map(item => (
-                                    <li key={item.id} className="sidebar-item">
+                                    <li
+                                        key={item.id}
+                                        className="sidebar-item"
+                                        onClick={() => handleItemSelect(item.id)}
+                                    >
                                         <img src="/assets/tree-icon.svg" alt="" />
-                                        <span>
-                                            {item.content}
-                                        </span>
+                                        <span className={`${activeSubItem === item.id ? 'active' : ''}`}>{item.content}</span>
                                     </li>
                                 ))}
-                                <li className="sidebar-item has-sublist">
 
+                                {/* İlkin qalıqlar */}
+                                <li className="sidebar-item has-sublist">
                                     <button
-                                        className="sidebar-section sidebar-section-nested p-0"
+                                        className="sidebar-section sidebar-section-nested"
                                         onClick={e => {
                                             e.stopPropagation();
-                                            setShowInitial(prev => !prev);
+                                            setShowInitial(i => !i);
                                         }}
                                     >
                                         <img src="/assets/tree-icon.svg" alt="" />
-                                        İlkin qalıqlar
+                                        <span>İlkin qalıqlar</span>
                                     </button>
-
                                     {showInitial && (
                                         <ul className="sidebar-sublist">
-                                            {initialBalancesItems.map(item => (
-                                                <li key={item.id} className="sidebar-subitem">
-                                                    <img src="/assets/tree-icon.svg" alt="" />
-                                                    <span>
-                                                        {item.content}
-                                                    </span>
-                                                </li>
-
-                                            ))}
+                                            {initialBalancesItems.map((item, idx) => {
+                                                const isLast = idx === initialBalancesItems.length - 1;
+                                                return (
+                                                    <li
+                                                        key={item.id}
+                                                        className={`sidebar-subitem ${activeSubItem === item.id ? 'subactive' : ''}`}
+                                                        onClick={() => setActiveSubItem(item.id)}
+                                                    >
+                                                        <img
+                                                            src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                            alt=""
+                                                        />
+                                                        <span>{item.content}</span>
+                                                    </li>
+                                                );
+                                            })}
                                         </ul>
                                     )}
-
                                 </li>
-                                <li className="sidebar-item">
-                                    <img src="/assets/tree-icon.svg" alt="" />
+
+
+                                <li className='sidebar-item'>
+                                    <img src="/assets/tree-end.svg" alt="" />
                                     <span>Qeyri-rezidentlər</span>
                                 </li>
                             </ul>
                         )}
 
+                        {/* ——————————————————————————————————————————— */}
+                        {/* Collapsed halda tam nested dropdown */}
                         {showDatabase && isCollapsed && (
                             <div className="sidebar-dropdown position-absolute">
-                                {databaseMenuItems.map(item => (
-                                    <div key={item.id} className="dropdown-item">
-                                        {item.content}
-                                    </div>
-                                ))}
+                                <ul className="dropdown-list">
+                                    {databaseMenuItems.map(item => (
+                                        <li
+                                            key={item.id}
+                                            className={`dropdown-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            onClick={() => handleItemSelect(item.id)}
+                                        >
+                                            <img src="/assets/tree-icon.svg" alt="" />
+                                            <span>{item.content}</span>
+                                        </li>
+                                    ))}
+
+                                    {/* İlkin qalıqlar dropdown içində */}
+                                    <li className="dropdown-item has-sublist">
+                                        <button
+                                            className="sidebar-section sidebar-section-nested"
+                                            onClick={e => {
+                                                e.stopPropagation();
+                                                setShowInitial(i => !i);
+                                            }}
+                                        >
+                                            <img src="/assets/tree-icon.svg" alt="" />
+                                            <span>İlkin qalıqlar</span>
+                                        </button>
+                                        {showInitial && (
+                                            <ul className="dropdown-sublist">
+                                                {initialBalancesItems.map((item, idx) => {
+                                                    const isLast = idx === initialBalancesItems.length - 1;
+                                                    return (
+                                                        <li
+                                                            key={item.id}
+                                                            className={`dropdown-subitem ${activeSubItem === item.id ? 'active' : ''}`}
+                                                            onClick={() => handleItemSelect(item.id)}
+                                                        >
+                                                            <img
+                                                                src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                                alt=""
+                                                            />
+                                                            <span>{item.content}</span>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        )}
+                                    </li>
+
+                                    <li className='dropdown-item'>
+                                        <img src="/assets/tree-end.svg" alt="" />
+                                        <span>
+                                            Qeyri-rezidentlər
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                         )}
-
                     </div>
 
                     {/* Hesabatlar */}
-                    <div className="">
-                        <button className="sidebar-section"
+                    <div>
+                        <button
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showReports ? 'active' : ''}`}
                             onClick={() => {
-                                setShowReports(prev => {
-                                    const next = !prev;
-                                    if (next) {
-                                        // açılırkən digər bölmələri bağla
+                                if (isCollapsed) {
+                                    setShowReports(prev => {
+                                        const next = !prev;
                                         setShowDatabase(false);
                                         setShowTaxAccounting(false);
                                         setShowAnalyses(false);
                                         setShowParameters(false);
                                         setShowInitial(false);
-                                    }
-                                    return next; // ikinci klikdə false olacaq
-                                });
+                                        return next;
+                                    });
+                                } else {
+                                    setShowReports(r => {
+                                        const next = !r;
+                                        if (next) {
+                                            setShowDatabase(false);
+                                            setShowTaxAccounting(false);
+                                            setShowAnalyses(false);
+                                            setShowParameters(false);
+                                            setShowInitial(false);
+                                        }
+                                        return next;
+                                    });
+                                }
                             }}
                         >
                             <img src="/assets/document-icon.svg" alt="" />
-                            <span>Hesabatlar</span>
+                            {!isCollapsed && <span>Hesabatlar</span>}
                         </button>
 
-                        {showReports && (
+                        {/* Geniş halda inline siyahı */}
+                        {showReports && !isCollapsed && (
                             <ul className="sidebar-list">
-                                {reportsMenuItems.map(item => (
-                                    <li key={item.id} className="sidebar-item">
-                                        <img src="/assets/tree-icon.svg" alt="" />
-                                        <span>
-                                            {item.content}
-                                        </span>
-                                    </li>
-                                ))}
+                                {reportsMenuItems.map((item, idx) => {
+                                    const isLast = idx === reportsMenuItems.length - 1;
+                                    return (
+                                        <li
+                                            key={item.id}
+                                            className="sidebar-item"
+                                            onClick={() => handleItemSelect(item.id)}
+                                        >
+                                            <img
+                                                src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                alt=""
+                                            />
+                                            <span className={`${activeSubItem === item.id ? 'active' : ''}`}>
+                                                {item.content}
+                                            </span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
+                        )}
+
+                        {/* Collapsed halda tam nested dropdown */}
+                        {showReports && isCollapsed && (
+                            <div className="sidebar-dropdown position-absolute">
+                                <ul className="dropdown-list">
+                                    {reportsMenuItems.map((item, idx) => {
+                                        const isLast = idx === reportsMenuItems.length - 1;
+                                        return (
+                                            <li
+                                                key={item.id}
+                                                className={`dropdown-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                                onClick={() => handleItemSelect(item.id)}
+                                            >
+                                                <img
+                                                    src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                    alt=""
+                                                />
+                                                <span>{item.content}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         )}
                     </div>
 
                     {/* Vergi uçotu */}
-                    <div className="">
-                        <button className="sidebar-section"
+                    <div>
+                        <button
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showTaxAccounting ? 'active' : ''}`}
                             onClick={() => {
-                                setShowTaxAccounting(prev => {
+                                if (isCollapsed) {
+                                    // collapsed halda dropdown-u toggle elə və digər bölmələri bağla
+                                    setShowTaxAccounting(prev => {
+                                        const next = !prev;
+                                        if (next) {
+                                            setShowDatabase(false);
+                                            setShowReports(false);
+                                            setShowAnalyses(false);
+                                            setShowParameters(false);
+                                            setShowInitial(false);
+                                        }
+                                        return next;
+                                    });
+                                } else {
+                                    // geniş halda inline menyunu aç-bağla və digər bölmələri bağla
+                                    setShowTaxAccounting(prev => {
+                                        const next = !prev;
+                                        if (next) {
+                                            setShowDatabase(false);
+                                            setShowReports(false);
+                                            setShowAnalyses(false);
+                                            setShowParameters(false);
+                                            setShowInitial(false);
+                                        }
+                                        return next;
+                                    });
+                                }
+                            }}
+                        >
+                            <img src="/assets/percent-icon.svg" alt="" />
+                            {!isCollapsed && <span>Vergi uçotu</span>}
+                        </button>
+
+                        {/* geniş inline */}
+                        {showTaxAccounting && !isCollapsed && (
+                            <ul className="sidebar-list">
+                                {taxAccountingMenuItems.map((item, idx) => {
+                                    const isLast = idx === taxAccountingMenuItems.length - 1;
+                                    return (
+                                        <li
+                                            key={item.id}
+                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            onClick={() => handleItemSelect(item.id)}
+                                        >
+                                            <img
+                                                src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                alt=""
+                                            />
+                                            <span>{item.content}</span>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        )}
+
+                        {/* collapsed dropdown */}
+                        {showTaxAccounting && isCollapsed && (
+                            <div className="sidebar-dropdown position-absolute">
+                                <ul className="dropdown-list">
+                                    {taxAccountingMenuItems.map((item, idx) => {
+                                        const isLast = idx === taxAccountingMenuItems.length - 1;
+                                        return (
+                                            <li
+                                                key={item.id}
+                                                className={`dropdown-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                                onClick={() => handleItemSelect(item.id)}
+                                            >
+                                                <img
+                                                    src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                    alt=""
+                                                />
+                                                <span>{item.content}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Analizlər */}
+                    <div>
+                        <button
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showAnalyses ? 'active' : ''}`}
+                            onClick={() => {
+                                // həm collapsed, həm geniş halda toggle eləyərkən eyni məntiqi işlət
+                                setShowAnalyses(prev => {
                                     const next = !prev;
                                     if (next) {
+                                        // açılarkən digər bütün bölmələri bağla
                                         setShowDatabase(false);
                                         setShowReports(false);
-                                        setShowAnalyses(false);
+                                        setShowTaxAccounting(false);
                                         setShowParameters(false);
                                         setShowInitial(false);
                                     }
                                     return next;
                                 });
                             }}
-                        >
-                            <img src="/assets/percent-icon.svg" alt="" />
-                            <span>Vergi uçotu</span>
-                        </button>
 
-                        {showTaxAccounting && (
-                            <ul className="sidebar-list">
-                                {taxAccountingMenuItems.map(item => (
-                                    <li key={item.id} className="sidebar-item">
-                                        <img src="/assets/tree-icon.svg" alt="" />
-                                        <span>
-                                            {item.content}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-
-                    {/* Analizlər */}
-                    <div className="">
-                        <button className="sidebar-section"
-                            onClick={() => {
-                                setShowAnalyses(prev => {
-                                    const next = !prev;
-                                    if (next) {
-                                        // açılırkən digər bölmələri bağla
-                                        setShowDatabase(false);
-                                        setShowReports(false);
-                                        setShowTaxAccounting(false);
-                                        setShowParameters(false);
-                                        setShowInitial(false);
-                                    }
-                                    return next; // toggle edir: true → açılır, false → bağlanır
-                                });
-                            }}
                         >
                             <img src="/assets/bar-icon.svg" alt="" />
-                            <span>Analizlər</span>
+                            {!isCollapsed && <span>Analizlər</span>}
                         </button>
 
-                        {showAnalyses && (
+                        {/* geniş inline */}
+                        {showAnalyses && !isCollapsed && (
                             <ul className="sidebar-list">
-                                {analysesMenuItems.map(item => (
-                                    <li key={item.id} className="sidebar-item">
-                                        <img src="/assets/tree-icon.svg" alt="" />
-                                        <span>
-                                            {item.content}
-                                        </span>
-                                    </li>
-                                ))}
+                                {analysesMenuItems.map((item, idx) => {
+                                    const isLast = idx === analysesMenuItems.length - 1;
+                                    return (
+                                        <li
+                                            key={item.id}
+                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            onClick={() => handleItemSelect(item.id)}
+                                        >
+                                            <img
+                                                src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                alt=""
+                                            />
+                                            <span>{item.content}</span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
+                        )}
+
+                        {/* collapsed dropdown */}
+                        {showAnalyses && isCollapsed && (
+                            <div className="sidebar-dropdown position-absolute">
+                                <ul className="dropdown-list">
+                                    {analysesMenuItems.map((item, idx) => {
+                                        const isLast = idx === analysesMenuItems.length - 1;
+                                        return (
+                                            <li
+                                                key={item.id}
+                                                className={`dropdown-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                                onClick={() => handleItemSelect(item.id)}
+                                            >
+                                                <img
+                                                    src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                    alt=""
+                                                />
+                                                <span>{item.content}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         )}
                     </div>
 
                     {/* Parametrlər */}
-                    <div className="">
-                        <button className="sidebar-section"
+                    <div>
+                        <button
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showParameters ? 'active' : ''}`}
                             onClick={() => {
                                 setShowParameters(prev => {
                                     const next = !prev;
                                     if (next) {
-                                        // Açılarkən digər bölmələri bağla
+                                        // açılarkən digər bütün bölmələri bağla
                                         setShowDatabase(false);
                                         setShowReports(false);
                                         setShowTaxAccounting(false);
                                         setShowAnalyses(false);
                                         setShowInitial(false);
                                     }
-                                    return next; // toggle: true → aç, false → bağla
+                                    return next;
                                 });
                             }}
+
                         >
                             <img src="/assets/settings-icon.svg" alt="" />
-                            <span>Parametrlər</span>
+                            {!isCollapsed && <span>Parametrlər</span>}
                         </button>
 
-                        {showParameters && (
+                        {/* geniş inline siyahı */}
+                        {showParameters && !isCollapsed && (
                             <ul className="sidebar-list">
-                                {parametersMenuItems.map(item => (
-                                    <li key={item.id} className="sidebar-item">
-                                        <img src="/assets/tree-icon.svg" alt="" />
-                                        <span>
-                                            {item.content}
-                                        </span>
-                                    </li>
-                                ))}
+                                {parametersMenuItems.map((item, idx) => {
+                                    const isLast = idx === parametersMenuItems.length - 1;
+                                    return (
+                                        <li
+                                            key={item.id}
+                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            onClick={() => handleItemSelect(item.id)}
+                                        >
+                                            <img
+                                                src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                alt=""
+                                            />
+                                            <span>{item.content}</span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         )}
+
+                        {/* collapsed halda tam nested dropdown */}
+                        {showParameters && isCollapsed && (
+                            <div className="sidebar-dropdown position-absolute">
+                                <ul className="dropdown-list">
+                                    {parametersMenuItems.map((item, idx) => {
+                                        const isLast = idx === parametersMenuItems.length - 1;
+                                        return (
+                                            <li
+                                                key={item.id}
+                                                className={`dropdown-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                                onClick={() => handleItemSelect(item.id)}
+                                            >
+                                                <img
+                                                    src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
+                                                    alt=""
+                                                />
+                                                <span>{item.content}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        )}
                     </div>
+
 
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 

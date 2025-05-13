@@ -102,8 +102,9 @@
 
                     th {
                         padding: 16px 24px !important;
-                        border-left: 1px solid #e1e1e1;
+                        // border-left: 1px solid #e1e1e1;
                         border-radius: 1px solid #e1e1e1;
+
 
                         .th {
                             gap: 8px;
@@ -142,8 +143,7 @@
                         border-left: 1px solid #e1e1e1;
                         border-radius: 1px solid #e1e1e1;
                         padding: 16px 24px !important;
-
-
+                        // text-align: center !important;
                     }
                 }
             }
