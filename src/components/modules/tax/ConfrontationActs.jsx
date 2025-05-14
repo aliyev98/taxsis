@@ -3,7 +3,8 @@ import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { confrontationActsColumns } from "../../../constants/TableColumns";
+import { creditorColumns, frgnCreditorColumns } from "../../../constants/TableColumns";
+import { creditorData, frgnCreditorData } from "../../../constants/TableDatas";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
 
 const ConfrontationActs = () => {
@@ -19,6 +20,11 @@ const ConfrontationActs = () => {
 
     const confrontationData = useSelector((state) => state.tableData.confrontation.data);
 
+    const creditorDatas = creditorData;
+
+    const frgnCreditorDatas = frgnCreditorData;
+
+
     useEffect(() => {
         if (sidebarSelection === "confrontation_acts") {
             dispatch(setNavbarSelection("creditor"));
@@ -26,7 +32,7 @@ const ConfrontationActs = () => {
     }, [sidebarSelection, dispatch]);
 
     const headerBtns = [
-        { id: 1, content: "Filterlə", className: "filter", icon: "/assets/filter-light-icon.svg" },
+        // { id: 1, content: "Filterlə", className: "filter", icon: "/assets/filter-light-icon.svg" },
 
     ];
 
@@ -44,10 +50,9 @@ const ConfrontationActs = () => {
         { id: "foreign_debtor", content: "Xarici debitor" },
     ];
 
-    const confrontationCol = confrontationActsColumns;
+    // const confrontationCol = confrontationActsColumns;
 
     const showGroupedHeader = true;
-
 
     let columns;
     let data;
@@ -55,35 +60,34 @@ const ConfrontationActs = () => {
 
     switch (navbarSelection) {
         case "creditor":
-            columns = confrontationCol;
-            data = confrontationData;
+            columns = creditorColumns;
+            data = creditorDatas;
             tableTitle = 'Kreditor';
             break;
         case "debtor":
-            columns = confrontationCol;
-            data = confrontationData;
+            columns = creditorColumns;
+            data = creditorDatas;
             tableTitle = 'Debitor';
             break;
         case "foreign_creditor":
-            columns = confrontationCol;
-            data = confrontationData;
+            columns = frgnCreditorColumns;
+            data = frgnCreditorDatas;
             tableTitle = 'Xarici kreditor';
             break;
         case "foreign_debtor":
-            columns = confrontationCol;
-            data = confrontationData;
+            columns = frgnCreditorColumns;
+            data = frgnCreditorDatas;
             tableTitle = 'Xarici debitor';
             break;
         default:
-            columns = confrontationCol;
-            data = confrontationData;
+            columns = creditorColumns;
+            data = creditorDatas;
             tableTitle = 'Daxili üzləşmələr';
     }
 
     return (
 
         <div className="confirmation-acts tax-module-content">
-
 
             <TaxModuleHeader
                 title="Üzləşmə aktları"

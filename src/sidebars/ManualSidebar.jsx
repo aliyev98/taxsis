@@ -56,7 +56,7 @@ const ManualSidebar = () => {
         { id: 'confrontation_acts', content: 'Üzləşmə aktları' },
         { id: 'invoice_reports', content: 'Qaimələr üzrə hesabat' },
         { id: 'cash_flow', content: 'Pulun hərəkəti hesabatı' },
-        { id: 'urchase_and_sales_reports', content: 'Alış-satış hesabatı' },
+        { id: 'purchase_and_sales_reports', content: 'Alış-satış hesabatı' },
         { id: 'profit_loss', content: 'Gəlir və xərc hesabatı' },
         { id: 'debts_table', content: 'Borclar cədvəli' },
     ];

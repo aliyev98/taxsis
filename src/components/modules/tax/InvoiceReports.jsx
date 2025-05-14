@@ -25,7 +25,7 @@ const ConfrontationActs = () => {
     }, [sidebarSelection, dispatch]);
 
     const headerBtns = [
-        { id: 1, content: "Filterlə", className: "filter", icon: "/assets/huni-icon.svg" },
+        // { id: 1, content: "Filterlə", className: "filter", icon: "/assets/huni-icon.svg" },
     ];
 
     const navBtns = [
