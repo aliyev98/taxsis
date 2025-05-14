@@ -17,6 +17,7 @@ import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import CellModal from "../modals/CellModal";
 
 export default function TaxModuleTable({
   columns,
@@ -51,6 +52,14 @@ export default function TaxModuleTable({
   const [editValue, setEditValue] = useState("");
 
   const [openInfoId, setOpenInfoId] = useState(null); //////////
+
+  // Hangi hücre için modal açılsın, onun bilgisini tutuyoruz:
+  const [cellModalContext, setCellModalContext] = useState(null);
+
+  // Modal’ı kapatmak için bir yardımcı:
+  const closeCellModal = () => setCellModalContext(null);
+
+  ////////////////////
 
   const [dateRange, setDateRange] = useState([
     {
@@ -413,9 +422,75 @@ export default function TaxModuleTable({
                     style={{ cursor: rowClickEnabled ? "pointer" : "default" }}
                   >
                     {tableRow.getVisibleCells().map((cell) => (
+
+                      // <td
+                      //   key={cell.id}
+                      //   onClick={(e) => {
+                      //     if (!editable) return;
+                      //     e.stopPropagation();
+                      //     if (editingCell !== `${tableRow.id}-${cell.column.id}`) {
+                      //       setEditingCell(`${tableRow.id}-${cell.column.id}`);
+                      //       setEditMode(false);
+                      //     }
+                      //   }}
+                      // >
+                      //   <div style={{ position: "relative" }}>
+                      //     {editingCell === `${tableRow.id}-${cell.column.id}` ? (
+                      //       editMode ? (
+                      //         <input
+                      //           className="column-edit-input"
+                      //           type="text"
+                      //           value={editValue}
+                      //           onChange={(e) => setEditValue(e.target.value)}
+                      //           onBlur={() => {
+                      //             tableRow.original[cell.column.id] = editValue;
+                      //             setEditingCell(null);
+                      //             setEditMode(false);
+                      //           }}
+                      //           autoFocus
+                      //         />
+                      //       ) : (
+                      //         <>
+                      //           {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      //           <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 10 }}>
+                      //             <TableDataEditDropdown
+                      //               onEdit={() => {
+                      //                 setEditMode(true);
+                      //                 setEditValue(cell.getValue());
+                      //               }}
+                      //               onDelete={() => {
+                      //                 console.log("Silinecek:", tableRow.original);
+                      //                 setEditingCell(null);
+                      //               }}
+                      //               closeDropdown={() => setEditingCell(null)}
+                      //             />
+                      //           </div>
+                      //         </>
+                      //       )
+                      //     ) : (
+                      //       flexRender(cell.column.columnDef.cell, cell.getContext())
+                      //     )}
+                      //   </div>
+                      // </td>
+
                       <td
                         key={cell.id}
                         onClick={(e) => {
+                          // 0) Bu kolonda modal açma özelliği tanımlı mı?
+                          const enableCellModal = cell.column.columnDef.enableCellModal ?? false;
+
+                          // 1) Eğer openModal=true ve bu kolon için enableCellModal=true ise modal aç:
+                          if (openModal && enableCellModal) {
+                            e.stopPropagation();
+                            setCellModalContext({
+                              row: tableRow.original,
+                              columnKey: cell.column.id,
+                              cellValue: cell.getValue(),
+                            });
+                            return; // Buradan sonra editable logic çalışmaz
+                          }
+
+                          // 2) Aksi halde editable mantığına dön
                           if (!editable) return;
                           e.stopPropagation();
                           if (editingCell !== `${tableRow.id}-${cell.column.id}`) {
@@ -462,6 +537,9 @@ export default function TaxModuleTable({
                           )}
                         </div>
                       </td>
+
+
+
                     ))}
                   </tr>
                 );
@@ -503,6 +581,18 @@ export default function TaxModuleTable({
 
 
         </table>
+
+        {cellModalContext && (
+          <CellModal
+            isOpen
+            onClose={() => setCellModalContext(null)}
+            row={cellModalContext.row}
+            columnKey={cellModalContext.columnKey}
+            cellValue={cellModalContext.cellValue}
+          />
+        )}
+
+
       </div>
 
       {reportsHeader && (
