@@ -50,7 +50,7 @@ const Invoices = () => {
         <div className="deposit-extracts tax-module-content">
 
             <TaxModuleHeader
-                title="Çıxarışlar"
+                title="Depozit çıxarışları"
                 headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}

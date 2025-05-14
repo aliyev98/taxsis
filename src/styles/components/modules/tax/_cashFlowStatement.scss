@@ -1,0 +1,28 @@
+.cash-flow-statement {
+    .tables {
+        background-color: #fff;
+
+        // 1) table elemanını açıkça veriyoruz
+        table {
+            tfoot {
+                td {
+                    background: var(--Secondary-02, #CABDFF);
+                }
+            }
+        }
+
+        .infos {
+            padding-top: 10px;
+        }
+    }
+
+    .table-container {
+        margin-bottom: 48px;
+
+        &:not(:first-of-type) {
+            .table-header {
+                display: none !important;
+            }
+        }
+    }
+}

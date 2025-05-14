@@ -1,0 +1,23 @@
+.info-selection-dropdown {
+    background-color: #fff;
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    z-index: 999999;
+    padding: 16px;
+    border-radius: 16px;
+    gap: 8px;
+
+    .info-dropdown-item {
+        padding: 8px;
+
+        color: var(--Neutral-07, #1A1D1F);
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+
+        &:hover {
+            background: var(--Neutral-02, #F4F4F4);
+        }
+    }
+}

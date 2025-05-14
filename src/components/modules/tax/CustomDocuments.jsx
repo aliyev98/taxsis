@@ -108,7 +108,7 @@ const CustomDocuments = () => {
         <div className="custom-documents tax-module-content">
 
             <TaxModuleHeader
-                title="Əvəzləşmə reyestri"
+                title="Gömrük sənədləri"
                 headerBtns={headerBtns}
                 columns={columns}
                 navBtns={navBtns}

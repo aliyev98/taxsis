@@ -12,6 +12,11 @@ import TableHeader from "../../layouts/TableHeader";
 import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
 import EmptyDataMessage from "../ui/EmptyDataMessage";
 import EmptyReportsMessage from "../ui/EmptyReportsMessage";
+import InfoSelectionDropdown from "../dropdwons/InfoSelectionDropwdown";
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 export default function TaxModuleTable({
   columns,
@@ -24,6 +29,7 @@ export default function TaxModuleTable({
   setIsEditing,
   emptyMessageVisible,
   colSpans,
+  openModal,
   colSpans2,
   infos,
   infosHeader,
@@ -43,6 +49,17 @@ export default function TaxModuleTable({
   const [editingCell, setEditingCell] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editValue, setEditValue] = useState("");
+
+  const [openInfoId, setOpenInfoId] = useState(null); //////////
+
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+
 
 
 
@@ -225,13 +242,78 @@ export default function TaxModuleTable({
       {infosHeader && (
         <div className="infos d-flex">
           {infos?.map((info) => (
-            <div className="info d-flex" key={info.id}>
-              <span>{info.title}</span>
-              <span>{info.content}</span>
+            <div
+              className="info position-relative d-flex align-items-center"
+              key={info.id}
+            >
+              <span className="info-title">{info.title}</span>
+
+              {/* tıklanabilir alan */}
+              <div
+                className="info-toggle d-flex align-items-center"
+                onClick={() =>
+                  setOpenInfoId(openInfoId === info.id ? null : info.id)
+                }
+              >
+                <span className="info-content">{filters[info.id]?.label ?? info.content}</span>
+                <img
+                  src="/assets/arrow-down.svg"
+                  alt=""
+                  className={openInfoId === info.id ? 'rotated' : ''}
+                />
+              </div>
+
+              {/* dropdown burada açılıyor */}
+              {openInfoId === info.id && (
+                info.id === 2
+                  ? (
+                    // === Tarih picker ===
+                    <div className="info-datepicker">
+                      <DateRange
+                        editableDateInputs
+                        moveRangeOnFirstSelection={false}
+                        ranges={dateRange}
+                        onChange={({ selection }) => {
+                          // 1) Local dateRange’i güncelle
+                          setDateRange([selection]);
+                          // 2) filters objesine hem value hem label ekle
+                          setFilters(prev => ({
+                            ...prev,
+                            [info.id]: {
+                              value: {
+                                startDate: selection.startDate,
+                                endDate: selection.endDate
+                              },
+                              label: `${format(selection.startDate, "dd.MM.yyyy")} – ${format(selection.endDate, "dd.MM.yyyy")}`
+                            }
+                          }));
+                        }}
+                      />
+                    </div>
+                  )
+                  : (
+                    // === Normal dropdown ===
+                    <InfoSelectionDropdown
+                      options={info.options}
+                      onSelect={(value) => {
+                        const opt = info.options.find(o => o.value === value);
+                        if (!opt) return;
+                        setFilters(prev => ({
+                          ...prev,
+                          [info.id]: { value: opt.value, label: opt.label }
+                        }));
+                        setOpenInfoId(null);
+                      }}
+                    />
+                  )
+              )}
+
+
             </div>
           ))}
         </div>
       )}
+
 
 
       {reportsHeader && <ReportsHeader isEditing={isEditing} />}

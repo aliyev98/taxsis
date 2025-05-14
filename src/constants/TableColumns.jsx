@@ -1866,15 +1866,16 @@ export const onPurchasesColumns = [
 
 
 /// pulun hərəkəti hesabatı
-export const cashFlowColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+export const internalDKColumns = [
+    { id: "no", accessorKey: "no", header: "No", footerContent: "Yekun" },
     {
         id: "name",
         accessorKey: "name",
         header: "Adı",
         filterOptions: {
-            type: "search",
             search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
         },
     },
     {
@@ -1884,6 +1885,7 @@ export const cashFlowColumns = [
             search: true,
         },
     },
+
     {
         id: "bank_main", accessorKey: "bank_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
@@ -1905,27 +1907,29 @@ export const cashFlowColumns = [
             search: true,
         },
     },
+
     {
-        id: "vat_main", accessorKey: "vat_main", header: "Əsas", enableFooterTotal: true,
+        id: "vat_deposit_main", accessorKey: "vat_deposit_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "vat_vat", accessorKey: "vat_vat", header: "Ədv", enableFooterTotal: true,
+        id: "vat_deposit_vat", accessorKey: "vat_deposit_vat", header: "Ədv", enableFooterTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "vat_final", accessorKey: "vat_final", header: "Yekun", enableFooterTotal: true,
+        id: "vat_deposit_final", accessorKey: "vat_deposit_final", header: "Yekun", enableFooterTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
+
     {
         id: "safe_main", accessorKey: "safe_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
@@ -1947,6 +1951,7 @@ export const cashFlowColumns = [
             search: true,
         },
     },
+
     {
         id: "total_main", accessorKey: "total_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
@@ -1968,6 +1973,7 @@ export const cashFlowColumns = [
             search: true,
         },
     },
+
     {
         id: "should_main", accessorKey: "should_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
@@ -1983,12 +1989,6 @@ export const cashFlowColumns = [
         },
     },
     {
-        id: "should_final", accessorKey: "should_final", header: "Yekun", enableFooterTotal: true,
-        filterOptions: {
-            type: "search",
-            search: true,
-        },
-    }, {
         id: "distinction_main", accessorKey: "distinction_main", header: "Əsas", enableFooterTotal: true,
         filterOptions: {
             type: "search",
@@ -2002,14 +2002,123 @@ export const cashFlowColumns = [
             search: true,
         },
     },
+];
+
+export const externalDKColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true },
     {
-        id: "distinction_final", accessorKey: "distinction_final", header: "Yekun", enableFooterTotal: true,
+        id: "name",
+        accessorKey: "name",
+        header: "Adı",
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
+    },
+    {
+        id: "vat", accessorKey: "vat", header: "VÖEN",
         filterOptions: {
             type: "search",
             search: true,
         },
     },
-];
+    {
+        id: "currency", accessorKey: "currency", header: "Valyuta",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "main", accessorKey: "main", header: "Əsas", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+]
+
+export const cashFlowsbyItemsColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true },
+    {
+        id: "name",
+        accessorKey: "name",
+        header: "Adı",
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
+    },
+    {
+        id: "vat", accessorKey: "vat", header: "VÖEN",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "currency", accessorKey: "currency", header: "Valyuta",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "total", accessorKey: "total", header: "Cəmi", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+]
+
+// (maddələr üzrə pul hərəkəti sütunları eynidir)
+
+
 
 /// alış satış hesabatları
 
