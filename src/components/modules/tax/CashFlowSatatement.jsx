@@ -48,35 +48,6 @@ const CashFlowStatement = () => {
     const showGroupedHeader = true;
 
     let columns;
-    let data;
-    let tableTitle;
-
-    // switch (navbarSelection) {
-    //     case "internal":
-    //         columns = cashFlowCol;
-    //         data = cashFlowsData;
-    //         tableTitle = 'Alış qaimələri üzrə';
-    //         break;
-    //     case "external":
-    //         columns = cashFlowCol;
-    //         data = cashFlowsData;
-    //         tableTitle = 'Satış qaimələri üzrə';
-    //         break;
-    //     case "article":
-    //         columns = cashFlowCol;
-    //         data = cashFlowsData;
-    //         tableTitle = 'Xarici alışlar üzrə';
-    //         break;
-    //     case "currency":
-    //         columns = cashFlowCol;
-    //         data = cashFlowsData;
-    //         tableTitle = 'Xarici satışlar üzrə';
-    //         break;
-    //     default:
-    //         columns = cashFlowCol;
-    //         data = cashFlowsData;
-    //         tableTitle = 'Alış qaimələri üzrə';
-    // }
 
     return (
 
@@ -135,7 +106,7 @@ const CashFlowStatement = () => {
                                     },
                                 ]}
                                 isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} infosHeader={infosHeader}
+                                showGroupedHeader={showGroupedHeader} infosHeader={infosHeader} openModal={true}
                                 colSpans={[{ id: 1, content: "MƏDAXİL/MƏXARİC", col: 3 },
                                 { id: 2, content: "KAPİTAL BANK", col: 3 },
                                 { id: 3, content: "ƏDV DEPOZİT HESABI", col: 3 },
@@ -143,10 +114,9 @@ const CashFlowStatement = () => {
                                 { id: 5, content: "CƏMİ", col: 3 },
                                 { id: 6, content: "OLMALIDIR", col: 2 },
                                 { id: 7, content: "FƏRQ", col: 2 },]}
-                                openModal={true}
                             />
                             <TaxModuleTable columns={internalDKColumns} data={internalDKData} isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader}
+                                showGroupedHeader={showGroupedHeader} openModal={true}
                                 colSpans={[{ id: 1, content: "Geri qaytarma", col: 3 },
                                 { id: 2, content: "KAPİTAL BANK", col: 3 },
                                 { id: 3, content: "ƏDV DEPOZİT HESABI", col: 3 },
@@ -161,103 +131,113 @@ const CashFlowStatement = () => {
 
                 {
                     navbarSelection === "external" && (
-                        <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData}
-                            infos={[
-                                {
-                                    id: 1,
-                                    title: "NÖVÜ",
-                                    content: "Kreditor",
-                                    options: [
-                                        { value: "kreditor", label: "Kreditor" },
-                                        { value: "debitor", label: "Debitor" },
-                                    ],
-                                },
-                                {
-                                    id: 2,
-                                    title: "DÖVR",
-                                    content: "01.01.2023-31.12.2023",
-                                    options: [
-                                        { value: "2023", label: "2023" },
-                                        { value: "2024", label: "2024" },
-                                    ],
-                                },
-                                {
-                                    id: 3,
-                                    title: "KONTRAGENT",
-                                    content: "Aqro-Vest Retail",
-                                    options: [
-                                        { value: "agro_vest", label: "Aqro-Vest Retail" },
-                                        { value: "other", label: "Other Company" },
-                                    ],
-                                },
-                                {
-                                    id: 4,
-                                    title: "BANK/KASSA:",
-                                    content: "One-Click Post",
-                                    options: [
-                                        { value: "one_click", label: "One-Click Post" },
-                                        { value: "capital", label: "Capital Bank" },
-                                    ],
-                                },
-                            ]}
-                            infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                            showGroupedHeader={showGroupedHeader} />
+                        <div className="tables">
+                            <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
+                                infos={[
+                                    {
+                                        id: 1,
+                                        title: "NÖVÜ",
+                                        content: "Kreditor",
+                                        options: [
+                                            { value: "kreditor", label: "Kreditor" },
+                                            { value: "debitor", label: "Debitor" },
+                                        ],
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "DÖVR",
+                                        content: "01.01.2023-31.12.2023",
+                                        options: [
+                                            { value: "2023", label: "2023" },
+                                            { value: "2024", label: "2024" },
+                                        ],
+                                    },
+                                    {
+                                        id: 3,
+                                        title: "KONTRAGENT",
+                                        content: "Aqro-Vest Retail",
+                                        options: [
+                                            { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                            { value: "other", label: "Other Company" },
+                                        ],
+                                    },
+                                    {
+                                        id: 4,
+                                        title: "BANK/KASSA:",
+                                        content: "One-Click Post",
+                                        options: [
+                                            { value: "one_click", label: "One-Click Post" },
+                                            { value: "capital", label: "Capital Bank" },
+                                        ],
+                                    },
+                                ]}
+                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={showGroupedHeader} />
+                        </div>
+
                     )
                 }
 
                 {
                     navbarSelection === "cash_flows_by_items" && (
-                        <TaxModuleTable navBtns={navBtns} columns={cashFlowsbyItemsColumns} data={cashFlowsbyItemsData}
-                            infos={[
-                                {
-                                    id: 1,
-                                    title: "NÖVÜ",
-                                    content: "Kreditor",
-                                    options: [
-                                        { value: "kreditor", label: "Kreditor" },
-                                        { value: "debitor", label: "Debitor" },
-                                    ],
-                                },
-                                {
-                                    id: 2,
-                                    title: "DÖVR",
-                                    content: "01.01.2023-31.12.2023",
-                                    options: [
-                                        { value: "2023", label: "2023" },
-                                        { value: "2024", label: "2024" },
-                                    ],
-                                },
-                            ]}
-                            infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                            showGroupedHeader={showGroupedHeader} />
+                        <div className="tables">
+                            <TaxModuleTable navBtns={navBtns} columns={cashFlowsbyItemsColumns} data={cashFlowsbyItemsData} openModal={true}
+                                infos={[
+                                    {
+                                        id: 1,
+                                        title: "NÖVÜ",
+                                        content: "Kreditor",
+                                        options: [
+                                            { value: "kreditor", label: "Kreditor" },
+                                            { value: "debitor", label: "Debitor" },
+                                        ],
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "DÖVR",
+                                        content: "01.01.2023-31.12.2023",
+                                        options: [
+                                            { value: "2023", label: "2023" },
+                                            { value: "2024", label: "2024" },
+                                        ],
+                                    },
+                                ]}
+                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={showGroupedHeader} />
+                        </div>
                     )
                 }
 
                 {
                     navbarSelection === "currency" && (
-                        <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData}
-                            infos={[
-                                {
-                                    id: 1,
-                                    title: "NÖVÜ",
-                                    content: "Kreditor",
-                                    options: [
-                                        { value: "kreditor", label: "Kreditor" },
-                                        { value: "debitor", label: "Debitor" },
-                                    ],
-                                },
-                                {
-                                    id: 2,
-                                    title: "DÖVR",
-                                    content: "01.01.2023-31.12.2023",
-                                    options: [
-                                        { value: "2023", label: "2023" },
-                                        { value: "2024", label: "2024" },
-                                    ],
-                                },
-                            ]}
-                            infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                            showGroupedHeader={showGroupedHeader} />
+
+                        <div className="tables">
+                            <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
+                                infos={[
+                                    {
+                                        id: 1,
+                                        title: "NÖVÜ",
+                                        content: "Kreditor",
+                                        options: [
+                                            { value: "kreditor", label: "Kreditor" },
+                                            { value: "debitor", label: "Debitor" },
+                                        ],
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "DÖVR",
+                                        content: "01.01.2023-31.12.2023",
+                                        options: [
+                                            { value: "2023", label: "2023" },
+                                            { value: "2024", label: "2024" },
+                                        ],
+                                    },
+                                ]}
+                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={showGroupedHeader} />
+                        </div>
+
+
                     )
                 }
 

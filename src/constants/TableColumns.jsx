@@ -2096,7 +2096,7 @@ export const cashFlowsbyItemsColumns = [
         },
     },
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta",
+        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true,
         filterOptions: {
             type: "search",
             search: true,

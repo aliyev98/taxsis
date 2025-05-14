@@ -1,27 +1,24 @@
-.cell-modal{
+.cell-modal {
 
-    .modal-header{
+    .modal-header {
         padding: 0;
     }
 
-    .modal-body{
+    .modal-body {
         padding: 0 !important;
 
-        .table-container{
+        .table-container {
             margin-bottom: 0 !important;
         }
 
-        .modal-footer{
+        .modal-footer {
             display: none !important;
         }
     }
 
 
-    .table-header{
+    .table-header {
         display: none !important;
-    }
-
-    .modal-backdrop{
     }
 
 }

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import TaxModuleTable from '../tables/TaxModuleTable';
 
 export default function CellModal({ isOpen, onClose, row, columnKey, cellValue }) {
-  // Modal içindeki input değerini bu state’te tutuyoruz
-  const [inputValue, setInputValue] = useState(cellValue ?? '');
 
   if (!isOpen) return null;
 
