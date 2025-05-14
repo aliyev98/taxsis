@@ -79,7 +79,7 @@ const ReportsHeader = ({ isEditing }) => {
                         <input
                             type="text"
                             value={reportHeaderValues.period}
-                            onClick={() => isEditing && setShowCalendar(!showCalendar)}
+                            onClick={() => setShowCalendar(!showCalendar)}
                             readOnly
                         />
                         {showCalendar && (

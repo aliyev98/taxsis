@@ -43,6 +43,7 @@ const ManualSidebar = () => {
         { id: 'deposits_extracts', content: 'Depozit çıxarışları' },
         { id: 'bank_statements', content: 'Bank çıxarışları' },
         { id: 'cash_opr', content: 'Kassa əməliyyatları' },
+        { id: 'custom_documents', content: 'Gömrük sənədləri' },
         { id: 'company_base', content: 'Şirkət bazası' },
         { id: 'tax_reports', content: 'Vergi hesabatları' },
     ];
