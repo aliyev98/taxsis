@@ -3,8 +3,9 @@ import TaxModuleContentHeader from "../../../layouts/TaxModuleContentHeader";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../../components/tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { confrontationActsColumns, onPurchasesColumns } from "../../../constants/TableColumns";
+import { byForeignPurchasesColumns, confrontationActsColumns, onPurchasesColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
+import { byForeignPurchasesData } from "../../../constants/TableDatas";
 
 const ConfrontationActs = () => {
 
@@ -89,11 +90,57 @@ const ConfrontationActs = () => {
                 navBtns={navBtns}
             />
 
-            <div className="table">
+            {
+                navbarSelection === "on_purchases" && (
+                    <div className="tables">
+
+                        <div className="table">
+                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} />
+                        </div>
+
+                        <div className="table">
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} />
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                navbarSelection === "on_sales" && (
+                    <div className="tables">
+
+                        <div className="table">
+                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} />
+                        </div>
+
+                        <div className="table">
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} />
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                navbarSelection === "foregin_purchase" && (
+                    <div className="table">
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} />
+                    </div>
+                )
+            }
+
+                        {
+                navbarSelection === "foregin_sales" && (
+                    <div className="table">
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} />
+                    </div>
+                )
+            }
+
+            {/* <div className="table">
                 <TaxModuleTable columns={columns} navBtns={navBtns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
                     showGroupedHeader={showGroupedHeader} colSpans={colSpans} />
 
-            </div>
+            </div> */}
 
 
 

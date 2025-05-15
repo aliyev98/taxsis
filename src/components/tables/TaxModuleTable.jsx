@@ -69,9 +69,6 @@ export default function TaxModuleTable({
     },
   ]);
 
-
-
-
   const filterDropdownRef = useRef();
   const columnDropdownRef = useRef();
 
@@ -193,6 +190,28 @@ export default function TaxModuleTable({
     return totals;
   }, [columns, finalData]);
 
+  const showHeaderTotals = columns.some(
+    (col) => col.enableHeaderTotal || col.headerContent
+  );
+
+  // Footer totals’un hemen altında:///////////////////////////////////////////////////////////////////////////
+  const headerTotals = useMemo(() => {
+    const totals = {};
+    columns.forEach((col) => {
+      const key = col.accessorKey;
+      if (!key || col.enableHeaderTotal !== true) return;
+      // aynen footer’da olduğu gibi sayıları topla:
+      totals[key] = finalData.reduce((sum, row) => {
+        const raw = row[key];
+        const parsed =
+          typeof raw === "string"
+            ? parseFloat(raw.replace(/\./g, "").replace(",", "."))
+            : Number(raw);
+        return sum + (isNaN(parsed) ? 0 : parsed);
+      }, 0);
+    });
+    return totals;
+  }, [columns, finalData]);
 
 
   const table = useReactTable({
@@ -207,8 +226,6 @@ export default function TaxModuleTable({
       setEditValue,
     },
   });
-
-
 
 
   const handleSearchChange = (colKey, val) => {
@@ -323,8 +340,6 @@ export default function TaxModuleTable({
         </div>
       )}
 
-
-
       {reportsHeader && <ReportsHeader isEditing={isEditing} />}
 
       <div className="table-div">
@@ -362,6 +377,29 @@ export default function TaxModuleTable({
               </tr>
             )}
 
+            {/* 3) HEADER TOTALS ROW (sütunların üzerinde) */}
+            {columns.some(c => c.enableHeaderTotal || c.headerContent) && (
+              <tr className="header-totals-row">
+                {columns.map((col) => {
+                  if (col.headerContent) {
+                    // sabit metin varsa göster
+                    return <th key={col.id}>{col.headerContent}</th>;
+                  }
+                  if (col.enableHeaderTotal) {
+                    // toplam hesaplandıysa göster
+                    const total = headerTotals[col.accessorKey];
+                    return (
+                      <th key={col.id}>
+                        {Number.isInteger(total) ? total : total.toFixed(2)}
+                      </th>
+                    );
+                  }
+                  // aksi halde boş hücre
+                  return <th key={col.id}></th>;
+                })}
+              </tr>
+            )}
+
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
                 {hg.headers.map((header) => {
@@ -390,6 +428,7 @@ export default function TaxModuleTable({
               </tr>
             ))}
           </thead>
+
 
           <tbody>
             {/* fdfd////////////////////////////////////////////////////////////////////////////////////////////////////// */}

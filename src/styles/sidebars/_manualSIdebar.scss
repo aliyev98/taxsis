@@ -105,7 +105,14 @@
                     background-image: url("/assets/arrow-right-icon.svg");
                     background-repeat: no-repeat;
                     background-size: contain;
+                    transition: transform 0.2s ease;
+
                 }
+
+                &.open::after {
+                    transform: rotate(90deg);
+                }
+
             }
 
             .active {

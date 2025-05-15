@@ -210,7 +210,6 @@ const CashFlowStatement = () => {
 
                 {
                     navbarSelection === "currency" && (
-
                         <div className="tables">
                             <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
                                 infos={[
@@ -236,8 +235,6 @@ const CashFlowStatement = () => {
                                 infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
                                 showGroupedHeader={showGroupedHeader} />
                         </div>
-
-
                     )
                 }
 

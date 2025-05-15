@@ -119,7 +119,7 @@ const ManualSidebar = () => {
                     {/* Məlumat bazası */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showDatabase ? 'active' : ''} `}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showDatabase ? 'active' : ''} ${showDatabase ? 'open': ''} `}
                             onClick={() => {
                                 if (isCollapsed) {
                                     // collapsed halda toggle et: əgər açıqdırsa bağla, bağlıdırsa aç
@@ -206,7 +206,12 @@ const ManualSidebar = () => {
 
                                 <li className='sidebar-item'>
                                     <img src="/assets/tree-end.svg" alt="" />
-                                    <span>Qeyri-rezidentlər</span>
+                                    <span
+                                        className={`sidebar-item ${activeSubItem === 'non_residents' ? 'active' : ''}`}
+                                        onClick={() => handleItemSelect("non_residents")}
+                                    >
+                                        Qeyri-rezidentlər
+                                    </span>
                                 </li>
                             </ul>
                         )}
@@ -261,7 +266,8 @@ const ManualSidebar = () => {
                                         )}
                                     </li>
 
-                                    <li className='dropdown-item'>
+                                    <li className={`dropdown-item ${activeSubItem === 'non_residents' ? 'active' : ''}`}
+                                        onClick={() => handleItemSelect("non_residents")}>
                                         <img src="/assets/tree-end.svg" alt="" />
                                         <span>
                                             Qeyri-rezidentlər
@@ -275,7 +281,7 @@ const ManualSidebar = () => {
                     {/* Hesabatlar */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showReports ? 'active' : ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showReports ? 'active' : ''} ${showReports ? 'open': ''}`}
                             onClick={() => {
                                 if (isCollapsed) {
                                     setShowReports(prev => {
@@ -358,7 +364,7 @@ const ManualSidebar = () => {
                     {/* Vergi uçotu */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showTaxAccounting ? 'active' : ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showTaxAccounting ? 'active' : ''} ${showTaxAccounting ? 'open': ''}`}
                             onClick={() => {
                                 if (isCollapsed) {
                                     // collapsed halda dropdown-u toggle elə və digər bölmələri bağla
@@ -443,7 +449,7 @@ const ManualSidebar = () => {
                     {/* Analizlər */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showAnalyses ? 'active' : ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showAnalyses ? 'active' : ''} ${showAnalyses ? 'open': ''}`}
                             onClick={() => {
                                 // həm collapsed, həm geniş halda toggle eləyərkən eyni məntiqi işlət
                                 setShowAnalyses(prev => {
@@ -515,7 +521,7 @@ const ManualSidebar = () => {
                     {/* Parametrlər */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showParameters ? 'active' : ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showParameters ? 'active' : ''} ${showParameters ? 'open': ''}`}
                             onClick={() => {
                                 setShowParameters(prev => {
                                     const next = !prev;
@@ -582,7 +588,6 @@ const ManualSidebar = () => {
                             </div>
                         )}
                     </div>
-
 
                 </div>
 

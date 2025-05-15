@@ -1688,102 +1688,13 @@ export const frgnCreditorColumns = [
     },
 ]
 
-// export const frgnDebitorColumns = [
-//     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
-//     {
-//         id: "date",
-//         accessorKey: "date",
-//         header: "Tarix",
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "opr_type", accessorKey: "opr_type", header: "Əməliyyat növü",
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "doc_num", accessorKey: "doc_num", header: "Sənəd nömrəsi",
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "debet_currency", accessorKey: "debet_currency", header: "Valyuta", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "debet_exchange", accessorKey: "debet_exchange", header: "Məzənnə", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "debet_azn", accessorKey: "debet_azn", header: "AZN", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "credit_currency", accessorKey: "credit_currency", header: "Valyuta", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "credit_exchange", accessorKey: "credit_exchange", header: "Məzənnə", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "credit_azn", accessorKey: "credit_azn", header: "AZN", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "residue_currency", accessorKey: "residue_currency", header: "Valyuta", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "residue_exchange", accessorKey: "residue_exchange", header: "Məzənnə", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-//     {
-//         id: "residue_azn", accessorKey: "residue_azn", header: "AZN", enableFooterTotal: true,
-//         filterOptions: {
-//             type: "search",
-//             search: true,
-//         },
-//     },
-// ]
-
-/// qaimələr üzrə hesabat
+// qaimələr üzrə hesabat
 
 export const onPurchasesColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, headerContent: "1", }, 
     {
         id: "date",
+        headerContent: "ACCFIN GROUP",
         accessorKey: "date",
         header: "Qaimə tarixi",
         filterOptions: {
@@ -1807,62 +1718,120 @@ export const onPurchasesColumns = [
         },
     },
     {
-        id: "invoice_vat", accessorKey: "invoice_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "invoice_vat", accessorKey: "invoice_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "invoice_total", accessorKey: "invoice_total", header: "Cəmi", enableFooterTotal: true,
+        id: "invoice_total", accessorKey: "invoice_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_main", accessorKey: "closed_main", header: "Əsas", enableFooterTotal: true,
+        id: "closed_main", accessorKey: "closed_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_vat", accessorKey: "closed_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "closed_vat", accessorKey: "closed_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_total", accessorKey: "closed_total", header: "Cəmi", enableFooterTotal: true,
+        id: "closed_total", accessorKey: "closed_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    { 
+        id: "residue_main", accessorKey: "residue_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "residue_main", accessorKey: "residue_main", header: "Əsas", enableFooterTotal: true,
+        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV", enableFooterTotal: true,
-        filterOptions: {
-            type: "search",
-            search: true,
-        },
-    },
-    {
-        id: "residue_total", accessorKey: "residue_total", header: "Cəmi", enableFooterTotal: true,
+        id: "residue_total", accessorKey: "residue_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
 ];
+
+// xarici alışlar və satışlar sütunları eynidir
+export const byForeignPurchasesColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, headerContent: "1" },
+    {
+        id: "date",
+        accessorKey: "date",
+        header: "Qaimə tarixi",
+        headerContent: "ACCFIN GROUP",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "ivoice_num", accessorKey: "ivoice_num", header: "İnvoys nömrəsi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "currency", accessorKey: "currency", header: "Valyuta",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "price", accessorKey: "price", header: "Məbləğ", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "closed", accessorKey: "closed", header: "Bağlanıb",
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+    {
+        id: "left", accessorKey: "left", header: "Qalıb", enableFooterTotal: true,
+        filterOptions: {
+            type: "search",
+            search: true,
+        },
+    },
+]
+
 
 
 /// pulun hərəkəti hesabatı

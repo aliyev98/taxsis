@@ -1,0 +1,21 @@
+.invoices-reports {
+  .tables {
+    .table {
+      margin-bottom: 0 !important;
+
+      /* İlk .table dışındakilerin üst padding’ini sıfırla */
+      &:not(:first-of-type) {
+        padding-top: 0 !important;
+
+        .table-header {
+          display: none !important;
+        }
+      }
+
+      /* Son .table dışındakilerin alt padding’ini sıfırla */
+      &:not(:last-of-type) {
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+}

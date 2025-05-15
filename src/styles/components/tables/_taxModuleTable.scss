@@ -62,6 +62,16 @@
             width: 100%;
             overflow-x: scroll;
 
+            .header-totals-row {
+                background: var(--Secondary-03, #B1E5FC);
+
+                th {
+                    color: var(--Neutral-07, #1A1D1F);
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
+
             .top-header {
                 &-title {
                     // border-right: 1px solid black;
@@ -97,6 +107,7 @@
 
                     div {
                         background-color: #B5E4CA;
+                        margin-bottom: 16px;
                         padding: 8px 8px 8px 12px;
                         font-size: 13px;
                         font-weight: 600;

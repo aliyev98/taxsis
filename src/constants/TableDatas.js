@@ -941,10 +941,6 @@ export const frgnCreditorData = [
 
 export const onPurchaseData = [
   {
-    isGroupHeader: true,
-    groupName: "ACC FIN GROUP",
-  },
-  {
     no: 1,
     date: "01.01.2024",
     ivoice_num: "Alış sənədi",
@@ -973,10 +969,6 @@ export const onPurchaseData = [
     residue_total: "354.00",
   },
   {
-    isGroupHeader: true,
-    groupName: "AZ TİKİNTİ QURAŞDIRMA MMC",
-  },
-  {
     no: 1,
     date: "01.01.2024",
     ivoice_num: "Alış sənədi",
@@ -989,10 +981,6 @@ export const onPurchaseData = [
     residue_main: "300.00",
     residue_vat: "54.00",
     residue_total: "354.00",
-  },
-  {
-    isGroupHeader: true,
-    groupName: "AZƏRKABLO (KREDİTOR)",
   },
   {
     no: 1,
@@ -1009,6 +997,110 @@ export const onPurchaseData = [
     residue_total: "354.00",
   },
 ];
+
+export const byForeignPurchasesData = [
+  {
+    no: 1,
+    date: "05.05.2025",
+    ivoice_num: "INV-1001",
+    ygb_num: "YGB-2001",
+    currency: "USD",
+    price: 1500.75,
+    closed: "Yes",
+    left: 0,
+  },
+  {
+    no: 2,
+    date: "12.05.2025",
+    ivoice_num: "INV-1002",
+    ygb_num: "YGB-2002",
+    currency: "EUR",
+    price: 2300.00,
+    closed: "No",
+    left: 2300.00,
+  },
+  {
+    no: 3,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+  {
+    no: 4,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+  {
+    no: 5,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+  {
+    no: 6,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+  {
+    no: 7,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+    {
+    no: 8,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+    {
+    no: 9,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+    {
+    no: 10,
+    date: "15.05.2025",
+    ivoice_num: "INV-1003",
+    ygb_num: "YGB-2003",
+    currency: "AZN",
+    price: 1800.25,
+    closed: "No",
+    left: 1800.25,
+  },
+];
+
 
 //pulun hərəkəti hesabatı
 
@@ -1255,7 +1347,7 @@ export const externalDKData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 3,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1265,7 +1357,7 @@ export const externalDKData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 4,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1275,7 +1367,7 @@ export const externalDKData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 5,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1285,7 +1377,7 @@ export const externalDKData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 6,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1318,7 +1410,7 @@ export const cashFlowsbyItemsData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 3,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1328,7 +1420,7 @@ export const cashFlowsbyItemsData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 4,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1338,7 +1430,7 @@ export const cashFlowsbyItemsData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 5,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
@@ -1348,7 +1440,7 @@ export const cashFlowsbyItemsData = [
     pasha_bank: 500,
     main: 3500,
   },
-    {
+  {
     no: 6,
     name: 'A+CO Açıq Səhmdar Cəmiyyəti',
     vat: '5566778899',
