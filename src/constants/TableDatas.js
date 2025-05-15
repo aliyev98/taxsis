@@ -44,7 +44,7 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Satış",
+    kind: "Xidmət",
     classification: "Məhsul"
   },
   {
@@ -68,7 +68,7 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Satış",
+    kind: "Aktiv",
     classification: "Məhsul"
   },
   {
@@ -92,7 +92,7 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Satış",
+    kind: "Aktiv",
     classification: "Məhsul"
   },
   {
@@ -116,11 +116,10 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Satış",
+    kind: "Xidmət",
     classification: "Məhsul"
   },
 ];
-
 
 export const actsData = [
   { no: 1, infos: "Əliyev Niyaməddin", series: "EAA", number: "802601", situation: "802601", status: "Təsdiqləndi", date: "01.12.2024" },
