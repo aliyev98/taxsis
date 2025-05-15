@@ -50,7 +50,7 @@ export const purchaseData = [
   {
     no: 3,
     voen: "1406129621",
-    name: "“ATS FOOD” MMC",
+    name: "“BTS FOOD” MMC",
     type: "Cari",
     status: "Təsdiqləndi",
     date: "01.12.2024",
@@ -216,40 +216,40 @@ export const advanceData = [
     no: 1,
     voen: "1401123451",
     name: "ATS Group MMC",
-    kind: "Nağd",
-    type: "Verilmiş",
+    kind: "Avans",
+    type: "Giriş",
     amount: "300.00"
   },
   {
     no: 2,
     voen: "1401987652",
     name: "BTS Elektronika",
-    kind: "Köçürmə",
-    type: "Alınmış",
+    kind: "İmtiyaz",
+    type: "Çıxış",
     amount: "450.00"
   },
   {
     no: 3,
     voen: "1401765432",
     name: "CTS Qida",
-    kind: "Nağd",
-    type: "Verilmiş",
+    kind: "Avans",
+    type: "Çıxış",
     amount: "120.00"
   },
   {
     no: 4,
     voen: "1401987523",
     name: "DTS Market",
-    kind: "Köçürmə",
-    type: "Alınmış",
+    kind: "İmtiyaz",
+    type: "Giriş",
     amount: "610.50"
   },
   {
     no: 5,
     voen: "1401888888",
     name: "ETS Xidmət",
-    kind: "Nağd",
-    type: "Verilmiş",
+    kind: "İmtiyaz",
+    type: "Giriş",
     amount: "250.00"
   }
 ];

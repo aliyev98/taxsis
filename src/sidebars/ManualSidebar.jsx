@@ -407,14 +407,14 @@ const ManualSidebar = () => {
                                     return (
                                         <li
                                             key={item.id}
-                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                           className='sidebar-item'
                                             onClick={() => handleItemSelect(item.id)}
                                         >
                                             <img
                                                 src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
                                                 alt=""
                                             />
-                                            <span>{item.content}</span>
+                                            <span className={`${activeSubItem === item.id ? 'active' : ''}`}>{item.content}</span>
                                         </li>
                                     );
                                 })}
@@ -479,14 +479,14 @@ const ManualSidebar = () => {
                                     return (
                                         <li
                                             key={item.id}
-                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            className='sidebar-item'
                                             onClick={() => handleItemSelect(item.id)}
                                         >
                                             <img
                                                 src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
                                                 alt=""
                                             />
-                                            <span>{item.content}</span>
+                                            <span className={`${activeSubItem === item.id ? 'active' : ''}`}>{item.content}</span>
                                         </li>
                                     );
                                 })}
@@ -550,14 +550,14 @@ const ManualSidebar = () => {
                                     return (
                                         <li
                                             key={item.id}
-                                            className={`sidebar-item ${activeSubItem === item.id ? 'active' : ''}`}
+                                            className="sidebar-item"
                                             onClick={() => handleItemSelect(item.id)}
                                         >
                                             <img
                                                 src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
                                                 alt=""
                                             />
-                                            <span>{item.content}</span>
+                                            <span className={`${activeSubItem === item.id ? 'active' : ''}`}>{item.content}</span>
                                         </li>
                                     );
                                 })}
