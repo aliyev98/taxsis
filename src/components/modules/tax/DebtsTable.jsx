@@ -41,6 +41,7 @@ const DebtsTable = () => {
     let colSpans2;
 
 
+
     switch (navbarSelection) {
         case "creditor_debts":
             colSpans = [
@@ -200,9 +201,28 @@ const DebtsTable = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} />
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} infosHeader={true}
+                    infos={[
+                        {
+                            id: 1,
+                            title: "DÖVR",
+                            content: "01.01.2023-31.12.2023",
+                            options: [
+                                { value: "2023", label: "2023" },
+                                { value: "2024", label: "2024" },
+                            ],
+                        },
+                        {
+                            id: 2,
+                            title: "KONTRAGENT",
+                            content: "Aqro-Vest Retail",
+                            options: [
+                                { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                { value: "other", label: "Other Company" },
+                            ],
+                        },
+                    ]} />
             </div>
-
 
         </div>
     )

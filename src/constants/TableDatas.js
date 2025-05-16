@@ -20,7 +20,7 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Satış",
+    kind: "Aktiv",
     classification: "Məhsul"
   },
   {
@@ -52,7 +52,7 @@ export const purchaseData = [
     voen: "1406129621",
     name: "“BTS FOOD” MMC",
     type: "Cari",
-    status: "Təsdiqləndi",
+    status: "Təsdiqlənmədi",
     date: "01.12.2024",
     currency: "AZN",
     invoice_serie: "A-001",
@@ -76,7 +76,7 @@ export const purchaseData = [
     voen: "1406129621",
     name: "“ATS FOOD” MMC",
     type: "Cari",
-    status: "Təsdiqləndi",
+    status: "Boş",
     date: "01.12.2024",
     currency: "AZN",
     invoice_serie: "A-001",
@@ -116,7 +116,7 @@ export const purchaseData = [
     road_tax: 39842.00,
     axsiz_amount: 39842.00,
     act_type: "Akt",
-    kind: "Xidmət",
+    kind: "Satış",
     classification: "Məhsul"
   },
 ];

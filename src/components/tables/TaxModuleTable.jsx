@@ -263,6 +263,7 @@ export default function TaxModuleTable({
         table={table}
         columns={columns}
         navBtns={navBtns}
+        colSpans = {colSpans}
       />
 
       {infosHeader && (
@@ -340,7 +341,7 @@ export default function TaxModuleTable({
         </div>
       )}
 
-      {reportsHeader && <ReportsHeader isEditing={isEditing} />}
+      {reportsHeader && <ReportsHeader infosHeader={infosHeader} infos={infos} isEditing={isEditing} filters={filters} openInfoId={openInfoId} setOpenInfoId={setOpenInfoId} />}
 
       <div className="table-div">
 

@@ -95,15 +95,6 @@ const CashFlowStatement = () => {
                                             { value: "other", label: "Other Company" },
                                         ],
                                     },
-                                    {
-                                        id: 4,
-                                        title: "BANK/KASSA:",
-                                        content: "One-Click Post",
-                                        options: [
-                                            { value: "one_click", label: "One-Click Post" },
-                                            { value: "capital", label: "Capital Bank" },
-                                        ],
-                                    },
                                 ]}
                                 isEditing={isEditing} setIsEditing={setIsEditing}
                                 showGroupedHeader={showGroupedHeader} infosHeader={infosHeader} openModal={true}

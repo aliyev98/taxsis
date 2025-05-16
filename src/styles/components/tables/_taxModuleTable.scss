@@ -74,7 +74,7 @@
 
             .top-header {
                 &-title {
-                    // border-right: 1px solid black;
+                    border-right: 1px solid black;
 
                     div {
                         text-align: center;
@@ -82,8 +82,9 @@
                         background: var(--Secondary-02, #CABDFF);
                         padding: 8px 30px;
                         color: #000;
-                        font-size: 13px;
-                        font-weight: 500;
+                        font-size: 15px;
+                        font-weight: 600;
+                        text-transform: uppercase;
                     }
                 }
             }
@@ -92,10 +93,12 @@
 
                 .group-title {
                     padding: 0 20px !important;
+                    border-right: 1px solid black;
+
 
 
                     &:last-child {
-                        border-right: none !important;
+                        border-right: none !important;  
                     }
 
                     &:first-child {
@@ -114,6 +117,7 @@
                         border-radius: 4px;
                         text-align: center;
 
+                        text-transform: uppercase;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -312,7 +316,11 @@
         padding: 2px 8px;
         border-radius: 6px;
         width: fit-content;
-        color: #EFEFEF;
+        color: #EFEFEF !important;
+
+        option {
+            color: black !important;
+        }
     }
 
     .status-exceeded {
@@ -325,6 +333,7 @@
         font-size: 14px;
         font-weight: 600;
     }
+
 
     .status-complete {
         padding: 4px 8px;

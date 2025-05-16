@@ -43,6 +43,10 @@ const ConfrontationActs = () => {
         { id: 4, content: "Qalıq", col: 3 },
     ]
 
+    const colSpans2 = [
+        { id: 1, content: "'GÜVƏN LUX' MMC məlumatlarına əsasən, AZN", col: 20 },
+    ]
+
     const navBtns = [
         { id: "creditor", content: "Kreditor" },
         { id: "debtor", content: "Debitor" },
@@ -97,7 +101,7 @@ const ConfrontationActs = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} isEditing={isEditing} setIsEditing={setIsEditing}
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} colSpans2={colSpans2} isEditing={isEditing} setIsEditing={setIsEditing}
                     customHeaderButtons={
                         <>
                             <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
@@ -106,6 +110,18 @@ const ConfrontationActs = () => {
                         </>
                     }
                     showGroupedHeader={showGroupedHeader}
+                    infosHeader={true}
+                    infos={[
+                        {
+                            id: 1,
+                            title: "KONTRAGENT",
+                            content: "Aqro-Vest Retail",
+                            options: [
+                                { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                { value: "other", label: "Other Company" },
+                            ],
+                        },
+                    ]}
                 />
             </div>
 

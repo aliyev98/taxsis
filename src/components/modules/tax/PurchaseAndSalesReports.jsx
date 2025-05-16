@@ -133,7 +133,27 @@ const PurchasAndSalesReports = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true} />
+                <TaxModuleTable infosHeader={true} columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true}
+                    infos={[
+                        {
+                            id: 1,
+                            title: "DÖVR",
+                            content: "01.01.2023-31.12.2023",
+                            options: [
+                                { value: "2023", label: "2023" },
+                                { value: "2024", label: "2024" },
+                            ],
+                        },
+                        {
+                            id: 2,
+                            title: "KONTRAGENT",
+                            content: "Aqro-Vest Retail",
+                            options: [
+                                { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                { value: "other", label: "Other Company" },
+                            ],
+                        },
+                    ]} />
             </div>
 
 

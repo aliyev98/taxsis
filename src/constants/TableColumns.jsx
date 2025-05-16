@@ -26,7 +26,7 @@ export const purchaseColumns = [
     {
         id: "status",
         accessorKey: "status",
-        header: "Vəziyyəti",
+        header: "Status",
         filterOptions: {
             type: "checkbox",
             options: ["Hamısı", "Təsdiqləndi", "Təsdiqlənmədi", "Boş"],
@@ -42,7 +42,7 @@ export const purchaseColumns = [
 
             return (
                 <div className="status-cell d-flex" >
-                    <select className={`${isApproved ? "approved" : "unapproved"}`}
+                    <select className={`status-cell-select ${isApproved ? "approved" : "unapproved"}`}
                         value={value}
                         onChange={handleChange}
 
@@ -168,7 +168,7 @@ export const actsColumns = [
     {
         id: "status",
         accessorKey: "status",
-        header: "Vəziyyəti",
+        header: "Status",
         filterOptions: {
             type: "checkbox",
             options: ["Hamısı", "Təsdiqləndi", "Təsdiqlənmədi", "Boş"],
@@ -839,7 +839,7 @@ export const ImportDocsColumns = [
     { id: "usd_price", accessorKey: "usd_price", header: "USD məzənnə", filterOptions: { search: true, type: "search" }, },
     { id: "invoice_currency", accessorKey: "invoice_currency", header: "İnvoys valyuta", filterOptions: { search: true, type: "search" }, },
     { id: "invoice_price", accessorKey: "invoice_price", header: "İnvoys məzənnə", filterOptions: { search: true, type: "search" }, },
-    { id: "invoice_value", accessorKey: "invoice_price", header: "İnvoys dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true, },
+    { id: "invoice_value", accessorKey: "invoice_value", header: "İnvoys dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true, },
     {
         id: "transport_azn", accessorKey: "transport_azn", header: "Daşıma AZN", filterOptions: { search: true, type: "search" }, enableFooterTotal: true,
         cell: ({ row }) => (
@@ -855,12 +855,12 @@ export const ImportDocsColumns = [
     { id: "invoice_azn", accessorKey: "invoice_azn", header: "İnvoys AZN", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "real_custom_value", accessorKey: "real_custom_value", header: "Real Gömrük dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true, },
     { id: "statistical_value", accessorKey: "statistical_value", header: "Statistik dəyər", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "two", accessorKey: "two", header: "02", filterOptions: { search: true, type: "search" }, },
-    { id: "nineteen", accessorKey: "nineteen", header: "19", filterOptions: { search: true, type: "search" }, },
-    { id: "thirty_two", accessorKey: "thirty_two", header: "32", filterOptions: { search: true, type: "search" }, },
+    { id: "two", accessorKey: "two", header: "Gömrük yığımları-02", filterOptions: { search: true, type: "search" }, },
+    { id: "nineteen", accessorKey: "nineteen", header: "Gömrük yığımları-19", filterOptions: { search: true, type: "search" }, },
+    { id: "thirty_two", accessorKey: "thirty_two", header: "Gömrük yığımları-32", filterOptions: { search: true, type: "search" }, },
     { id: "excise", accessorKey: "excise", header: "Aksiz", filterOptions: { search: true, type: "search" }, },
-    { id: "seventy_five", accessorKey: "seventy_five", header: "75", filterOptions: { search: true, type: "search" }, },
-    { id: "eighty_five", accessorKey: "eighty_five", header: "85", filterOptions: { search: true, type: "search" }, },
+    { id: "seventy_five", accessorKey: "seventy_five", header: "Gömrük yığımları-75", filterOptions: { search: true, type: "search" }, },
+    { id: "eighty_five", accessorKey: "eighty_five", header: "Gömrük yığımları-85", filterOptions: { search: true, type: "search" }, },
     { id: "total_fee", accessorKey: "total_fee", header: "Cəmi rüsumlar", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "real_value", accessorKey: "real_value", header: "Real dəyər", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "cost_statistical_value", accessorKey: "cost_statistical_value", header: "Statistik dəyər", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
@@ -1691,7 +1691,7 @@ export const frgnCreditorColumns = [
 // qaimələr üzrə hesabat
 
 export const onPurchasesColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, headerContent: "1", }, 
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, headerContent: "1", },
     {
         id: "date",
         headerContent: "ACCFIN GROUP",
@@ -1752,7 +1752,7 @@ export const onPurchasesColumns = [
             search: true,
         },
     },
-    { 
+    {
         id: "residue_main", accessorKey: "residue_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true,
         filterOptions: {
             type: "search",

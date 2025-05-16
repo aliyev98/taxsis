@@ -18,7 +18,7 @@
         border-right: 10px solid transparent;
         border-bottom: 10px solid white;
         right: 30px;
-        top: -10px;
+        top: -9px;
     }
 
     .dropdown-title {
@@ -29,6 +29,17 @@
     }
 
     .column-inputs {
+        width: 100%;
+
+        div {
+            text-align: left;
+            color: var(--Neutral-07, #1A1D1F);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 15px;
+            font-weight: 700;
+        }
 
         label {
             color: var(--Neutral-07, #1A1D1F);

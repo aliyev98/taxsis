@@ -3,8 +3,10 @@ import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+import InfoSelectionDropdown from '../components/dropdwons/InfoSelectionDropwdown';
 
-const ReportsHeader = ({ isEditing }) => {
+const ReportsHeader = ({ isEditing, infosHeader, infos, filters, openInfoId, setOpenInfoId }) => {
+
 
     const [reportHeaderValues, setReportHeaderValues] = useState({
         dateText: "'GÜVƏN LUX MMC' və 'HZR GROUP'MMC arasında 17 noyabr 2022 - ci il tarixinə",
@@ -54,7 +56,7 @@ const ReportsHeader = ({ isEditing }) => {
     return (
         <div className="reports-header d-flex flex-column justify-content-center">
 
-            <div className="a  d-flex flex-column position-relative">
+            <div className="a d-flex flex-column position-relative">
 
                 <input
                     type="text"
@@ -75,6 +77,9 @@ const ReportsHeader = ({ isEditing }) => {
                     />
 
                     <div className="period d-flex align-items-center position-relative">
+
+
+
                         <span>ÜZLƏŞMƏ DÖVRÜ:</span>
                         <input
                             type="text"
@@ -104,9 +109,10 @@ const ReportsHeader = ({ isEditing }) => {
 
             </div>
 
-            <div className='header-colspan text-center'>
+            {/* <div className='header-colspan text-center'>
                 <span>"GÜVƏN LUX" MMC məlumatlarına əsasən, AZN</span>
-            </div>
+            </div> */}
+
         </div>
     );
 };

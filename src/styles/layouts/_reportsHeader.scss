@@ -1,13 +1,20 @@
 .reports-header {
-    margin-bottom: 12px;
     padding: 20px;
     padding-bottom: 0;
-    padding-top: 10px;
+    padding-top: 0px;
     background-color: #fff;
+
+    .table-header{
+
+    }
 
     .a {
         gap: 20px;
         padding-bottom: 24px;
+
+            .infos{
+        padding-bottom: 0 !important;
+    }
 
 
         input {

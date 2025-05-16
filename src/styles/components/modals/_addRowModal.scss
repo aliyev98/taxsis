@@ -5,23 +5,23 @@
             flex-direction: column;
             gap: 20px;
 
-            .input-div {
-                display: flex;
-                flex-direction: column;
-                padding: 8px 16px !important;
+            // .input-div {
+            //     display: flex;
+            //     flex-direction: column;
+            //     padding: 8px 16px !important;
 
-                label {
-                    color: var(--Neutral-08, #111315);
-                    font-size: 12px;
-                    font-weight: 500;
-                }
+            //     label {
+            //         color: var(--Neutral-08, #111315);
+            //         font-size: 12px;
+            //         font-weight: 500;
+            //     }
 
-                input {
-                    color: var(--Neutral-07, #1A1D1F);
-                    font-size: 15px;
-                    font-weight: 600;
-                }
-            }
+            //     input {
+            //         color: var(--Neutral-07, #1A1D1F);
+            //         font-size: 15px;
+            //         font-weight: 600;
+            //     }
+            // }
         }
 
         .modal-footer {

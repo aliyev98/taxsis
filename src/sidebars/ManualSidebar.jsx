@@ -189,7 +189,7 @@ const ManualSidebar = () => {
                                                     <li
                                                         key={item.id}
                                                         className={`sidebar-subitem ${activeSubItem === item.id ? 'subactive' : ''}`}
-                                                        onClick={() => setActiveSubItem(item.id)}
+                                                        onClick={() => handleItemSelect(item.id)}
                                                     >
                                                         <img
                                                             src={isLast ? "/assets/tree-end.svg" : "/assets/tree-icon.svg"}
