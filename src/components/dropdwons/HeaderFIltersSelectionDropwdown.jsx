@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InfoSelectionDropdown = ({ options = [], onSelect }) => {
+const HeaderFiltersSelectionDropdown = ({ options = [], onSelect }) => {
   return (
     <div className="info-selection-dropdown d-flex flex-column">
       {options.map(opt => (
@@ -16,4 +14,4 @@ const InfoSelectionDropdown = ({ options = [], onSelect }) => {
   );
 };
 
-export default InfoSelectionDropdown;
+export default HeaderFiltersSelectionDropdown;

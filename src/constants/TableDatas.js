@@ -1397,7 +1397,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 1000,
     access_bank: 500,
     pasha_bank: 750,
-    main: 2250,
+    total: 2250,
   },
   {
     no: 2,
@@ -1407,7 +1407,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 2000,
     access_bank: 1000,
     pasha_bank: 500,
-    main: 3500,
+    total: 3500,
   },
   {
     no: 3,
@@ -1417,7 +1417,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 2000,
     access_bank: 1000,
     pasha_bank: 500,
-    main: 3500,
+    total: 3500,
   },
   {
     no: 4,
@@ -1427,7 +1427,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 2000,
     access_bank: 1000,
     pasha_bank: 500,
-    main: 3500,
+    total: 3500,
   },
   {
     no: 5,
@@ -1437,7 +1437,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 2000,
     access_bank: 1000,
     pasha_bank: 500,
-    main: 3500,
+    total: 3500,
   },
   {
     no: 6,
@@ -1447,7 +1447,7 @@ export const cashFlowsbyItemsData = [
     capital_bank: 2000,
     access_bank: 1000,
     pasha_bank: 500,
-    main: 3500,
+    total: 3500,
   },
 ];
 

@@ -25,10 +25,10 @@ const DebtsTable = () => {
     const foreignDebitorData = useSelector((state) => state.tableData.foreignDebitor.data);
 
 
-    const headerBtns = [
-        { id: 1, content: "Şablonu yüklə", className: "download" },
-        { id: 2, content: "İmport et", className: "import" },
-    ];
+    // const headerBtns = [
+    //     { id: 1, content: "Şablonu yüklə", className: "download" },
+    //     { id: 2, content: "İmport et", className: "import" },
+    // ];
 
     const navBtns = [
         { id: "creditor_debts", content: "Kreditor borcları" },
@@ -39,8 +39,6 @@ const DebtsTable = () => {
 
     let colSpans;
     let colSpans2;
-
-
 
     switch (navbarSelection) {
         case "creditor_debts":
@@ -201,8 +199,8 @@ const DebtsTable = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} infosHeader={true}
-                    infos={[
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} colSpans2={colSpans2} showGroupedHeader={true} showHeaderFilters={true}
+                    headerFilters={[
                         {
                             id: 1,
                             title: "DÖVR",

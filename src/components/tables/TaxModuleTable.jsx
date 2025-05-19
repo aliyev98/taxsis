@@ -12,12 +12,13 @@ import TableHeader from "../../layouts/TableHeader";
 import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
 import EmptyDataMessage from "../ui/EmptyDataMessage";
 import EmptyReportsMessage from "../ui/EmptyReportsMessage";
-import InfoSelectionDropdown from "../dropdwons/InfoSelectionDropwdown";
+import HeaderFiltersSelectionDropdown from "../dropdwons/HeaderFIltersSelectionDropwdown";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import CellModal from "../modals/CellModal";
+import TransportModal from "../modals/TransportModal";
 
 export default function TaxModuleTable({
   columns,
@@ -32,8 +33,10 @@ export default function TaxModuleTable({
   colSpans,
   openModal,
   colSpans2,
-  infos,
-  infosHeader,
+  headerFilters,
+  showHeaderFilters,
+  showReportsHeaderFilters,
+  reportsHeaderFilters,
   editable,
   onRowClick = null,
   rowClickEnabled = false,
@@ -51,7 +54,7 @@ export default function TaxModuleTable({
   const [editMode, setEditMode] = useState(false);
   const [editValue, setEditValue] = useState("");
 
-  const [openInfoId, setOpenInfoId] = useState(null); //////////
+  const [openHeaderFilterId, setOpenHeaderFilterId] = useState(null); //////////
 
   // Hangi hücre için modal açılsın, onun bilgisini tutuyoruz:
   const [cellModalContext, setCellModalContext] = useState(null);
@@ -224,6 +227,7 @@ export default function TaxModuleTable({
       setEditingCell,
       setEditMode,
       setEditValue,
+      onTransportClick: (rowData) => setCellModalContext({ row: rowData, columnKey: 'transport_azn' }),
     },
   });
 
@@ -263,36 +267,36 @@ export default function TaxModuleTable({
         table={table}
         columns={columns}
         navBtns={navBtns}
-        colSpans = {colSpans}
+        colSpans={colSpans}
       />
 
-      {infosHeader && (
+      {showHeaderFilters && (
         <div className="infos d-flex">
-          {infos?.map((info) => (
+          {headerFilters?.map((filter) => (
             <div
               className="info position-relative d-flex align-items-center"
-              key={info.id}
+              key={filter.id}
             >
-              <span className="info-title">{info.title}</span>
+              <span className="info-title">{filter.title}</span>
 
               {/* tıklanabilir alan */}
               <div
                 className="info-toggle d-flex align-items-center"
                 onClick={() =>
-                  setOpenInfoId(openInfoId === info.id ? null : info.id)
+                  setOpenHeaderFilterId(openHeaderFilterId === filter.id ? null : filter.id)
                 }
               >
-                <span className="info-content">{filters[info.id]?.label ?? info.content}</span>
+                <span className="info-content">{filters[filter.id]?.label ?? filter.content}</span>
                 <img
                   src="/assets/arrow-down.svg"
                   alt=""
-                  className={openInfoId === info.id ? 'rotated' : ''}
+                  className={openHeaderFilterId === filter.id ? 'rotated' : ''}
                 />
               </div>
 
               {/* dropdown burada açılıyor */}
-              {openInfoId === info.id && (
-                info.id === 2
+              {openHeaderFilterId === filter.id && (
+                filter.id === 2
                   ? (
                     // === Tarih picker ===
                     <div className="info-datepicker">
@@ -306,7 +310,7 @@ export default function TaxModuleTable({
                           // 2) filters objesine hem value hem label ekle
                           setFilters(prev => ({
                             ...prev,
-                            [info.id]: {
+                            [filter.id]: {
                               value: {
                                 startDate: selection.startDate,
                                 endDate: selection.endDate
@@ -320,16 +324,16 @@ export default function TaxModuleTable({
                   )
                   : (
                     // === Normal dropdown ===
-                    <InfoSelectionDropdown
-                      options={info.options}
+                    <HeaderFiltersSelectionDropdown
+                      options={filter.options}
                       onSelect={(value) => {
-                        const opt = info.options.find(o => o.value === value);
+                        const opt = filter.options.find(o => o.value === value);
                         if (!opt) return;
                         setFilters(prev => ({
                           ...prev,
-                          [info.id]: { value: opt.value, label: opt.label }
+                          [filter.id]: { value: opt.value, label: opt.label }
                         }));
-                        setOpenInfoId(null);
+                        setOpenHeaderFilterId(null);
                       }}
                     />
                   )
@@ -341,7 +345,7 @@ export default function TaxModuleTable({
         </div>
       )}
 
-      {reportsHeader && <ReportsHeader infosHeader={infosHeader} infos={infos} isEditing={isEditing} filters={filters} openInfoId={openInfoId} setOpenInfoId={setOpenInfoId} />}
+      {reportsHeader && <ReportsHeader showReportsHeaderFilters={showReportsHeaderFilters} reportsHeaderFilters={reportsHeaderFilters} isEditing={isEditing} filters={filters} openHeaderFilterId={openHeaderFilterId} setOpenHeaderFilterId={setOpenHeaderFilterId} />}
 
       <div className="table-div">
 
@@ -623,13 +627,23 @@ export default function TaxModuleTable({
         </table>
 
         {cellModalContext && (
-          <CellModal
-            isOpen
-            onClose={() => setCellModalContext(null)}
-            row={cellModalContext.row}
-            columnKey={cellModalContext.columnKey}
-            cellValue={cellModalContext.cellValue}
-          />
+          cellModalContext.columnKey === 'transport_azn'
+            ? (
+              <TransportModal
+                isOpen
+                onClose={closeCellModal}
+                row={cellModalContext.row}
+              />
+            )
+            : (
+              <CellModal
+                isOpen
+                onClose={closeCellModal}
+                row={cellModalContext.row}
+                columnKey={cellModalContext.columnKey}
+                cellValue={cellModalContext.cellValue}
+              />
+            )
         )}
 
 

@@ -11,7 +11,6 @@ const ConfrontationActs = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
-    const [reportsHeader, setReportsHeader] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
 
     const dispatch = useDispatch();
@@ -101,7 +100,7 @@ const ConfrontationActs = () => {
             />
 
             <div className="table">
-                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={reportsHeader} colSpans={colSpans} colSpans2={colSpans2} isEditing={isEditing} setIsEditing={setIsEditing}
+                <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={true} colSpans={colSpans} colSpans2={colSpans2} isEditing={isEditing} setIsEditing={setIsEditing}
                     customHeaderButtons={
                         <>
                             <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
@@ -110,8 +109,8 @@ const ConfrontationActs = () => {
                         </>
                     }
                     showGroupedHeader={showGroupedHeader}
-                    infosHeader={true}
-                    infos={[
+                    showReportsHeaderFilters={true}
+                    reportsHeaderFilters={[
                         {
                             id: 1,
                             title: "KONTRAGENT",
@@ -119,6 +118,15 @@ const ConfrontationActs = () => {
                             options: [
                                 { value: "agro_vest", label: "Aqro-Vest Retail" },
                                 { value: "other", label: "Other Company" },
+                            ],
+                        },
+                        {
+                            id: 2,
+                            title: "DÖVR",
+                            content: "01.01.2023-31.12.2023",
+                            options: [
+                                { value: "2023", label: "2023" },
+                                { value: "2024", label: "2024" },
                             ],
                         },
                     ]}

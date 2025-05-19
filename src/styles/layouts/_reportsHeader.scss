@@ -1,21 +1,54 @@
-.reports-header {
+.reports-header-container {
     padding: 20px;
     padding-bottom: 0;
     padding-top: 0px;
     background-color: #fff;
 
-    .table-header{
-
-    }
-
-    .a {
+    .reports-header {
         gap: 20px;
         padding-bottom: 24px;
 
-            .infos{
-        padding-bottom: 0 !important;
-    }
+        .filters-div {
+            .location {
+                font-size: 15px;
+                font-weight: 500;
+            }
 
+            .filters {
+                z-index: 99999;
+
+                .header-filters {
+                    gap: 40px;
+
+                    .header-filter {
+                        gap: 8px;
+
+                        .filter-title {
+                            color: var(--Neutral-04, #6F767E);
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        .filter-toggle {
+                            gap: 4px;
+
+                            .filter-content {
+                                color: var(--Neutral-07, #1A1D1F);
+                                font-size: 15px;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        .calendar-div{
+                            top: 40px;
+                            right: 0;
+                        }
+
+                    }
+                }
+            }
+        }
 
         input {
             border: none;
@@ -26,10 +59,6 @@
         }
 
         div {
-            .location {
-                font-size: 15px;
-                font-weight: 500;
-            }
 
             .period {
                 gap: 15px;
@@ -60,7 +89,6 @@
             width: 100%;
         }
     }
-
 
     .date {
         font-size: 24px;

@@ -34,18 +34,6 @@ const CashFlowStatement = () => {
         { id: "currency", content: "Maddələr üzrə pul hərəkəti valyuta" },
     ];
 
-    const colSpans = [
-
-    ]
-
-    const infos = [
-        { id: 1, title: "NÖVÜ", content: "Kreditor" },
-        { id: 2, title: "DÖVR", content: "01.01.2023-31.12.2023" },
-        { id: 3, title: "KONTRAGENT", content: "Aqro-Vest Retail" },
-        { id: 4, title: "BANK/KASSA:", content: "One-Click Post" },
-    ]
-
-    const showGroupedHeader = true;
 
     let columns;
 
@@ -67,7 +55,7 @@ const CashFlowStatement = () => {
 
                         <div className="tables">
                             <TaxModuleTable columns={internalDKColumns} data={internalDKData} navBtns={navBtns}
-                                infos={[
+                                headerFilters={[
                                     {
                                         id: 1,
                                         title: "NÖVÜ",
@@ -97,7 +85,7 @@ const CashFlowStatement = () => {
                                     },
                                 ]}
                                 isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} infosHeader={infosHeader} openModal={true}
+                                showGroupedHeader={true} showHeaderFilters={true} openModal={true}
                                 colSpans={[{ id: 1, content: "MƏDAXİL/MƏXARİC", col: 3 },
                                 { id: 2, content: "KAPİTAL BANK", col: 3 },
                                 { id: 3, content: "ƏDV DEPOZİT HESABI", col: 3 },
@@ -107,7 +95,7 @@ const CashFlowStatement = () => {
                                 { id: 7, content: "FƏRQ", col: 2 },]}
                             />
                             <TaxModuleTable columns={internalDKColumns} data={internalDKData} isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} openModal={true}
+                                showGroupedHeader={true} openModal={true}
                                 colSpans={[{ id: 1, content: "Geri qaytarma", col: 3 },
                                 { id: 2, content: "KAPİTAL BANK", col: 3 },
                                 { id: 3, content: "ƏDV DEPOZİT HESABI", col: 3 },
@@ -124,7 +112,7 @@ const CashFlowStatement = () => {
                     navbarSelection === "external" && (
                         <div className="tables">
                             <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
-                                infos={[
+                                headerFilters={[
                                     {
                                         id: 1,
                                         title: "NÖVÜ",
@@ -162,8 +150,8 @@ const CashFlowStatement = () => {
                                         ],
                                     },
                                 ]}
-                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} />
+                                showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={true} />
                         </div>
 
                     )
@@ -173,7 +161,7 @@ const CashFlowStatement = () => {
                     navbarSelection === "cash_flows_by_items" && (
                         <div className="tables">
                             <TaxModuleTable navBtns={navBtns} columns={cashFlowsbyItemsColumns} data={cashFlowsbyItemsData} openModal={true}
-                                infos={[
+                                headerFilters={[
                                     {
                                         id: 1,
                                         title: "NÖVÜ",
@@ -193,8 +181,8 @@ const CashFlowStatement = () => {
                                         ],
                                     },
                                 ]}
-                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} />
+                                showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={true} />
                         </div>
                     )
                 }
@@ -203,7 +191,7 @@ const CashFlowStatement = () => {
                     navbarSelection === "currency" && (
                         <div className="tables">
                             <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
-                                infos={[
+                                headerFilters={[
                                     {
                                         id: 1,
                                         title: "NÖVÜ",
@@ -223,8 +211,8 @@ const CashFlowStatement = () => {
                                         ],
                                     },
                                 ]}
-                                infosHeader={infosHeader} isEditing={isEditing} setIsEditing={setIsEditing}
-                                showGroupedHeader={showGroupedHeader} />
+                                showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}
+                                showGroupedHeader={true} />
                         </div>
                     )
                 }

@@ -133,8 +133,8 @@ const PurchasAndSalesReports = () => {
             />
 
             <div className="table">
-                <TaxModuleTable infosHeader={true} columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true}
-                    infos={[
+                <TaxModuleTable showHeaderFilters={true} columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true}
+                    headerFilters={[
                         {
                             id: 1,
                             title: "DÖVR",
