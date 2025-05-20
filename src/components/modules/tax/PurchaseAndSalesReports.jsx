@@ -137,15 +137,6 @@ const PurchasAndSalesReports = () => {
                     headerFilters={[
                         {
                             id: 1,
-                            title: "DÖVR",
-                            content: "01.01.2023-31.12.2023",
-                            options: [
-                                { value: "2023", label: "2023" },
-                                { value: "2024", label: "2024" },
-                            ],
-                        },
-                        {
-                            id: 2,
                             title: "KONTRAGENT",
                             content: "Aqro-Vest Retail",
                             options: [
@@ -153,6 +144,11 @@ const PurchasAndSalesReports = () => {
                                 { value: "other", label: "Other Company" },
                             ],
                         },
+                        {
+                            id: 2,
+                            title: "DÖVR",
+                            content: "Bir tarix aralığı seçin",
+                        }
                     ]} />
             </div>
 

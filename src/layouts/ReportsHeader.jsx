@@ -79,7 +79,7 @@ const ReportsHeader = ({
     const handleReportHeaderChange = (field, value) => {
         setReportHeaderValues((prev) => ({ ...prev, [field]: value }));
     };
-    
+
     const handleCalendarChange = ({ selection }) => {
         const { startDate, endDate } = selection;
         // 1) Aralığı state’e yaz

@@ -2,22 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
-import { cashFlowsbyItemsColumns, externalDKColumns, internalDKColumns } from "../../../constants/TableColumns";
+import { cashFlowsbyItemsColumns, cashFlowsbyItemsCurrencyColumns, externalDKColumns, internalDKColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
-import { cashFlowsbyItemsData, externalDKData, internalDKData } from "../../../constants/TableDatas";
+import { cashFlowsbyItemsCurrencyData, cashFlowsbyItemsData, externalDKData, internalDKData } from "../../../constants/TableDatas";
 
 const CashFlowStatement = () => {
 
     const navbarSelection = useSelector((state) => state.taxModuleSelection.navbarSelection);
 
     const [isEditing, setIsEditing] = useState(false);
-    const [infosHeader, setInfosHeader] = useState(true);
 
     const dispatch = useDispatch();
 
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
 
-    const cashFlowsData = useSelector((state) => state.tableData.cashFlows.data);
 
     useEffect(() => {
         if (sidebarSelection === "cash_flow") {
@@ -68,11 +66,7 @@ const CashFlowStatement = () => {
                                     {
                                         id: 2,
                                         title: "DÖVR",
-                                        content: "01.01.2023-31.12.2023",
-                                        options: [
-                                            { value: "2023", label: "2023" },
-                                            { value: "2024", label: "2024" },
-                                        ],
+                                        content: "Bir tarix aralığı seçin...",
                                     },
                                     {
                                         id: 3,
@@ -125,11 +119,11 @@ const CashFlowStatement = () => {
                                     {
                                         id: 2,
                                         title: "DÖVR",
-                                        content: "01.01.2023-31.12.2023",
-                                        options: [
-                                            { value: "2023", label: "2023" },
-                                            { value: "2024", label: "2024" },
-                                        ],
+                                        content: "Bir tarix aralığı seçin",
+                                        // options: [
+                                        //     { value: "2023", label: "2023" },
+                                        //     { value: "2024", label: "2024" },
+                                        // ],
                                     },
                                     {
                                         id: 3,
@@ -140,15 +134,15 @@ const CashFlowStatement = () => {
                                             { value: "other", label: "Other Company" },
                                         ],
                                     },
-                                    {
-                                        id: 4,
-                                        title: "BANK/KASSA:",
-                                        content: "One-Click Post",
-                                        options: [
-                                            { value: "one_click", label: "One-Click Post" },
-                                            { value: "capital", label: "Capital Bank" },
-                                        ],
-                                    },
+                                    // {
+                                    //     id: 4,
+                                    //     title: "BANK/KASSA:",
+                                    //     content: "One-Click Post",
+                                    //     options: [
+                                    //         { value: "one_click", label: "One-Click Post" },
+                                    //         { value: "capital", label: "Capital Bank" },
+                                    //     ],
+                                    // },
                                 ]}
                                 showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}
                                 showGroupedHeader={true} />
@@ -174,11 +168,7 @@ const CashFlowStatement = () => {
                                     {
                                         id: 2,
                                         title: "DÖVR",
-                                        content: "01.01.2023-31.12.2023",
-                                        options: [
-                                            { value: "2023", label: "2023" },
-                                            { value: "2024", label: "2024" },
-                                        ],
+                                        content: "Bir tarix aralığı seçin",
                                     },
                                 ]}
                                 showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}
@@ -190,7 +180,7 @@ const CashFlowStatement = () => {
                 {
                     navbarSelection === "currency" && (
                         <div className="tables">
-                            <TaxModuleTable navBtns={navBtns} columns={externalDKColumns} data={externalDKData} openModal={true}
+                            <TaxModuleTable navBtns={navBtns} columns={cashFlowsbyItemsCurrencyColumns} data={cashFlowsbyItemsCurrencyData} openModal={true}
                                 headerFilters={[
                                     {
                                         id: 1,
@@ -204,11 +194,7 @@ const CashFlowStatement = () => {
                                     {
                                         id: 2,
                                         title: "DÖVR",
-                                        content: "01.01.2023-31.12.2023",
-                                        options: [
-                                            { value: "2023", label: "2023" },
-                                            { value: "2024", label: "2024" },
-                                        ],
+                                        content: "Bir tarix aralığı seçin",
                                     },
                                 ]}
                                 showHeaderFilters={true} isEditing={isEditing} setIsEditing={setIsEditing}

@@ -2117,10 +2117,75 @@ export const cashFlowsbyItemsColumns = [
         //     search: true,
         // },
     },
+    {
+        id: "destination_money", accessorKey: "destination_money", header: "Pulun gəlmə təyinatı", enableFooterTotal: true,
+        enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
 ]
 
-// (maddələr üzrə pul hərəkəti sütunları eynidir)
-
+export const cashFlowsbyItemsCurrencyColumns = [
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true },
+    {
+        id: "name",
+        accessorKey: "name",
+        header: "Adı",
+        // filterOptions: {
+        //     search: true,
+        //     type: "search",
+        //     options: ["A-dan Z-yə", "Z-dən A-ya"],
+        // },
+    },
+    {
+        id: "vat", accessorKey: "vat", header: "VÖEN",
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+    {
+        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+    {
+        id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
+        enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+    {
+        id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
+        enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+    {
+        id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
+        enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+    {
+        id: "total", accessorKey: "total", header: "Cəmi", enableFooterTotal: true,
+        enableCellModal: true,
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+    },
+]
 
 
 /// alış satış hesabatları

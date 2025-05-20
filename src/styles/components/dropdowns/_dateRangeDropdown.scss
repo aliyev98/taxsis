@@ -1,0 +1,70 @@
+        .date-range-dropdown {
+            padding: 16px;
+            border-radius: 16px;
+
+            background: var(--Neutral-00, #FFF);
+            box-shadow: 0px 40px 64px -12px rgba(0, 0, 0, 0.08), 0px 0px 14px -4px rgba(0, 0, 0, 0.05), 0px 32px 48px -8px rgba(0, 0, 0, 0.10);
+            backdrop-filter: blur(16px);
+
+            position: absolute;
+            top: 40px;
+            right: 0;
+            z-index: 9999;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: -10px;
+                right: 10px;
+                transform: translateX(-50%);
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 10px solid white;
+            }
+
+            .filter-dropdown-title {
+                color: var(--Neutral-04, #6F767E);
+                font-size: 12px;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+
+            .date-inputs {
+                gap: 20px !important;
+
+                .date-input-group {
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 12px;
+                    background: var(--Neutral-02, #F4F4F4);
+                    padding: 8px 16px;
+
+
+                    label {
+                        color: var(--Neutral-08, #111315);
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+
+                    input {
+                        cursor: pointer;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+
+                        color: var(--Neutral-07, #1A1D1F);
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+
+                    img {
+                        position: absolute;
+                        right: 16px;
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }

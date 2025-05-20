@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -13,12 +13,12 @@ import TableDataEditDropdown from "../dropdwons/TableDataEditDropdown";
 import EmptyDataMessage from "../ui/EmptyDataMessage";
 import EmptyReportsMessage from "../ui/EmptyReportsMessage";
 import HeaderFiltersSelectionDropdown from "../dropdwons/HeaderFIltersSelectionDropwdown";
-import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import CellModal from "../modals/CellModal";
 import TransportModal from "../modals/TransportModal";
+import DateRangeDropdown from '../dropdwons/DateRangeDropdown'
 
 export default function TaxModuleTable({
   columns,
@@ -55,6 +55,14 @@ export default function TaxModuleTable({
   const [editValue, setEditValue] = useState("");
 
   const [openHeaderFilterId, setOpenHeaderFilterId] = useState(null); //////////
+
+  // sadece dövr filtresi (id===2 diyelim) için
+  const [openFromCalendar, setOpenFromCalendar] = useState(false);
+  const [openToCalendar, setOpenToCalendar] = useState(false);
+
+  // başlangıç / bitiş tarihlerini ayrı tut:
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
 
   // Hangi hücre için modal açılsın, onun bilgisini tutuyoruz:
   const [cellModalContext, setCellModalContext] = useState(null);
@@ -271,74 +279,74 @@ export default function TaxModuleTable({
       />
 
       {showHeaderFilters && (
-        <div className="infos d-flex">
-          {headerFilters?.map((filter) => (
-            <div
-              className="info position-relative d-flex align-items-center"
-              key={filter.id}
-            >
-              <span className="info-title">{filter.title}</span>
-
-              {/* tıklanabilir alan */}
+        <div className="header-filters d-flex">
+          {headerFilters.map(filter => (
+            <div className="header-filter d-flex align-items-center position-relative" key={filter.id}>
+              <span className="filter-title">{filter.title}:</span>
               <div
-                className="info-toggle d-flex align-items-center"
-                onClick={() =>
+                className="filter-toggle"
+                onClick={() => {
                   setOpenHeaderFilterId(openHeaderFilterId === filter.id ? null : filter.id)
-                }
+                  // takvimi otomatik kapat
+                  setOpenFromCalendar(false)
+                  setOpenToCalendar(false)
+                }}
               >
-                <span className="info-content">{filters[filter.id]?.label ?? filter.content}</span>
+                <span className="filter-content">
+                  {filters[filter.id]?.label ?? filter.content}
+                </span>
                 <img
                   src="/assets/arrow-down.svg"
-                  alt=""
                   className={openHeaderFilterId === filter.id ? 'rotated' : ''}
                 />
               </div>
 
-              {/* dropdown burada açılıyor */}
-              {openHeaderFilterId === filter.id && (
-                filter.id === 2
-                  ? (
-                    // === Tarih picker ===
-                    <div className="info-datepicker">
-                      <DateRange
-                        editableDateInputs
-                        moveRangeOnFirstSelection={false}
-                        ranges={dateRange}
-                        onChange={({ selection }) => {
-                          // 1) Local dateRange’i güncelle
-                          setDateRange([selection]);
-                          // 2) filters objesine hem value hem label ekle
-                          setFilters(prev => ({
-                            ...prev,
-                            [filter.id]: {
-                              value: {
-                                startDate: selection.startDate,
-                                endDate: selection.endDate
-                              },
-                              label: `${format(selection.startDate, "dd.MM.yyyy")} – ${format(selection.endDate, "dd.MM.yyyy")}`
-                            }
-                          }));
-                        }}
-                      />
-                    </div>
-                  )
-                  : (
-                    // === Normal dropdown ===
-                    <HeaderFiltersSelectionDropdown
-                      options={filter.options}
-                      onSelect={(value) => {
-                        const opt = filter.options.find(o => o.value === value);
-                        if (!opt) return;
-                        setFilters(prev => ({
-                          ...prev,
-                          [filter.id]: { value: opt.value, label: opt.label }
-                        }));
-                        setOpenHeaderFilterId(null);
-                      }}
-                    />
-                  )
+              {openHeaderFilterId === filter.id && filter.id === 2 && (
+                <DateRangeDropdown
+                  fromDate={fromDate}
+                  toDate={toDate}
+                  openFrom={openFromCalendar}
+                  openTo={openToCalendar}
+                  onClickFrom={() => { setOpenFromCalendar(true); setOpenToCalendar(false) }}
+                  onClickTo={() => { setOpenToCalendar(true); setOpenFromCalendar(false) }}
+                  onChangeFrom={d => {
+                    setFromDate(d)
+                    setFilters(prev => ({
+                      ...prev,
+                      [filter.id]: {
+                        value: { startDate: d, endDate: toDate },
+                        label: `${format(d, 'dd.MM.yyyy')} – ${toDate ? format(toDate, 'dd.MM.yyyy') : '...'}`
+                      }
+                    }))
+                    setOpenFromCalendar(false)
+                  }}
+                  onChangeTo={d => {
+                    setToDate(d)
+                    setFilters(prev => ({
+                      ...prev,
+                      [filter.id]: {
+                        value: { startDate: fromDate, endDate: d },
+                        label: `${fromDate ? format(fromDate, 'dd.MM.yyyy') : '...'} – ${format(d, 'dd.MM.yyyy')}`
+                      }
+                    }))
+                    setOpenToCalendar(false)
+                  }}
+                />
               )}
 
+              {openHeaderFilterId === filter.id && filter.id !== 2 && (
+                <HeaderFiltersSelectionDropdown
+                  options={filter.options}
+                  onSelect={value => {
+                    const opt = filter.options.find(o => o.value === value)
+                    setFilters(prev => ({
+                      ...prev,
+                      [filter.id]: { value: opt.value, label: opt.label }
+                    }))
+                    setOpenHeaderFilterId(null)
+                  }}
+                />
+              )}
 
             </div>
           ))}
@@ -620,9 +628,6 @@ export default function TaxModuleTable({
               })}
             </tr>
           </tfoot>
-
-
-
 
         </table>
 
