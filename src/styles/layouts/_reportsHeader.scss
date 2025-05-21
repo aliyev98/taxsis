@@ -22,6 +22,7 @@
 
                     .header-filter {
                         gap: 8px;
+                        border: none;
 
                         .filter-title {
                             color: var(--Neutral-04, #6F767E);
@@ -30,7 +31,9 @@
                         }
 
                         .filter-toggle {
-                            gap: 4px;
+                            gap: 16px;
+                            border-radius: 8px;
+
 
                             .filter-content {
                                 color: var(--Neutral-07, #1A1D1F);
@@ -40,7 +43,12 @@
                             }
                         }
 
-                        .calendar-div{
+                        &:last-child {
+                            border: 2px solid var(--Neutral-03, #EFEFEF);
+                            padding: 8px;
+                        }
+
+                        .calendar-div {
                             top: 40px;
                             right: 0;
                         }

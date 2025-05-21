@@ -13,6 +13,8 @@ export default function DateRangeDropdown({
   onChangeFrom,
   onChangeTo,
 }) {
+
+  
   return (
     <div className="filter-dropdown date-range-dropdown">
       <div className="filter-dropdown-title">Dövr</div>

@@ -115,6 +115,7 @@ const ConfrontationActs = () => {
                             id: 1,
                             title: "KONTRAGENT",
                             content: "Aqro-Vest Retail",
+                            icon: "/assets/arrow-down.svg",
                             options: [
                                 { value: "agro_vest", label: "Aqro-Vest Retail" },
                                 { value: "other", label: "Other Company" },
@@ -122,12 +123,9 @@ const ConfrontationActs = () => {
                         },
                         {
                             id: 2,
-                            title: "DÖVR",
+                            title: "ÜZLƏŞMƏ DÖVR",
                             content: "01.01.2023-31.12.2023",
-                            options: [
-                                { value: "2023", label: "2023" },
-                                { value: "2024", label: "2024" },
-                            ],
+                            icon: '/assets/calendar-light.svg'
                         },
                     ]}
                 />

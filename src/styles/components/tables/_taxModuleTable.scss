@@ -18,13 +18,16 @@
     }
 
     .header-filters {
-        padding: 0px 24px 20px 24px;
+        // padding: 0px 24px 20px 24px;
         gap: 40px;
         background-color: white;
 
         .header-filter {
             gap: 8px;
             display: flex;
+            border-radius: 8px;
+            padding: 8px 12px;
+            border: 1px solid var(--Neutral-03, #EFEFEF);
 
             .info-datepicker {
                 position: absolute;

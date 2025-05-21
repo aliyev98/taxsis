@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import HeaderFiltersSelectionDropdown from '../components/dropdwons/HeaderFIltersSelectionDropwdown';
+import DateRangeDropdown from '../components/dropdwons/DateRangeDropdown';
 
 const ReportsHeader = ({
     isEditing,
@@ -27,6 +28,16 @@ const ReportsHeader = ({
             return acc;
         }, {})
     );
+
+    const [filters, setFilters] = useState({});
+
+
+    const [openFromCalendar, setOpenFromCalendar] = useState(false);
+    const [openToCalendar, setOpenToCalendar] = useState(false);
+
+    // başlangıç / bitiş tarihlerini ayrı tut:
+    const [fromDate, setFromDate] = useState(null);
+    const [toDate, setToDate] = useState(null);
 
     // Tarih filtresi için takvim state’i
     const [dateRange, setDateRange] = useState([
@@ -132,39 +143,155 @@ const ReportsHeader = ({
                         {showReportsHeaderFilters && (
                             <div className="header-filters d-flex position-relative">
                                 {reportsHeaderFilters.map((f) => (
-                                    <div
-                                        key={f.id}
-                                        className="header-filter position-relative d-flex align-items-center">
-
+                                    <div key={f.id} className="header-filter position-relative d-flex align-items-center">
                                         <span className="filter-title">{f.title}:</span>
 
-                                        <div className="filter-toggle d-flex align-items-center" onClick={() => toggleFilter(f.id)}>
+                                        <div
+                                            className="filter-toggle d-flex align-items-center"
+                                            onClick={() => {
+                                                toggleFilter(f.id)
+                                                // takvim lambda kapatılması:
+                                                if (f.id === 2) {
+                                                    setOpenFromCalendar(false)
+                                                    setOpenToCalendar(false)
+                                                }
+                                            }}
 
+                                        >
                                             <span className="filter-content">
-                                                {filterValues[f.id]?.label}
+                                                {filterValues[f.id]?.label ?? f.content}
                                             </span>
-
-                                            <img src="/assets/arrow-down.svg" alt="" className={`${openFilterId === f.id ? 'rotated' : ''}`} />
-
+                                            <img
+                                                src={f.icon}
+                                                alt=""
+                                                className={openFilterId === f.id ? 'rotated' : ''}
+                                            />
                                         </div>
 
-                                        {openFilterId === f.id && f.title === 'DÖVR' && (
-                                            <div className="position-absolute calendar-div" ref={calendarRef} >
-                                                <DateRange
-                                                    editableDateInputs
-                                                    moveRangeOnFirstSelection={false}
-                                                    ranges={dateRange}
-                                                    onChange={handleCalendarChange}
-                                                />
+                                        {/* ——— “DÖVR” filtresi (ID === 2) için özel tarih-range dropdown ——— */}
+                                        {openFilterId === f.id && f.id === 2 && (
+                                            <div className="filter-dropdown date-range-dropdown">
+                                                <div className="filter-dropdown-title">Dövr</div>
+
+                                                <div className="date-inputs d-flex flex-column">
+                                                    {/* Tarihten */}
+                                                    <div
+                                                        className="date-input-group position-relative"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setOpenFromCalendar(true)
+                                                            setOpenToCalendar(false)
+                                                        }}
+                                                    >
+                                                        <label>Tarihten:</label>
+                                                        <input
+                                                            readOnly
+                                                            value={fromDate ? format(fromDate, 'dd.MM.yyyy') : ''}
+                                                            placeholder="Başlangıç tarihi"
+                                                        />
+                                                        {openFromCalendar && (
+                                                            <div
+                                                                className="calendar-popover position-absolute"
+                                                                style={{ zIndex: 1000 }}
+                                                            >
+                                                                <DateRange
+                                                                    editableDateInputs
+                                                                    moveRangeOnFirstSelection={false}
+                                                                    ranges={[
+                                                                        {
+                                                                            startDate: fromDate || new Date(),
+                                                                            endDate: fromDate || new Date(),
+                                                                            key: 'selection',
+                                                                        },
+                                                                    ]}
+                                                                    onChange={({ selection }) => {
+                                                                        setFromDate(selection.startDate)
+                                                                        setFilters((prev) => ({
+                                                                            ...prev,
+                                                                            [f.id]: {
+                                                                                value: {
+                                                                                    startDate: selection.startDate,
+                                                                                    endDate: toDate,
+                                                                                },
+                                                                                label: `${format(selection.startDate, 'dd.MM.yyyy')} – ${toDate ? format(toDate, 'dd.MM.yyyy') : '...'
+                                                                                    }`,
+                                                                            },
+                                                                        }))
+                                                                        setOpenFromCalendar(false)
+                                                                    }}
+                                                                    showSelectionPreview
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        <img src="/assets/calendar-light.svg" alt="" />
+                                                    </div>
+
+                                                    {/* Tarihe */}
+                                                    <div
+                                                        className="date-input-group position-relative"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setOpenToCalendar(true)
+                                                            setOpenFromCalendar(false)
+                                                        }}
+                                                    >
+                                                        <label>Tarihe:</label>
+                                                        <input
+                                                            readOnly
+                                                            value={toDate ? format(toDate, 'dd.MM.yyyy') : ''}
+                                                            placeholder="Bitiş tarihi"
+                                                        />
+                                                        {openToCalendar && (
+                                                            <div
+                                                                className="calendar-popover position-absolute"
+                                                                style={{ zIndex: 1000 }}
+                                                            >
+                                                                <DateRange
+                                                                    editableDateInputs
+                                                                    moveRangeOnFirstSelection={false}
+                                                                    ranges={[
+                                                                        {
+                                                                            startDate: toDate || new Date(),
+                                                                            endDate: toDate || new Date(),
+                                                                            key: 'selection',
+                                                                        },
+                                                                    ]}
+                                                                    onChange={({ selection }) => {
+                                                                        setToDate(selection.startDate)
+                                                                        setFilters((prev) => ({
+                                                                            ...prev,
+                                                                            [f.id]: {
+                                                                                value: {
+                                                                                    startDate: fromDate,
+                                                                                    endDate: selection.startDate,
+                                                                                },
+                                                                                label: `${fromDate
+                                                                                    ? format(fromDate, 'dd.MM.yyyy')
+                                                                                    : '...'
+                                                                                    } – ${format(selection.startDate, 'dd.MM.yyyy')}`,
+                                                                            },
+                                                                        }))
+                                                                        setOpenToCalendar(false)
+                                                                    }}
+                                                                    showSelectionPreview
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        <img src="/assets/calendar-light.svg" alt="" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         )}
 
-                                        {openFilterId === f.id && f.title !== 'DÖVR' && (
+                                        {/* ——— Diğer filtreler için normal dropdown ——— */}
+
+                                        {openFilterId === f.id && f.id !== 2 &&  (
                                             <HeaderFiltersSelectionDropdown
                                                 options={f.options}
                                                 onSelect={(v) => onFilterSelect(f.id, v)}
                                             />
                                         )}
+
                                     </div>
                                 ))}
                             </div>
