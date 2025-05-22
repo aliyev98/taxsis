@@ -1,8 +1,13 @@
+// src/layouts/TableHeader.jsx
+
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
+import ColumnVisibilityDropdown from "../components/dropdwons/ColumnVisibilityDropdown";
 import ConfrontationActsModal from "../components/modals/COnfrontationActsModal";
 import SentModal from "../components/modals/SentModal";
+// (eğer SentModal’ı sonraki aşamada kullanacaksanız import edebilirsiniz)
+// import SentModal from "../components/modals/SentModal";
 
 const TableHeader = ({
     isEditing,
@@ -10,45 +15,66 @@ const TableHeader = ({
     columnDropdownRef,
     setShowColumnMenu,
     showColumnMenu,
-    customHeaderButtons,
-    ColumnVisibilityDropdown,
     table,
     columns,
     colSpans,
-    navBtns
+    navBtns,
 }) => {
     const dispatch = useDispatch();
-    const activeNav = useSelector((state) => state.taxModuleSelection.navbarSelection);
+    const activeNav = useSelector(
+        (state) => state.taxModuleSelection.navbarSelection
+    );
 
-    const [showSendModal, setShowSendModal] = useState(false);
-    const [showDropdown, setShowDropdown] = useState(false);
-    const [showNextModal, setShowNextModal] = useState(false);
+    const [showConfrontationModal, setShowConfrontationModal] = useState(false);
+    const [showSentModal, setShowSentModal] = useState(false);
+
     const dropdownRef = useRef();
 
-    const handleOutsideClick = (e) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-            setShowDropdown(false);
-        }
-    };
 
+
+    // Dropdown dışında tıklanınca sütun menüsünü kapat
     useEffect(() => {
-        document.addEventListener("mousedown", handleOutsideClick);
-        return () => document.removeEventListener("mousedown", handleOutsideClick);
-    }, []);
+        const handleClickOutside = (e) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(e.target)
+            ) {
+                setShowColumnMenu(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
+    }, [setShowColumnMenu]);
 
-    // event delegation: eğer tıklanan element veya içindeki bir parent .btn-send ise modal aç
-    const handleButtonsClick = (e) => {
-        if (e.target.closest(".btn-send")) {
-            setShowSendModal(true);
-        }
-    };
+    // Sağ taraftaki butonlar
+    const customHeaderButtons = [
+        {
+            id: 1,
+            content: "Düzəliş et",
+            className: "btn custom-btn",
+            onClick: () => setIsEditing(true),
+        },
+        {
+            id: 2,
+            content: "Çap et",
+            className: "btn custom-btn",
+        },
+        {
+            id: 3,
+            content: "Göndər",
+            className: "btn-send btn custom-btn",
+            onClick: () => setShowConfrontationModal(true)
+        },
+    ];
 
     return (
         <>
             <div className="table-header d-flex align-items-center justify-content-between">
+                {/* NAV BUTTONS */}
                 <div className="left-side d-flex align-items-center">
                     <div className="nav-links d-flex">
-                        {navBtns?.map((btn) => (
+                        {navBtns.map((btn) => (
                             <button
                                 key={btn.id}
                                 className={activeNav === btn.id ? "active" : ""}
@@ -60,19 +86,21 @@ const TableHeader = ({
                     </div>
                 </div>
 
-                <div className="right-side d-flex position-relative" ref={columnDropdownRef}>
+                {/* RIGHT-SIDE BUTTONS */}
+                <div
+                    className="right-side d-flex position-relative"
+                    ref={columnDropdownRef}
+                >
                     {isEditing ? (
                         <button
                             className="btn btn-primary save"
-                            onClick={() => setIsEditing(!isEditing)}
+                            onClick={() => setIsEditing(false)}
                         >
                             Dəyişiklikləri yadda saxla
                         </button>
                     ) : (
-                        <div
-                            className="buttons d-flex align-items-center"
-                            onClick={handleButtonsClick}
-                        >
+                        <div className="buttons d-flex align-items-center" ref={dropdownRef}>
+                            {/* Columns toggle */}
                             <button
                                 className="btn-columns d-flex align-items-center"
                                 onClick={() => setShowColumnMenu((p) => !p)}
@@ -81,14 +109,23 @@ const TableHeader = ({
                                 <img src="/assets/layout-icon.svg" alt="" />
                                 {showColumnMenu && (
                                     <ColumnVisibilityDropdown
-                                        colSpans={colSpans}
                                         table={table}
                                         columns={columns}
+                                        colSpans={colSpans}
                                     />
                                 )}
                             </button>
 
-                            {customHeaderButtons}
+                            {/* Custom header buttons */}
+                            {customHeaderButtons.map((btn) => (
+                                <button
+                                    key={btn.id}
+                                    className={btn.className}
+                                    onClick={btn.onClick}
+                                >
+                                    {btn.content}
+                                </button>
+                            ))}
 
                             <button className="export">Export</button>
                         </div>
@@ -96,23 +133,24 @@ const TableHeader = ({
                 </div>
             </div>
 
-            {showSendModal && (
+            {showConfrontationModal && (
                 <ConfrontationActsModal
-                    isOpen={showSendModal}
-                    onClose={() => setShowSendModal(false)}
+                    isOpen={showConfrontationModal}
+                    onClose={() => setShowConfrontationModal(false)}
                     onSend={() => {
-                        setShowSendModal(false);
-                        setShowNextModal(true);
+                        setShowConfrontationModal(false);
+                        setShowSentModal(true);
                     }}
                 />
             )}
-
-            {showNextModal && (
+            {showSentModal && (
                 <SentModal
-                    isOpen={showNextModal}
-                    onClose={() => setShowNextModal(false)}
+                    isOpen={showSentModal}
+                    onClose={() => setShowSentModal(false)}
                 />
             )}
+
+
         </>
     );
 };

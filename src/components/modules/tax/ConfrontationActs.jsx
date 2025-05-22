@@ -101,13 +101,13 @@ const ConfrontationActs = () => {
 
             <div className="table">
                 <TaxModuleTable columns={columns} data={data} navBtns={navBtns} title={tableTitle} reportsHeader={true} colSpans={colSpans} colSpans2={colSpans2} isEditing={isEditing} setIsEditing={setIsEditing}
-                    customHeaderButtons={
-                        <>
-                            <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
-                            <button className="btn custom-btn">Çap et</button>
-                            <button className="btn btn-send custom-btn" onClick={()=> setShowSendModal(true)}>Göndər</button>
-                        </>
-                    }
+                    // customHeaderButtons={
+                    //     <>
+                    //         <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
+                    //         <button className="btn custom-btn">Çap et</button>
+                    //         <button className="btn btn-send custom-btn" onClick={()=> setShowSendModal(true)}>Göndər</button>
+                    //     </>
+                    // }
                     showGroupedHeader={showGroupedHeader}
                     showReportsHeaderFilters={true}
                     reportsHeaderFilters={[

@@ -2,9 +2,9 @@ import React from 'react'
 import InputWithLabel from '../ui/inputs/InputWithLabel'
 import FormButton from '../ui/buttons/FormButton'
 
-const ConfrontationActsModal = ({isOpen, onClose, onSend }) => {
+const ConfrontationActsModal = ({ isOpen, onClose, onSend }) => {
 
-    if (!isOpen) return null;  
+    if (!isOpen) return null;
 
     const inputs = [
         { id: 1, label: "Ad" },
@@ -52,9 +52,7 @@ const ConfrontationActsModal = ({isOpen, onClose, onSend }) => {
                             <FormButton
                                 content="Göndər"
                                 isActive={true}
-                                onClick={() => {
-                                    onSend?.();
-                                }}
+                                handleContinue={() => onSend()}
                             />
                         </div>
 
