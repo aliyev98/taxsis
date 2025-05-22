@@ -8,6 +8,7 @@
 @use './reportsFilterModal';
 @use './cellModal';
 @use './transportModal';
+@use './confrontationActsModal';
 
 
 .modal-dialog {
@@ -16,7 +17,6 @@
         padding: 48px 24px;
         position: relative;
         gap: 32px;
-        border-radius: 16px;
 
 
         .modal-header {

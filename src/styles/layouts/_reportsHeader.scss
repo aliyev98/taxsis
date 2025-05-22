@@ -9,13 +9,14 @@
         padding-bottom: 24px;
 
         .filters-div {
+
             .location {
                 font-size: 15px;
                 font-weight: 500;
             }
 
             .filters {
-                z-index: 99999;
+                z-index: 99;
 
                 .header-filters {
                     gap: 40px;
@@ -23,7 +24,7 @@
                     .header-filter {
                         gap: 8px;
                         border: none;
-
+ 
                         .filter-title {
                             color: var(--Neutral-04, #6F767E);
                             font-size: 15px;

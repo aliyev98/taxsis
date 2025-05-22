@@ -46,19 +46,6 @@ const AddRowModal = ({ show, onClose, title, columns }) => {
               {columns
                 ?.filter((col) => col.accessorKey !== "no") // ✅ "no" kolonunu hariç tut
                 .map((col) => (
-                  // <div className="input-div" key={col.accessorKey}>
-                  //   <label htmlFor={col.accessorKey} className="">
-                  //     {col.header}
-                  //   </label>
-                  //   <input
-                  //     type="text"
-                  //     className=""
-                  //     id={col.accessorKey}
-                  //     name={col.accessorKey}
-                  //     value={formData[col.accessorKey] || ""}
-                  //     onChange={handleChange}
-                  //   />
-                  // </div>
                   <InputWithLabel htmlFor={col.accessorKey} label={col.header} id={col.accessorKey} name={col.accessorKey} value={formData[col.accessorKey] || ""} onChange={handleChange} />
 
                 ))}

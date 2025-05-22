@@ -5,6 +5,8 @@ import TaxModuleTable from "../../tables/TaxModuleTable";
 import { setNavbarSelection } from "../../../redux/slices/taxModuleSlice";
 import { receiptPurchaseColumns, receiptSalesColumns, externalPurchaseColumns, externalSalesColumns } from "../../../constants/TableColumns";
 import TaxModuleHeader from "../../../layouts/TaxModuleHeader";
+import ProductInfosModal from "../../modals/ProductInfosModal";
+
 
 const PurchasAndSalesReports = () => {
 
@@ -134,6 +136,7 @@ const PurchasAndSalesReports = () => {
 
             <div className="table">
                 <TaxModuleTable showHeaderFilters={true} columns={columns} data={data} navBtns={navBtns} colSpans={colSpans} showGroupedHeader={true}
+                    openRowModal={true} rowModalComponent={ProductInfosModal}
                     headerFilters={[
                         {
                             id: 1,

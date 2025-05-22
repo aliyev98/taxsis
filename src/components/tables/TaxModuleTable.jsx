@@ -40,6 +40,8 @@ export default function TaxModuleTable({
   editable,
   onRowClick = null,
   rowClickEnabled = false,
+  openRowModal = false,
+  rowModalComponent: RowModal = null,
 }) {
   const [columnVisibility, setColumnVisibility] = useState(
     columns.reduce((acc, col) => {
@@ -232,12 +234,20 @@ export default function TaxModuleTable({
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     meta: {
-      setEditingCell,
-      setEditMode,
-      setEditValue,
-      onTransportClick: (rowData) => setCellModalContext({ row: rowData, columnKey: 'transport_azn' }),
+      // mevcut setCellModalContext’in yanına:
+      setCellModalContext,
+      // transport butonuna basınca çalışacak fonksiyon:
+      onTransportClick: (row) => {
+        setCellModalContext({
+          row,
+          columnKey: 'transport_azn',
+          cellValue: null,
+          ModalComponent: TransportModal    // ← burayı ekle
+        });
+      },
     },
   });
+
 
 
   const handleSearchChange = (colKey, val) => {
@@ -466,83 +476,48 @@ export default function TaxModuleTable({
                 return (
                   <tr
                     key={tableRow.id}
-                    onClick={() => {
+                    onClick={(e) => {
+                      // 1) Eğer satır modal’ı açmak isteniyorsa:
+                      if (openRowModal && RowModal) {
+                        e.stopPropagation();
+                        setCellModalContext({
+                          row: tableRow.original,
+                          ModalComponent: RowModal,
+                        });
+                        return;
+                      }
+
+                      // 2) Aksi halde eski rowClickEnabled davranışı:
                       if (rowClickEnabled && onRowClick) {
                         onRowClick(tableRow.original);
                       }
                     }}
-                    style={{ cursor: rowClickEnabled ? "pointer" : "default" }}
+                    style={{ cursor: (openRowModal || rowClickEnabled) ? "pointer" : "default" }}
                   >
                     {tableRow.getVisibleCells().map((cell) => (
 
-                      // <td
-                      //   key={cell.id}
-                      //   onClick={(e) => {
-                      //     if (!editable) return;
-                      //     e.stopPropagation();
-                      //     if (editingCell !== `${tableRow.id}-${cell.column.id}`) {
-                      //       setEditingCell(`${tableRow.id}-${cell.column.id}`);
-                      //       setEditMode(false);
-                      //     }
-                      //   }}
-                      // >
-                      //   <div style={{ position: "relative" }}>
-                      //     {editingCell === `${tableRow.id}-${cell.column.id}` ? (
-                      //       editMode ? (
-                      //         <input
-                      //           className="column-edit-input"
-                      //           type="text"
-                      //           value={editValue}
-                      //           onChange={(e) => setEditValue(e.target.value)}
-                      //           onBlur={() => {
-                      //             tableRow.original[cell.column.id] = editValue;
-                      //             setEditingCell(null);
-                      //             setEditMode(false);
-                      //           }}
-                      //           autoFocus
-                      //         />
-                      //       ) : (
-                      //         <>
-                      //           {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      //           <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 10 }}>
-                      //             <TableDataEditDropdown
-                      //               onEdit={() => {
-                      //                 setEditMode(true);
-                      //                 setEditValue(cell.getValue());
-                      //               }}
-                      //               onDelete={() => {
-                      //                 console.log("Silinecek:", tableRow.original);
-                      //                 setEditingCell(null);
-                      //               }}
-                      //               closeDropdown={() => setEditingCell(null)}
-                      //             />
-                      //           </div>
-                      //         </>
-                      //       )
-                      //     ) : (
-                      //       flexRender(cell.column.columnDef.cell, cell.getContext())
-                      //     )}
-                      //   </div>
-                      // </td>
-
                       <td
                         key={cell.id}
-                        onClick={(e) => {
-                          // 0) Bu kolonda modal açma özelliği tanımlı mı?
-                          const enableCellModal = cell.column.columnDef.enableCellModal ?? false;
 
-                          // 1) Eğer openModal=true ve bu kolon için enableCellModal=true ise modal aç:
-                          if (openModal && enableCellModal) {
+                        onClick={(e) => {
+                          const colDef = cell.column.columnDef;
+                          // const enableCellModal = colDef.enableCellModal ?? false;
+                          const { enableCellModal = false, openOnCellClick = true } = cell.column.columnDef;
+                          const ModalComponent = colDef.modalComponent ?? null;
+
+                          // 1) openModal=true ve enableCellModal=true ve bir ModalComponent var ise...
+                          if (openModal && enableCellModal && openOnCellClick) {
                             e.stopPropagation();
                             setCellModalContext({
                               row: tableRow.original,
                               columnKey: cell.column.id,
                               cellValue: cell.getValue(),
+                              ModalComponent: colDef.modalComponent   // ← burayı ekle
                             });
-                            return; // Buradan sonra editable logic çalışmaz
+                            return;
                           }
 
-                          // 2) Aksi halde editable mantığına dön
+                          // 2) Aksi halde eski editable mantığı:
                           if (!editable) return;
                           e.stopPropagation();
                           if (editingCell !== `${tableRow.id}-${cell.column.id}`) {
@@ -550,6 +525,7 @@ export default function TaxModuleTable({
                             setEditMode(false);
                           }
                         }}
+
                       >
                         <div style={{ position: "relative" }}>
                           {editingCell === `${tableRow.id}-${cell.column.id}` ? (
@@ -631,24 +607,19 @@ export default function TaxModuleTable({
 
         </table>
 
-        {cellModalContext && (
-          cellModalContext.columnKey === 'transport_azn'
-            ? (
-              <TransportModal
-                isOpen
+        {cellModalContext?.ModalComponent && (
+          (() => {
+            const { ModalComponent, row, columnKey, cellValue } = cellModalContext;
+            return (
+              <ModalComponent
+                isOpen={true}
                 onClose={closeCellModal}
-                row={cellModalContext.row}
+                row={row}
+                columnKey={columnKey}
+                cellValue={cellValue}
               />
-            )
-            : (
-              <CellModal
-                isOpen
-                onClose={closeCellModal}
-                row={cellModalContext.row}
-                columnKey={cellModalContext.columnKey}
-                cellValue={cellModalContext.cellValue}
-              />
-            )
+            );
+          })()
         )}
 
 

@@ -187,7 +187,7 @@ const ReportsHeader = ({
                                                         <input
                                                             readOnly
                                                             value={fromDate ? format(fromDate, 'dd.MM.yyyy') : ''}
-                                                            placeholder="Başlangıç tarihi"
+                                                            placeholder="Tarixdən"
                                                         />
                                                         {openFromCalendar && (
                                                             <div
@@ -239,7 +239,7 @@ const ReportsHeader = ({
                                                         <input
                                                             readOnly
                                                             value={toDate ? format(toDate, 'dd.MM.yyyy') : ''}
-                                                            placeholder="Bitiş tarihi"
+                                                            placeholder="Tarixə"
                                                         />
                                                         {openToCalendar && (
                                                             <div

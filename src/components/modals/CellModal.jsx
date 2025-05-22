@@ -71,7 +71,6 @@ export default function CellModal({ isOpen, onClose, row, columnKey, cellValue }
 
   return (
     <>
-      {/* Modal */}
       <div
         className="modal cell-modal fade show"
         tabIndex={-1}
@@ -93,7 +92,7 @@ export default function CellModal({ isOpen, onClose, row, columnKey, cellValue }
 
             <div className="modal-body">
 
-              <TaxModuleTable columns={modalColumns} data={modalData}showGroupedHeader={true} colSpans={[
+              <TaxModuleTable columns={modalColumns} data={modalData} showGroupedHeader={true} colSpans={[
                 { id: 1, content: "ALFA MMC", col: 5 },
               ]} />
 
@@ -102,7 +101,6 @@ export default function CellModal({ isOpen, onClose, row, columnKey, cellValue }
         </div>
       </div>
 
-      {/* Backdrop */}
       <div className="modal-backdrop fade show"></div>
     </>
   );

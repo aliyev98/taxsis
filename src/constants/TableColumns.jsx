@@ -1,8 +1,13 @@
 import React from 'react'
+import CellModal from '../components/modals/CellModal';
+import TransportModal from '../components/modals/TransportModal';
+
+
+
 /// qaimələr
 
 export const purchaseColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true,},
     {
         id: "voen", accessorKey: "voen", header: "VÖEN",
         // filterOptions: { search: true, type: "search" },
@@ -832,7 +837,7 @@ export const physicalCashColumns = [
 // gömrük sənədləri
 
 export const ImportDocsColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, modalComponent: TransportModal },
     { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" } },
     { id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi", filterOptions: { search: true, type: "search" }, },
     { id: "exporter", accessorKey: "exporter", header: "İxracatçı", filterOptions: { search: true, type: "search" }, },
@@ -847,15 +852,24 @@ export const ImportDocsColumns = [
         header: "Daşıma AZN",
         filterOptions: { search: true, type: "search" },
         enableFooterTotal: true,
-        enableCellModal: true,          // ← burası
+
+        // artık hücre tıklayınca değil, yalnızca butona tıklanınca modal açılsın:
+        openOnCellClick: false,
+
+        // butondan çağıracağımız custom modal bileşeni
+        modalComponent: TransportModal,
+
+        // hücrenin kendisi
         cell: ({ row, table }) => {
+            // table.options.meta içine yazacağımız callback’i alıyoruz
             const { onTransportClick } = table.options.meta;
             return (
                 <div className="transport-azn-cell d-flex align-items-center justify-content-between">
                     <span>{row.original.invoice_azn}</span>
                     <button
-                        onClick={(e) => {
+                        onClick={e => {
                             e.stopPropagation();
+                            // butona tıklanınca callback’i çağır:
                             onTransportClick(row.original);
                         }}
                     >
@@ -865,6 +879,7 @@ export const ImportDocsColumns = [
             );
         },
     },
+
 
     { id: "invoice_azn", accessorKey: "invoice_azn", header: "İnvoys AZN", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
     { id: "real_custom_value", accessorKey: "real_custom_value", header: "Real Gömrük dəyəri", filterOptions: { search: true, type: "search" }, enableFooterTotal: true, },
@@ -1870,21 +1885,21 @@ export const internalDKColumns = [
     },
 
     {
-        id: "bank_main", accessorKey: "bank_main", header: "Əsas", enableFooterTotal: true, enableCellModal: true,
+        id: "bank_main", accessorKey: "bank_main", header: "Əsas", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
         // },
     },
     {
-        id: "bank_vat", accessorKey: "bank_vat", header: "ƏDV", enableFooterTotal: true, enableCellModal: true,
+        id: "bank_vat", accessorKey: "bank_vat", header: "ƏDV", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
         // },
     },
     {
-        id: "bank_final", accessorKey: "bank_final", header: "Yekun", enableFooterTotal: true, enableCellModal: true,
+        id: "bank_final", accessorKey: "bank_final", header: "Yekun", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1893,7 +1908,7 @@ export const internalDKColumns = [
 
     {
         id: "vat_deposit_main", accessorKey: "vat_deposit_main", header: "Əsas", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1901,7 +1916,7 @@ export const internalDKColumns = [
     },
     {
         id: "vat_deposit_vat", accessorKey: "vat_deposit_vat", header: "Ədv", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1909,7 +1924,7 @@ export const internalDKColumns = [
     },
     {
         id: "vat_deposit_final", accessorKey: "vat_deposit_final", header: "Yekun", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1918,7 +1933,7 @@ export const internalDKColumns = [
 
     {
         id: "safe_main", accessorKey: "safe_main", header: "Əsas", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1926,7 +1941,7 @@ export const internalDKColumns = [
     },
     {
         id: "safe_vat", accessorKey: "safe_vat", header: "ƏDV", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1934,7 +1949,7 @@ export const internalDKColumns = [
     },
     {
         id: "safe_final", accessorKey: "safe_final", header: "Yekun", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1943,7 +1958,7 @@ export const internalDKColumns = [
 
     {
         id: "total_main", accessorKey: "total_main", header: "Əsas", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1951,7 +1966,7 @@ export const internalDKColumns = [
     },
     {
         id: "total_vat", accessorKey: "total_vat", header: "ƏDV", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1959,7 +1974,7 @@ export const internalDKColumns = [
     },
     {
         id: "total_final", accessorKey: "total_final", header: "Yekun", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1968,7 +1983,7 @@ export const internalDKColumns = [
 
     {
         id: "should_main", accessorKey: "should_main", header: "Əsas", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1976,7 +1991,7 @@ export const internalDKColumns = [
     },
     {
         id: "should_vat", accessorKey: "should_vat", header: "ƏDV", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1984,7 +1999,7 @@ export const internalDKColumns = [
     },
     {
         id: "distinction_main", accessorKey: "distinction_main", header: "Əsas", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -1992,7 +2007,7 @@ export const internalDKColumns = [
     },
     {
         id: "distinction_vat", accessorKey: "distinction_vat", header: "ƏDV", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2026,9 +2041,10 @@ export const externalDKColumns = [
         //     search: true,
         // },
     },
+
     {
         id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2036,22 +2052,22 @@ export const externalDKColumns = [
     },
     {
         id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
-        enableCellModal: true,
-        // filterOptions: {
+        enableCellModal: true, modalComponent: CellModal
+        // filterOptions: { 
         //     type: "search",
         //     search: true,
         // },
     },
     {
         id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
         // },
     },
     {
-        id: "main", accessorKey: "main", header: "Əsas", enableFooterTotal: true, enableCellModal: true,
+        id: "main", accessorKey: "main", header: "Əsas", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2079,7 +2095,7 @@ export const cashFlowsbyItemsColumns = [
         // },
     },
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true,
+        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2087,7 +2103,7 @@ export const cashFlowsbyItemsColumns = [
     },
     {
         id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2095,7 +2111,7 @@ export const cashFlowsbyItemsColumns = [
     },
     {
         id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2103,7 +2119,7 @@ export const cashFlowsbyItemsColumns = [
     },
     {
         id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2111,7 +2127,7 @@ export const cashFlowsbyItemsColumns = [
     },
     {
         id: "total", accessorKey: "total", header: "Cəmi", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2119,7 +2135,7 @@ export const cashFlowsbyItemsColumns = [
     },
     {
         id: "destination_money", accessorKey: "destination_money", header: "Pulun gəlmə təyinatı", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2147,7 +2163,7 @@ export const cashFlowsbyItemsCurrencyColumns = [
         // },
     },
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true,
+        id: "currency", accessorKey: "currency", header: "Valyuta", enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2155,7 +2171,7 @@ export const cashFlowsbyItemsCurrencyColumns = [
     },
     {
         id: "capital_bank", accessorKey: "capital_bank", header: "Kapital Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2163,7 +2179,7 @@ export const cashFlowsbyItemsCurrencyColumns = [
     },
     {
         id: "access_bank", accessorKey: "access_bank", header: "Access Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2171,7 +2187,7 @@ export const cashFlowsbyItemsCurrencyColumns = [
     },
     {
         id: "pasha_bank", accessorKey: "pasha_bank", header: "Paşa Bank", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,
@@ -2179,7 +2195,7 @@ export const cashFlowsbyItemsCurrencyColumns = [
     },
     {
         id: "total", accessorKey: "total", header: "Cəmi", enableFooterTotal: true,
-        enableCellModal: true,
+        enableCellModal: true, modalComponent: CellModal
         // filterOptions: {
         //     type: "search",
         //     search: true,

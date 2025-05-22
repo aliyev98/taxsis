@@ -105,7 +105,7 @@ const ConfrontationActs = () => {
                         <>
                             <button onClick={() => setIsEditing(true)} className="btn custom-btn">Düzəliş et</button>
                             <button className="btn custom-btn">Çap et</button>
-                            <button className="btn custom-btn">Göndər</button>
+                            <button className="btn btn-send custom-btn" onClick={()=> setShowSendModal(true)}>Göndər</button>
                         </>
                     }
                     showGroupedHeader={showGroupedHeader}
@@ -124,7 +124,7 @@ const ConfrontationActs = () => {
                         {
                             id: 2,
                             title: "ÜZLƏŞMƏ DÖVR",
-                            content: "01.01.2023-31.12.2023",
+                            content: "Bir tarix aralığı seçin...",
                             icon: '/assets/calendar-light.svg'
                         },
                     ]}
