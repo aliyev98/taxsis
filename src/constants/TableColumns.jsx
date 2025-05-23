@@ -292,22 +292,7 @@ export const purchaseColumns = [
 
     {
         id: "act_type", accessorKey: "act_type", header: "Qaimə / Akt növləri",
-        filterOptions: {
-            type: "number-range",
-            search: true
-        },
-        filterFn: (row, columnId, filterValue) => {
-            const { search, value } = filterValue || {};
-            const { min, max } = value || {};
-            const raw = row.getValue(columnId);
-            const str = String(raw);
-            const num = Number(raw);
-            if (search && !str.includes(search)) return false;
-            if (min != null && num < min) return false;
-            if (max != null && num > max) return false;
-            return true;
-        },
-        cell: info => info.getValue(),
+        filterOptions: { search: true, type: "search" },
     },
 
     //növ
