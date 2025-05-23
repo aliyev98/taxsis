@@ -73,6 +73,7 @@
             width: 100%;
             overflow-x: scroll;
 
+
             .header-totals-row {
                 background: var(--Secondary-03, #B1E5FC);
 
@@ -160,6 +161,26 @@
                                 font-weight: 500;
                                 white-space: nowrap;
                             }
+                        }
+                    }
+                }
+
+                .date-range-dropdown {
+
+
+                    left: 0 !important;
+                    top: 100% !important;
+
+                    &::after {
+                        display: none !important;
+                    }
+
+                    .calendar-popover{
+                        z-index: 99999;
+
+                        span{
+                            font-weight: 600;
+                            font-size: 14px;
                         }
                     }
                 }

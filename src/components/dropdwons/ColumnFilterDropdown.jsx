@@ -1,74 +1,138 @@
+// src/components/dropdwons/ColumnFilterDropdown.jsx
 import React from "react";
+import InputWithLabel from "../ui/inputs/InputWithLabel";
 
-const ColumnFilterDropdown = ({
+const ColumnFilterDropdown = React.forwardRef(({
   colKey,
-  columns, 
+  columns,
   filterOpts,
   filters,
   handleSearchChange,
   handleCheckboxChange,
-  filterDropdownRef
-}) => {
-  // sütunun "header" dəyərini tap
+  handleNumberMinChange,    // yeniler
+  handleNumberMaxChange,    // yeniler
+}, ref) => {
+  // Kolonu bulup başlığı (header metni) al
   const columnDef = columns.find((c) => c.accessorKey === colKey);
   const columnHeader = columnDef?.header || colKey;
 
-  return (
-    <div
-      ref={filterDropdownRef}
-      className="dropdown-menu filter-dropdown show"
-      style={{
-        display: "block",
-        position: "absolute",
-        top: "100%",
-        left: 0,
-        zIndex: 1000,
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* Title hissəsi */}
-      <div className="dropdown-title text-capitalize">
-        {columnHeader}
-      </div>
+  // O anki filtre değerleri
+  const currentFilter = filters[colKey] || {};
+  const searchVal = currentFilter.search || "";
+  const opts = currentFilter.options || [];
+  const { min = "", max = "" } = currentFilter.value || {};
 
-      {filterOpts.search && (
-        <div className="search-input d-flex align-items-center">
-          <img src="/assets/search-icon.svg" alt="search" />
-          <input
-            type="text"
-            placeholder="Axtar..."
-            value={filters[colKey]?.search || ""}
-            onChange={(e) => handleSearchChange(colKey, e.target.value)}
-          />
+  // switch ile tip seçimi
+  switch (filterOpts.type) {
+    case "search":
+      return (
+        <div
+          ref={ref}
+          className="dropdown-menu filter-dropdown show"
+          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="dropdown-title text-capitalize">{columnHeader}</div>
+          <div className="search-input d-flex align-items-center">
+            <img src="/assets/search-icon.svg" alt="search" />
+            <input
+              type="text"
+              placeholder="Axtar..."
+              value={searchVal}
+              onChange={(e) => handleSearchChange(colKey, e.target.value)}
+            />
+          </div>
         </div>
-      )}
+      );
 
-      {filterOpts.options?.map((option) => (
-        <div className="checkbox-div d-flex" key={option}>
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id={`${colKey}-${option}`}
-            checked={filters[colKey]?.options?.includes(option) || false}
-            onChange={() => handleCheckboxChange(colKey, option)}
-          />
-          <label
-            className="form-check-label d-flex align-items-center"
-            htmlFor={`${colKey}-${option}`}
-          >
-            {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
-              <img
-                src="/assets/alphabet-filter.png"
-                alt=""
-                style={{ width: 14, height: 14, marginRight: 6 }}
+    case "checkbox":
+      return (
+        <div
+          ref={ref}
+          className="dropdown-menu filter-dropdown show"
+          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="dropdown-title text-capitalize">{columnHeader}</div>
+          {filterOpts.options.map((option) => (
+            <div className="checkbox-div d-flex" key={option}>
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id={`${colKey}-${option}`}
+                checked={opts.includes(option)}
+                onChange={() => handleCheckboxChange(colKey, option)}
               />
-            )}
-            {option}
-          </label>
+              <label className="form-check-label d-flex align-items-center" htmlFor={`${colKey}-${option}`}>
+                {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
+                  <img
+                    src="/assets/alphabet-filter.png"
+                    alt=""
+                    style={{ width: 14, height: 14, marginRight: 6 }}
+                  />
+                )}
+                {option}
+              </label>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  );
-};
+      );
+
+    case "number-range":
+      return (
+        <div
+          ref={ref}
+          className="dropdown-menu filter-dropdown show"
+          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="dropdown-title text-capitalize">{columnHeader}</div>
+
+          {/* İstersen arama kısmı */}
+          {filterOpts.search && (
+            <div className="search-input d-flex align-items-center mb-2">
+              <img src="/assets/search-icon.svg" alt="search" />
+              <input
+                type="text"
+                placeholder="Axtar..."
+                value={searchVal}
+                onChange={(e) => handleSearchChange(colKey, e.target.value)}
+              />
+            </div>
+          )}
+
+          {/* Min / Max inputları */}
+          <div className="d-flex flex-column min-max-inputs">
+
+
+            <div>
+              <InputWithLabel label={"Min"} placeholder={"Min"}
+                value={min}
+                onChange={(e) => handleNumberMinChange(
+                  colKey,
+                  e.target.value === "" ? null : Number(e.target.value)
+                )} />
+            </div>
+
+            <div>
+              <InputWithLabel label={"Max"} placeholder={"Max"}
+                value={max}
+                onChange={(e) => handleNumberMaxChange(
+                  colKey,
+                  e.target.value === "" ? null : Number(e.target.value)
+                )}
+              />
+            </div>
+
+
+
+          </div>
+        </div>
+      );
+
+    default:
+      return null;
+  }
+});
 
 export default ColumnFilterDropdown;

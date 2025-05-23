@@ -105,6 +105,13 @@ export default function TaxModuleTable({
         setShowColumnMenu(false);
       }
       // 3) date-range dropdown dışında tıklandıysa kapat
+
+      if (filterVal.value?.min != null || filterVal.value?.max != null) {
+        const cellNum = Number(row[colKey]);
+        if (filterVal.value.min != null && cellNum < filterVal.value.min) return false;
+        if (filterVal.value.max != null && cellNum > filterVal.value.max) return false;
+      }
+
       if (
         dateDropdownRef.current &&
         !dateDropdownRef.current.contains(e.target)
@@ -200,17 +207,20 @@ export default function TaxModuleTable({
   //   return currentData;
   // }, [data, filters]);
 
+
+
   const finalData = useMemo(() => {
     let currentData = [...data];
 
     // 1) Satır bazlı filtreleme
     currentData = currentData.filter((row) => {
       return Object.entries(filters).every(([colKey, filterVal]) => {
-        const cellValue = String(row[colKey] ?? "").toLowerCase();
+        const cellValue = row[colKey];
+        const cellValueStr = String(cellValue ?? "").toLowerCase();
 
         // — text/search filtresi —
         if (filterVal.search && filterVal.search.length > 0) {
-          if (!cellValue.includes(filterVal.search.toLowerCase())) {
+          if (!cellValueStr.includes(filterVal.search.toLowerCase())) {
             return false;
           }
         }
@@ -223,12 +233,33 @@ export default function TaxModuleTable({
           normalCheck &&
           normalCheck.length > 0 &&
           !normalCheck.includes("Hamısı") &&
-          !normalCheck.includes(row[colKey])
+          !normalCheck.includes(cellValue)
         ) {
           return false;
         }
 
-        // — yeni: tarih aralığı filtresi yalnız "date" kolonunda —
+        // — numeric between filtresi —
+        // filterVal.value may hold { min, max } for sayısal kolonlar
+        if (
+          filterVal.value?.min != null ||
+          filterVal.value?.max != null
+        ) {
+          const num = Number(cellValue);
+          if (
+            filterVal.value.min != null &&
+            (isNaN(num) || num < filterVal.value.min)
+          ) {
+            return false;
+          }
+          if (
+            filterVal.value.max != null &&
+            (isNaN(num) || num > filterVal.value.max)
+          ) {
+            return false;
+          }
+        }
+
+        // — tarih aralığı filtresi yalnız "date" kolonunda —
         if (
           colKey === "date" &&
           filterVal.value?.startDate instanceof Date &&
@@ -236,7 +267,6 @@ export default function TaxModuleTable({
         ) {
           const cellDate = new Date(row[colKey]);
           const { startDate, endDate } = filterVal.value;
-          // aralık dışındaysa o satırı çıkar:
           if (cellDate < startDate || cellDate > endDate) {
             return false;
           }
@@ -262,6 +292,7 @@ export default function TaxModuleTable({
 
     return currentData;
   }, [data, filters]);
+
 
 
 
@@ -357,6 +388,35 @@ export default function TaxModuleTable({
       },
     }));
   };
+
+
+  const handleNumberMinChange = (colKey, min) => {
+    setFilters(prev => ({
+      ...prev,
+      [colKey]: {
+        ...prev[colKey],
+        value: {
+          ...prev[colKey]?.value,
+          min,
+        },
+      },
+    }));
+  };
+
+  const handleNumberMaxChange = (colKey, max) => {
+    setFilters(prev => ({
+      ...prev,
+      [colKey]: {
+        ...prev[colKey],
+        value: {
+          ...prev[colKey]?.value,
+          max,
+        },
+      },
+    }));
+  };
+
+
 
   return (
     <div className="position-relative table-container">
@@ -518,21 +578,6 @@ export default function TaxModuleTable({
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </div>
 
-
-
-                      {/* {openDropdown === colKey && filterOpts && (
-                        <ColumnFilterDropdown
-                          colKey={colKey}
-                          filterOpts={filterOpts}
-                          filters={filters}
-                          columns={columns}
-                          handleSearchChange={handleSearchChange}
-                          handleCheckboxChange={handleCheckboxChange}
-                          ref={filterDropdownRef}
-                        />
-                      )} */}
-
-
                       {openDropdown === colKey && filterOpts && (
                         filterOpts.type === 'date-range'
                           ? (
@@ -560,6 +605,7 @@ export default function TaxModuleTable({
                                     label: `${format(date, 'dd.MM.yyyy')} – ${toDate ? format(toDate, 'dd.MM.yyyy') : '...'}`
                                   }
                                 }))
+                                setOpenFromCalendar(false);
                               }}
                               onChangeTo={(date) => {
                                 setToDate(date)
@@ -581,6 +627,8 @@ export default function TaxModuleTable({
                               columns={columns}
                               handleSearchChange={handleSearchChange}
                               handleCheckboxChange={handleCheckboxChange}
+                              handleNumberMinChange={handleNumberMinChange}
+                              handleNumberMaxChange={handleNumberMaxChange}
                               ref={filterDropdownRef}
                             />
                           )
