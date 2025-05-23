@@ -299,7 +299,7 @@ export const purchaseColumns = [
     {
         id: "kind",
         accessorKey: "kind",
-        header: "Kind",
+        header: "Növ",
         filterOptions: {
             type: "checkbox",
             options: ["Hamısı", "Aktiv", "Xidmət", "Satış"],
@@ -534,10 +534,17 @@ export const replacedColumns = [
     },
     {
         id: "replacement_period", accessorKey: "replacement_period", header: "Əvəzləşmə dövrü",
-        filterOptions: {
-            search: true,
-            type: "search",
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
 ];
 
@@ -561,10 +568,17 @@ export const initialsColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Qaimə tarixi",
-        filterOptions: {
-            type: "search",
-            search: true,
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "invoice_series", accessorKey: "invoice_series", header: "Qaimə seriyası",
@@ -625,17 +639,81 @@ export const advanceColumns = [
         },
     },
     {
-        id: "kind", accessorKey: "kind", header: "Növü",
+        id: "kind",
+        accessorKey: "kind",
+        header: "Növ",
         filterOptions: {
-            type: "search",
-            search: true,
+            type: "checkbox",
+            options: ["Hamısı", "Avans", "İmtiyaz",],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                "Avans": "advance",
+                "İmtiyaz": "privilege",
+            };
+            const kindClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
+            };
+
+            return (
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Avans">Avans</option>
+                        <option value="İmtiyaz">İmtiyaz</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
         },
     },
     {
-        id: "type", accessorKey: "type", header: "Tipi",
+        id: "type",
+        accessorKey: "type",
+        header: "Tipi",
         filterOptions: {
-            type: "search",
-            search: true,
+            type: "checkbox",
+            options: ["Hamısı", "Giriş", "Çıxış",],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                "Giriş": "advance",
+                "Çıxış": "privilege",
+            };
+            const kindClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
+            };
+
+            return (
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Giriş">Giriş</option>
+                        <option value="Çıxış">Çıxış</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
         },
     },
     {
@@ -670,10 +748,17 @@ export const depositsColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Əməliyyat tarixi",
-        filterOptions: {
-            type: "search",
-            search: true,
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "income", accessorKey: "income", header: "Mədaxil(AZN)",
@@ -729,97 +814,139 @@ export const depositsColumns = [
 
 
     {
+
+
         id: "classification",
         accessorKey: "classification",
         header: "Təsnifat",
         filterOptions: {
-            type: "search",
-            search: true,
+            type: "checkbox",
+            options: ["Hamısı", "Geri", "İrəli",],
         },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
 
-        cell: ({ getValue, row, column }) => {
-            const ref = React.useRef();
-            const [isEditing, setIsEditing] = React.useState(false);
-            const [tempValue, setTempValue] = React.useState(getValue());
-            const colId = column.id;
-
-            const handleSave = () => {
-                row.original[colId] = tempValue; // geçici yerel güncelleme
-                setIsEditing(false);
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                "Avans": "advance",
+                "İmtiyaz": "privilege",
             };
+            const kindClass = classMap[value] || "";
 
-            const handleKeyDown = (e) => {
-                if (e.key === "Enter") handleSave();
-                if (e.key === "Escape") setIsEditing(false);
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
             };
-
-            React.useEffect(() => {
-                // input dışına tıklanınca kapansın istersen buraya ekleyebilirsin
-                const handleClickOutside = (e) => {
-                    if (ref.current && !ref.current.contains(e.target)) {
-                        setIsEditing(false);
-                    }
-                };
-                if (isEditing) {
-                    document.addEventListener("mousedown", handleClickOutside);
-                }
-                return () => {
-                    document.removeEventListener("mousedown", handleClickOutside);
-                };
-            }, [isEditing]);
 
             return (
-                <div
-                    ref={ref}
-                    className="d-flex align-items-center justify-content-between"
-                >
-                    {isEditing ? (
-                        <>
-                            <input
-                                type="text"
-                                value={tempValue}
-                                onChange={(e) => setTempValue(e.target.value)}
-                                onKeyDown={handleKeyDown}
-                                autoFocus
-                                className="form-control"
-                                style={{
-                                    width: `${tempValue.length + 1}ch`,
-                                    minWidth: "60px",
-                                }}
-                            />
-                            <img
-                                src="/assets/check-icon.svg"
-                                alt="save"
-                                title="Yadda saxla"
-                                style={{
-                                    width: 20,
-                                    height: 20,
-                                    cursor: "pointer",
-                                    marginLeft: 6,
-                                }}
-                                onClick={handleSave}
-                            />
-                        </>
-                    ) : (
-                        <>
-                            <span>{getValue()}</span>
-                            <img
-                                src="/assets/edit-pen.svg"
-                                alt="edit"
-                                title="Dəyiş"
-                                style={{
-                                    width: 16,
-                                    height: 16,
-                                    cursor: "pointer",
-                                    marginLeft: 8,
-                                }}
-                                onClick={() => setIsEditing(true)}
-                            />
-                        </>
-                    )}
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Avans">Gerı</option>
+                        <option value="İmtiyaz">İrəli</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
                 </div>
             );
-        }
+        },
+
+
+
+        // id: "classification",
+        // accessorKey: "classification",
+        // header: "Təsnifat",
+        // filterOptions: {
+        //     type: "search",
+        //     search: true,
+        // },
+
+        // cell: ({ getValue, row, column }) => {
+        //     const ref = React.useRef();
+        //     const [isEditing, setIsEditing] = React.useState(false);
+        //     const [tempValue, setTempValue] = React.useState(getValue());
+        //     const colId = column.id;
+
+        //     const handleSave = () => {
+        //         row.original[colId] = tempValue; // geçici yerel güncelleme
+        //         setIsEditing(false);
+        //     };
+
+        //     const handleKeyDown = (e) => {
+        //         if (e.key === "Enter") handleSave();
+        //         if (e.key === "Escape") setIsEditing(false);
+        //     };
+
+        //     React.useEffect(() => {
+        //         // input dışına tıklanınca kapansın istersen buraya ekleyebilirsin
+        //         const handleClickOutside = (e) => {
+        //             if (ref.current && !ref.current.contains(e.target)) {
+        //                 setIsEditing(false);
+        //             }
+        //         };
+        //         if (isEditing) {
+        //             document.addEventListener("mousedown", handleClickOutside);
+        //         }
+        //         return () => {
+        //             document.removeEventListener("mousedown", handleClickOutside);
+        //         };
+        //     }, [isEditing]);
+
+        //     return (
+        //         <div
+        //             ref={ref}
+        //             className="d-flex align-items-center justify-content-between"
+        //         >
+        //             {isEditing ? (
+        //                 <>
+        //                     <input
+        //                         type="text"
+        //                         value={tempValue}
+        //                         onChange={(e) => setTempValue(e.target.value)}
+        //                         onKeyDown={handleKeyDown}
+        //                         autoFocus
+        //                         className="form-control"
+        //                         style={{
+        //                             width: `${tempValue.length + 1}ch`,
+        //                             minWidth: "60px",
+        //                         }}
+        //                     />
+        //                     <img
+        //                         src="/assets/check-icon.svg"
+        //                         alt="save"
+        //                         title="Yadda saxla"
+        //                         style={{
+        //                             width: 20,
+        //                             height: 20,
+        //                             cursor: "pointer",
+        //                             marginLeft: 6,
+        //                         }}
+        //                         onClick={handleSave}
+        //                     />
+        //                 </>
+        //             ) : (
+        //                 <>
+        //                     <span>{getValue()}</span>
+        //                     <img
+        //                         src="/assets/edit-pen.svg"
+        //                         alt="edit"
+        //                         title="Dəyiş"
+        //                         style={{
+        //                             width: 16,
+        //                             height: 16,
+        //                             cursor: "pointer",
+        //                             marginLeft: 8,
+        //                         }}
+        //                         onClick={() => setIsEditing(true)}
+        //                     />
+        //                 </>
+        //             )}
+        //         </div>
+        //     );
+        // }
 
 
     }
@@ -834,7 +961,17 @@ export const bankStatementsColumns = [
     },
     {
         id: "opr_date", accessorKey: "opr_date", header: "Əməliyyat tarixi",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "opr_num", accessorKey: "opr_num", header: "Əməliyyat nömrəsi",
@@ -927,10 +1064,17 @@ export const onlineCashColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Tarix",
-        filterOptions: {
-            type: "search",
-            search: true,
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "total_sales", accessorKey: "total_sales", header: "Cəmi satış",
@@ -1012,10 +1156,17 @@ export const physicalCashColumns = [
         id: "date",
         accessorKey: "date",
         header: "Əməliyyat tarixi",
-        filterOptions: {
-            type: "search",
-            search: true,
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "voen", accessorKey: "voen", header: "Vöen",
@@ -1076,7 +1227,20 @@ export const physicalCashColumns = [
 
 export const ImportDocsColumns = [
     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, modalComponent: TransportModal },
-    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" } },
+    {
+        id: "date", accessorKey: "date", header: "Tarix",
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
+    },
     { id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi", filterOptions: { search: true, type: "search" }, },
     { id: "exporter", accessorKey: "exporter", header: "İxracatçı", filterOptions: { search: true, type: "search" }, },
     { id: "usd_price", accessorKey: "usd_price", header: "USD məzənnə", filterOptions: { search: true, type: "search" }, },
@@ -1135,7 +1299,20 @@ export const ImportDocsColumns = [
 
 export const ExportDocsColumns = [
     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true },
-    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" }, },
+    {
+        id: "date", accessorKey: "date", header: "Tarix",
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
+    },
     { id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi", filterOptions: { search: true, type: "search" }, },
     { id: "importer", accessorKey: "importer", header: "İdxalçı", filterOptions: { search: true, type: "search" }, },
     { id: "usd_price", accessorKey: "usd_price", header: "USD məzənnə", filterOptions: { search: true, type: "search" }, },
@@ -1169,7 +1346,20 @@ export const ExportDocsColumns = [
 
 export const TransportExpensesColumns = [
     { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true },
-    { id: "date", accessorKey: "date", header: "Tarix", filterOptions: { search: true, type: "search" }, },
+    {
+        id: "date", accessorKey: "date", header: "Tarix",
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
+    },
     { id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi", filterOptions: { search: true, type: "search" }, },
     { id: "counterparty", accessorKey: "counterparty", header: "Kontragent adı", filterOptions: { search: true, type: "search" }, },
     { id: "expense_type", accessorKey: "expense_type", header: "Xərc növü", filterOptions: { search: true, type: "search" }, },
@@ -1196,7 +1386,17 @@ export const vatColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Tarix",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "counterparty", accessorKey: "counterparty", header: "Kontragentin adı",
@@ -1249,7 +1449,17 @@ export const internalCreditorColumns = [
     },
     {
         id: "invoice_date", accessorKey: "invoice_date", header: "Qaimə tarixi",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "invoice_series", accessorKey: "invoice_series", header: "Qaimə seriası",
@@ -1287,7 +1497,17 @@ export const internalDebitorColumns = [
     },
     {
         id: "invoice_date", accessorKey: "invoice_date", header: "Qaimə tarixi",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "invoice_series", accessorKey: "invoice_series", header: "Qaimə seriası",
@@ -1381,7 +1601,17 @@ export const externalCreditorColumns = [
     },
     {
         id: "ygb_date", accessorKey: "ygb_date", header: "YGB tarixi",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi",
@@ -1419,7 +1649,17 @@ export const externalDebitorColumns = [
     },
     {
         id: "ygb_date", accessorKey: "ygb_date", header: "YGB tarixi",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "ygb_num", accessorKey: "ygb_num", header: "YGB nömrəsi",
@@ -1507,7 +1747,17 @@ export const serviceImportColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Tarix",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         id: "kontragent_name", accessorKey: "kontragent_name", header: "Kontragent adı",
