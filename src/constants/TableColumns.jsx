@@ -353,7 +353,6 @@ export const purchaseColumns = [
         },
     },
 
-
     //təsnifat
     {
         id: "classification",
