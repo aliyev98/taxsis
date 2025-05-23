@@ -21,7 +21,7 @@ export const purchaseData = [
     axsiz_amount: 39842.00,
     act_type: "Akt",
     kind: "Aktiv",
-    classification: "Məhsul"
+    classification: "Xərc"
   },
   {
     no: 2,
@@ -45,7 +45,7 @@ export const purchaseData = [
     axsiz_amount: 39842.00,
     act_type: "Akt",
     kind: "Xidmət",
-    classification: "Məhsul"
+    classification: "Aktiv"
   },
   {
     no: 3,
@@ -69,7 +69,7 @@ export const purchaseData = [
     axsiz_amount: 39842.00,
     act_type: "Akt",
     kind: "Aktiv",
-    classification: "Məhsul"
+    classification: "Aktiv"
   },
   {
     no: 4,
@@ -93,7 +93,7 @@ export const purchaseData = [
     axsiz_amount: 39842.00,
     act_type: "Akt",
     kind: "Aktiv",
-    classification: "Məhsul"
+    classification: "Xərc"
   },
   {
     no: 5,
@@ -117,7 +117,7 @@ export const purchaseData = [
     axsiz_amount: 39842.00,
     act_type: "Akt",
     kind: "Satış",
-    classification: "Məhsul"
+    classification: "Aktiv"
   },
 ];
 

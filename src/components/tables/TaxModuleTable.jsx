@@ -16,7 +16,6 @@ import HeaderFiltersSelectionDropdown from "../dropdwons/HeaderFIltersSelectionD
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import CellModal from "../modals/CellModal";
 import TransportModal from "../modals/TransportModal";
 import DateRangeDropdown from '../dropdwons/DateRangeDropdown'
 
@@ -56,6 +55,10 @@ export default function TaxModuleTable({
   const [editMode, setEditMode] = useState(false);
   const [editValue, setEditValue] = useState("");
 
+
+  const dateDropdownRef = useRef(null);
+
+
   const [openHeaderFilterId, setOpenHeaderFilterId] = useState(null); //////////
 
   // sadece dövr filtresi (id===2 diyelim) için
@@ -87,15 +90,34 @@ export default function TaxModuleTable({
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (filterDropdownRef.current && !filterDropdownRef.current.contains(e.target)) {
+      // 1) column filter dropdown dışında tıklandıysa kapat
+      if (
+        filterDropdownRef.current &&
+        !filterDropdownRef.current.contains(e.target)
+      ) {
         setOpenDropdown(null);
       }
-      if (columnDropdownRef.current && !columnDropdownRef.current.contains(e.target)) {
+      // 2) sütun menüsü dışında tıklandıysa kapat
+      if (
+        columnDropdownRef.current &&
+        !columnDropdownRef.current.contains(e.target)
+      ) {
         setShowColumnMenu(false);
       }
+      // 3) date-range dropdown dışında tıklandıysa kapat
+      if (
+        dateDropdownRef.current &&
+        !dateDropdownRef.current.contains(e.target)
+      ) {
+        setOpenFromCalendar(false);
+        setOpenToCalendar(false);
+      }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const processedColumns = useMemo(() => {
@@ -139,29 +161,92 @@ export default function TaxModuleTable({
   }, [columns]);
 
 
+  // const finalData = useMemo(() => {
+  //   let currentData = [...data];
+
+  //   currentData = currentData.filter((row) => {
+  //     return Object.entries(filters).every(([colKey, filterVal]) => {
+  //       const cellValue = String(row[colKey] ?? "").toLowerCase();
+
+  //       if (filterVal.search && filterVal.search.length > 0) {
+  //         if (!cellValue.includes(filterVal.search.toLowerCase())) return false;
+  //       }
+
+  //       const normalCheck = filterVal.options?.filter(
+  //         (opt) => opt !== "A-dan Z-yə" && opt !== "Z-dən A-ya"
+  //       );
+
+  //       if (normalCheck && normalCheck.length > 0 && !normalCheck.includes("Hamısı")) {
+  //         if (!normalCheck.includes(row[colKey])) return false;
+  //       }
+
+  //       return true;
+  //     });
+  //   });
+
+  //   for (const [colKey, filterVal] of Object.entries(filters)) {
+  //     if (filterVal.options?.includes("A-dan Z-yə")) {
+  //       currentData.sort((a, b) =>
+  //         String(a[colKey] ?? "").localeCompare(String(b[colKey] ?? ""), "az")
+  //       );
+  //     }
+  //     if (filterVal.options?.includes("Z-dən A-ya")) {
+  //       currentData.sort((a, b) =>
+  //         String(b[colKey] ?? "").localeCompare(String(a[colKey] ?? ""), "az")
+  //       );
+  //     }
+  //   }
+
+  //   return currentData;
+  // }, [data, filters]);
+
   const finalData = useMemo(() => {
     let currentData = [...data];
 
+    // 1) Satır bazlı filtreleme
     currentData = currentData.filter((row) => {
       return Object.entries(filters).every(([colKey, filterVal]) => {
         const cellValue = String(row[colKey] ?? "").toLowerCase();
 
+        // — text/search filtresi —
         if (filterVal.search && filterVal.search.length > 0) {
-          if (!cellValue.includes(filterVal.search.toLowerCase())) return false;
+          if (!cellValue.includes(filterVal.search.toLowerCase())) {
+            return false;
+          }
         }
 
+        // — checkbox/options filtresi —
         const normalCheck = filterVal.options?.filter(
           (opt) => opt !== "A-dan Z-yə" && opt !== "Z-dən A-ya"
         );
+        if (
+          normalCheck &&
+          normalCheck.length > 0 &&
+          !normalCheck.includes("Hamısı") &&
+          !normalCheck.includes(row[colKey])
+        ) {
+          return false;
+        }
 
-        if (normalCheck && normalCheck.length > 0 && !normalCheck.includes("Hamısı")) {
-          if (!normalCheck.includes(row[colKey])) return false;
+        // — yeni: tarih aralığı filtresi yalnız "date" kolonunda —
+        if (
+          colKey === "date" &&
+          filterVal.value?.startDate instanceof Date &&
+          filterVal.value?.endDate instanceof Date
+        ) {
+          const cellDate = new Date(row[colKey]);
+          const { startDate, endDate } = filterVal.value;
+          // aralık dışındaysa o satırı çıkar:
+          if (cellDate < startDate || cellDate > endDate) {
+            return false;
+          }
         }
 
         return true;
       });
     });
 
+    // 2) Sıralama (eski kodunuzdan birebir)
     for (const [colKey, filterVal] of Object.entries(filters)) {
       if (filterVal.options?.includes("A-dan Z-yə")) {
         currentData.sort((a, b) =>
@@ -177,6 +262,9 @@ export default function TaxModuleTable({
 
     return currentData;
   }, [data, filters]);
+
+
+
 
   const footerTotals = useMemo(() => {
     const totals = {};
@@ -313,32 +401,27 @@ export default function TaxModuleTable({
 
               {openHeaderFilterId === filter.id && filter.id === 2 && (
                 <DateRangeDropdown
+                  ref={dateDropdownRef}
                   fromDate={fromDate}
                   toDate={toDate}
                   openFrom={openFromCalendar}
                   openTo={openToCalendar}
-                  onClickFrom={() => { setOpenFromCalendar(true); setOpenToCalendar(false) }}
-                  onClickTo={() => { setOpenToCalendar(true); setOpenFromCalendar(false) }}
+                  onClickFrom={() => {
+                    setOpenFromCalendar(true)
+                    setOpenToCalendar(false)
+                  }}
+                  onClickTo={() => {
+                    setOpenToCalendar(true)
+                    setOpenFromCalendar(false)
+                  }}
                   onChangeFrom={d => {
                     setFromDate(d)
-                    setFilters(prev => ({
-                      ...prev,
-                      [filter.id]: {
-                        value: { startDate: d, endDate: toDate },
-                        label: `${format(d, 'dd.MM.yyyy')} – ${toDate ? format(toDate, 'dd.MM.yyyy') : '...'}`
-                      }
-                    }))
+                    /* filtre state’in varsa güncelle */
                     setOpenFromCalendar(false)
                   }}
                   onChangeTo={d => {
                     setToDate(d)
-                    setFilters(prev => ({
-                      ...prev,
-                      [filter.id]: {
-                        value: { startDate: fromDate, endDate: d },
-                        label: `${fromDate ? format(fromDate, 'dd.MM.yyyy') : '...'} – ${format(d, 'dd.MM.yyyy')}`
-                      }
-                    }))
+                    /* filtre state’in varsa güncelle */
                     setOpenToCalendar(false)
                   }}
                 />
@@ -434,7 +517,10 @@ export default function TaxModuleTable({
                       <div className="th d-flex">
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </div>
-                      {openDropdown === colKey && filterOpts && (
+
+
+
+                      {/* {openDropdown === colKey && filterOpts && (
                         <ColumnFilterDropdown
                           colKey={colKey}
                           filterOpts={filterOpts}
@@ -444,7 +530,65 @@ export default function TaxModuleTable({
                           handleCheckboxChange={handleCheckboxChange}
                           ref={filterDropdownRef}
                         />
+                      )} */}
+
+
+                      {openDropdown === colKey && filterOpts && (
+                        filterOpts.type === 'date-range'
+                          ? (
+                            <DateRangeDropdown
+                              ref={filterDropdownRef}
+                              fromDate={fromDate}
+                              toDate={toDate}
+                              openFrom={openFromCalendar}
+                              openTo={openToCalendar}
+                              onClickFrom={() => {
+                                setOpenFromCalendar(true)
+                                setOpenToCalendar(false)
+                              }}
+                              onClickTo={() => {
+                                setOpenToCalendar(true)
+                                setOpenFromCalendar(false)
+                              }}
+                              onChangeFrom={(date) => {
+                                setFromDate(date)
+                                // filtre değerini de güncelle:
+                                setFilters(prev => ({
+                                  ...prev,
+                                  [colKey]: {
+                                    value: { startDate: date, endDate: toDate },
+                                    label: `${format(date, 'dd.MM.yyyy')} – ${toDate ? format(toDate, 'dd.MM.yyyy') : '...'}`
+                                  }
+                                }))
+                              }}
+                              onChangeTo={(date) => {
+                                setToDate(date)
+                                setFilters(prev => ({
+                                  ...prev,
+                                  [colKey]: {
+                                    value: { startDate: fromDate, endDate: date },
+                                    label: `${fromDate ? format(fromDate, 'dd.MM.yyyy') : '...'} – ${format(date, 'dd.MM.yyyy')}`
+                                  }
+                                }))
+                              }}
+                            />
+                          )
+                          : (
+                            <ColumnFilterDropdown
+                              colKey={colKey}
+                              filterOpts={filterOpts}
+                              filters={filters}
+                              columns={columns}
+                              handleSearchChange={handleSearchChange}
+                              handleCheckboxChange={handleCheckboxChange}
+                              ref={filterDropdownRef}
+                            />
+                          )
                       )}
+
+
+
+
                     </th>
                   );
                 })}

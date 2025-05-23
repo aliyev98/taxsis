@@ -51,23 +51,23 @@ const Invoices = () => {
             tableTitle = "Alış qaimələri";
             break;
         case "sales":
-            columns = actsCol;
-            data = actsData;
+            columns = purchaseCol;
+            data = purchaseData;
             tableTitle = "Satış qaimələri";
             break;
         case "returns_buyer":
-            columns = actsCol;
-            data = actsData;
+            columns = purchaseCol;
+            data = purchaseData;
             tableTitle = "Alıcıdan geri qaytarmalar";
             break;
         case "returns_seller":
-            columns = actsCol;
-            data = actsData;
+            columns = purchaseCol;
+            data = purchaseData;
             tableTitle = "Alıcıdan geri qaytarmalar";
             break;
         case "acts":
-            columns = actsCol;
-            data = actsData;
+            columns = purchaseCol;
+            data = purchaseData;
             tableTitle = "Alış aktları";
             break;
         default:

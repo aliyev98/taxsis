@@ -1,6 +1,6 @@
 // src/layouts/TableHeader.jsx
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
 import ColumnVisibilityDropdown from "../components/dropdwons/ColumnVisibilityDropdown";
@@ -15,6 +15,7 @@ const TableHeader = ({
     columnDropdownRef,
     setShowColumnMenu,
     showColumnMenu,
+    customHeaderButtons,
     table,
     columns,
     colSpans,
@@ -48,7 +49,7 @@ const TableHeader = ({
     }, [setShowColumnMenu]);
 
     // Sağ taraftaki butonlar
-    const customHeaderButtons = [
+    const customButtons = [
         {
             id: 1,
             content: "Düzəliş et",
@@ -74,7 +75,7 @@ const TableHeader = ({
                 {/* NAV BUTTONS */}
                 <div className="left-side d-flex align-items-center">
                     <div className="nav-links d-flex">
-                        {navBtns.map((btn) => (
+                        {navBtns?.map((btn) => (
                             <button
                                 key={btn.id}
                                 className={activeNav === btn.id ? "active" : ""}
@@ -116,8 +117,7 @@ const TableHeader = ({
                                 )}
                             </button>
 
-                            {/* Custom header buttons */}
-                            {customHeaderButtons.map((btn) => (
+                            {customHeaderButtons && customButtons.map((btn) => (
                                 <button
                                     key={btn.id}
                                     className={btn.className}

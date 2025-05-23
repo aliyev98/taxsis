@@ -108,6 +108,7 @@ const ConfrontationActs = () => {
                     //         <button className="btn btn-send custom-btn" onClick={()=> setShowSendModal(true)}>Göndər</button>
                     //     </>
                     // }
+                    customHeaderButtons={true}
                     showGroupedHeader={showGroupedHeader}
                     showReportsHeaderFilters={true}
                     reportsHeaderFilters={[

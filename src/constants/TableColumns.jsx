@@ -1,33 +1,36 @@
 import React from 'react'
 import CellModal from '../components/modals/CellModal';
 import TransportModal from '../components/modals/TransportModal';
+import DateRangeDropdown from '../components/dropdwons/DateRangeDropdown'
 
 
 
 /// qaimələr
 
 export const purchaseColumns = [
-    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true,},
+    { id: "no", accessorKey: "no", header: "No", enableFooterTotal: true, },
     {
         id: "voen", accessorKey: "voen", header: "VÖEN",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "name",
         accessorKey: "name",
         header: "Adı",
-        // filterOptions: {
-        //     search: true,
-        //     type: "search",
-        //     options: ["A-dan Z-yə", "Z-dən A-ya"],
-        // },
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
     },
+
     {
         id: "type", accessorKey: "type", header: "Tipi",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
 
     },
 
+    ///status column
     {
         id: "status",
         accessorKey: "status",
@@ -64,84 +67,184 @@ export const purchaseColumns = [
         },
     },
 
+    //tarix
+
+    // …
+
     {
-        id: "date", accessorKey: "date", header: "Qaimə Tarixi",
+        id: "date",
+        accessorKey: "date",
+        header: "Qaimə Tarixi",
+        // 1) Filtre tipi olarak date-range belirtiyoruz
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
+    },
+
+
+    ///valyuta
+    // {
+    //     id: "currency", accessorKey: "currency", header: "Valyuta",
+    //     filterOptions: {
+    //         options: ["Hamısı", "AZN", "USD", "EUR"],
+    //     },
+    // },
+
+
+    {
+        id: "invoice_serie", accessorKey: "invoice_serie", header: "Qaimə seriyası",
         filterOptions: { search: true, type: "search" },
 
     },
     {
-        id: "currency", accessorKey: "currency", header: "Valyuta",
-        // filterOptions: {
-        //     options: ["Hamısı", "AZN", "USD", "EUR"],
-        // },
-    },
-    {
-        id: "invoice_serie", accessorKey: "invoice_serie", header: "Qaimə seriyası",
-        // filterOptions: { search: true, type: "search" },
-
-    },
-    {
         id: "invoice_num", accessorKey: "invoice_num", header: "Qaimə nömrəsi",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
 
     },
     {
         id: "main_note", accessorKey: "main_note", header: "Əsas qeyd",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
 
     },
     {
         id: "extra_note", accessorKey: "extra_note", header: "Əlavə qeyd",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
 
     },
     {
         id: "amount_without_vat", accessorKey: "amount_without_vat", header: "Malın ƏDV - siz ümumi dəyəri",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
         enableFooterTotal: true,
 
     },
     {
         id: "amount_with_vat", accessorKey: "amount_with_vat", header: "Malın ƏDV məbləği", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" }, 
+        filterOptions: { search: true, type: "search" },
 
     },
     {
         id: "involve_vat", accessorKey: "involve_vat", header: "ƏDV - yə cəlb edilən", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "not_involve_vat", accessorKey: "not_involve_vat", header: "ƏDV - yə cəlb edilməyən", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "free_vat", accessorKey: "free_vat", header: "ƏDV -dən azad olan", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "zero_involve_vat", accessorKey: "zero_involve_vat", header: "ƏDV - yə “0” dərəcə ilə cəlb edilən", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "road_tax", accessorKey: "road_tax", header: "Yol vergisi", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "axsiz_amount", accessorKey: "axsiz_amount", header: "Aksiz məbləği", enableFooterTotal: true,
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
     {
         id: "act_type", accessorKey: "act_type", header: "Qaimə / Akt növləri",
-        // filterOptions: { search: true, type: "search" },
+        filterOptions: { search: true, type: "search" },
     },
+
+    //növ
     {
-        id: "kind", accessorKey: "kind", header: "Növ",
-        // filterOptions: { search: true, type: "search" },
+        id: "kind",
+        accessorKey: "kind",
+        header: "Kind",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "Aktiv", "Xidmət", "Satış"],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                Aktiv: "active",
+                "Xidmət": "service",
+                Satış: "sale",
+            };
+            const kindClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
+            };
+
+            return (
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Aktiv">Aktiv</option>
+                        <option value="Xidmət">Xidmət</option>
+                        <option value="Satış">Satış</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
+        },
     },
+
+
+    //təsnifat
     {
-        id: "classification", accessorKey: "classification", header: "Təsnifat",
-        // filterOptions: { search: true, type: "search" },
+        id: "classification",
+        accessorKey: "classification",
+        header: "Təsnifat",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "Aktiv", "Xərc"],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // değere göre sınıf adını seçiyoruz
+            const classMap = {
+                Aktiv: "active",
+                Xərc: "expense",
+            };
+            const classificationClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newVal = e.target.value;
+                // yerel state ya da doğrudan original üzerinde güncelle
+                row.original.classification = newVal;
+                // eğer tablo state'inize bağlı değilse, forceUpdate gerekebilir
+            };
+
+            return (
+                <div className="classification-cell d-flex">
+                    <select
+                        className={`classification-cell-select ${classificationClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Aktiv">Aktiv</option>
+                        <option value="Xərc">Xərc</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
+        },
     },
+
 ];
 
 export const actsColumns = [
@@ -3185,8 +3288,6 @@ export const adjustedSectionColumns = [
     { id: "paid_amount", accessorKey: "paid_amount", header: "Ödənilmiş məbləğ (ƏDV-siz)", filterOptions: { search: true, type: "search" } },
     { id: "vat_amount", accessorKey: "vat_amount", header: "ƏDV məbləği", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
 ]
-
-
 
 /////////////////params
 
