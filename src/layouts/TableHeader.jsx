@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavbarSelection } from "../redux/slices/taxModuleSlice";
 import ColumnVisibilityDropdown from "../components/dropdwons/ColumnVisibilityDropdown";
-import ConfrontationActsModal from "../components/modals/COnfrontationActsModal";
+import ConfrontationActsModal from "../components/modals/ConfrontationActsModal";
 import SentModal from "../components/modals/SentModal";
 // (eğer SentModal’ı sonraki aşamada kullanacaksanız import edebilirsiniz)
 // import SentModal from "../components/modals/SentModal";

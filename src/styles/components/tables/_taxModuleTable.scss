@@ -73,8 +73,6 @@
         .custom-table {
             width: 100%;
             overflow-x: scroll;
-            background-color: red;
-
 
 
             .header-totals-row {
@@ -380,6 +378,7 @@
                 background-color: white;
                 font-weight: 600;
                 font-size: 14px;
+                color: black;
             }
         }
 
@@ -388,6 +387,7 @@
             padding: 2px 8px;
             border-radius: 6px;
             width: fit-content;
+            color: white;
         }
 
         .service {
@@ -425,7 +425,6 @@
             -moz-appearance: none;
 
             option {
-                background-color: white;
                 font-weight: 600;
                 font-size: 14px;
                 color: black;
@@ -437,6 +436,7 @@
             padding: 2px 8px;
             border-radius: 6px;
             width: fit-content;
+            color: white;
         }
 
         .expense {

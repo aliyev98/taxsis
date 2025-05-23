@@ -33,7 +33,6 @@ const DateRangeDropdown = forwardRef(({
           <input
             readOnly
             value={fromDate ? format(fromDate, 'dd.MM.yyyy') : ''}
-            placeholder="Başlangıç"
           />
           <img src="/assets/calendar-light.svg" alt="calendar icon" />
           {openFrom && (
@@ -62,7 +61,6 @@ const DateRangeDropdown = forwardRef(({
           <input
             readOnly
             value={toDate ? format(toDate, 'dd.MM.yyyy') : ''}
-            placeholder="Bitiş"
           />
           <img src="/assets/calendar-light.svg" alt="calendar icon" />
           {openTo && (
