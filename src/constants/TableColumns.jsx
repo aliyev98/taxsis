@@ -472,10 +472,17 @@ export const replacedColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Tarix",
-        filterOptions: {
-            search: true, // input arama
-            type: "search",
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
         },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
     },
     {
         accessorKey: "line_code",
@@ -814,8 +821,6 @@ export const depositsColumns = [
 
 
     {
-
-
         id: "classification",
         accessorKey: "classification",
         header: "Təsnifat",
