@@ -69,9 +69,12 @@
         position: relative;
         overflow-x: scroll;
 
+
         .custom-table {
             width: 100%;
             overflow-x: scroll;
+            background-color: red;
+
 
 
             .header-totals-row {
@@ -175,10 +178,10 @@
                         display: none !important;
                     }
 
-                    .calendar-popover{
+                    .calendar-popover {
                         z-index: 99999;
 
-                        span{
+                        span {
                             font-weight: 600;
                             font-size: 14px;
                         }
