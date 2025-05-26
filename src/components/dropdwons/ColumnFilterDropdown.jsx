@@ -9,8 +9,8 @@ const ColumnFilterDropdown = React.forwardRef(({
   filters,
   handleSearchChange,
   handleCheckboxChange,
-  handleNumberMinChange,    // yeniler
-  handleNumberMaxChange,    // yeniler
+  handleNumberMinChange,
+  handleNumberMaxChange,
 }, ref) => {
   // Kolonu bulup başlığı (header metni) al
   const columnDef = columns.find((c) => c.accessorKey === colKey);
@@ -29,19 +29,59 @@ const ColumnFilterDropdown = React.forwardRef(({
         <div
           ref={ref}
           className="dropdown-menu filter-dropdown show"
-          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          style={{
+            display: "block",
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            zIndex: 1000,
+          }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="dropdown-title text-capitalize">{columnHeader}</div>
-          <div className="search-input d-flex align-items-center">
-            <img src="/assets/search-icon.svg" alt="search" />
-            <input
-              type="text"
-              placeholder="Axtar..."
-              value={searchVal}
-              onChange={(e) => handleSearchChange(colKey, e.target.value)}
-            />
+          <div className="dropdown-title text-capitalize">
+            {columnHeader}
           </div>
+
+          {/* 1) Metin arama input’u */}
+          {filterOpts.search && (
+            <div className="search-input d-flex align-items-center mb-2">
+              <img src="/assets/search-icon.svg" alt="search" />
+              <input
+                type="text"
+                placeholder="Axtar..."
+                value={searchVal}
+                onChange={(e) =>
+                  handleSearchChange(colKey, e.target.value)
+                }
+              />
+            </div>
+          )}
+
+          {/* 2) Eğer options varsa (alfabetik sıralama kutucukları) */}
+          {filterOpts.options?.map((option) => (
+            <div className="checkbox-div d-flex" key={option}>
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id={`${colKey}-${option}`}
+                checked={opts.includes(option)}
+                onChange={() => handleCheckboxChange(colKey, option)}
+              />
+              <label
+                className="form-check-label d-flex align-items-center"
+                htmlFor={`${colKey}-${option}`}
+              >
+                {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
+                  <img
+                    src="/assets/atoz.svg"
+                    alt=""
+                    style={{ width: 14, height: 14, marginRight: 6 }}
+                  />
+                )}
+                {option}
+              </label>
+            </div>
+          ))}
         </div>
       );
 
@@ -50,10 +90,18 @@ const ColumnFilterDropdown = React.forwardRef(({
         <div
           ref={ref}
           className="dropdown-menu filter-dropdown show"
-          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          style={{
+            display: "block",
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            zIndex: 1000,
+          }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="dropdown-title text-capitalize">{columnHeader}</div>
+          <div className="dropdown-title text-capitalize">
+            {columnHeader}
+          </div>
           {filterOpts.options.map((option) => (
             <div className="checkbox-div d-flex" key={option}>
               <input
@@ -63,7 +111,10 @@ const ColumnFilterDropdown = React.forwardRef(({
                 checked={opts.includes(option)}
                 onChange={() => handleCheckboxChange(colKey, option)}
               />
-              <label className="form-check-label d-flex align-items-center" htmlFor={`${colKey}-${option}`}>
+              <label
+                className="form-check-label d-flex align-items-center"
+                htmlFor={`${colKey}-${option}`}
+              >
                 {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
                   <img
                     src="/assets/atoz.svg"
@@ -83,12 +134,18 @@ const ColumnFilterDropdown = React.forwardRef(({
         <div
           ref={ref}
           className="dropdown-menu filter-dropdown show"
-          style={{ display: "block", position: "absolute", top: "100%", left: 0, zIndex: 1000 }}
+          style={{
+            display: "block",
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            zIndex: 1000,
+          }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="dropdown-title text-capitalize">{columnHeader}</div>
-
-          {/* İstersen arama kısmı */}
+          <div className="dropdown-title text-capitalize">
+            {columnHeader}
+          </div>
           {filterOpts.search && (
             <div className="search-input d-flex align-items-center mb-2">
               <img src="/assets/search-icon.svg" alt="search" />
@@ -96,36 +153,39 @@ const ColumnFilterDropdown = React.forwardRef(({
                 type="text"
                 placeholder="Axtar..."
                 value={searchVal}
-                onChange={(e) => handleSearchChange(colKey, e.target.value)}
+                onChange={(e) =>
+                  handleSearchChange(colKey, e.target.value)
+                }
               />
             </div>
           )}
-
-          {/* Min / Max inputları */}
           <div className="d-flex flex-column min-max-inputs">
-
-
             <div>
-              <InputWithLabel label={"Min"} placeholder={"Min"}
+              <InputWithLabel
+                label="Min"
+                placeholder="Min"
                 value={min}
-                onChange={(e) => handleNumberMinChange(
-                  colKey,
-                  e.target.value === "" ? null : Number(e.target.value)
-                )} />
-            </div>
-
-            <div>
-              <InputWithLabel label={"Max"} placeholder={"Max"}
-                value={max}
-                onChange={(e) => handleNumberMaxChange(
-                  colKey,
-                  e.target.value === "" ? null : Number(e.target.value)
-                )}
+                onChange={(e) =>
+                  handleNumberMinChange(
+                    colKey,
+                    e.target.value === "" ? null : Number(e.target.value)
+                  )
+                }
               />
             </div>
-
-
-
+            <div>
+              <InputWithLabel
+                label="Max"
+                placeholder="Max"
+                value={max}
+                onChange={(e) =>
+                  handleNumberMaxChange(
+                    colKey,
+                    e.target.value === "" ? null : Number(e.target.value)
+                  )
+                }
+              />
+            </div>
           </div>
         </div>
       );

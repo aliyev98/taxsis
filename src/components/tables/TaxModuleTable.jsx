@@ -300,7 +300,6 @@ export default function TaxModuleTable({
     return totals;
   }, [columns, finalData]);
 
-
   const table = useReactTable({
     data: finalData,
     columns: processedColumns,
@@ -344,7 +343,6 @@ export default function TaxModuleTable({
     }));
   };
 
-
   const handleNumberMinChange = (colKey, min) => {
     setFilters(prev => ({
       ...prev,
@@ -371,7 +369,15 @@ export default function TaxModuleTable({
     }));
   };
 
-
+  const clearAllFilters = () => {
+    setFilters({});
+    setFromDate(null);
+    setToDate(null);
+    setOpenHeaderFilterId(null);
+    setOpenFromCalendar(false);
+    setOpenToCalendar(false);
+    setOpenDropdown(null);
+  };
 
   return (
     <div className="position-relative table-container">
@@ -386,6 +392,7 @@ export default function TaxModuleTable({
         customHeaderButtons={customHeaderButtons}
         ColumnVisibilityDropdow={ColumnVisibilityDropdown}
         table={table}
+        clearAllFilters={clearAllFilters}
         columns={columns}
         navBtns={navBtns}
         colSpans={colSpans}

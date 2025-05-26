@@ -1,3 +1,5 @@
+//qaimələr
+
 export const purchaseData = [
   {
     no: 1,
@@ -279,6 +281,7 @@ export const actsData = [
   { no: 11, infos: "Əliyev Niyaməddin", series: "EAA", number: "802601", situation: "802601", status: "Təsdiqləndi", date: "01.12.2024" },
 ];
 
+//əvəzləşmə reyestri
 export const replacedData = [
   { no: 1, series: "EBAV", number: "258099", date: "23.12.2020", line_code: "308", voen: "1406129621", name: '“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ', total_cost: "191.49", vat_cost: "191.49", paid_value: "191.49", paid_vat: "191.49", replacement_period: "01.12.2024" },
   { no: 2, series: "EBAV", number: "258099", date: "23.12.2020", line_code: "308", voen: "1406129621", name: '“ATS FOOD” MƏHDUD MƏSULİYYƏTLİ CƏMİYYƏTİ', total_cost: "192.49", vat_cost: "191.49", paid_value: "191.49", paid_vat: "191.49", replacement_period: "01.12.2024" },
@@ -362,7 +365,9 @@ export const advanceData = [
     name: "ATS Group MMC",
     kind: "Avans",
     type: "Giriş",
-    amount: "300.00"
+    main: "2038",
+    vat: "4839",
+    total: "39310"
   },
   {
     no: 2,
@@ -370,7 +375,9 @@ export const advanceData = [
     name: "BTS Elektronika",
     kind: "İmtiyaz",
     type: "Çıxış",
-    amount: "450.00"
+    main: "2038",
+    vat: "4839",
+    total: "39310"
   },
   {
     no: 3,
@@ -378,7 +385,9 @@ export const advanceData = [
     name: "CTS Qida",
     kind: "Avans",
     type: "Çıxış",
-    amount: "120.00"
+    main: "2038",
+    vat: "4839",
+    total: "39310"
   },
   {
     no: 4,
@@ -386,7 +395,9 @@ export const advanceData = [
     name: "DTS Market",
     kind: "İmtiyaz",
     type: "Giriş",
-    amount: "610.50"
+    main: "2038",
+    vat: "4839",
+    total: "39310"
   },
   {
     no: 5,
@@ -394,10 +405,13 @@ export const advanceData = [
     name: "ETS Xidmət",
     kind: "İmtiyaz",
     type: "Giriş",
-    amount: "250.00"
+    main: "2038",
+    vat: "4839",
+    total: "39310"
   }
 ];
 
+//depozit çıxarışları
 export const depositsData = [
   {
     no: 1, voen: "1406129621",
@@ -505,6 +519,8 @@ export const depositsData = [
   },
 ]
 
+
+// bank çıxarışları
 export const bankStatementsData = [
   {
     no: 1,
@@ -515,8 +531,9 @@ export const bankStatementsData = [
     income_azn: "366.29",
     expense_azn: "0.00",
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
-    money_flow: "Pulun hərəkət maddəsi mətni",
-    form: "Qarışıq"
+    money_action: "Vergi ödənişi",
+    form: "Qarışıq",
+    type: "Aktiv"
   },
   {
     no: 2,
@@ -527,8 +544,9 @@ export const bankStatementsData = [
     income_azn: "366.29",
     expense_azn: "0.00",
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
-    money_flow: "Pulun hərəkət maddəsi mətni",
-    form: "ƏDV"
+    money_action: "Əməkhaqqı ödənişi",
+    form: "ƏDV",
+    type: "Xidmət"
   },
   {
     no: 3,
@@ -539,8 +557,9 @@ export const bankStatementsData = [
     income_azn: "366.29",
     expense_azn: "0.00",
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
-    money_flow: "Pulun hərəkət maddəsi mətni",
-    form: "Qarışıq"
+    money_action: "Mal satana ödəniş",
+    form: "Qarışıq",
+    type: "Satış"
   },
   {
     no: 4,
@@ -551,8 +570,9 @@ export const bankStatementsData = [
     income_azn: "366.29",
     expense_azn: "0.00",
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
-    money_flow: "Pulun hərəkət maddəsi mətni",
-    form: "Əsas"
+    money_flow: "Əməkhaqqı ödənişi",
+    form: "Əsas",
+    type: "Xidmət"
   },
   {
     no: 5,
@@ -563,11 +583,14 @@ export const bankStatementsData = [
     income_azn: "366.29",
     expense_azn: "0.00",
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
-    money_flow: "Pulun hərəkət maddəsi mətni",
-    form: "ƏDV"
+    money_flow: "Vergi ödənişi",
+    form: "ƏDV",
+    type: "Aktiv"
   }
 ];
 
+
+//kassa əməliyyatları
 export const onlineCashData = [
   {
     no: 1,
@@ -685,8 +708,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Vergi ödənişi",
+    type: "Aktiv",
   },
   {
     no: 2,
@@ -696,8 +719,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Əməkhaqqı ödənişi",
+    type: "Xidmət",
   },
   {
     no: 3,
@@ -707,8 +730,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Mal satana ödəniş",
+    type: "Satış",
   },
   {
     no: 4,
@@ -718,8 +741,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Mal satana ödəniş",
+    type: "Xidmət",
   },
   {
     no: 5,
@@ -729,8 +752,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Vergi ödənişi",
+    type: "Satış",
   },
   {
     no: 6,
@@ -740,8 +763,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Mal satana ödəniş",
+    type: "Aktiv",
   },
   {
     no: 7,
@@ -751,8 +774,8 @@ export const physicalData = [
     income: '366.29',
     expense: "0.00",
     payment_destination: 'ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR',
-    money_action: "Pulun hərəkət maddəsi mətni",
-    type: "Əsas",
+    money_action: "Əməkhaqqı ödənişi",
+    type: "Xidmət",
   },
 ]
 

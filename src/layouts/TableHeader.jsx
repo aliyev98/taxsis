@@ -16,6 +16,7 @@ const TableHeader = ({
     setShowColumnMenu,
     showColumnMenu,
     customHeaderButtons,
+    clearAllFilters,
     table,
     columns,
     colSpans,
@@ -101,11 +102,11 @@ const TableHeader = ({
 
                         <div className="buttons d-flex align-items-center" ref={dropdownRef}>
 
-                            <div className="refresh-filter d-flex align-items-center">
+                            <button onClick={clearAllFilters} className="refresh-filter d-flex align-items-center">
                                 <span>Filteri təmizlə</span>
 
                                 <img src="/assets/eraser.svg" alt="" />
-                            </div>
+                            </button>
 
                             {/* Columns toggle */}
                             <button
