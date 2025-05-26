@@ -66,8 +66,8 @@ const Invoices = () => {
             tableTitle = "Alıcıdan geri qaytarmalar";
             break;
         case "acts":
-            columns = purchaseCol;
-            data = purchaseData;
+            columns = actsCol;
+            data = actsData;
             tableTitle = "Alış aktları";
             break;
         default:
