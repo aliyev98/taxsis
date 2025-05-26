@@ -31,8 +31,6 @@ const TableHeader = ({
 
     const dropdownRef = useRef();
 
-
-
     // Dropdown dışında tıklanınca sütun menüsünü kapat
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -100,7 +98,15 @@ const TableHeader = ({
                             Dəyişiklikləri yadda saxla
                         </button>
                     ) : (
+
                         <div className="buttons d-flex align-items-center" ref={dropdownRef}>
+
+                            <div className="refresh-filter d-flex align-items-center">
+                                <span>Filteri təmizlə</span>
+
+                                <img src="/assets/eraser.svg" alt="" />
+                            </div>
+
                             {/* Columns toggle */}
                             <button
                                 className="btn-columns d-flex align-items-center"
@@ -130,6 +136,7 @@ const TableHeader = ({
                             <button className="export">Export</button>
                         </div>
                     )}
+
                 </div>
             </div>
 

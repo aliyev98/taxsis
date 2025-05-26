@@ -252,9 +252,6 @@ export default function TaxModuleTable({
   }, [data, filters]);
 
 
-
-
-
   const footerTotals = useMemo(() => {
     const totals = {};
     columns.forEach((col) => {

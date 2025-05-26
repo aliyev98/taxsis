@@ -66,7 +66,7 @@ const ColumnFilterDropdown = React.forwardRef(({
               <label className="form-check-label d-flex align-items-center" htmlFor={`${colKey}-${option}`}>
                 {(option === "A-dan Z-yə" || option === "Z-dən A-ya") && (
                   <img
-                    src="/assets/alphabet-filter.png"
+                    src="/assets/atoz.svg"
                     alt=""
                     style={{ width: 14, height: 14, marginRight: 6 }}
                   />
