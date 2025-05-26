@@ -14,14 +14,19 @@ const DateRangeDropdown = forwardRef(({
   onClickTo    = () => {},
   onChangeFrom = () => {},
   onChangeTo   = () => {},
+  columnHeader,
 }, ref) => {
+
+
+  console.log(columnHeader)
+
   return (
     <div
       ref={ref}
       className="filter-dropdown date-range-dropdown"
       onClick={e => e.stopPropagation()}
     >
-      <div className="filter-dropdown-title">Dövr</div>
+      <div className="filter-dropdown-title">Bir tarix aralığı seçin</div>
       <div className="date-inputs d-flex flex-column">
 
         {/* Tarixdən */}

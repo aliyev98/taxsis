@@ -167,48 +167,6 @@ export default function TaxModuleTable({
     });
   }, [columns]);
 
-
-  // const finalData = useMemo(() => {
-  //   let currentData = [...data];
-
-  //   currentData = currentData.filter((row) => {
-  //     return Object.entries(filters).every(([colKey, filterVal]) => {
-  //       const cellValue = String(row[colKey] ?? "").toLowerCase();
-
-  //       if (filterVal.search && filterVal.search.length > 0) {
-  //         if (!cellValue.includes(filterVal.search.toLowerCase())) return false;
-  //       }
-
-  //       const normalCheck = filterVal.options?.filter(
-  //         (opt) => opt !== "A-dan Z-yə" && opt !== "Z-dən A-ya"
-  //       );
-
-  //       if (normalCheck && normalCheck.length > 0 && !normalCheck.includes("Hamısı")) {
-  //         if (!normalCheck.includes(row[colKey])) return false;
-  //       }
-
-  //       return true;
-  //     });
-  //   });
-
-  //   for (const [colKey, filterVal] of Object.entries(filters)) {
-  //     if (filterVal.options?.includes("A-dan Z-yə")) {
-  //       currentData.sort((a, b) =>
-  //         String(a[colKey] ?? "").localeCompare(String(b[colKey] ?? ""), "az")
-  //       );
-  //     }
-  //     if (filterVal.options?.includes("Z-dən A-ya")) {
-  //       currentData.sort((a, b) =>
-  //         String(b[colKey] ?? "").localeCompare(String(a[colKey] ?? ""), "az")
-  //       );
-  //     }
-  //   }
-
-  //   return currentData;
-  // }, [data, filters]);
-
-
-
   const finalData = useMemo(() => {
     let currentData = [...data];
 
@@ -466,6 +424,7 @@ export default function TaxModuleTable({
                   toDate={toDate}
                   openFrom={openFromCalendar}
                   openTo={openToCalendar}
+                  columnHeader={columns.find(c => c.accessorKey === colKey)?.header}
                   onClickFrom={() => {
                     setOpenFromCalendar(true)
                     setOpenToCalendar(false)

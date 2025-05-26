@@ -446,7 +446,18 @@ export const actsColumns = [
     },
     {
         id: "date", accessorKey: "date", header: "Tarix",
-        // filterOptions: { search: true, type: "search" },
+        // 1) Filtre tipi olarak date-range belirtiyoruz
+        filterOptions: { type: "date-range" },
+        // 2) Filtreleme mantığı: eğer start/end date varsa, satırın tarihini aralığa göre kontrol et
+        filterFn: (row, columnId, filterValue) => {
+            const { startDate, endDate } = filterValue || {}
+            if (!startDate || !endDate) return true
+            const cellDate = new Date(row.getValue(columnId))
+            // sadece yeni satır tarih aralığındaysa göster
+            return cellDate >= startDate && cellDate <= endDate
+        },
+        // 3) İstersen hücreyi formatlamak için cell renderer ekleyebilirsin:
+        cell: info => info.getValue()
 
     },
 ];
