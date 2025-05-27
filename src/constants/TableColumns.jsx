@@ -726,84 +726,6 @@ export const advanceColumns = [
             search: true,
         },
     },
-    {
-        id: "kind",
-        accessorKey: "kind",
-        header: "Növ",
-        filterOptions: {
-            type: "checkbox",
-            options: ["Hamısı", "Avans", "İmtiyaz",],
-        },
-        cell: ({ row, getValue }) => {
-            const value = getValue();
-
-            // Değere göre sınıf adını seçiyoruz
-            const classMap = {
-                "Avans": "advance",
-                "İmtiyaz": "privilege",
-            };
-            const kindClass = classMap[value] || "";
-
-            const handleChange = (e) => {
-                const newKind = e.target.value;
-                row.original.kind = newKind;
-                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
-            };
-
-            return (
-                <div className="kind-cell d-flex">
-                    <select
-                        className={`kind-cell-select ${kindClass}`}
-                        value={value}
-                        onChange={handleChange}
-                    >
-                        <option value="Avans">Avans</option>
-                        <option value="İmtiyaz">İmtiyaz</option>
-                    </select>
-                    <img src="/assets/arrow-down.svg" alt="" />
-                </div>
-            );
-        },
-    },
-    {
-        id: "type",
-        accessorKey: "type",
-        header: "Tipi",
-        filterOptions: {
-            type: "checkbox",
-            options: ["Hamısı", "Giriş", "Çıxış",],
-        },
-        cell: ({ row, getValue }) => {
-            const value = getValue();
-
-            // Değere göre sınıf adını seçiyoruz
-            const classMap = {
-                "Giriş": "advance",
-                "Çıxış": "privilege",
-            };
-            const kindClass = classMap[value] || "";
-
-            const handleChange = (e) => {
-                const newKind = e.target.value;
-                row.original.kind = newKind;
-                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
-            };
-
-            return (
-                <div className="kind-cell d-flex">
-                    <select
-                        className={`kind-cell-select ${kindClass}`}
-                        value={value}
-                        onChange={handleChange}
-                    >
-                        <option value="Giriş">Giriş</option>
-                        <option value="Çıxış">Çıxış</option>
-                    </select>
-                    <img src="/assets/arrow-down.svg" alt="" />
-                </div>
-            );
-        },
-    },
     // {
     //     id: "amount", accessorKey: "amount", header: "Məbləğ",
     //     filterOptions: {
@@ -883,7 +805,85 @@ export const advanceColumns = [
         },
         cell: info => info.getValue(),
 
-    }
+    },
+    {
+        id: "kind",
+        accessorKey: "kind",
+        header: "Növ",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "Avans", "İmtiyaz",],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                "Avans": "advance",
+                "İmtiyaz": "privilege",
+            };
+            const kindClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
+            };
+
+            return (
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Avans">Avans</option>
+                        <option value="İmtiyaz">İmtiyaz</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
+        },
+    },
+    {
+        id: "type",
+        accessorKey: "type",
+        header: "Tipi",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "Giriş", "Çıxış",],
+        },
+        cell: ({ row, getValue }) => {
+            const value = getValue();
+
+            // Değere göre sınıf adını seçiyoruz
+            const classMap = {
+                "Giriş": "advance",
+                "Çıxış": "privilege",
+            };
+            const kindClass = classMap[value] || "";
+
+            const handleChange = (e) => {
+                const newKind = e.target.value;
+                row.original.kind = newKind;
+                // Eğer tablon bir state'e bağlı değilse, forceUpdate vs. gerekebilir
+            };
+
+            return (
+                <div className="kind-cell d-flex">
+                    <select
+                        className={`kind-cell-select ${kindClass}`}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option value="Giriş">Giriş</option>
+                        <option value="Çıxış">Çıxış</option>
+                    </select>
+                    <img src="/assets/arrow-down.svg" alt="" />
+                </div>
+            );
+        },
+    },
 ];
 
 // depozit cizarislari
@@ -1327,7 +1327,6 @@ export const bankStatementsColumns = [
             );
         },
     },
-
 ]
 
 //kassa əməliyyatları
@@ -3358,63 +3357,63 @@ export const onPurchasesColumns = [
     },
     //////
     {
-        id: "invoice_main", accessorKey: "invoice_main", header: "Əsas",
+        id: "invoice_main", accessorKey: "invoice_main", header: "Əsas", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "invoice_vat", accessorKey: "invoice_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "invoice_vat", accessorKey: "invoice_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "invoice_total", accessorKey: "invoice_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "invoice_total", accessorKey: "invoice_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_main", accessorKey: "closed_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "closed_main", accessorKey: "closed_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_vat", accessorKey: "closed_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "closed_vat", accessorKey: "closed_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "closed_total", accessorKey: "closed_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "closed_total", accessorKey: "closed_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "residue_main", accessorKey: "residue_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "residue_main", accessorKey: "residue_main", header: "Əsas", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "residue_vat", accessorKey: "residue_vat", header: "ƏDV", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
         },
     },
     {
-        id: "residue_total", accessorKey: "residue_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true,
+        id: "residue_total", accessorKey: "residue_total", header: "Cəmi", enableFooterTotal: true, enableHeaderTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
@@ -3457,7 +3456,7 @@ export const byForeignPurchasesColumns = [
         },
     },
     {
-        id: "price", accessorKey: "price", header: "Məbləğ", enableFooterTotal: true,
+        id: "price", accessorKey: "price", header: "Məbləğ", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,
@@ -3471,7 +3470,7 @@ export const byForeignPurchasesColumns = [
         },
     },
     {
-        id: "left", accessorKey: "left", header: "Qalıb", enableFooterTotal: true,
+        id: "left", accessorKey: "left", header: "Qalıb", enableFooterTotal: true, enableCellModal: true, modalComponent: CellModal,
         filterOptions: {
             type: "search",
             search: true,

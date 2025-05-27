@@ -1,6 +1,10 @@
 .cash-flow-statement {
     .tables {
         background-color: #fff;
+        
+        .table-div{
+            padding: 0;
+        }
 
         table {
             tfoot {
@@ -8,10 +12,6 @@
                     background: var(--Secondary-02, #CABDFF);
                 }
             }
-        }
-
-        .infos {
-            padding-top: 10px;
         }
     }
 

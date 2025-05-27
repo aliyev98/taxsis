@@ -18,6 +18,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import TransportModal from "../modals/TransportModal";
 import DateRangeDropdown from '../dropdwons/DateRangeDropdown'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 export default function TaxModuleTable({
   columns,
@@ -105,13 +106,6 @@ export default function TaxModuleTable({
         setShowColumnMenu(false);
       }
       // 3) date-range dropdown dışında tıklandıysa kapat
-
-      if (filterVal.value?.min != null || filterVal.value?.max != null) {
-        const cellNum = Number(row[colKey]);
-        if (filterVal.value.min != null && cellNum < filterVal.value.min) return false;
-        if (filterVal.value.max != null && cellNum > filterVal.value.max) return false;
-      }
-
       if (
         dateDropdownRef.current &&
         !dateDropdownRef.current.contains(e.target)
@@ -126,6 +120,7 @@ export default function TaxModuleTable({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
 
   const processedColumns = useMemo(() => {
     return columns.map((col) => {
@@ -471,7 +466,7 @@ export default function TaxModuleTable({
 
       {reportsHeader && <ReportsHeader showReportsHeaderFilters={showReportsHeaderFilters} reportsHeaderFilters={reportsHeaderFilters} isEditing={isEditing} filters={filters} openHeaderFilterId={openHeaderFilterId} setOpenHeaderFilterId={setOpenHeaderFilterId} />}
 
-      <div className="table-div">
+      <div className="table-div my-scrollable">
 
         <table className="tables custom-table">
 
@@ -500,7 +495,7 @@ export default function TaxModuleTable({
                     className="group-title"
                     style={{ visibility: span.content ? "visible" : "hidden" }}
                   >
-                    <div>{span.content}</div>
+                    <div className="w-100">{span.content}</div>
                   </th>
                 ))}
               </tr>

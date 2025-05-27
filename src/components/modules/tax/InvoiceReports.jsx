@@ -95,11 +95,11 @@ const ConfrontationActs = () => {
                     <div className="tables">
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} />
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} showGroupedHeader={true}  navBtns={navBtns} colSpans={colSpans} openModal={true} />
                         </div>
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} />
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} openModal={true} />
                         </div>
                     </div>
                 )
@@ -110,11 +110,11 @@ const ConfrontationActs = () => {
                     <div className="tables">
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} />
+                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} openModal={true} />
                         </div>
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} />
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} openModal={true} />
                         </div>
                     </div>
                 )
@@ -123,7 +123,7 @@ const ConfrontationActs = () => {
             {
                 navbarSelection === "foregin_purchase" && (
                     <div className="table">
-                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} />
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true}/>
                     </div>
                 )
             }
@@ -131,7 +131,7 @@ const ConfrontationActs = () => {
                         {
                 navbarSelection === "foregin_sales" && (
                     <div className="table">
-                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} />
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true} />
                     </div>
                 )
             }

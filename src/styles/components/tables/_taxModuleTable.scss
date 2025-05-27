@@ -1,10 +1,12 @@
 @use '../../abstracts/mixin' as *;
 
 .table-container {
-    background-color: #FCFCFC;
+    background-color: white;
     cursor: pointer;
     border-radius: 8px;
-    // overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     .column-edit-input {
         border: none;
@@ -18,10 +20,9 @@
     }
 
     .header-filters {
-        // padding: 0px 24px 20px 24px;
         gap: 40px;
         background-color: white;
-        padding-left: 10px;
+        padding: 0 20px;
 
         .header-filter {
             gap: 8px;
@@ -67,12 +68,13 @@
 
     .table-div {
         position: relative;
-        overflow-x: scroll;
+        // overflow-x: scroll;
+        overflow: auto;
 
 
         .custom-table {
+            overflow-x: scroll !important;
             width: 100%;
-            overflow-x: scroll;
 
 
             .header-totals-row {
@@ -86,7 +88,9 @@
             }
 
             .top-header {
+
                 &-title {
+                    padding: 0 20px 20px 20px !important;
 
                     div {
                         text-align: center;
@@ -105,8 +109,6 @@
 
                 .group-title {
                     padding: 0 20px !important;
-                    // border-right: 1px solid black;
-
 
 
                     &:last-child {
@@ -116,7 +118,9 @@
                     &:first-child {
 
                         div {
-                            padding: 8px 8px 8px 58px !important;
+                            // padding: 8px 8px 8px 58px !important;
+
+                            // ilk başlığı sağa çəkən buradır
                         }
                     }
 
@@ -143,8 +147,7 @@
                 tr {
 
                     th {
-                        padding: 16px 24px !important;
-                        // border-left: 1px solid #e1e1e1;
+                        padding: 16px 24px;
                         border-radius: 1px solid #e1e1e1;
 
 

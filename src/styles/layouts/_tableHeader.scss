@@ -1,10 +1,11 @@
 .table-header {
     border-radius: 12px;
     background-color: #fff;
-    padding: 12px 6px;
+    padding: 20px 20px 0 20px !important;
 
     .left-side {
         gap: 16px;
+        padding: 0;
 
         .nav-links {
             gap: 8px;
@@ -28,6 +29,7 @@
     }
 
     .right-side {
+        padding: 0;
 
         .buttons {
             display: flex;
