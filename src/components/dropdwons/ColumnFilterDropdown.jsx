@@ -12,11 +12,9 @@ const ColumnFilterDropdown = React.forwardRef(({
   handleNumberMinChange,
   handleNumberMaxChange,
 }, ref) => {
-  // Kolonu bulup başlığı (header metni) al
   const columnDef = columns.find((c) => c.accessorKey === colKey);
   const columnHeader = columnDef?.header || colKey;
 
-  // O anki filtre değerleri
   const currentFilter = filters[colKey] || {};
   const searchVal = currentFilter.search || "";
   const opts = currentFilter.options || [];

@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    // background-color: red !important;
+    padding: 5px;
+
 
     .column-edit-input {
         border: none;
@@ -68,14 +71,17 @@
 
     .table-div {
         position: relative;
-        // overflow-x: scroll;
-        overflow: auto;
+        overflow-x: scroll;
+        height: calc(100vh - 250px);
+        
+        &::-webkit-scrollbar:horizontal{
+            display: none !important;
+        }
 
 
         .custom-table {
             overflow-x: scroll !important;
             width: 100%;
-
 
             .header-totals-row {
                 background: var(--Secondary-03, #B1E5FC);
@@ -115,14 +121,14 @@
                         border-right: none !important;
                     }
 
-                    &:first-child {
+                    // &:first-child {
 
-                        div {
-                            // padding: 8px 8px 8px 58px !important;
+                    //     // div {
+                    //     //     // padding: 8px 8px 8px 58px !important;
 
-                            // ilk başlığı sağa çəkən buradır
-                        }
-                    }
+                    //     //     // ilk başlığı sağa çəkən buradır
+                    //     // }
+                    // }
 
                     div {
                         background-color: #B5E4CA;
@@ -214,7 +220,9 @@
             }
 
             tfoot {
-                border-top: 1px solid gray;
+                background: var(--Secondary-02, #CABDFF);
+                position: sticky;
+                bottom: 0;
 
                 tr {
 
@@ -467,6 +475,42 @@
             border-radius: 6px;
             width: fit-content;
             color: white;
+        }
+    }
+
+    .type-cell {
+        gap: 5px;
+        width: fit-content;
+        cursor: pointer;
+        width: 100%;
+
+
+        select {
+            border: none;
+            outline: none;
+
+            color: var(--Neutral-07, #1A1D1F);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            min-width: 100px;
+            padding: 8px 8px;
+            border-radius: 6px;
+
+
+            option {
+                background-color: white;
+                font-weight: 600;
+                font-size: 14px;
+                color: black;
+            }
+        }
+
+        .eighteen {
+            background-color: black;
         }
     }
 

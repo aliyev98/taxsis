@@ -14,11 +14,8 @@ const DateRangeDropdown = forwardRef(({
   onClickTo    = () => {},
   onChangeFrom = () => {},
   onChangeTo   = () => {},
-  columnHeader,
 }, ref) => {
 
-
-  console.log(columnHeader)
 
   return (
     <div

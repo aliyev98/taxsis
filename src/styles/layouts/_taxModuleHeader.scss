@@ -15,6 +15,10 @@
             color: #272B30;
             font-size: 30px;
             font-weight: 600;
+            
+            span{
+                text-wrap: nowrap;
+            }
         }
 
         .btns {

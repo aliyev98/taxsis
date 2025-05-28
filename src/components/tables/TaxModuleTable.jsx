@@ -396,70 +396,70 @@ export default function TaxModuleTable({
       {showHeaderFilters && (
         <div className="header-filters d-flex">
           {headerFilters.map(filter => (
-            <div className="header-filter d-flex align-items-center position-relative" key={filter.id}>
-              <span className="filter-title">{filter.title}:</span>
-              <div
-                className="filter-toggle"
-                onClick={() => {
-                  setOpenHeaderFilterId(openHeaderFilterId === filter.id ? null : filter.id)
-                  // takvimi otomatik kapat
-                  setOpenFromCalendar(false)
+          <div className="header-filter d-flex align-items-center position-relative" key={filter.id}>
+            <span className="filter-title">{filter.title}:</span>
+            <div
+              className="filter-toggle"
+              onClick={() => {
+                setOpenHeaderFilterId(openHeaderFilterId === filter.id ? null : filter.id)
+                // takvimi otomatik kapat
+                setOpenFromCalendar(false)
+                setOpenToCalendar(false)
+              }}
+            >
+              <span className="filter-content">
+                {filters[filter.id]?.label ?? filter.content}
+              </span>
+              <img
+                src="/assets/arrow-down.svg"
+                className={openHeaderFilterId === filter.id ? 'rotated' : ''}
+              />
+            </div>
+
+            {openHeaderFilterId === filter.id && filter.id === 2 && (
+              <DateRangeDropdown
+                ref={dateDropdownRef}
+                fromDate={fromDate}
+                toDate={toDate}
+                openFrom={openFromCalendar}
+                openTo={openToCalendar}
+                // columnHeader={columns.find(c => c.accessorKey === colKey)?.header}
+                onClickFrom={() => {
+                  setOpenFromCalendar(true)
                   setOpenToCalendar(false)
                 }}
-              >
-                <span className="filter-content">
-                  {filters[filter.id]?.label ?? filter.content}
-                </span>
-                <img
-                  src="/assets/arrow-down.svg"
-                  className={openHeaderFilterId === filter.id ? 'rotated' : ''}
-                />
-              </div>
+                onClickTo={() => {
+                  setOpenToCalendar(true)
+                  setOpenFromCalendar(false)
+                }}
+                onChangeFrom={d => {
+                  setFromDate(d)
+                  /* filtre state’in varsa güncelle */
+                  setOpenFromCalendar(false)
+                }}
+                onChangeTo={d => {
+                  setToDate(d)
+                  /* filtre state’in varsa güncelle */
+                  setOpenToCalendar(false)
+                }}
+              />
+            )}
 
-              {openHeaderFilterId === filter.id && filter.id === 2 && (
-                <DateRangeDropdown
-                  ref={dateDropdownRef}
-                  fromDate={fromDate}
-                  toDate={toDate}
-                  openFrom={openFromCalendar}
-                  openTo={openToCalendar}
-                  columnHeader={columns.find(c => c.accessorKey === colKey)?.header}
-                  onClickFrom={() => {
-                    setOpenFromCalendar(true)
-                    setOpenToCalendar(false)
-                  }}
-                  onClickTo={() => {
-                    setOpenToCalendar(true)
-                    setOpenFromCalendar(false)
-                  }}
-                  onChangeFrom={d => {
-                    setFromDate(d)
-                    /* filtre state’in varsa güncelle */
-                    setOpenFromCalendar(false)
-                  }}
-                  onChangeTo={d => {
-                    setToDate(d)
-                    /* filtre state’in varsa güncelle */
-                    setOpenToCalendar(false)
-                  }}
-                />
-              )}
+            {openHeaderFilterId === filter.id && filter.id !== 2 && (
+              <HeaderFiltersSelectionDropdown
+                options={filter.options}
+                onSelect={value => {
+                  const opt = filter.options.find(o => o.value === value)
+                  setFilters(prev => ({
+                    ...prev,
+                    [filter.id]: { value: opt.value, label: opt.label }
+                  }))
+                  setOpenHeaderFilterId(null)
+                }}
+              />
+            )}
 
-              {openHeaderFilterId === filter.id && filter.id !== 2 && (
-                <HeaderFiltersSelectionDropdown
-                  options={filter.options}
-                  onSelect={value => {
-                    const opt = filter.options.find(o => o.value === value)
-                    setFilters(prev => ({
-                      ...prev,
-                      [filter.id]: { value: opt.value, label: opt.label }
-                    }))
-                    setOpenHeaderFilterId(null)
-                  }}
-                />
-              )}
-
-            </div>
+          </div>
           ))}
         </div>
       )}

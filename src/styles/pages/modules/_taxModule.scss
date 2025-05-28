@@ -3,11 +3,17 @@
 
     .tax-module-content {
         flex-grow: 1;
-        overflow: hidden;
+        overflow-x: hidden;
+        // overflow: hidden;
         background: #EFEFEF;
+        display: flex;
+        flex-direction: column;
 
         .table {
             padding: 24px 40px;
+            flex-grow: 1 !important;
+            display: flex;
+            flex-direction: column;
         }
     }
 }

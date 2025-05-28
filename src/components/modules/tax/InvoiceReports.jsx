@@ -36,16 +36,14 @@ const ConfrontationActs = () => {
         { id: "foregin_sales", content: "Xarici satışlar üzrə" },
     ];
 
-    const colSpans = [
-        { id: 1, content: "KONTRAGENT", col: 3 },
-        { id: 2, content: "QAIMƏ", col: 3 },
-        { id: 3, content: "BAĞLANIB", col: 3 },
-        { id: 4, content: "Qalıq", col: 3 },
-    ]
+    // const colSpans = [
+    //     { id: 1, content: "KONTRAGENT", col: 3 },
+    //     { id: 2, content: "QAIMƏ", col: 3 },
+    //     { id: 3, content: "BAĞLANIB", col: 3 },
+    //     { id: 4, content: "Qalıq", col: 3 },
+    // ]
 
     const onPurchasesCol = onPurchasesColumns;
-
-    const showGroupedHeader = true;
 
     let columns;
     let data;
@@ -95,12 +93,31 @@ const ConfrontationActs = () => {
                     <div className="tables">
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} showGroupedHeader={true}  navBtns={navBtns} colSpans={colSpans} openModal={true} />
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} showGroupedHeader={true} navBtns={navBtns} openModal={true} showHeaderFilters={true}
+                                headerFilters={[
+                                    {
+                                        id: 1,
+                                        title: "KONTRAGENT",
+                                        content: "Aqro-Vest Retail",
+                                        options: [
+                                            { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                            { value: "other", label: "Other Company" },
+                                        ],
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "DÖVR",
+                                        content: "Bir tarix aralığı seçin",
+                                    }
+                                ]}
+                            />
                         </div>
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} openModal={true} />
+                            <TaxModuleTable columns={onPurchasesColumns} data={onPurchaseData} openModal={true}
+                            />
                         </div>
+
                     </div>
                 )
             }
@@ -110,7 +127,24 @@ const ConfrontationActs = () => {
                     <div className="tables">
 
                         <div className="table">
-                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} colSpans={colSpans} openModal={true} />
+                            <TaxModuleTable columns={onPurchasesColumns} showGroupedHeader={true} data={onPurchaseData} navBtns={navBtns} openModal={true} showHeaderFilters={true}
+                                headerFilters={[
+                                    {
+                                        id: 1,
+                                        title: "KONTRAGENT",
+                                        content: "Aqro-Vest Retail",
+                                        options: [
+                                            { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                            { value: "other", label: "Other Company" },
+                                        ],
+                                    },
+                                    {
+                                        id: 2,
+                                        title: "DÖVR",
+                                        content: "Bir tarix aralığı seçin",
+                                    }
+                                ]}
+                            />
                         </div>
 
                         <div className="table">
@@ -123,26 +157,52 @@ const ConfrontationActs = () => {
             {
                 navbarSelection === "foregin_purchase" && (
                     <div className="table">
-                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true}/>
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true} showHeaderFilters={true}
+                            headerFilters={[
+                                {
+                                    id: 1,
+                                    title: "KONTRAGENT",
+                                    content: "Aqro-Vest Retail",
+                                    options: [
+                                        { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                        { value: "other", label: "Other Company" },
+                                    ],
+                                },
+                                {
+                                    id: 2,
+                                    title: "DÖVR",
+                                    content: "Bir tarix aralığı seçin",
+                                }
+                            ]}
+                        />
                     </div>
                 )
             }
 
-                        {
+            {
                 navbarSelection === "foregin_sales" && (
                     <div className="table">
-                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true} />
+                        <TaxModuleTable columns={byForeignPurchasesColumns} data={byForeignPurchasesData} navBtns={navBtns} openModal={true} showHeaderFilters={true}
+                            headerFilters={[
+                                {
+                                    id: 1,
+                                    title: "KONTRAGENT",
+                                    content: "Aqro-Vest Retail",
+                                    options: [
+                                        { value: "agro_vest", label: "Aqro-Vest Retail" },
+                                        { value: "other", label: "Other Company" },
+                                    ],
+                                },
+                                {
+                                    id: 2,
+                                    title: "DÖVR",
+                                    content: "Bir tarix aralığı seçin",
+                                }
+                            ]}
+                        />
                     </div>
                 )
             }
-
-            {/* <div className="table">
-                <TaxModuleTable columns={columns} navBtns={navBtns} data={data} title={tableTitle} isEditing={isEditing} setIsEditing={setIsEditing}
-                    showGroupedHeader={showGroupedHeader} colSpans={colSpans} />
-
-            </div> */}
-
-
 
         </div>
 

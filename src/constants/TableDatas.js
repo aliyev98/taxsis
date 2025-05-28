@@ -677,7 +677,7 @@ export const bankStatementsData = [
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
     money_action: "Vergi ödənişi",
     form: "Qarışıq",
-    type: "Aktiv"
+    type: "ƏDV 18%"
   },
   {
     no: 2,
@@ -690,7 +690,7 @@ export const bankStatementsData = [
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
     money_action: "Əməkhaqqı ödənişi",
     form: "ƏDV",
-    type: "Xidmət"
+    type: "ƏDV 0%"
   },
   {
     no: 3,
@@ -703,7 +703,7 @@ export const bankStatementsData = [
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
     money_action: "Mal satana ödəniş",
     form: "Qarışıq",
-    type: "Satış"
+    type: "ƏDV 18%"
   },
   {
     no: 4,
@@ -716,7 +716,7 @@ export const bankStatementsData = [
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
     money_flow: "Əməkhaqqı ödənişi",
     form: "Əsas",
-    type: "Xidmət"
+    type: "ƏDV 18%"
   },
   {
     no: 5,
@@ -729,7 +729,7 @@ export const bankStatementsData = [
     payment_dest: "ALINMIŞ MALIN ƏDV-Sİ ÖDƏNİLİR",
     money_flow: "Vergi ödənişi",
     form: "ƏDV",
-    type: "Aktiv"
+    type: "ƏDV 0%"
   }
 ];
 
