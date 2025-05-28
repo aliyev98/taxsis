@@ -17,8 +17,6 @@ const ConfrontationActs = () => {
 
     const sidebarSelection = useSelector((state) => state.taxModuleSelection.sidebarSelection);
 
-    const confrontationData = useSelector((state) => state.tableData.confrontation.data);
-
     const creditorDatas = creditorData;
 
     const frgnCreditorDatas = frgnCreditorData;
@@ -88,7 +86,7 @@ const ConfrontationActs = () => {
 
     return (
 
-        <div className="confirmation-acts tax-module-content">
+        <div className="confrontation-acts tax-module-content">
 
             <TaxModuleHeader
                 title="Üzləşmə aktları"

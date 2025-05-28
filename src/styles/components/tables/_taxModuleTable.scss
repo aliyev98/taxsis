@@ -11,6 +11,7 @@
     height: calc(100vh - 160px);
 
 
+
     .column-edit-input {
         border: none;
         outline: none;
@@ -74,22 +75,7 @@
         overflow-x: scroll;
         height: 100%;
 
-        .table-div::-webkit-scrollbar:horizontal {
-            display: none !important;
-        }
-
-        overflow-x: scroll;
-        overflow-y: auto;
-
-        // Yalnızca yatay scrollbarı gizle
-        &::-webkit-scrollbar:horizontal {
-            height: 0 !important;
-        }
-
-        // Firefox için
-        // scrollbar-width: thin;
-        // scrollbar-color: transparent transparent;
-
+        // Yalnızca yatay scrollbarı gizle  
 
         .custom-table {
             overflow-x: scroll !important;

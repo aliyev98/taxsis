@@ -13,7 +13,7 @@ const Substitution = () => {
 
     useEffect(() => {
         if (sidebarSelection === "substitution") {
-            dispatch(setNavbarSelection("table_join"));
+            dispatch(setNavbarSelection("substitution_report"));
         }
     }, [sidebarSelection, dispatch]);
 
@@ -38,7 +38,7 @@ const Substitution = () => {
     ]
 
     const navBtns = [
-        { id: "table_join", content: "Table Join Əvəzləşmə" },
+        // { id: "table_join", content: "Table Join Əvəzləşmə" },
         { id: "substitution_report", content: "Əvəzləşmə hesabatı" },
         { id: "substitution_restoration", content: "Əvəzləşmə - Bərpa" },
         { id: "substitution_current", content: "Əvəzləşmə - Cari" },
@@ -50,9 +50,9 @@ const Substitution = () => {
 
 
     switch (navbarSelection) {
-        case 'table_join':
-            colSpans = []
-            break;
+        // case 'table_join':
+        //     colSpans = []
+        //     break;
         case "substitution_report":
             colSpans = [
                 { id: 1, content: "", col: 5 },
@@ -115,10 +115,10 @@ const Substitution = () => {
 
     switch (navbarSelection) {
 
-        case 'table_join':
-            colSpans2 = [
-            ];
-            break;
+        // case 'table_join':
+        //     colSpans2 = [
+        //     ];
+        //     break;
         case "substitution_report":
             colSpans2 = [
             ];
@@ -159,10 +159,10 @@ const Substitution = () => {
     let data;
 
     switch (navbarSelection) {
-        case "table_join":
-            columns = tableJoinColumns;
-            data = tableJoinData;
-            break;
+        // case "table_join":
+        //     columns = tableJoinColumns;
+        //     data = tableJoinData;
+        //     break;
         case "substitution_report":
             columns = substitutionReportCol;
             data = substitutionReportData;
