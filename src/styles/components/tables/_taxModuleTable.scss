@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    // background-color: red !important;
     padding: 5px;
+    height: calc(100vh - 160px);
 
 
     .column-edit-input {
@@ -72,11 +72,23 @@
     .table-div {
         position: relative;
         overflow-x: scroll;
-        height: calc(100vh - 250px);
-        
-        &::-webkit-scrollbar:horizontal{
+        height: 100%;
+
+        .table-div::-webkit-scrollbar:horizontal {
             display: none !important;
         }
+
+        overflow-x: scroll;
+        overflow-y: auto;
+
+        // Yalnızca yatay scrollbarı gizle
+        &::-webkit-scrollbar:horizontal {
+            height: 0 !important;
+        }
+
+        // Firefox için
+        // scrollbar-width: thin;
+        // scrollbar-color: transparent transparent;
 
 
         .custom-table {
@@ -149,6 +161,10 @@
             }
 
             thead {
+                position: sticky;
+                top: 0;
+                z-index: 9999;
+                background-color: white;
 
                 tr {
 
