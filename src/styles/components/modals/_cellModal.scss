@@ -1,4 +1,5 @@
 .cell-modal {
+    // z-index: 9999999;
 
     .modal-header {
         padding: 0;
@@ -9,6 +10,8 @@
 
         .table-container {
             margin-bottom: 0 !important;
+            height: fit-content;
+            // background-color: red;
         }
 
         .modal-footer {

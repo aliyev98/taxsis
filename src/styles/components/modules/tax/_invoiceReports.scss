@@ -1,7 +1,13 @@
 .invoices-reports {
   .tables {
+
+
+
     .table {
-      margin-bottom: 0 !important;
+
+      .table-container {
+        height: fit-content;
+      }
 
       /* İlk .table dışındakilerin üst padding’ini sıfırla */
       &:not(:first-of-type) {

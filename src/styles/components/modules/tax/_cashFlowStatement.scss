@@ -17,6 +17,15 @@
 
     .table-container {
         margin-bottom: 48px;
+        height: fit-content;
+
+        &:first-child{
+            max-height: 500px;
+        }
+
+        &:last-child{
+            max-height: 350px;
+        }
 
         &:not(:first-of-type) {
             .table-header {

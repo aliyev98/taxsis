@@ -4,6 +4,7 @@
 
         .table-container {
             margin-bottom: 48px;
+            height: fit-content;
 
             &:not(:first-of-type) {
                 .table-header {

@@ -468,7 +468,7 @@ export default function TaxModuleTable({
 
       <div className="table-div my-scrollable">
 
-        <table className="tables custom-table">
+        <table className=" custom-table">
 
           <thead>
             {colSpans2 && (
