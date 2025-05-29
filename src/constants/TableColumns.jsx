@@ -4026,7 +4026,11 @@ export const creditorDebtsColumns = [
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
-        filterOptions: { search: true, type: "search" },
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
 
     },
     {
@@ -4621,119 +4625,685 @@ export const debitorDebtColumns = [
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
     },
     {
-        id: "voen", accessorKey: "voen", header: "Vöen",
-    },
-
-    {
-        id: "before_debt_balance_main", accessorKey: "before_debt_balance_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi", enableFooterTotal: true,
+        id: "voen", accessorKey: "voen", header: "Vöen", filterOptions: { search: true, type: "search" }
     },
 
     {
-        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas", enableFooterTotal: true,
+        id: "before_debt_balance_main", accessorKey: "before_debt_balance_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "before_debt_balance_vat", accessorKey: "before_debt_balance_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "return_main", accessorKey: "return_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "return_vat", accessorKey: "return_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "return_total", accessorKey: "return_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "sales_main", accessorKey: "sales_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "sales_vat", accessorKey: "sales_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "sales_total", accessorKey: "sales_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi", enableFooterTotal: true,
-    },
-
-    {
-        id: "refund_money_customer_main", accessorKey: "refund_money_customer_main", header: "Əsas", enableFooterTotal: true,
-    },
-    {
-        id: "refund_money_customer_vat", accessorKey: "refund_money_customer_vat", header: "ƏDV", enableFooterTotal: true,
-    },
-    {
-        id: "refund_money_customer_total", accessorKey: "refund_money_customer_total", header: "Cəmi", enableFooterTotal: true,
+        id: "before_debt_balance_total", accessorKey: "before_debt_balance_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas", enableFooterTotal: true,
+        id: "before_advance_balance_main", accessorKey: "before_advance_balance_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "before_advance_balance_vat", accessorKey: "before_advance_balance_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi", enableFooterTotal: true,
+        id: "before_advance_balance_total", accessorKey: "before_advance_balance_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas", enableFooterTotal: true,
+        id: "paid_money_main", accessorKey: "paid_money_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "paid_money_vat", accessorKey: "paid_money_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi", enableFooterTotal: true,
+        id: "paid_money_total", accessorKey: "paid_money_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas", enableFooterTotal: true,
+        id: "return_main", accessorKey: "return_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV", enableFooterTotal: true,
+        id: "return_vat", accessorKey: "return_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi", enableFooterTotal: true,
+        id: "return_total", accessorKey: "return_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "total_expense_main", accessorKey: "total_expense_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "total_expense_vat", accessorKey: "total_expense_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "total_expense_total", accessorKey: "total_expense_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "sales_main", accessorKey: "sales_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "sales_vat", accessorKey: "sales_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "sales_total", accessorKey: "sales_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "supplier_return_main", accessorKey: "supplier_return_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_vat", accessorKey: "supplier_return_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "supplier_return_total", accessorKey: "supplier_return_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "refund_money_customer_main", accessorKey: "refund_money_customer_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "refund_money_customer_vat", accessorKey: "refund_money_customer_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "refund_money_customer_total", accessorKey: "refund_money_customer_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "total_income_main", accessorKey: "total_income_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "total_income_vat", accessorKey: "total_income_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "total_income_total", accessorKey: "total_income_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "end_debt_balance_main", accessorKey: "end_debt_balance_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_vat", accessorKey: "end_debt_balance_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "end_debt_balance_total", accessorKey: "end_debt_balance_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+
+    {
+        id: "end_advance_balance_main", accessorKey: "end_advance_balance_main", header: "Əsas",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_vat", accessorKey: "end_advance_balance_vat", header: "ƏDV",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
+    },
+    {
+        id: "end_advance_balance_total", accessorKey: "end_advance_balance_total", header: "Cəmi",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 ]
 
@@ -4743,86 +5313,436 @@ export const foreignCreditorColumns = [
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
     },
     {
         id: "voen", accessorKey: "voen", header: "Vöen",
+        filterOptions: { search: true, type: "search" }
     },
 
     {
         id: "currency", accessorKey: "currency", header: "Valyuta",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "AZN", "USD", "EUR"],
+        },
     },
     /////
     {
-        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ///
 
     {
-        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
 
     {
-        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN", enableFooterTotal: true,
+        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ///
     {
-        id: "return_currency", accessorKey: "return_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "return_azn", accessorKey: "return_azn", header: "AZN", enableFooterTotal: true,
+        id: "return_azn", accessorKey: "return_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "payment_debt_total_expense_currency", accessorKey: "payment_debt_total_expense_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN", enableFooterTotal: true,
+        id: "payment_debt_total_expense_azn", accessorKey: "payment_debt_total_expense_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_supplier_return_currency", accessorKey: "incurring_debt_supplier_return_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_supplier_return_currency", accessorKey: "incurring_debt_supplier_return_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_supplier_return_azn", accessorKey: "incurring_debt_supplier_return_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_supplier_return_azn", accessorKey: "incurring_debt_supplier_return_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_total_income_currency", accessorKey: "incurring_debt_total_income_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_total_income_currency", accessorKey: "incurring_debt_total_income_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_total_income_azn", accessorKey: "incurring_debt_total_income_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_total_income_azn", accessorKey: "incurring_debt_total_income_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
 
     {
-        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     /////
     {
-        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 ]
 
@@ -4832,83 +5752,433 @@ export const foreignDebitorColumns = [
     },
     {
         id: "kontragen", accessorKey: "kontragen", header: "Kontragen",
+        filterOptions: {
+            search: true,
+            type: "search",
+            options: ["A-dan Z-yə", "Z-dən A-ya"],
+        },
     },
     {
         id: "voen", accessorKey: "voen", header: "Vöen",
+        filterOptions: { search: true, type: "search" }
     },
 
     {
         id: "currency", accessorKey: "currency", header: "Valyuta",
+        filterOptions: {
+            type: "checkbox",
+            options: ["Hamısı", "AZN", "USD", "EUR"],
+        },
     },
     /////
     {
-        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "before_debt_balance_currency", accessorKey: "before_debt_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "before_debt_balance_azn", accessorKey: "before_debt_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "before_advance_balance_currency", accessorKey: "before_advance_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "before_advance_balance_azn", accessorKey: "before_advance_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "paid_money_currency", accessorKey: "paid_money_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN", enableFooterTotal: true,
+        id: "paid_money_azn", accessorKey: "paid_money_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "return_currency", accessorKey: "return_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "return_currency", accessorKey: "return_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "return_azn", accessorKey: "return_azn", header: "AZN", enableFooterTotal: true,
+        id: "return_azn", accessorKey: "return_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "peyment_debt_total_expense_currency", accessorKey: "peyment_debt_total_expense_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "peyment_debt_total_expense_azn", accessorKey: "peyment_debt_total_expense_azn", header: "AZN", enableFooterTotal: true,
+        id: "peyment_debt_total_expense_azn", accessorKey: "peyment_debt_total_expense_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     ////
     {
-        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_purchase_currency", accessorKey: "incurring_debt_purchase_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_purchase_azn", accessorKey: "incurring_debt_purchase_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "incurring_debt_return_customer_currency", accessorKey: "incurring_debt_return_customer_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_return_customer_currency", accessorKey: "incurring_debt_return_customer_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_return_customer_azn", accessorKey: "incurring_debt_return_customer_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_return_customer_azn", accessorKey: "incurring_debt_return_customer_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "incurring_debt_incoming_currency", accessorKey: "incurring_debt_incoming_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "incurring_debt_incoming_currency", accessorKey: "incurring_debt_incoming_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "incurring_debt_incoming_azn", accessorKey: "incurring_debt_incoming_azn", header: "AZN", enableFooterTotal: true,
+        id: "incurring_debt_incoming_azn", accessorKey: "incurring_debt_incoming_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "end_debt_balance_currency", accessorKey: "end_debt_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "end_debt_balance_azn", accessorKey: "end_debt_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
     {
-        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta", enableFooterTotal: true,
+        id: "end_advance_balance_currency", accessorKey: "end_advance_balance_currency", header: "Valyuta",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
     {
-        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN", enableFooterTotal: true,
+        id: "end_advance_balance_azn", accessorKey: "end_advance_balance_azn", header: "AZN",
+        filterOptions: {
+            type: "number-range",
+            search: true
+        },
+        filterFn: (row, columnId, filterValue) => {
+            const { search, value } = filterValue || {};
+            const { min, max } = value || {};
+            const raw = row.getValue(columnId);
+            const str = String(raw);
+            const num = Number(raw);
+            if (search && !str.includes(search)) return false;
+            if (min != null && num < min) return false;
+            if (max != null && num > max) return false;
+            return true;
+        },
+        cell: info => info.getValue(),
+        enableFooterTotal: true,
     },
 
 ]
