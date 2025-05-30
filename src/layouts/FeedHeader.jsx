@@ -40,10 +40,10 @@ const FeedHeader = () => {
 
         <AddButton content={"Yeni post"} onClick={() => dispatch(openModal())} />
 
-        <button className="btn-messages">
+        {/* <button className="btn-messages">
           <img src="/assets/messages-icon.svg" alt="" />
           <div className="red-dot"></div>
-        </button>
+        </button> */}
 
         <button className="btn-notifications">
           <img src="/assets/notification-icon.svg" alt="" />

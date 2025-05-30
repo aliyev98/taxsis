@@ -119,7 +119,7 @@ const ManualSidebar = () => {
                     {/* Məlumat bazası */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showDatabase ? 'active' : ''} ${showDatabase ? 'open': ''} `}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showDatabase ? 'active' : ''} ${showDatabase ? 'open' : ''} `}
                             onClick={() => {
                                 if (isCollapsed) {
                                     // collapsed halda toggle et: əgər açıqdırsa bağla, bağlıdırsa aç
@@ -281,7 +281,7 @@ const ManualSidebar = () => {
                     {/* Hesabatlar */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showReports ? 'active' : ''} ${showReports ? 'open': ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showReports ? 'active' : ''} ${showReports ? 'open' : ''}`}
                             onClick={() => {
                                 if (isCollapsed) {
                                     setShowReports(prev => {
@@ -364,7 +364,7 @@ const ManualSidebar = () => {
                     {/* Vergi uçotu */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showTaxAccounting ? 'active' : ''} ${showTaxAccounting ? 'open': ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showTaxAccounting ? 'active' : ''} ${showTaxAccounting ? 'open' : ''}`}
                             onClick={() => {
                                 if (isCollapsed) {
                                     // collapsed halda dropdown-u toggle elə və digər bölmələri bağla
@@ -407,7 +407,7 @@ const ManualSidebar = () => {
                                     return (
                                         <li
                                             key={item.id}
-                                           className='sidebar-item'
+                                            className='sidebar-item'
                                             onClick={() => handleItemSelect(item.id)}
                                         >
                                             <img
@@ -449,7 +449,7 @@ const ManualSidebar = () => {
                     {/* Analizlər */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showAnalyses ? 'active' : ''} ${showAnalyses ? 'open': ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showAnalyses ? 'active' : ''} ${showAnalyses ? 'open' : ''}`}
                             onClick={() => {
                                 // həm collapsed, həm geniş halda toggle eləyərkən eyni məntiqi işlət
                                 setShowAnalyses(prev => {
@@ -521,7 +521,7 @@ const ManualSidebar = () => {
                     {/* Parametrlər */}
                     <div>
                         <button
-                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showParameters ? 'active' : ''} ${showParameters ? 'open': ''}`}
+                            className={`sidebar-section ${isCollapsed ? 'collapsed' : ''} ${isCollapsed && showParameters ? 'active' : ''} ${showParameters ? 'open' : ''}`}
                             onClick={() => {
                                 setShowParameters(prev => {
                                     const next = !prev;
@@ -589,6 +589,22 @@ const ManualSidebar = () => {
                         )}
                     </div>
 
+                </div>
+
+                <div className="sidebar-footer d-flex flex-column">
+
+                    <button className="refresh-btn">
+                        Məlumat bazasını yenilə
+                    </button>
+
+                    <div className="sidebar-footer-actions d-flex flex-column">
+                        <a className='action' href="#">Məxfilik siyasəti</a>
+                        <a className='action' href="#">Qaydalar və şərtlər</a>
+                        <a className='action' href="#">
+                            <img src="/assets/copyright-icon.svg" alt="" />
+                            <span>Bütün hüquqlar qorunur</span>
+                        </a>
+                    </div>
                 </div>
 
             </div>

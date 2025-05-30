@@ -119,10 +119,10 @@ const TaxModuleHeader = ({ title, headerBtns, columns, navBtns }) => {
 
                 <div className='header-nav d-flex align-items-center'>
 
-                    <button className="messages">
+                    {/* <button className="messages">
                         <img src="/assets/messages-icon.svg" alt="" />
                         <div className="red-dot"></div>
-                    </button>
+                    </button> */}
 
                     <button className="notifications">
                         <img src="/assets/notification-icon.svg" alt="" />

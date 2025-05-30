@@ -3,7 +3,7 @@
         background-color: #fcfcfc;
 
         .table-container {
-            margin-bottom: 48px;
+            margin-bottom: 24px;
             height: fit-content;
 
             &:not(:first-of-type) {
@@ -20,7 +20,7 @@
                 background: rgba(177, 229, 252, 0.30);
 
                 .group-header {
-                    background-color: #fcfcfc;
+                    // background-color: #fcfcfc;
 
                     th div {
                         margin-bottom: 16px;

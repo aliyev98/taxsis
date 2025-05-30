@@ -7669,88 +7669,240 @@ export const substitutionListColumns = [
 
 export const wholesaleColumns = [
     { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
-    { id: "wholesale", accessorKey: "wholesale", header: "Topdan satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
+    {
+        id: "wholesale", accessorKey: "wholesale", header: "Topdan satış",
+        // filterOptions: { search: true, type: "search" },
+        footerContent: "CƏMİ SATIŞLAR"
+    },
 
-    { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "sale_main", accessorKey: "sale_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main", accessorKey: "cash_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main", accessorKey: "cash_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_total", accessorKey: "cash_total", header: "Cəmi",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 ]
 
 // (geri qaytarma)
 
 export const returnColumns = [
     { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
-    { id: "return", accessorKey: "return", header: "Geri qaytarma", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
+    {
+        id: "return", accessorKey: "return", header: "Geri qaytarma",
+        // filterOptions: { search: true, type: "search" },
+        footerContent: "CƏMİ SATIŞLAR"
+    },
 
-    { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "sale_main", accessorKey: "sale_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main", accessorKey: "cash_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main", accessorKey: "cash_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_total", accessorKey: "cash_total", header: "Cəmi",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 ]
 
 // (xalis satış)
 
 export const netSalesColumns = [
     { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
-    { id: "net_sales", accessorKey: "net_sales", header: "Xalis satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
+    {
+        id: "net_sales", accessorKey: "net_sales", header: "Xalis satış",
+        // filterOptions: { search: true, type: "search" },
+        footerContent: "CƏMİ SATIŞLAR"
+    },
 
-    { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "sale_main", accessorKey: "sale_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main", accessorKey: "cash_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main", accessorKey: "cash_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_total", accessorKey: "cash_total", header: "Cəmi",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 ]
 
 // (pərakəndə satış)
 
 export const retailSalesColumns = [
     { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
-    { id: "retail_sales", accessorKey: "retail_sales", header: "Pərakəndə satış", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
+    {
+        id: "retail_sales", accessorKey: "retail_sales", header: "Pərakəndə satış",
+        // filterOptions: { search: true, type: "search" },
+        footerContent: "CƏMİ SATIŞLAR"
+    },
 
-    { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "sale_main", accessorKey: "sale_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main", accessorKey: "cash_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main", accessorKey: "cash_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_total", accessorKey: "cash_total", header: "Cəmi",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 ]
 
 // (yeku satışlar)
 
 export const finalSalesColumns = [
     { id: "no", accessorKey: "no", header: "No", footerContent: "#" },
-    { id: "final_sales", accessorKey: "final_sales", header: "Yekun satışlar", filterOptions: { search: true, type: "search" }, footerContent: "CƏMİ SATIŞLAR" },
+    {
+        id: "final_sales", accessorKey: "final_sales", header: "Yekun satışlar",
+        // filterOptions: { search: true, type: "search" },
+        footerContent: "CƏMİ SATIŞLAR"
+    },
 
-    { id: "sale_main", accessorKey: "sale_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "sale_main", accessorKey: "sale_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "sale_vat", accessorKey: "sale_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main", accessorKey: "cash_main", header: "Əsas", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
-    { id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main", accessorKey: "cash_main", header: "Əsas",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
+    {
+        id: "cash_vat", accessorKey: "cash_vat", header: "ƏDV",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_total", accessorKey: "cash_total", header: "Cəmi", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_total", accessorKey: "cash_total", header: "Cəmi",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_main_vat", accessorKey: "cash_main_vat", header: "Əsasın ƏDV-si",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 
-    { id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası", filterOptions: { search: true, type: "search" }, enableFooterTotal: true },
+    {
+        id: "cash_vat_main", accessorKey: "cash_vat_main", header: "ƏDV-nin əsası",
+        // filterOptions: { search: true, type: "search" },
+        enableFooterTotal: true
+    },
 ]
 
 // ygb əvəzləşmə

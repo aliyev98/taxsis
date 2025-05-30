@@ -1,35 +1,28 @@
 .cash-flow-statement {
+
     .tables {
         background-color: #fff;
-        
-        .table-div{
+
+        .table-div {
             padding: 0;
         }
 
-        table {
-            tfoot {
-                td {
-                    background: var(--Secondary-02, #CABDFF);
-                }
+        .table-container {
+            margin-bottom: 24px;
+            height: fit-content;
+
+            &:first-child {
+                max-height: 500px;
             }
-        }
-    }
 
-    .table-container {
-        margin-bottom: 48px;
-        height: fit-content;
+            &:last-child {
+                max-height: 350px;
+            }
 
-        &:first-child{
-            max-height: 500px;
-        }
-
-        &:last-child{
-            max-height: 350px;
-        }
-
-        &:not(:first-of-type) {
-            .table-header {
-                display: none !important;
+            &:not(:first-of-type) {
+                .table-header {
+                    display: none !important;
+                }
             }
         }
     }
